@@ -1,0 +1,142 @@
+   1               		.file	"nrk_watchdog.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	nrk_watchdog_check
+  18               	nrk_watchdog_check:
+  19               	.LFB5:
+  20               	.LM1:
+  21               	/* prologue: function */
+  22               	/* frame size = 0 */
+  23               	.LM2:
+  24 0000 04B6      		in __tmp_reg__,84-32
+  25 0002 03FE      		sbrs __tmp_reg__,3
+  26 0004 00C0      		rjmp .L2
+  27 0006 8FEF      		ldi r24,lo8(-1)
+  28 0008 0895      		ret
+  29               	.L2:
+  30 000a 81E0      		ldi r24,lo8(1)
+  31               	.LM3:
+  32 000c 0895      		ret
+  33               	.LFE5:
+  35               	.global	nrk_watchdog_reset
+  37               	nrk_watchdog_reset:
+  38               	.LFB6:
+  39               	.LM4:
+  40               	/* prologue: function */
+  41               	/* frame size = 0 */
+  42               	.LM5:
+  43               	/* #APP */
+  44               	 ;  64 "../../../src/kernel/hal/atmega1281/nrk_watchdog.c" 1
+  45 000e A895      		wdr
+  46               	 ;  0 "" 2
+  47               	/* epilogue start */
+  48               	.LM6:
+  49               	/* #NOAPP */
+  50 0010 0895      		ret
+  51               	.LFE6:
+  53               	.global	nrk_watchdog_enable
+  55               	nrk_watchdog_enable:
+  56               	.LFB4:
+  57               	.LM7:
+  58               	/* prologue: function */
+  59               	/* frame size = 0 */
+  60               	.LM8:
+  61 0012 0E94 0000 		call nrk_int_disable
+  62               	.LM9:
+  63 0016 84B7      		in r24,84-32
+  64 0018 877F      		andi r24,lo8(-9)
+  65 001a 84BF      		out 84-32,r24
+  66               	.LBB6:
+  67               	.LBB7:
+  68               	.LM10:
+  69               	/* #APP */
+  70               	 ;  64 "../../../src/kernel/hal/atmega1281/nrk_watchdog.c" 1
+  71 001c A895      		wdr
+  72               	 ;  0 "" 2
+  73               	/* #NOAPP */
+  74               	.LBE7:
+  75               	.LBE6:
+  76               	.LM11:
+  77 001e E0E6      		ldi r30,lo8(96)
+  78 0020 F0E0      		ldi r31,hi8(96)
+  79 0022 8081      		ld r24,Z
+  80 0024 8861      		ori r24,lo8(24)
+  81 0026 8083      		st Z,r24
+  82               	.LM12:
+  83 0028 8DE0      		ldi r24,lo8(13)
+  84 002a 8083      		st Z,r24
+  85               	.LM13:
+  86 002c 0E94 0000 		call nrk_int_enable
+  87               	/* epilogue start */
+  88               	.LM14:
+  89 0030 0895      		ret
+  90               	.LFE4:
+  92               	.global	nrk_watchdog_disable
+  94               	nrk_watchdog_disable:
+  95               	.LFB3:
+  96               	.LM15:
+  97               	/* prologue: function */
+  98               	/* frame size = 0 */
+  99               	.LM16:
+ 100 0032 0E94 0000 		call nrk_int_disable
+ 101               	.LBB8:
+ 102               	.LBB9:
+ 103               	.LM17:
+ 104               	/* #APP */
+ 105               	 ;  64 "../../../src/kernel/hal/atmega1281/nrk_watchdog.c" 1
+ 106 0036 A895      		wdr
+ 107               	 ;  0 "" 2
+ 108               	/* #NOAPP */
+ 109               	.LBE9:
+ 110               	.LBE8:
+ 111               	.LM18:
+ 112 0038 84B7      		in r24,84-32
+ 113 003a 877F      		andi r24,lo8(-9)
+ 114 003c 84BF      		out 84-32,r24
+ 115               	.LM19:
+ 116 003e E0E6      		ldi r30,lo8(96)
+ 117 0040 F0E0      		ldi r31,hi8(96)
+ 118 0042 8081      		ld r24,Z
+ 119 0044 8861      		ori r24,lo8(24)
+ 120 0046 8083      		st Z,r24
+ 121               	.LM20:
+ 122 0048 1082      		st Z,__zero_reg__
+ 123               	.LM21:
+ 124 004a 0E94 0000 		call nrk_int_enable
+ 125               	/* epilogue start */
+ 126               	.LM22:
+ 127 004e 0895      		ret
+ 128               	.LFE3:
+ 130               		.comm _nrk_signal_list,4,1
+ 131               		.comm error_task,1,1
+ 132               		.comm error_num,1,1
+ 133               		.comm nrk_idle_task_stk,128,1
+ 134               		.comm nrk_kernel_stk_ptr,2,1
+ 183               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 nrk_watchdog.c
+C:\cygwin\tmp/ccG75AAf.s:2      *ABS*:0000003f __SREG__
+C:\cygwin\tmp/ccG75AAf.s:3      *ABS*:0000003e __SP_H__
+C:\cygwin\tmp/ccG75AAf.s:4      *ABS*:0000003d __SP_L__
+C:\cygwin\tmp/ccG75AAf.s:5      *ABS*:00000034 __CCP__
+C:\cygwin\tmp/ccG75AAf.s:6      *ABS*:00000000 __tmp_reg__
+C:\cygwin\tmp/ccG75AAf.s:7      *ABS*:00000001 __zero_reg__
+C:\cygwin\tmp/ccG75AAf.s:18     .text:00000000 nrk_watchdog_check
+C:\cygwin\tmp/ccG75AAf.s:37     .text:0000000e nrk_watchdog_reset
+C:\cygwin\tmp/ccG75AAf.s:55     .text:00000012 nrk_watchdog_enable
+C:\cygwin\tmp/ccG75AAf.s:94     .text:00000032 nrk_watchdog_disable
+                            *COM*:00000004 _nrk_signal_list
+                            *COM*:00000001 error_task
+                            *COM*:00000001 error_num
+                            *COM*:00000080 nrk_idle_task_stk
+                            *COM*:00000002 nrk_kernel_stk_ptr
+
+UNDEFINED SYMBOLS
+nrk_int_disable
+nrk_int_enable
+__do_clear_bss

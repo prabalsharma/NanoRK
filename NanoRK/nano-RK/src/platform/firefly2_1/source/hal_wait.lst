@@ -1,0 +1,55 @@
+   1               		.file	"hal_wait.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__tmp_reg__ = 0
+   6               	__zero_reg__ = 1
+   7               		.global __do_copy_data
+   8               		.global __do_clear_bss
+  16               	.Ltext0:
+  17               	.global	halWait
+  19               	halWait:
+  20               	.LFB3:
+  21               	.LM1:
+  22               	/* prologue: frame size=0 */
+  23               	/* prologue end (size=0) */
+  24               	.LVL0:
+  25               	.L3:
+  26               	.LM2:
+  27               	/* #APP */
+  28 0000 0000      		nop
+  29               		
+  30               	.LM3:
+  31 0002 0000      		nop
+  32               		
+  33               	.LM4:
+  34 0004 0000      		nop
+  35               		
+  36               	.LM5:
+  37 0006 0000      		nop
+  38               		
+  39               	.LM6:
+  40               	/* #NOAPP */
+  41 0008 0197      		sbiw r24,1
+  42               	.LVL1:
+  43 000a 01F4      		brne .L3
+  44               	/* epilogue: frame size=0 */
+  45 000c 0895      		ret
+  46               	/* epilogue end (size=1) */
+  47               	/* function halWait size 20 (19) */
+  48               	.LFE3:
+  50               		.comm _nrk_signal_list,4,1
+  75               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 hal_wait.c
+C:\cygwin\tmp/ccnp2eec.s:2      *ABS*:0000003f __SREG__
+C:\cygwin\tmp/ccnp2eec.s:3      *ABS*:0000003e __SP_H__
+C:\cygwin\tmp/ccnp2eec.s:4      *ABS*:0000003d __SP_L__
+C:\cygwin\tmp/ccnp2eec.s:5      *ABS*:00000000 __tmp_reg__
+C:\cygwin\tmp/ccnp2eec.s:6      *ABS*:00000001 __zero_reg__
+C:\cygwin\tmp/ccnp2eec.s:19     .text:00000000 halWait
+                            *COM*:00000004 _nrk_signal_list
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss

@@ -1,0 +1,608 @@
+   1               		.file	"main.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	nrk_create_taskset
+  18               	nrk_create_taskset:
+  19               	.LFB7:
+  20               	.LM1:
+  21               	/* prologue: function */
+  22               	/* frame size = 0 */
+  23               	.LM2:
+  24 0000 80E0      		ldi r24,lo8(gs(Task1))
+  25 0002 90E0      		ldi r25,hi8(gs(Task1))
+  26 0004 9093 0000 		sts (TaskOne+5)+1,r25
+  27 0008 8093 0000 		sts TaskOne+5,r24
+  28               	.LM3:
+  29 000c 80E0      		ldi r24,lo8(Stack1+128)
+  30 000e 90E0      		ldi r25,hi8(Stack1+128)
+  31 0010 9093 0000 		sts (TaskOne+1)+1,r25
+  32 0014 8093 0000 		sts TaskOne+1,r24
+  33               	.LM4:
+  34 0018 80E0      		ldi r24,lo8(Stack1)
+  35 001a 90E0      		ldi r25,hi8(Stack1)
+  36 001c 9093 0000 		sts (TaskOne+3)+1,r25
+  37 0020 8093 0000 		sts TaskOne+3,r24
+  38               	.LM5:
+  39 0024 81E0      		ldi r24,lo8(1)
+  40 0026 8093 0000 		sts TaskOne+8,r24
+  41               	.LM6:
+  42 002a 8093 0000 		sts TaskOne+7,r24
+  43               	.LM7:
+  44 002e 8093 0000 		sts TaskOne+9,r24
+  45               	.LM8:
+  46 0032 8093 0000 		sts TaskOne+10,r24
+  47               	.LM9:
+  48 0036 81E0      		ldi r24,lo8(1)
+  49 0038 90E0      		ldi r25,hi8(1)
+  50 003a A0E0      		ldi r26,hlo8(1)
+  51 003c B0E0      		ldi r27,hhi8(1)
+  52 003e 8093 0000 		sts TaskOne+11,r24
+  53 0042 9093 0000 		sts (TaskOne+11)+1,r25
+  54 0046 A093 0000 		sts (TaskOne+11)+2,r26
+  55 004a B093 0000 		sts (TaskOne+11)+3,r27
+  56               	.LM10:
+  57 004e 80E0      		ldi r24,lo8(500000000)
+  58 0050 95E6      		ldi r25,hi8(500000000)
+  59 0052 ADEC      		ldi r26,hlo8(500000000)
+  60 0054 BDE1      		ldi r27,hhi8(500000000)
+  61 0056 8093 0000 		sts TaskOne+15,r24
+  62 005a 9093 0000 		sts (TaskOne+15)+1,r25
+  63 005e A093 0000 		sts (TaskOne+15)+2,r26
+  64 0062 B093 0000 		sts (TaskOne+15)+3,r27
+  65               	.LM11:
+  66 0066 1092 0000 		sts TaskOne+19,__zero_reg__
+  67 006a 1092 0000 		sts (TaskOne+19)+1,__zero_reg__
+  68 006e 1092 0000 		sts (TaskOne+19)+2,__zero_reg__
+  69 0072 1092 0000 		sts (TaskOne+19)+3,__zero_reg__
+  70               	.LM12:
+  71 0076 80E8      		ldi r24,lo8(50000000)
+  72 0078 90EF      		ldi r25,hi8(50000000)
+  73 007a AAEF      		ldi r26,hlo8(50000000)
+  74 007c B2E0      		ldi r27,hhi8(50000000)
+  75 007e 8093 0000 		sts TaskOne+23,r24
+  76 0082 9093 0000 		sts (TaskOne+23)+1,r25
+  77 0086 A093 0000 		sts (TaskOne+23)+2,r26
+  78 008a B093 0000 		sts (TaskOne+23)+3,r27
+  79               	.LM13:
+  80 008e 1092 0000 		sts TaskOne+27,__zero_reg__
+  81 0092 1092 0000 		sts (TaskOne+27)+1,__zero_reg__
+  82 0096 1092 0000 		sts (TaskOne+27)+2,__zero_reg__
+  83 009a 1092 0000 		sts (TaskOne+27)+3,__zero_reg__
+  84               	.LM14:
+  85 009e 1092 0000 		sts TaskOne+31,__zero_reg__
+  86 00a2 1092 0000 		sts (TaskOne+31)+1,__zero_reg__
+  87 00a6 1092 0000 		sts (TaskOne+31)+2,__zero_reg__
+  88 00aa 1092 0000 		sts (TaskOne+31)+3,__zero_reg__
+  89               	.LM15:
+  90 00ae 80E0      		ldi r24,lo8(TaskOne)
+  91 00b0 90E0      		ldi r25,hi8(TaskOne)
+  92 00b2 0E94 0000 		call nrk_activate_task
+  93               	/* epilogue start */
+  94               	.LM16:
+  95 00b6 0895      		ret
+  96               	.LFE7:
+  98               	.global	my_error
+ 100               	my_error:
+ 101               	.LFB4:
+ 102               	.LM17:
+ 103               	/* prologue: function */
+ 104               	/* frame size = 0 */
+ 105               	.LM18:
+ 106 00b8 80E0      		ldi r24,lo8(__c.2065)
+ 107 00ba 90E0      		ldi r25,hi8(__c.2065)
+ 108 00bc 0E94 0000 		call nrk_kprintf
+ 109               	/* epilogue start */
+ 110               	.LM19:
+ 111 00c0 0895      		ret
+ 112               	.LFE4:
+ 114               		.data
+ 115               	.LC0:
+ 116 0000 5461 736B 		.string	"Task2 PID=%d\r\n"
+ 116      3220 5049 
+ 116      443D 2564 
+ 116      0D0A 00
+ 117               	.LC1:
+ 118 000f 5461 736B 		.string	"Task2 cnt=%d\r\n"
+ 118      3220 636E 
+ 118      743D 2564 
+ 118      0D0A 00
+ 119               		.text
+ 120               	.global	Task2
+ 122               	Task2:
+ 123               	.LFB6:
+ 124               	.LM20:
+ 125 00c2 EF92      		push r14
+ 126 00c4 FF92      		push r15
+ 127 00c6 0F93      		push r16
+ 128 00c8 1F93      		push r17
+ 129 00ca DF93      		push r29
+ 130 00cc CF93      		push r28
+ 131 00ce CDB7      		in r28,__SP_L__
+ 132 00d0 DEB7      		in r29,__SP_H__
+ 133 00d2 2897      		sbiw r28,8
+ 134 00d4 0FB6      		in __tmp_reg__,__SREG__
+ 135 00d6 F894      		cli
+ 136 00d8 DEBF      		out __SP_H__,r29
+ 137 00da 0FBE      		out __SREG__,__tmp_reg__
+ 138 00dc CDBF      		out __SP_L__,r28
+ 139               	/* prologue: function */
+ 140               	/* frame size = 8 */
+ 141               	.LM21:
+ 142 00de 0E94 0000 		call nrk_reserve_create
+ 143 00e2 082F      		mov r16,r24
+ 144               	.LVL0:
+ 145               	.LM22:
+ 146 00e4 8F3F      		cpi r24,lo8(-1)
+ 147 00e6 01F4      		brne .L6
+ 148               	.LVL1:
+ 149               	.LM23:
+ 150 00e8 80E0      		ldi r24,lo8(__c.2094)
+ 151 00ea 90E0      		ldi r25,hi8(__c.2094)
+ 152               	.LVL2:
+ 153 00ec 0E94 0000 		call nrk_kprintf
+ 154               	.LVL3:
+ 155               	.L6:
+ 156               	.LM24:
+ 157 00f0 8AE0      		ldi r24,lo8(10)
+ 158 00f2 90E0      		ldi r25,hi8(10)
+ 159 00f4 A0E0      		ldi r26,hlo8(10)
+ 160 00f6 B0E0      		ldi r27,hhi8(10)
+ 161 00f8 8983      		std Y+1,r24
+ 162 00fa 9A83      		std Y+2,r25
+ 163 00fc AB83      		std Y+3,r26
+ 164 00fe BC83      		std Y+4,r27
+ 165               	.LM25:
+ 166 0100 1D82      		std Y+5,__zero_reg__
+ 167 0102 1E82      		std Y+6,__zero_reg__
+ 168 0104 1F82      		std Y+7,__zero_reg__
+ 169 0106 1886      		std Y+8,__zero_reg__
+ 170               	.LM26:
+ 171 0108 802F      		mov r24,r16
+ 172 010a BE01      		movw r22,r28
+ 173 010c 6F5F      		subi r22,lo8(-(1))
+ 174 010e 7F4F      		sbci r23,hi8(-(1))
+ 175 0110 4AE0      		ldi r20,lo8(10)
+ 176 0112 50E0      		ldi r21,hi8(10)
+ 177 0114 20E0      		ldi r18,lo8(0)
+ 178 0116 30E0      		ldi r19,hi8(0)
+ 179 0118 0E94 0000 		call nrk_reserve_set
+ 180               	.LM27:
+ 181 011c 8F3F      		cpi r24,lo8(-1)
+ 182 011e 01F4      		brne .L7
+ 183               	.LM28:
+ 184 0120 80E0      		ldi r24,lo8(__c.2096)
+ 185 0122 90E0      		ldi r25,hi8(__c.2096)
+ 186 0124 0E94 0000 		call nrk_kprintf
+ 187               	.L7:
+ 188               	.LM29:
+ 189 0128 0E94 0000 		call nrk_get_pid
+ 190 012c 00D0      		rcall .
+ 191 012e 00D0      		rcall .
+ 192 0130 EDB7      		in r30,__SP_L__
+ 193 0132 FEB7      		in r31,__SP_H__
+ 194 0134 3196      		adiw r30,1
+ 195 0136 20E0      		ldi r18,lo8(.LC0)
+ 196 0138 30E0      		ldi r19,hi8(.LC0)
+ 197 013a ADB7      		in r26,__SP_L__
+ 198 013c BEB7      		in r27,__SP_H__
+ 199 013e 1296      		adiw r26,1+1
+ 200 0140 3C93      		st X,r19
+ 201 0142 2E93      		st -X,r18
+ 202 0144 1197      		sbiw r26,1
+ 203 0146 8283      		std Z+2,r24
+ 204 0148 1382      		std Z+3,__zero_reg__
+ 205 014a 0E94 0000 		call printf
+ 206 014e 10E0      		ldi r17,lo8(0)
+ 207               	.LVL4:
+ 208 0150 0F90      		pop __tmp_reg__
+ 209 0152 0F90      		pop __tmp_reg__
+ 210 0154 0F90      		pop __tmp_reg__
+ 211 0156 0F90      		pop __tmp_reg__
+ 212               	.LM30:
+ 213 0158 80E0      		ldi r24,lo8(.LC1)
+ 214 015a E82E      		mov r14,r24
+ 215 015c 80E0      		ldi r24,hi8(.LC1)
+ 216 015e F82E      		mov r15,r24
+ 217               	.L9:
+ 218               	.LM31:
+ 219 0160 802F      		mov r24,r16
+ 220 0162 0E94 0000 		call nrk_reserve_consume
+ 221 0166 8F3F      		cpi r24,lo8(-1)
+ 222 0168 01F0      		breq .L8
+ 223               	.LM32:
+ 224 016a 8FEF      		ldi r24,lo8(255)
+ 225 016c 90E0      		ldi r25,hi8(255)
+ 226 016e 0E94 0000 		call nrk_led_toggle
+ 227               	.LM33:
+ 228 0172 00D0      		rcall .
+ 229 0174 00D0      		rcall .
+ 230 0176 EDB7      		in r30,__SP_L__
+ 231 0178 FEB7      		in r31,__SP_H__
+ 232 017a 3196      		adiw r30,1
+ 233 017c ADB7      		in r26,__SP_L__
+ 234 017e BEB7      		in r27,__SP_H__
+ 235 0180 1296      		adiw r26,1+1
+ 236 0182 FC92      		st X,r15
+ 237 0184 EE92      		st -X,r14
+ 238 0186 1197      		sbiw r26,1
+ 239 0188 1283      		std Z+2,r17
+ 240 018a 1382      		std Z+3,__zero_reg__
+ 241 018c 0E94 0000 		call printf
+ 242               	.LM34:
+ 243 0190 1F5F      		subi r17,lo8(-(1))
+ 244 0192 0F90      		pop __tmp_reg__
+ 245 0194 0F90      		pop __tmp_reg__
+ 246 0196 0F90      		pop __tmp_reg__
+ 247 0198 0F90      		pop __tmp_reg__
+ 248               	.L8:
+ 249               	.LM35:
+ 250 019a 0E94 0000 		call nrk_wait_until_next_period
+ 251 019e 00C0      		rjmp .L9
+ 252               	.LFE6:
+ 254               		.data
+ 255               	.LC2:
+ 256 001e 4D79 206E 		.string	"My node's address is %d\r\n"
+ 256      6F64 6527 
+ 256      7320 6164 
+ 256      6472 6573 
+ 256      7320 6973 
+ 257               	.LC3:
+ 258 0038 5461 736B 		.string	"Task1 PID=%d\r\n"
+ 258      3120 5049 
+ 258      443D 2564 
+ 258      0D0A 00
+ 259               	.LC4:
+ 260 0047 5461 736B 		.string	"Task1 cnt=%d\r\n"
+ 260      3120 636E 
+ 260      743D 2564 
+ 260      0D0A 00
+ 261               	.LC5:
+ 262 0056 5265 7365 		.string	"Reserve value: %d\r\n"
+ 262      7276 6520 
+ 262      7661 6C75 
+ 262      653A 2025 
+ 262      640D 0A00 
+ 263               		.text
+ 264               	.global	Task1
+ 266               	Task1:
+ 267               	.LFB5:
+ 268               	.LM36:
+ 269 01a0 AF92      		push r10
+ 270 01a2 BF92      		push r11
+ 271 01a4 CF92      		push r12
+ 272 01a6 DF92      		push r13
+ 273 01a8 FF92      		push r15
+ 274 01aa 0F93      		push r16
+ 275 01ac 1F93      		push r17
+ 276 01ae DF93      		push r29
+ 277 01b0 CF93      		push r28
+ 278 01b2 CDB7      		in r28,__SP_L__
+ 279 01b4 DEB7      		in r29,__SP_H__
+ 280 01b6 2897      		sbiw r28,8
+ 281 01b8 0FB6      		in __tmp_reg__,__SREG__
+ 282 01ba F894      		cli
+ 283 01bc DEBF      		out __SP_H__,r29
+ 284 01be 0FBE      		out __SREG__,__tmp_reg__
+ 285 01c0 CDBF      		out __SP_L__,r28
+ 286               	/* prologue: function */
+ 287               	/* frame size = 8 */
+ 288               	.LM37:
+ 289 01c2 0E94 0000 		call nrk_reserve_create
+ 290 01c6 F82E      		mov r15,r24
+ 291               	.LVL5:
+ 292               	.LM38:
+ 293 01c8 8FEF      		ldi r24,lo8(-1)
+ 294 01ca F816      		cp r15,r24
+ 295 01cc 01F4      		brne .L12
+ 296               	.LM39:
+ 297 01ce 80E0      		ldi r24,lo8(__c.2073)
+ 298 01d0 90E0      		ldi r25,hi8(__c.2073)
+ 299 01d2 0E94 0000 		call nrk_kprintf
+ 300               	.L12:
+ 301               	.LM40:
+ 302 01d6 8AE0      		ldi r24,lo8(10)
+ 303 01d8 90E0      		ldi r25,hi8(10)
+ 304 01da A0E0      		ldi r26,hlo8(10)
+ 305 01dc B0E0      		ldi r27,hhi8(10)
+ 306 01de 8983      		std Y+1,r24
+ 307 01e0 9A83      		std Y+2,r25
+ 308 01e2 AB83      		std Y+3,r26
+ 309 01e4 BC83      		std Y+4,r27
+ 310               	.LM41:
+ 311 01e6 1D82      		std Y+5,__zero_reg__
+ 312 01e8 1E82      		std Y+6,__zero_reg__
+ 313 01ea 1F82      		std Y+7,__zero_reg__
+ 314 01ec 1886      		std Y+8,__zero_reg__
+ 315               	.LM42:
+ 316 01ee 8F2D      		mov r24,r15
+ 317 01f0 BE01      		movw r22,r28
+ 318 01f2 6F5F      		subi r22,lo8(-(1))
+ 319 01f4 7F4F      		sbci r23,hi8(-(1))
+ 320 01f6 4AE0      		ldi r20,lo8(10)
+ 321 01f8 50E0      		ldi r21,hi8(10)
+ 322 01fa 20E0      		ldi r18,lo8(gs(my_error))
+ 323 01fc 30E0      		ldi r19,hi8(gs(my_error))
+ 324 01fe 0E94 0000 		call nrk_reserve_set
+ 325               	.LM43:
+ 326 0202 8F3F      		cpi r24,lo8(-1)
+ 327 0204 01F4      		brne .L13
+ 328               	.LM44:
+ 329 0206 80E0      		ldi r24,lo8(__c.2075)
+ 330 0208 90E0      		ldi r25,hi8(__c.2075)
+ 331 020a 0E94 0000 		call nrk_kprintf
+ 332               	.L13:
+ 333               	.LM45:
+ 334 020e 00D0      		rcall .
+ 335 0210 00D0      		rcall .
+ 336 0212 80E0      		ldi r24,lo8(.LC2)
+ 337 0214 90E0      		ldi r25,hi8(.LC2)
+ 338 0216 ADB7      		in r26,__SP_L__
+ 339 0218 BEB7      		in r27,__SP_H__
+ 340 021a 1296      		adiw r26,1+1
+ 341 021c 9C93      		st X,r25
+ 342 021e 8E93      		st -X,r24
+ 343 0220 1197      		sbiw r26,1
+ 344 0222 1496      		adiw r26,3+1
+ 345 0224 1C92      		st X,__zero_reg__
+ 346 0226 1E92      		st -X,__zero_reg__
+ 347 0228 1397      		sbiw r26,3
+ 348 022a 0E94 0000 		call printf
+ 349               	.LM46:
+ 350 022e 0F90      		pop __tmp_reg__
+ 351 0230 0F90      		pop __tmp_reg__
+ 352 0232 0F90      		pop __tmp_reg__
+ 353 0234 0F90      		pop __tmp_reg__
+ 354 0236 0E94 0000 		call nrk_get_pid
+ 355 023a 00D0      		rcall .
+ 356 023c 00D0      		rcall .
+ 357 023e EDB7      		in r30,__SP_L__
+ 358 0240 FEB7      		in r31,__SP_H__
+ 359 0242 3196      		adiw r30,1
+ 360 0244 20E0      		ldi r18,lo8(.LC3)
+ 361 0246 30E0      		ldi r19,hi8(.LC3)
+ 362 0248 ADB7      		in r26,__SP_L__
+ 363 024a BEB7      		in r27,__SP_H__
+ 364 024c 1296      		adiw r26,1+1
+ 365 024e 3C93      		st X,r19
+ 366 0250 2E93      		st -X,r18
+ 367 0252 1197      		sbiw r26,1
+ 368 0254 8283      		std Z+2,r24
+ 369 0256 1382      		std Z+3,__zero_reg__
+ 370 0258 0E94 0000 		call printf
+ 371 025c 00E0      		ldi r16,lo8(0)
+ 372 025e 10E0      		ldi r17,hi8(0)
+ 373               	.LVL6:
+ 374 0260 0F90      		pop __tmp_reg__
+ 375 0262 0F90      		pop __tmp_reg__
+ 376 0264 0F90      		pop __tmp_reg__
+ 377 0266 0F90      		pop __tmp_reg__
+ 378               	.LM47:
+ 379 0268 20E0      		ldi r18,lo8(.LC4)
+ 380 026a A22E      		mov r10,r18
+ 381 026c 20E0      		ldi r18,hi8(.LC4)
+ 382 026e B22E      		mov r11,r18
+ 383               	.LM48:
+ 384 0270 90E0      		ldi r25,lo8(.LC5)
+ 385 0272 C92E      		mov r12,r25
+ 386 0274 90E0      		ldi r25,hi8(.LC5)
+ 387 0276 D92E      		mov r13,r25
+ 388               	.L15:
+ 389               	.LM49:
+ 390 0278 80E0      		ldi r24,lo8(0)
+ 391 027a 90E0      		ldi r25,hi8(0)
+ 392 027c 0E94 0000 		call nrk_led_toggle
+ 393               	.LM50:
+ 394 0280 00D0      		rcall .
+ 395 0282 00D0      		rcall .
+ 396 0284 EDB7      		in r30,__SP_L__
+ 397 0286 FEB7      		in r31,__SP_H__
+ 398 0288 B282      		std Z+2,r11
+ 399 028a A182      		std Z+1,r10
+ 400 028c 1483      		std Z+4,r17
+ 401 028e 0383      		std Z+3,r16
+ 402 0290 0E94 0000 		call printf
+ 403               	.LM51:
+ 404 0294 0F90      		pop __tmp_reg__
+ 405 0296 0F90      		pop __tmp_reg__
+ 406 0298 0F90      		pop __tmp_reg__
+ 407 029a 0F90      		pop __tmp_reg__
+ 408 029c 8F2D      		mov r24,r15
+ 409 029e 0E94 0000 		call nrk_reserve_consume
+ 410               	.LM52:
+ 411 02a2 8F3F      		cpi r24,lo8(-1)
+ 412 02a4 01F4      		brne .L14
+ 413               	.LM53:
+ 414 02a6 80E0      		ldi r24,lo8(__c.2077)
+ 415 02a8 90E0      		ldi r25,hi8(__c.2077)
+ 416 02aa 0E94 0000 		call nrk_kprintf
+ 417               	.L14:
+ 418               	.LM54:
+ 419 02ae 8F2D      		mov r24,r15
+ 420 02b0 0E94 0000 		call nrk_reserve_get
+ 421               	.LM55:
+ 422 02b4 00D0      		rcall .
+ 423 02b6 00D0      		rcall .
+ 424 02b8 ADB7      		in r26,__SP_L__
+ 425 02ba BEB7      		in r27,__SP_H__
+ 426 02bc 1296      		adiw r26,1+1
+ 427 02be DC92      		st X,r13
+ 428 02c0 CE92      		st -X,r12
+ 429 02c2 1197      		sbiw r26,1
+ 430 02c4 9927      		clr r25
+ 431 02c6 87FD      		sbrc r24,7
+ 432 02c8 9095      		com r25
+ 433 02ca 1496      		adiw r26,3+1
+ 434 02cc 9C93      		st X,r25
+ 435 02ce 8E93      		st -X,r24
+ 436 02d0 1397      		sbiw r26,3
+ 437 02d2 0E94 0000 		call printf
+ 438               	.LM56:
+ 439 02d6 0F90      		pop __tmp_reg__
+ 440 02d8 0F90      		pop __tmp_reg__
+ 441 02da 0F90      		pop __tmp_reg__
+ 442 02dc 0F90      		pop __tmp_reg__
+ 443 02de 0E94 0000 		call nrk_wait_until_next_period
+ 444               	.LM57:
+ 445 02e2 0F5F      		subi r16,lo8(-(1))
+ 446 02e4 1F4F      		sbci r17,hi8(-(1))
+ 447 02e6 00C0      		rjmp .L15
+ 448               	.LFE5:
+ 450               	.global	main
+ 452               	main:
+ 453               	.LFB3:
+ 454               	.LM58:
+ 455               	/* prologue: function */
+ 456               	/* frame size = 0 */
+ 457               	.LM59:
+ 458 02e8 0E94 0000 		call nrk_setup_ports
+ 459               	.LM60:
+ 460 02ec 87E0      		ldi r24,lo8(7)
+ 461 02ee 90E0      		ldi r25,hi8(7)
+ 462 02f0 0E94 0000 		call nrk_setup_uart
+ 463               	.LM61:
+ 464 02f4 0E94 0000 		call nrk_init
+ 465               	.LM62:
+ 466 02f8 80E0      		ldi r24,lo8(0)
+ 467 02fa 90E0      		ldi r25,hi8(0)
+ 468 02fc 0E94 0000 		call nrk_led_clr
+ 469               	.LM63:
+ 470 0300 8FEF      		ldi r24,lo8(255)
+ 471 0302 90E0      		ldi r25,hi8(255)
+ 472 0304 0E94 0000 		call nrk_led_clr
+ 473               	.LM64:
+ 474 0308 81E0      		ldi r24,lo8(1)
+ 475 030a 90E0      		ldi r25,hi8(1)
+ 476 030c 0E94 0000 		call nrk_led_set
+ 477               	.LM65:
+ 478 0310 82E0      		ldi r24,lo8(2)
+ 479 0312 90E0      		ldi r25,hi8(2)
+ 480 0314 0E94 0000 		call nrk_led_clr
+ 481               	.LM66:
+ 482 0318 60E0      		ldi r22,lo8(0)
+ 483 031a 70E0      		ldi r23,hi8(0)
+ 484 031c 80E0      		ldi r24,hlo8(0)
+ 485 031e 90E0      		ldi r25,hhi8(0)
+ 486 0320 20E0      		ldi r18,lo8(0)
+ 487 0322 30E0      		ldi r19,hi8(0)
+ 488 0324 40E0      		ldi r20,hlo8(0)
+ 489 0326 50E0      		ldi r21,hhi8(0)
+ 490 0328 0E94 0000 		call nrk_time_set
+ 491               	.LM67:
+ 492 032c 0E94 0000 		call nrk_create_taskset
+ 493               	.LM68:
+ 494 0330 0E94 0000 		call nrk_start
+ 495               	.LM69:
+ 496 0334 80E0      		ldi r24,lo8(0)
+ 497 0336 90E0      		ldi r25,hi8(0)
+ 498               	/* epilogue start */
+ 499 0338 0895      		ret
+ 500               	.LFE3:
+ 502               		.section	.progmem.data,"a",@progbits
+ 505               	__c.2096:
+ 506 0000 4552 524F 		.string	"ERROR setting reserve\r\n"
+ 506      5220 7365 
+ 506      7474 696E 
+ 506      6720 7265 
+ 506      7365 7276 
+ 509               	__c.2094:
+ 510 0018 4552 524F 		.string	"ERROR creating reserve\r\n"
+ 510      5220 6372 
+ 510      6561 7469 
+ 510      6E67 2072 
+ 510      6573 6572 
+ 513               	__c.2077:
+ 514 0031 5461 736B 		.string	"Task 1: ERROR consuming reserve\r\n"
+ 514      2031 3A20 
+ 514      4552 524F 
+ 514      5220 636F 
+ 514      6E73 756D 
+ 517               	__c.2075:
+ 518 0053 4552 524F 		.string	"ERROR setting reserve\r\n"
+ 518      5220 7365 
+ 518      7474 696E 
+ 518      6720 7265 
+ 518      7365 7276 
+ 521               	__c.2073:
+ 522 006b 4552 524F 		.string	"ERROR creating reserve\r\n"
+ 522      5220 6372 
+ 522      6561 7469 
+ 522      6E67 2072 
+ 522      6573 6572 
+ 525               	__c.2065:
+ 526 0084 444F 482C 		.string	"DOH, Reserve error handler called...\r\n"
+ 526      2052 6573 
+ 526      6572 7665 
+ 526      2065 7272 
+ 526      6F72 2068 
+ 527               		.comm _nrk_signal_list,4,1
+ 528               		.comm nrk_idle_task_stk,128,1
+ 529               		.comm nrk_kernel_stk_ptr,2,1
+ 530               		.comm error_task,1,1
+ 531               		.comm error_num,1,1
+ 532               		.comm _nrk_prev_timer_val,1,1
+ 533               		.comm _nrk_time_trigger,1,1
+ 534               		.comm app_timer0_callback,2,1
+ 535               		.comm app_timer0_prescale,1,1
+ 536               		.comm Stack1,128,1
+ 537               		.comm TaskOne,35,1
+ 538               		.comm Stack2,128,1
+ 539               		.comm TaskTwo,35,1
+ 596               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 main.c
+C:\cygwin\tmp/ccQ1PVlD.s:2      *ABS*:0000003f __SREG__
+C:\cygwin\tmp/ccQ1PVlD.s:3      *ABS*:0000003e __SP_H__
+C:\cygwin\tmp/ccQ1PVlD.s:4      *ABS*:0000003d __SP_L__
+C:\cygwin\tmp/ccQ1PVlD.s:5      *ABS*:00000034 __CCP__
+C:\cygwin\tmp/ccQ1PVlD.s:6      *ABS*:00000000 __tmp_reg__
+C:\cygwin\tmp/ccQ1PVlD.s:7      *ABS*:00000001 __zero_reg__
+C:\cygwin\tmp/ccQ1PVlD.s:18     .text:00000000 nrk_create_taskset
+C:\cygwin\tmp/ccQ1PVlD.s:266    .text:000001a0 Task1
+                            *COM*:00000023 TaskOne
+                            *COM*:00000080 Stack1
+C:\cygwin\tmp/ccQ1PVlD.s:100    .text:000000b8 my_error
+C:\cygwin\tmp/ccQ1PVlD.s:525    .progmem.data:00000084 __c.2065
+C:\cygwin\tmp/ccQ1PVlD.s:122    .text:000000c2 Task2
+C:\cygwin\tmp/ccQ1PVlD.s:509    .progmem.data:00000018 __c.2094
+C:\cygwin\tmp/ccQ1PVlD.s:505    .progmem.data:00000000 __c.2096
+C:\cygwin\tmp/ccQ1PVlD.s:521    .progmem.data:0000006b __c.2073
+C:\cygwin\tmp/ccQ1PVlD.s:517    .progmem.data:00000053 __c.2075
+C:\cygwin\tmp/ccQ1PVlD.s:513    .progmem.data:00000031 __c.2077
+C:\cygwin\tmp/ccQ1PVlD.s:452    .text:000002e8 main
+                            *COM*:00000004 _nrk_signal_list
+                            *COM*:00000080 nrk_idle_task_stk
+                            *COM*:00000002 nrk_kernel_stk_ptr
+                            *COM*:00000001 error_task
+                            *COM*:00000001 error_num
+                            *COM*:00000001 _nrk_prev_timer_val
+                            *COM*:00000001 _nrk_time_trigger
+                            *COM*:00000002 app_timer0_callback
+                            *COM*:00000001 app_timer0_prescale
+                            *COM*:00000080 Stack2
+                            *COM*:00000023 TaskTwo
+
+UNDEFINED SYMBOLS
+nrk_activate_task
+nrk_kprintf
+nrk_reserve_create
+nrk_reserve_set
+nrk_get_pid
+printf
+nrk_reserve_consume
+nrk_led_toggle
+nrk_wait_until_next_period
+nrk_reserve_get
+nrk_setup_ports
+nrk_setup_uart
+nrk_init
+nrk_led_clr
+nrk_led_set
+nrk_time_set
+nrk_start
+__do_copy_data
+__do_clear_bss

@@ -1,0 +1,61 @@
+   1               		.file	"hal_wait.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	halWait
+  18               	halWait:
+  19               	.LFB3:
+  20               	.LM1:
+  21               	/* prologue: function */
+  22               	/* frame size = 0 */
+  23               	.LVL0:
+  24               	.L2:
+  25               	.LM2:
+  26               	/* #APP */
+  27               	 ;  44 "../../../src/platform/firefly2_3/source/hal_wait.c" 1
+  28 0000 0000      		nop
+  29               		
+  30               	 ;  0 "" 2
+  31               	.LM3:
+  32               	 ;  45 "../../../src/platform/firefly2_3/source/hal_wait.c" 1
+  33 0002 0000      		nop
+  34               		
+  35               	 ;  0 "" 2
+  36               	.LM4:
+  37               	 ;  46 "../../../src/platform/firefly2_3/source/hal_wait.c" 1
+  38 0004 0000      		nop
+  39               		
+  40               	 ;  0 "" 2
+  41               	.LM5:
+  42               	 ;  47 "../../../src/platform/firefly2_3/source/hal_wait.c" 1
+  43 0006 0000      		nop
+  44               		
+  45               	 ;  0 "" 2
+  46               	.LM6:
+  47               	/* #NOAPP */
+  48 0008 0197      		sbiw r24,1
+  49               	.LVL1:
+  50 000a 01F4      		brne .L2
+  51               	/* epilogue start */
+  52               	.LM7:
+  53 000c 0895      		ret
+  54               	.LFE3:
+  56               		.comm _nrk_signal_list,4,1
+  81               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 hal_wait.c
+C:\cygwin\tmp/ccZl0E3U.s:2      *ABS*:0000003f __SREG__
+C:\cygwin\tmp/ccZl0E3U.s:3      *ABS*:0000003e __SP_H__
+C:\cygwin\tmp/ccZl0E3U.s:4      *ABS*:0000003d __SP_L__
+C:\cygwin\tmp/ccZl0E3U.s:5      *ABS*:00000034 __CCP__
+C:\cygwin\tmp/ccZl0E3U.s:6      *ABS*:00000000 __tmp_reg__
+C:\cygwin\tmp/ccZl0E3U.s:7      *ABS*:00000001 __zero_reg__
+C:\cygwin\tmp/ccZl0E3U.s:18     .text:00000000 halWait
+                            *COM*:00000004 _nrk_signal_list
+
+UNDEFINED SYMBOLS
+__do_clear_bss

@@ -1,0 +1,134 @@
+   1               		.file	"nrk_eeprom.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__tmp_reg__ = 0
+   6               	__zero_reg__ = 1
+   7               		.global __do_copy_data
+   8               		.global __do_clear_bss
+  16               	.Ltext0:
+  17               	.global	read_eeprom_mac_address
+  19               	read_eeprom_mac_address:
+  20               	.LFB9:
+  21               	.LM1:
+  22               	/* prologue: frame size=0 */
+  23               	/* prologue end (size=0) */
+  24               	.LVL0:
+  25 0000 FC01      		movw r30,r24
+  26               	.LBB12:
+  27               	.LBB13:
+  28               	.LM2:
+  29 0002 A0E0      		ldi r26,lo8(0)
+  30 0004 B0E0      		ldi r27,hi8(0)
+  31               	/* #APP */
+  32 0006 0E94 0000 		call __eeprom_read_byte_1C1D1E
+  33 000a 402D      		mov r20,__tmp_reg__
+  34               	.LVL1:
+  35               	/* #NOAPP */
+  36               	.LBE13:
+  37               	.LBE12:
+  38               	.LM3:
+  39 000c 4383      		std Z+3,r20
+  40               	.LBB14:
+  41               	.LBB15:
+  42               	.LM4:
+  43 000e A1E0      		ldi r26,lo8(1)
+  44 0010 B0E0      		ldi r27,hi8(1)
+  45               	.LVL2:
+  46               	/* #APP */
+  47 0012 0E94 0000 		call __eeprom_read_byte_1C1D1E
+  48 0016 802D      		mov r24,__tmp_reg__
+  49               	.LVL3:
+  50               	/* #NOAPP */
+  51               	.LBE15:
+  52               	.LBE14:
+  53               	.LM5:
+  54 0018 8283      		std Z+2,r24
+  55               	.LBB16:
+  56               	.LBB17:
+  57               	.LM6:
+  58 001a A2E0      		ldi r26,lo8(2)
+  59 001c B0E0      		ldi r27,hi8(2)
+  60               	.LVL4:
+  61               	/* #APP */
+  62 001e 0E94 0000 		call __eeprom_read_byte_1C1D1E
+  63 0022 302D      		mov r19,__tmp_reg__
+  64               	.LVL5:
+  65               	/* #NOAPP */
+  66               	.LBE17:
+  67               	.LBE16:
+  68               	.LM7:
+  69 0024 3183      		std Z+1,r19
+  70               	.LBB18:
+  71               	.LBB19:
+  72               	.LM8:
+  73 0026 A3E0      		ldi r26,lo8(3)
+  74 0028 B0E0      		ldi r27,hi8(3)
+  75               	.LVL6:
+  76               	/* #APP */
+  77 002a 0E94 0000 		call __eeprom_read_byte_1C1D1E
+  78 002e 902D      		mov r25,__tmp_reg__
+  79               	.LVL7:
+  80               	/* #NOAPP */
+  81               	.LBE19:
+  82               	.LBE18:
+  83               	.LM9:
+  84 0030 9083      		st Z,r25
+  85               	.LBB20:
+  86               	.LBB21:
+  87               	.LM10:
+  88 0032 A4E0      		ldi r26,lo8(4)
+  89 0034 B0E0      		ldi r27,hi8(4)
+  90               	.LVL8:
+  91               	/* #APP */
+  92 0036 0E94 0000 		call __eeprom_read_byte_1C1D1E
+  93 003a 202D      		mov r18,__tmp_reg__
+  94               	.LVL9:
+  95               	/* #NOAPP */
+  96               	.LBE21:
+  97               	.LBE20:
+  98               	.LM11:
+  99 003c 830F      		add r24,r19
+ 100               	.LM12:
+ 101 003e 840F      		add r24,r20
+ 102               	.LM13:
+ 103 0040 890F      		add r24,r25
+ 104 0042 2817      		cp r18,r24
+ 105 0044 01F4      		brne .L2
+ 106               	.LM14:
+ 107 0046 81E0      		ldi r24,lo8(1)
+ 108 0048 90E0      		ldi r25,hi8(1)
+ 109               	.LVL10:
+ 110 004a 0895      		ret
+ 111               	.LVL11:
+ 112               	.L2:
+ 113 004c 8FEF      		ldi r24,lo8(-1)
+ 114 004e 9FEF      		ldi r25,hi8(-1)
+ 115               	.LVL12:
+ 116               	.LM15:
+ 117 0050 0895      		ret
+ 118               	/* epilogue: frame size=0 */
+ 119               	/* epilogue: noreturn */
+ 120               	/* epilogue end (size=0) */
+ 121               	/* function read_eeprom_mac_address size 46 (46) */
+ 122               	.LFE9:
+ 124               		.comm _nrk_signal_list,4,1
+ 125               		.comm error_task,1,1
+ 126               		.comm error_num,1,1
+ 151               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 nrk_eeprom.c
+C:\cygwin\tmp/ccNuDGBn.s:2      *ABS*:0000003f __SREG__
+C:\cygwin\tmp/ccNuDGBn.s:3      *ABS*:0000003e __SP_H__
+C:\cygwin\tmp/ccNuDGBn.s:4      *ABS*:0000003d __SP_L__
+C:\cygwin\tmp/ccNuDGBn.s:5      *ABS*:00000000 __tmp_reg__
+C:\cygwin\tmp/ccNuDGBn.s:6      *ABS*:00000001 __zero_reg__
+C:\cygwin\tmp/ccNuDGBn.s:19     .text:00000000 read_eeprom_mac_address
+                            *COM*:00000004 _nrk_signal_list
+                            *COM*:00000001 error_task
+                            *COM*:00000001 error_num
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+__eeprom_read_byte_1C1D1E

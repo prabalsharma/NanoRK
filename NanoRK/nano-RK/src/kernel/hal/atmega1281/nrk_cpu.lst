@@ -1,0 +1,336 @@
+   1               		.file	"nrk_cpu.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	nrk_battery_save
+  18               	nrk_battery_save:
+  19               	.LFB3:
+  20               	.LM1:
+  21               	/* prologue: function */
+  22               	/* frame size = 0 */
+  23               	/* epilogue start */
+  24               	.LM2:
+  25 0000 0895      		ret
+  26               	.LFE3:
+  28               	.global	nrk_sleep
+  30               	nrk_sleep:
+  31               	.LFB4:
+  32               	.LM3:
+  33               	/* prologue: function */
+  34               	/* frame size = 0 */
+  35               	.LM4:
+  36 0002 83B7      		in r24,83-32
+  37 0004 817F      		andi r24,lo8(-15)
+  38 0006 8660      		ori r24,lo8(6)
+  39 0008 83BF      		out 83-32,r24
+  40               	.LM5:
+  41 000a 83B7      		in r24,83-32
+  42 000c 8160      		ori r24,lo8(1)
+  43 000e 83BF      		out 83-32,r24
+  44               	/* #APP */
+  45               	 ;  84 "../../../src/kernel/hal/atmega1281/nrk_cpu.c" 1
+  46 0010 8895      		sleep
+  47               		
+  48               	 ;  0 "" 2
+  49               	/* #NOAPP */
+  50 0012 83B7      		in r24,83-32
+  51 0014 8E7F      		andi r24,lo8(-2)
+  52 0016 83BF      		out 83-32,r24
+  53               	/* epilogue start */
+  54               	.LM6:
+  55 0018 0895      		ret
+  56               	.LFE4:
+  58               	.global	nrk_idle
+  60               	nrk_idle:
+  61               	.LFB5:
+  62               	.LM7:
+  63               	/* prologue: function */
+  64               	/* frame size = 0 */
+  65               	.LM8:
+  66 001a 83B7      		in r24,83-32
+  67 001c 817F      		andi r24,lo8(-15)
+  68 001e 83BF      		out 83-32,r24
+  69               	.LM9:
+  70 0020 83B7      		in r24,83-32
+  71 0022 8160      		ori r24,lo8(1)
+  72 0024 83BF      		out 83-32,r24
+  73               	/* #APP */
+  74               	 ;  92 "../../../src/kernel/hal/atmega1281/nrk_cpu.c" 1
+  75 0026 8895      		sleep
+  76               		
+  77               	 ;  0 "" 2
+  78               	/* #NOAPP */
+  79 0028 83B7      		in r24,83-32
+  80 002a 8E7F      		andi r24,lo8(-2)
+  81 002c 83BF      		out 83-32,r24
+  82               	/* epilogue start */
+  83               	.LM10:
+  84 002e 0895      		ret
+  85               	.LFE5:
+  87               	.global	nrk_task_set_entry_function
+  89               	nrk_task_set_entry_function:
+  90               	.LFB6:
+  91               	.LM11:
+  92               	.LVL0:
+  93               	/* prologue: function */
+  94               	/* frame size = 0 */
+  95               	.LM12:
+  96 0030 FC01      		movw r30,r24
+  97 0032 7683      		std Z+6,r23
+  98 0034 6583      		std Z+5,r22
+  99               	/* epilogue start */
+ 100               	.LM13:
+ 101 0036 0895      		ret
+ 102               	.LFE6:
+ 104               	.global	nrk_task_stk_init
+ 106               	nrk_task_stk_init:
+ 107               	.LFB8:
+ 108               	.LM14:
+ 109               	.LVL1:
+ 110               	/* prologue: function */
+ 111               	/* frame size = 0 */
+ 112 0038 FA01      		movw r30,r20
+ 113               	.LM15:
+ 114 003a 25E5      		ldi r18,lo8(85)
+ 115 003c 2083      		st Z,r18
+ 116               	.LM16:
+ 117 003e FB01      		movw r30,r22
+ 118               	.LVL2:
+ 119               	.LM17:
+ 120 0040 3297      		sbiw r30,2
+ 121               	.LVL3:
+ 122               	.LM18:
+ 123 0042 9083      		st Z,r25
+ 124               	.LVL4:
+ 125               	.LM19:
+ 126 0044 8183      		std Z+1,r24
+ 127               	.LM20:
+ 128 0046 1292      		st -Z,__zero_reg__
+ 129 0048 1292      		st -Z,__zero_reg__
+ 130               	.LM21:
+ 131 004a 1292      		st -Z,__zero_reg__
+ 132 004c 1292      		st -Z,__zero_reg__
+ 133               	.LM22:
+ 134 004e 1292      		st -Z,__zero_reg__
+ 135 0050 1292      		st -Z,__zero_reg__
+ 136               	.LM23:
+ 137 0052 1292      		st -Z,__zero_reg__
+ 138 0054 1292      		st -Z,__zero_reg__
+ 139               	.LM24:
+ 140 0056 1292      		st -Z,__zero_reg__
+ 141 0058 1292      		st -Z,__zero_reg__
+ 142               	.LM25:
+ 143 005a 1292      		st -Z,__zero_reg__
+ 144 005c 1292      		st -Z,__zero_reg__
+ 145               	.LM26:
+ 146 005e 1292      		st -Z,__zero_reg__
+ 147 0060 1292      		st -Z,__zero_reg__
+ 148               	.LM27:
+ 149 0062 1292      		st -Z,__zero_reg__
+ 150 0064 1292      		st -Z,__zero_reg__
+ 151               	.LM28:
+ 152 0066 1292      		st -Z,__zero_reg__
+ 153 0068 1292      		st -Z,__zero_reg__
+ 154               	.LM29:
+ 155 006a 1292      		st -Z,__zero_reg__
+ 156 006c 1292      		st -Z,__zero_reg__
+ 157               	.LM30:
+ 158 006e 1292      		st -Z,__zero_reg__
+ 159 0070 1292      		st -Z,__zero_reg__
+ 160               	.LM31:
+ 161 0072 1292      		st -Z,__zero_reg__
+ 162 0074 1292      		st -Z,__zero_reg__
+ 163               	.LM32:
+ 164 0076 1292      		st -Z,__zero_reg__
+ 165 0078 1292      		st -Z,__zero_reg__
+ 166               	.LM33:
+ 167 007a 1292      		st -Z,__zero_reg__
+ 168 007c 1292      		st -Z,__zero_reg__
+ 169               	.LM34:
+ 170 007e 1292      		st -Z,__zero_reg__
+ 171 0080 1292      		st -Z,__zero_reg__
+ 172               	.LM35:
+ 173 0082 1292      		st -Z,__zero_reg__
+ 174 0084 1292      		st -Z,__zero_reg__
+ 175               	.LM36:
+ 176 0086 1292      		st -Z,__zero_reg__
+ 177 0088 1292      		st -Z,__zero_reg__
+ 178               	.LM37:
+ 179 008a CF01      		movw r24,r30
+ 180               	.LVL5:
+ 181               	/* epilogue start */
+ 182 008c 0895      		ret
+ 183               	.LFE8:
+ 185               	.global	nrk_stack_pointer_init
+ 187               	nrk_stack_pointer_init:
+ 188               	.LFB9:
+ 189               	.LM38:
+ 190               	/* prologue: function */
+ 191               	/* frame size = 0 */
+ 192               	.LM39:
+ 193 008e 85E5      		ldi r24,lo8(85)
+ 194 0090 8093 7E21 		sts 8574,r24
+ 195               	.LM40:
+ 196 0094 EEEF      		ldi r30,lo8(8702)
+ 197 0096 F1E2      		ldi r31,hi8(8702)
+ 198 0098 F093 0000 		sts (nrk_kernel_stk_ptr)+1,r31
+ 199 009c E093 0000 		sts nrk_kernel_stk_ptr,r30
+ 200               	.LM41:
+ 201 00a0 80E0      		ldi r24,lo8(gs(_nrk_timer_tick))
+ 202 00a2 90E0      		ldi r25,hi8(gs(_nrk_timer_tick))
+ 203 00a4 9083      		st Z,r25
+ 204               	.LM42:
+ 205 00a6 8093 FF21 		sts 8703,r24
+ 206               	/* epilogue start */
+ 207               	.LM43:
+ 208 00aa 0895      		ret
+ 209               	.LFE9:
+ 211               	.global	nrk_stack_pointer_restore
+ 213               	nrk_stack_pointer_restore:
+ 214               	.LFB10:
+ 215               	.LM44:
+ 216               	/* prologue: function */
+ 217               	/* frame size = 0 */
+ 218               	.LM45:
+ 219 00ac 80E0      		ldi r24,lo8(gs(_nrk_timer_tick))
+ 220 00ae 90E0      		ldi r25,hi8(gs(_nrk_timer_tick))
+ 221 00b0 9093 FE21 		sts 8702,r25
+ 222               	.LM46:
+ 223 00b4 8093 FF21 		sts 8703,r24
+ 224               	/* epilogue start */
+ 225               	.LM47:
+ 226 00b8 0895      		ret
+ 227               	.LFE10:
+ 229               	.global	nrk_target_start
+ 231               	nrk_target_start:
+ 232               	.LFB11:
+ 233               	.LM48:
+ 234               	/* prologue: function */
+ 235               	/* frame size = 0 */
+ 236               	.LM49:
+ 237 00ba 0E94 0000 		call _nrk_setup_timer
+ 238               	.LM50:
+ 239 00be 0E94 0000 		call nrk_int_enable
+ 240               	/* epilogue start */
+ 241               	.LM51:
+ 242 00c2 0895      		ret
+ 243               	.LFE11:
+ 245               	.global	nrk_task_set_stk
+ 247               	nrk_task_set_stk:
+ 248               	.LFB7:
+ 249               	.LM52:
+ 250               	.LVL6:
+ 251 00c4 EF92      		push r14
+ 252 00c6 FF92      		push r15
+ 253 00c8 0F93      		push r16
+ 254 00ca 1F93      		push r17
+ 255 00cc CF93      		push r28
+ 256 00ce DF93      		push r29
+ 257               	/* prologue: function */
+ 258               	/* frame size = 0 */
+ 259 00d0 7C01      		movw r14,r24
+ 260 00d2 8B01      		movw r16,r22
+ 261 00d4 EA01      		movw r28,r20
+ 262               	.LM53:
+ 263 00d6 4032      		cpi r20,32
+ 264 00d8 5105      		cpc r21,__zero_reg__
+ 265 00da 00F4      		brsh .L18
+ 266               	.LVL7:
+ 267 00dc 81E1      		ldi r24,lo8(17)
+ 268 00de 0E94 0000 		call nrk_error_add
+ 269               	.LVL8:
+ 270               	.L18:
+ 271               	.LM54:
+ 272 00e2 2197      		sbiw r28,1
+ 273 00e4 C00F      		add r28,r16
+ 274 00e6 D11F      		adc r29,r17
+ 275 00e8 F701      		movw r30,r14
+ 276 00ea D283      		std Z+2,r29
+ 277 00ec C183      		std Z+1,r28
+ 278               	.LM55:
+ 279 00ee 1483      		std Z+4,r17
+ 280 00f0 0383      		std Z+3,r16
+ 281               	/* epilogue start */
+ 282               	.LM56:
+ 283 00f2 DF91      		pop r29
+ 284 00f4 CF91      		pop r28
+ 285               	.LVL9:
+ 286 00f6 1F91      		pop r17
+ 287 00f8 0F91      		pop r16
+ 288               	.LVL10:
+ 289 00fa FF90      		pop r15
+ 290 00fc EF90      		pop r14
+ 291               	.LVL11:
+ 292 00fe 0895      		ret
+ 293               	.LFE7:
+ 295               		.comm _nrk_signal_list,4,1
+ 296               		.comm nrk_idle_task_stk,128,1
+ 297               		.comm nrk_kernel_stk_ptr,2,1
+ 298               		.comm nrk_task_TCB,165,1
+ 299               		.comm nrk_wakeup_signal,1,1
+ 300               		.comm _nrk_readyQ,30,1
+ 301               		.comm _free_node,2,1
+ 302               		.comm _head_node,2,1
+ 303               		.comm nrk_cur_task_prio,1,1
+ 304               		.comm nrk_cur_task_TCB,2,1
+ 305               		.comm nrk_high_ready_prio,1,1
+ 306               		.comm nrk_high_ready_TCB,2,1
+ 307               		.comm _nrk_resource_cnt,1,1
+ 308               		.comm nrk_system_time,8,1
+ 309               		.comm nrk_sem_list,3,1
+ 310               		.comm _nrk_prev_timer_val,1,1
+ 311               		.comm _nrk_time_trigger,1,1
+ 312               		.comm app_timer0_callback,2,1
+ 313               		.comm app_timer0_prescale,1,1
+ 314               		.comm error_task,1,1
+ 315               		.comm error_num,1,1
+ 404               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 nrk_cpu.c
+C:\cygwin\tmp/ccEgbuTw.s:2      *ABS*:0000003f __SREG__
+C:\cygwin\tmp/ccEgbuTw.s:3      *ABS*:0000003e __SP_H__
+C:\cygwin\tmp/ccEgbuTw.s:4      *ABS*:0000003d __SP_L__
+C:\cygwin\tmp/ccEgbuTw.s:5      *ABS*:00000034 __CCP__
+C:\cygwin\tmp/ccEgbuTw.s:6      *ABS*:00000000 __tmp_reg__
+C:\cygwin\tmp/ccEgbuTw.s:7      *ABS*:00000001 __zero_reg__
+C:\cygwin\tmp/ccEgbuTw.s:18     .text:00000000 nrk_battery_save
+C:\cygwin\tmp/ccEgbuTw.s:30     .text:00000002 nrk_sleep
+C:\cygwin\tmp/ccEgbuTw.s:60     .text:0000001a nrk_idle
+C:\cygwin\tmp/ccEgbuTw.s:89     .text:00000030 nrk_task_set_entry_function
+C:\cygwin\tmp/ccEgbuTw.s:106    .text:00000038 nrk_task_stk_init
+C:\cygwin\tmp/ccEgbuTw.s:187    .text:0000008e nrk_stack_pointer_init
+                            *COM*:00000002 nrk_kernel_stk_ptr
+C:\cygwin\tmp/ccEgbuTw.s:213    .text:000000ac nrk_stack_pointer_restore
+C:\cygwin\tmp/ccEgbuTw.s:231    .text:000000ba nrk_target_start
+C:\cygwin\tmp/ccEgbuTw.s:247    .text:000000c4 nrk_task_set_stk
+                            *COM*:00000004 _nrk_signal_list
+                            *COM*:00000080 nrk_idle_task_stk
+                            *COM*:000000a5 nrk_task_TCB
+                            *COM*:00000001 nrk_wakeup_signal
+                            *COM*:0000001e _nrk_readyQ
+                            *COM*:00000002 _free_node
+                            *COM*:00000002 _head_node
+                            *COM*:00000001 nrk_cur_task_prio
+                            *COM*:00000002 nrk_cur_task_TCB
+                            *COM*:00000001 nrk_high_ready_prio
+                            *COM*:00000002 nrk_high_ready_TCB
+                            *COM*:00000001 _nrk_resource_cnt
+                            *COM*:00000008 nrk_system_time
+                            *COM*:00000003 nrk_sem_list
+                            *COM*:00000001 _nrk_prev_timer_val
+                            *COM*:00000001 _nrk_time_trigger
+                            *COM*:00000002 app_timer0_callback
+                            *COM*:00000001 app_timer0_prescale
+                            *COM*:00000001 error_task
+                            *COM*:00000001 error_num
+
+UNDEFINED SYMBOLS
+_nrk_timer_tick
+_nrk_setup_timer
+nrk_int_enable
+nrk_error_add
+__do_clear_bss

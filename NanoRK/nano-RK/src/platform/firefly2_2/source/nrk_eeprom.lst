@@ -1,0 +1,323 @@
+   1               		.file	"nrk_eeprom.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	write_eeprom_current_image_checksum
+  18               	write_eeprom_current_image_checksum:
+  19               	.LFB12:
+  20               	.LM1:
+  21               	.LVL0:
+  22               	/* prologue: function */
+  23               	/* frame size = 0 */
+  24 0000 FC01      		movw r30,r24
+  25               	.LM2:
+  26 0002 87E0      		ldi r24,lo8(7)
+  27 0004 90E0      		ldi r25,hi8(7)
+  28               	.LVL1:
+  29 0006 6081      		ld r22,Z
+  30 0008 0E94 0000 		call __eewr_byte_m1281
+  31               	.LVL2:
+  32               	.LM3:
+  33 000c 81E0      		ldi r24,lo8(1)
+  34               	/* epilogue start */
+  35 000e 0895      		ret
+  36               	.LFE12:
+  38               	.global	write_eeprom_aes_key
+  40               	write_eeprom_aes_key:
+  41               	.LFB10:
+  42               	.LM4:
+  43               	.LVL3:
+  44 0010 0F93      		push r16
+  45 0012 1F93      		push r17
+  46 0014 CF93      		push r28
+  47 0016 DF93      		push r29
+  48               	/* prologue: function */
+  49               	/* frame size = 0 */
+  50               	.LM5:
+  51 0018 8C01      		movw r16,r24
+  52               	.LVL4:
+  53 001a C8E0      		ldi r28,lo8(8)
+  54 001c D0E0      		ldi r29,hi8(8)
+  55               	.L4:
+  56               	.LM6:
+  57 001e CE01      		movw r24,r28
+  58 0020 F801      		movw r30,r16
+  59 0022 6191      		ld r22,Z+
+  60 0024 8F01      		movw r16,r30
+  61 0026 0E94 0000 		call __eewr_byte_m1281
+  62 002a 2196      		adiw r28,1
+  63               	.LM7:
+  64 002c C831      		cpi r28,24
+  65 002e D105      		cpc r29,__zero_reg__
+  66 0030 01F4      		brne .L4
+  67               	.LM8:
+  68 0032 81E0      		ldi r24,lo8(1)
+  69               	/* epilogue start */
+  70 0034 DF91      		pop r29
+  71 0036 CF91      		pop r28
+  72 0038 1F91      		pop r17
+  73 003a 0F91      		pop r16
+  74 003c 0895      		ret
+  75               	.LFE10:
+  77               	.global	write_eeprom_load_img_pages
+  79               	write_eeprom_load_img_pages:
+  80               	.LFB7:
+  81               	.LM9:
+  82               	.LVL5:
+  83               	/* prologue: function */
+  84               	/* frame size = 0 */
+  85 003e FC01      		movw r30,r24
+  86               	.LM10:
+  87 0040 86E0      		ldi r24,lo8(6)
+  88 0042 90E0      		ldi r25,hi8(6)
+  89               	.LVL6:
+  90 0044 6081      		ld r22,Z
+  91 0046 0E94 0000 		call __eewr_byte_m1281
+  92               	.LVL7:
+  93               	.LM11:
+  94 004a 81E0      		ldi r24,lo8(1)
+  95               	/* epilogue start */
+  96 004c 0895      		ret
+  97               	.LFE7:
+  99               	.global	nrk_eeprom_write_byte
+ 101               	nrk_eeprom_write_byte:
+ 102               	.LFB4:
+ 103               	.LM12:
+ 104               	.LVL8:
+ 105               	/* prologue: function */
+ 106               	/* frame size = 0 */
+ 107               	.LM13:
+ 108 004e 0E94 0000 		call __eewr_byte_m1281
+ 109               	.LVL9:
+ 110               	/* epilogue start */
+ 111               	.LM14:
+ 112 0052 0895      		ret
+ 113               	.LFE4:
+ 115               	.global	read_eeprom_current_image_checksum
+ 117               	read_eeprom_current_image_checksum:
+ 118               	.LFB11:
+ 119               	.LM15:
+ 120               	.LVL10:
+ 121 0054 0F93      		push r16
+ 122 0056 1F93      		push r17
+ 123               	/* prologue: function */
+ 124               	/* frame size = 0 */
+ 125 0058 8C01      		movw r16,r24
+ 126               	.LM16:
+ 127 005a 87E0      		ldi r24,lo8(7)
+ 128 005c 90E0      		ldi r25,hi8(7)
+ 129               	.LVL11:
+ 130 005e 0E94 0000 		call __eerd_byte_m1281
+ 131 0062 F801      		movw r30,r16
+ 132 0064 8083      		st Z,r24
+ 133               	.LM17:
+ 134 0066 81E0      		ldi r24,lo8(1)
+ 135               	/* epilogue start */
+ 136 0068 1F91      		pop r17
+ 137 006a 0F91      		pop r16
+ 138               	.LVL12:
+ 139 006c 0895      		ret
+ 140               	.LFE11:
+ 142               	.global	read_eeprom_aes_key
+ 144               	read_eeprom_aes_key:
+ 145               	.LFB9:
+ 146               	.LM18:
+ 147               	.LVL13:
+ 148 006e 0F93      		push r16
+ 149 0070 1F93      		push r17
+ 150 0072 CF93      		push r28
+ 151 0074 DF93      		push r29
+ 152               	/* prologue: function */
+ 153               	/* frame size = 0 */
+ 154               	.LM19:
+ 155 0076 8C01      		movw r16,r24
+ 156               	.LVL14:
+ 157 0078 C8E0      		ldi r28,lo8(8)
+ 158 007a D0E0      		ldi r29,hi8(8)
+ 159               	.L14:
+ 160               	.LM20:
+ 161 007c CE01      		movw r24,r28
+ 162 007e 0E94 0000 		call __eerd_byte_m1281
+ 163 0082 F801      		movw r30,r16
+ 164 0084 8193      		st Z+,r24
+ 165 0086 8F01      		movw r16,r30
+ 166 0088 2196      		adiw r28,1
+ 167               	.LM21:
+ 168 008a C831      		cpi r28,24
+ 169 008c D105      		cpc r29,__zero_reg__
+ 170 008e 01F4      		brne .L14
+ 171               	.LM22:
+ 172 0090 81E0      		ldi r24,lo8(1)
+ 173               	/* epilogue start */
+ 174 0092 DF91      		pop r29
+ 175 0094 CF91      		pop r28
+ 176 0096 1F91      		pop r17
+ 177 0098 0F91      		pop r16
+ 178 009a 0895      		ret
+ 179               	.LFE9:
+ 181               	.global	read_eeprom_load_img_pages
+ 183               	read_eeprom_load_img_pages:
+ 184               	.LFB8:
+ 185               	.LM23:
+ 186               	.LVL15:
+ 187 009c 0F93      		push r16
+ 188 009e 1F93      		push r17
+ 189               	/* prologue: function */
+ 190               	/* frame size = 0 */
+ 191 00a0 8C01      		movw r16,r24
+ 192               	.LM24:
+ 193 00a2 86E0      		ldi r24,lo8(6)
+ 194 00a4 90E0      		ldi r25,hi8(6)
+ 195               	.LVL16:
+ 196 00a6 0E94 0000 		call __eerd_byte_m1281
+ 197 00aa F801      		movw r30,r16
+ 198 00ac 8083      		st Z,r24
+ 199               	.LM25:
+ 200 00ae 81E0      		ldi r24,lo8(1)
+ 201               	/* epilogue start */
+ 202 00b0 1F91      		pop r17
+ 203 00b2 0F91      		pop r16
+ 204               	.LVL17:
+ 205 00b4 0895      		ret
+ 206               	.LFE8:
+ 208               	.global	read_eeprom_channel
+ 210               	read_eeprom_channel:
+ 211               	.LFB6:
+ 212               	.LM26:
+ 213               	.LVL18:
+ 214 00b6 0F93      		push r16
+ 215 00b8 1F93      		push r17
+ 216               	/* prologue: function */
+ 217               	/* frame size = 0 */
+ 218 00ba 8C01      		movw r16,r24
+ 219               	.LM27:
+ 220 00bc 85E0      		ldi r24,lo8(5)
+ 221 00be 90E0      		ldi r25,hi8(5)
+ 222               	.LVL19:
+ 223 00c0 0E94 0000 		call __eerd_byte_m1281
+ 224 00c4 F801      		movw r30,r16
+ 225 00c6 8083      		st Z,r24
+ 226               	.LM28:
+ 227 00c8 81E0      		ldi r24,lo8(1)
+ 228               	/* epilogue start */
+ 229 00ca 1F91      		pop r17
+ 230 00cc 0F91      		pop r16
+ 231               	.LVL20:
+ 232 00ce 0895      		ret
+ 233               	.LFE6:
+ 235               	.global	read_eeprom_mac_address
+ 237               	read_eeprom_mac_address:
+ 238               	.LFB5:
+ 239               	.LM29:
+ 240               	.LVL21:
+ 241 00d0 FF92      		push r15
+ 242 00d2 0F93      		push r16
+ 243 00d4 1F93      		push r17
+ 244               	/* prologue: function */
+ 245               	/* frame size = 0 */
+ 246               	.LM30:
+ 247 00d6 8C01      		movw r16,r24
+ 248               	.LVL22:
+ 249               	.LM31:
+ 250 00d8 80E0      		ldi r24,lo8(0)
+ 251 00da 90E0      		ldi r25,hi8(0)
+ 252 00dc 0E94 0000 		call __eerd_byte_m1281
+ 253 00e0 F801      		movw r30,r16
+ 254               	.LVL23:
+ 255 00e2 8383      		std Z+3,r24
+ 256               	.LM32:
+ 257 00e4 81E0      		ldi r24,lo8(1)
+ 258 00e6 90E0      		ldi r25,hi8(1)
+ 259 00e8 0E94 0000 		call __eerd_byte_m1281
+ 260 00ec F801      		movw r30,r16
+ 261 00ee 8283      		std Z+2,r24
+ 262               	.LM33:
+ 263 00f0 82E0      		ldi r24,lo8(2)
+ 264 00f2 90E0      		ldi r25,hi8(2)
+ 265 00f4 0E94 0000 		call __eerd_byte_m1281
+ 266 00f8 F801      		movw r30,r16
+ 267 00fa 8183      		std Z+1,r24
+ 268               	.LM34:
+ 269 00fc 83E0      		ldi r24,lo8(3)
+ 270 00fe 90E0      		ldi r25,hi8(3)
+ 271 0100 0E94 0000 		call __eerd_byte_m1281
+ 272 0104 F82E      		mov r15,r24
+ 273 0106 F801      		movw r30,r16
+ 274 0108 8083      		st Z,r24
+ 275               	.LM35:
+ 276 010a 84E0      		ldi r24,lo8(4)
+ 277 010c 90E0      		ldi r25,hi8(4)
+ 278 010e 0E94 0000 		call __eerd_byte_m1281
+ 279               	.LM36:
+ 280 0112 F801      		movw r30,r16
+ 281 0114 9181      		ldd r25,Z+1
+ 282 0116 2281      		ldd r18,Z+2
+ 283 0118 920F      		add r25,r18
+ 284               	.LM37:
+ 285 011a 9F0D      		add r25,r15
+ 286               	.LM38:
+ 287 011c 2381      		ldd r18,Z+3
+ 288 011e 920F      		add r25,r18
+ 289 0120 8917      		cp r24,r25
+ 290 0122 01F0      		breq .L22
+ 291 0124 8FEF      		ldi r24,lo8(-1)
+ 292 0126 00C0      		rjmp .L23
+ 293               	.L22:
+ 294 0128 81E0      		ldi r24,lo8(1)
+ 295               	.L23:
+ 296               	/* epilogue start */
+ 297               	.LM39:
+ 298 012a 1F91      		pop r17
+ 299 012c 0F91      		pop r16
+ 300               	.LVL24:
+ 301 012e FF90      		pop r15
+ 302 0130 0895      		ret
+ 303               	.LFE5:
+ 305               	.global	nrk_eeprom_read_byte
+ 307               	nrk_eeprom_read_byte:
+ 308               	.LFB3:
+ 309               	.LM40:
+ 310               	.LVL25:
+ 311               	/* prologue: function */
+ 312               	/* frame size = 0 */
+ 313               	.LM41:
+ 314 0132 0E94 0000 		call __eerd_byte_m1281
+ 315               	.LVL26:
+ 316               	/* epilogue start */
+ 317               	.LM42:
+ 318 0136 0895      		ret
+ 319               	.LFE3:
+ 321               		.comm _nrk_signal_list,4,1
+ 322               		.comm error_task,1,1
+ 323               		.comm error_num,1,1
+ 420               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 nrk_eeprom.c
+C:\cygwin\tmp/cc4BuyVR.s:2      *ABS*:0000003f __SREG__
+C:\cygwin\tmp/cc4BuyVR.s:3      *ABS*:0000003e __SP_H__
+C:\cygwin\tmp/cc4BuyVR.s:4      *ABS*:0000003d __SP_L__
+C:\cygwin\tmp/cc4BuyVR.s:5      *ABS*:00000034 __CCP__
+C:\cygwin\tmp/cc4BuyVR.s:6      *ABS*:00000000 __tmp_reg__
+C:\cygwin\tmp/cc4BuyVR.s:7      *ABS*:00000001 __zero_reg__
+C:\cygwin\tmp/cc4BuyVR.s:18     .text:00000000 write_eeprom_current_image_checksum
+C:\cygwin\tmp/cc4BuyVR.s:40     .text:00000010 write_eeprom_aes_key
+C:\cygwin\tmp/cc4BuyVR.s:79     .text:0000003e write_eeprom_load_img_pages
+C:\cygwin\tmp/cc4BuyVR.s:101    .text:0000004e nrk_eeprom_write_byte
+C:\cygwin\tmp/cc4BuyVR.s:117    .text:00000054 read_eeprom_current_image_checksum
+C:\cygwin\tmp/cc4BuyVR.s:144    .text:0000006e read_eeprom_aes_key
+C:\cygwin\tmp/cc4BuyVR.s:183    .text:0000009c read_eeprom_load_img_pages
+C:\cygwin\tmp/cc4BuyVR.s:210    .text:000000b6 read_eeprom_channel
+C:\cygwin\tmp/cc4BuyVR.s:237    .text:000000d0 read_eeprom_mac_address
+C:\cygwin\tmp/cc4BuyVR.s:307    .text:00000132 nrk_eeprom_read_byte
+                            *COM*:00000004 _nrk_signal_list
+                            *COM*:00000001 error_task
+                            *COM*:00000001 error_num
+
+UNDEFINED SYMBOLS
+__eewr_byte_m1281
+__eerd_byte_m1281
+__do_clear_bss
