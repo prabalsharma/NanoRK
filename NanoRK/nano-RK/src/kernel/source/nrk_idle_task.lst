@@ -1,0 +1,98 @@
+   1               		.file	"nrk_idle_task.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	nrk_idle_task
+  18               	nrk_idle_task:
+  19               	.LFB3:
+  20               	.LM1:
+  21 0000 0F93      		push r16
+  22 0002 1F93      		push r17
+  23               	/* prologue: function */
+  24               	/* frame size = 0 */
+  25               	.LM2:
+  26 0004 01E0      		ldi r16,lo8(1)
+  27               	.LM3:
+  28 0006 12E0      		ldi r17,lo8(2)
+  29               	.L9:
+  30               	.LM4:
+  31 0008 0E94 0000 		call nrk_stack_check
+  32               	.LM5:
+  33 000c 0E94 0000 		call _nrk_get_next_wakeup
+  34 0010 8531      		cpi r24,lo8(21)
+  35 0012 00F4      		brsh .L2
+  36               	.LM6:
+  37 0014 0093 0000 		sts _nrk_cpu_state,r16
+  38               	.LM7:
+  39 0018 0E94 0000 		call nrk_idle
+  40 001c 00C0      		rjmp .L3
+  41               	.L2:
+  42               	.LM8:
+  43 001e 8AE0      		ldi r24,lo8(10)
+  44 0020 90E0      		ldi r25,hi8(10)
+  45 0022 0E94 0000 		call nrk_spin_wait_us
+  46               	.LM9:
+  47 0026 1093 0000 		sts _nrk_cpu_state,r17
+  48               	.LM10:
+  49 002a 0E94 0000 		call nrk_sleep
+  50               	.L3:
+  51               	.LM11:
+  52 002e 8091 0000 		lds r24,nrk_idle_task_stk
+  53 0032 8535      		cpi r24,lo8(85)
+  54 0034 01F0      		breq .L4
+  55 0036 88E0      		ldi r24,lo8(8)
+  56 0038 0E94 0000 		call nrk_error_add
+  57               	.L4:
+  58               	.LM12:
+  59 003c 8091 7E10 		lds r24,4222
+  60 0040 8535      		cpi r24,lo8(85)
+  61 0042 01F0      		breq .L9
+  62 0044 88E0      		ldi r24,lo8(8)
+  63 0046 0E94 0000 		call nrk_error_add
+  64 004a 00C0      		rjmp .L9
+  65               	.LFE3:
+  67               		.comm _nrk_signal_list,4,1
+  68               		.comm nrk_idle_task_stk,128,1
+  69               		.comm nrk_kernel_stk_ptr,2,1
+  70               		.comm error_task,1,1
+  71               		.comm error_num,1,1
+  72               		.comm _nrk_prev_timer_val,1,1
+  73               		.comm _nrk_time_trigger,1,1
+  74               		.comm app_timer0_callback,2,1
+  75               		.comm app_timer0_prescale,1,1
+  76               		.comm _nrk_cpu_state,1,1
+  77               		.comm next_next_wakeup,2,1
+ 102               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 nrk_idle_task.c
+C:\cygwin\tmp/cccv6obm.s:2      *ABS*:0000003f __SREG__
+C:\cygwin\tmp/cccv6obm.s:3      *ABS*:0000003e __SP_H__
+C:\cygwin\tmp/cccv6obm.s:4      *ABS*:0000003d __SP_L__
+C:\cygwin\tmp/cccv6obm.s:5      *ABS*:00000034 __CCP__
+C:\cygwin\tmp/cccv6obm.s:6      *ABS*:00000000 __tmp_reg__
+C:\cygwin\tmp/cccv6obm.s:7      *ABS*:00000001 __zero_reg__
+C:\cygwin\tmp/cccv6obm.s:18     .text:00000000 nrk_idle_task
+                            *COM*:00000001 _nrk_cpu_state
+                            *COM*:00000080 nrk_idle_task_stk
+                            *COM*:00000004 _nrk_signal_list
+                            *COM*:00000002 nrk_kernel_stk_ptr
+                            *COM*:00000001 error_task
+                            *COM*:00000001 error_num
+                            *COM*:00000001 _nrk_prev_timer_val
+                            *COM*:00000001 _nrk_time_trigger
+                            *COM*:00000002 app_timer0_callback
+                            *COM*:00000001 app_timer0_prescale
+                            *COM*:00000002 next_next_wakeup
+
+UNDEFINED SYMBOLS
+nrk_stack_check
+_nrk_get_next_wakeup
+nrk_idle
+nrk_spin_wait_us
+nrk_sleep
+nrk_error_add
+__do_clear_bss

@@ -1,0 +1,400 @@
+   1               		.file	"nrk_stack_check.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	nrk_stack_check_pid
+  18               	nrk_stack_check_pid:
+  19               	.LFB5:
+  20               	.LM1:
+  21               	.LVL0:
+  22               	/* prologue: function */
+  23               	/* frame size = 0 */
+  24               	.LM2:
+  25 0000 9927      		clr r25
+  26 0002 87FD      		sbrc r24,7
+  27 0004 9095      		com r25
+  28               	.LVL1:
+  29 0006 FC01      		movw r30,r24
+  30 0008 25E0      		ldi r18,5
+  31 000a EE0F      	1:	lsl r30
+  32 000c FF1F      		rol r31
+  33 000e 2A95      		dec r18
+  34 0010 01F4      		brne 1b
+  35 0012 E80F      		add r30,r24
+  36 0014 F91F      		adc r31,r25
+  37 0016 E050      		subi r30,lo8(-(nrk_task_TCB))
+  38 0018 F040      		sbci r31,hi8(-(nrk_task_TCB))
+  39 001a A281      		ldd r26,Z+2
+  40 001c B381      		ldd r27,Z+3
+  41               	.LM3:
+  42 001e 8C91      		ld r24,X
+  43 0020 8535      		cpi r24,lo8(85)
+  44 0022 01F0      		breq .L2
+  45               	.LM4:
+  46 0024 85E5      		ldi r24,lo8(85)
+  47 0026 8C93      		st X,r24
+  48 0028 8FEF      		ldi r24,lo8(-1)
+  49 002a 0895      		ret
+  50               	.L2:
+  51               	.LM5:
+  52 002c 8081      		ld r24,Z
+  53 002e 9181      		ldd r25,Z+1
+  54 0030 8050      		subi r24,lo8(4352)
+  55 0032 9141      		sbci r25,hi8(4352)
+  56 0034 00F4      		brsh .L4
+  57 0036 81E0      		ldi r24,lo8(1)
+  58 0038 0895      		ret
+  59               	.L4:
+  60               	.LM6:
+  61 003a 82E1      		ldi r24,lo8(18)
+  62 003c 0E94 0000 		call nrk_error_add
+  63 0040 8FEF      		ldi r24,lo8(-1)
+  64               	.LM7:
+  65 0042 0895      		ret
+  66               	.LFE5:
+  68               		.data
+  69               	.LC0:
+  70 0000 6375 723A 		.string	"cur: %d "
+  70      2025 6420 
+  70      00
+  71               	.LC1:
+  72 0009 626F 7474 		.string	"bottom = %x "
+  72      6F6D 203D 
+  72      2025 7820 
+  72      00
+  73               	.LC2:
+  74 0016 6361 6E61 		.string	"canary = %x "
+  74      7279 203D 
+  74      2025 7820 
+  74      00
+  75               	.LC3:
+  76 0023 7374 6B20 		.string	"stk = %x "
+  76      3D20 2578 
+  76      2000 
+  77               	.LC4:
+  78 002d 7463 6220 		.string	"tcb addr = %x\r\n"
+  78      6164 6472 
+  78      203D 2025 
+  78      780D 0A00 
+  79               	.LC5:
+  80 003d 2564 3A20 		.string	"%d: bottom = %x "
+  80      626F 7474 
+  80      6F6D 203D 
+  80      2025 7820 
+  80      00
+  81               		.text
+  82               	.global	dump_stack_info
+  84               	dump_stack_info:
+  85               	.LFB3:
+  86               	.LM8:
+  87 0044 6F92      		push r6
+  88 0046 7F92      		push r7
+  89 0048 8F92      		push r8
+  90 004a 9F92      		push r9
+  91 004c AF92      		push r10
+  92 004e BF92      		push r11
+  93 0050 CF92      		push r12
+  94 0052 DF92      		push r13
+  95 0054 EF92      		push r14
+  96 0056 FF92      		push r15
+  97 0058 0F93      		push r16
+  98 005a 1F93      		push r17
+  99 005c CF93      		push r28
+ 100 005e DF93      		push r29
+ 101               	/* prologue: function */
+ 102               	/* frame size = 0 */
+ 103               	.LM9:
+ 104 0060 80E0      		ldi r24,lo8(__c.1985)
+ 105 0062 90E0      		ldi r25,hi8(__c.1985)
+ 106 0064 0E94 0000 		call nrk_kprintf
+ 107               	.LM10:
+ 108 0068 00D0      		rcall .
+ 109 006a 00D0      		rcall .
+ 110 006c 80E0      		ldi r24,lo8(.LC0)
+ 111 006e 90E0      		ldi r25,hi8(.LC0)
+ 112 0070 ADB7      		in r26,__SP_L__
+ 113 0072 BEB7      		in r27,__SP_H__
+ 114 0074 1296      		adiw r26,1+1
+ 115 0076 9C93      		st X,r25
+ 116 0078 8E93      		st -X,r24
+ 117 007a 1197      		sbiw r26,1
+ 118 007c E091 0000 		lds r30,nrk_cur_task_TCB
+ 119 0080 F091 0000 		lds r31,(nrk_cur_task_TCB)+1
+ 120 0084 8085      		ldd r24,Z+8
+ 121 0086 9927      		clr r25
+ 122 0088 87FD      		sbrc r24,7
+ 123 008a 9095      		com r25
+ 124 008c 1496      		adiw r26,3+1
+ 125 008e 9C93      		st X,r25
+ 126 0090 8E93      		st -X,r24
+ 127 0092 1397      		sbiw r26,3
+ 128 0094 0E94 0000 		call printf
+ 129               	.LM11:
+ 130 0098 E091 0000 		lds r30,nrk_cur_task_TCB
+ 131 009c F091 0000 		lds r31,(nrk_cur_task_TCB)+1
+ 132 00a0 0281      		ldd r16,Z+2
+ 133 00a2 1381      		ldd r17,Z+3
+ 134               	.LM12:
+ 135 00a4 80E0      		ldi r24,lo8(.LC1)
+ 136 00a6 90E0      		ldi r25,hi8(.LC1)
+ 137 00a8 EDB7      		in r30,__SP_L__
+ 138 00aa FEB7      		in r31,__SP_H__
+ 139 00ac 9283      		std Z+2,r25
+ 140 00ae 8183      		std Z+1,r24
+ 141 00b0 1483      		std Z+4,r17
+ 142 00b2 0383      		std Z+3,r16
+ 143 00b4 0E94 0000 		call printf
+ 144               	.LM13:
+ 145 00b8 EDB7      		in r30,__SP_L__
+ 146 00ba FEB7      		in r31,__SP_H__
+ 147 00bc 3196      		adiw r30,1
+ 148 00be 50E0      		ldi r21,lo8(.LC2)
+ 149 00c0 C52E      		mov r12,r21
+ 150 00c2 50E0      		ldi r21,hi8(.LC2)
+ 151 00c4 D52E      		mov r13,r21
+ 152 00c6 ADB7      		in r26,__SP_L__
+ 153 00c8 BEB7      		in r27,__SP_H__
+ 154 00ca 1296      		adiw r26,1+1
+ 155 00cc DC92      		st X,r13
+ 156 00ce CE92      		st -X,r12
+ 157 00d0 1197      		sbiw r26,1
+ 158 00d2 D801      		movw r26,r16
+ 159 00d4 8C91      		ld r24,X
+ 160 00d6 8283      		std Z+2,r24
+ 161 00d8 1382      		std Z+3,__zero_reg__
+ 162 00da 0E94 0000 		call printf
+ 163               	.LM14:
+ 164 00de 40E0      		ldi r20,lo8(.LC3)
+ 165 00e0 E42E      		mov r14,r20
+ 166 00e2 40E0      		ldi r20,hi8(.LC3)
+ 167 00e4 F42E      		mov r15,r20
+ 168 00e6 EDB7      		in r30,__SP_L__
+ 169 00e8 FEB7      		in r31,__SP_H__
+ 170 00ea F282      		std Z+2,r15
+ 171 00ec E182      		std Z+1,r14
+ 172 00ee E091 0000 		lds r30,nrk_cur_task_TCB
+ 173 00f2 F091 0000 		lds r31,(nrk_cur_task_TCB)+1
+ 174 00f6 8081      		ld r24,Z
+ 175 00f8 9181      		ldd r25,Z+1
+ 176 00fa ADB7      		in r26,__SP_L__
+ 177 00fc BEB7      		in r27,__SP_H__
+ 178 00fe 1496      		adiw r26,3+1
+ 179 0100 9C93      		st X,r25
+ 180 0102 8E93      		st -X,r24
+ 181 0104 1397      		sbiw r26,3
+ 182 0106 0E94 0000 		call printf
+ 183               	.LM15:
+ 184 010a 00E0      		ldi r16,lo8(.LC4)
+ 185 010c 10E0      		ldi r17,hi8(.LC4)
+ 186 010e EDB7      		in r30,__SP_L__
+ 187 0110 FEB7      		in r31,__SP_H__
+ 188 0112 1283      		std Z+2,r17
+ 189 0114 0183      		std Z+1,r16
+ 190 0116 8091 0000 		lds r24,nrk_cur_task_TCB
+ 191 011a 9091 0000 		lds r25,(nrk_cur_task_TCB)+1
+ 192 011e 9483      		std Z+4,r25
+ 193 0120 8383      		std Z+3,r24
+ 194 0122 0E94 0000 		call printf
+ 195 0126 C0E0      		ldi r28,lo8(nrk_task_TCB)
+ 196 0128 D0E0      		ldi r29,hi8(nrk_task_TCB)
+ 197 012a AA24      		clr r10
+ 198 012c BB24      		clr r11
+ 199 012e 0F90      		pop __tmp_reg__
+ 200 0130 0F90      		pop __tmp_reg__
+ 201 0132 0F90      		pop __tmp_reg__
+ 202 0134 0F90      		pop __tmp_reg__
+ 203               	.LM16:
+ 204 0136 30E0      		ldi r19,lo8(.LC5)
+ 205 0138 632E      		mov r6,r19
+ 206 013a 30E0      		ldi r19,hi8(.LC5)
+ 207 013c 732E      		mov r7,r19
+ 208               	.LM17:
+ 209 013e 4601      		movw r8,r12
+ 210               	.LM18:
+ 211 0140 6701      		movw r12,r14
+ 212               	.LM19:
+ 213 0142 7801      		movw r14,r16
+ 214               	.L7:
+ 215               	.LM20:
+ 216 0144 0A81      		ldd r16,Y+2
+ 217 0146 1B81      		ldd r17,Y+3
+ 218               	.LM21:
+ 219 0148 00D0      		rcall .
+ 220 014a 00D0      		rcall .
+ 221 014c 00D0      		rcall .
+ 222 014e EDB7      		in r30,__SP_L__
+ 223 0150 FEB7      		in r31,__SP_H__
+ 224 0152 3196      		adiw r30,1
+ 225 0154 ADB7      		in r26,__SP_L__
+ 226 0156 BEB7      		in r27,__SP_H__
+ 227 0158 1296      		adiw r26,1+1
+ 228 015a 7C92      		st X,r7
+ 229 015c 6E92      		st -X,r6
+ 230 015e 1197      		sbiw r26,1
+ 231 0160 B382      		std Z+3,r11
+ 232 0162 A282      		std Z+2,r10
+ 233 0164 1583      		std Z+5,r17
+ 234 0166 0483      		std Z+4,r16
+ 235 0168 0E94 0000 		call printf
+ 236               	.LM22:
+ 237 016c 0F90      		pop __tmp_reg__
+ 238 016e 0F90      		pop __tmp_reg__
+ 239 0170 EDB7      		in r30,__SP_L__
+ 240 0172 FEB7      		in r31,__SP_H__
+ 241 0174 3196      		adiw r30,1
+ 242 0176 ADB7      		in r26,__SP_L__
+ 243 0178 BEB7      		in r27,__SP_H__
+ 244 017a 1196      		adiw r26,1
+ 245 017c 8C92      		st X,r8
+ 246 017e 1197      		sbiw r26,1
+ 247 0180 1296      		adiw r26,2
+ 248 0182 9C92      		st X,r9
+ 249 0184 D801      		movw r26,r16
+ 250 0186 8C91      		ld r24,X
+ 251 0188 8283      		std Z+2,r24
+ 252 018a 1382      		std Z+3,__zero_reg__
+ 253 018c 0E94 0000 		call printf
+ 254               	.LM23:
+ 255 0190 EDB7      		in r30,__SP_L__
+ 256 0192 FEB7      		in r31,__SP_H__
+ 257 0194 C182      		std Z+1,r12
+ 258 0196 D282      		std Z+2,r13
+ 259 0198 8881      		ld r24,Y
+ 260 019a 9981      		ldd r25,Y+1
+ 261 019c 9483      		std Z+4,r25
+ 262 019e 8383      		std Z+3,r24
+ 263 01a0 0E94 0000 		call printf
+ 264               	.LM24:
+ 265 01a4 ADB7      		in r26,__SP_L__
+ 266 01a6 BEB7      		in r27,__SP_H__
+ 267 01a8 1196      		adiw r26,1
+ 268 01aa EC92      		st X,r14
+ 269 01ac 1197      		sbiw r26,1
+ 270 01ae 1296      		adiw r26,2
+ 271 01b0 FC92      		st X,r15
+ 272 01b2 1297      		sbiw r26,2
+ 273 01b4 1496      		adiw r26,3+1
+ 274 01b6 DC93      		st X,r29
+ 275 01b8 CE93      		st -X,r28
+ 276 01ba 1397      		sbiw r26,3
+ 277 01bc 0E94 0000 		call printf
+ 278 01c0 0894      		sec
+ 279 01c2 A11C      		adc r10,__zero_reg__
+ 280 01c4 B11C      		adc r11,__zero_reg__
+ 281 01c6 A196      		adiw r28,33
+ 282               	.LM25:
+ 283 01c8 0F90      		pop __tmp_reg__
+ 284 01ca 0F90      		pop __tmp_reg__
+ 285 01cc 0F90      		pop __tmp_reg__
+ 286 01ce 0F90      		pop __tmp_reg__
+ 287 01d0 B5E0      		ldi r27,lo8(5)
+ 288 01d2 AB16      		cp r10,r27
+ 289 01d4 B104      		cpc r11,__zero_reg__
+ 290 01d6 01F0      		breq .+2
+ 291 01d8 00C0      		rjmp .L7
+ 292               	/* epilogue start */
+ 293               	.LM26:
+ 294 01da DF91      		pop r29
+ 295 01dc CF91      		pop r28
+ 296 01de 1F91      		pop r17
+ 297 01e0 0F91      		pop r16
+ 298 01e2 FF90      		pop r15
+ 299 01e4 EF90      		pop r14
+ 300 01e6 DF90      		pop r13
+ 301 01e8 CF90      		pop r12
+ 302 01ea BF90      		pop r11
+ 303 01ec AF90      		pop r10
+ 304 01ee 9F90      		pop r9
+ 305 01f0 8F90      		pop r8
+ 306 01f2 7F90      		pop r7
+ 307 01f4 6F90      		pop r6
+ 308 01f6 0895      		ret
+ 309               	.LFE3:
+ 311               	.global	nrk_stack_check
+ 313               	nrk_stack_check:
+ 314               	.LFB4:
+ 315               	.LM27:
+ 316 01f8 CF93      		push r28
+ 317 01fa DF93      		push r29
+ 318               	/* prologue: function */
+ 319               	/* frame size = 0 */
+ 320               	.LM28:
+ 321 01fc E091 0000 		lds r30,nrk_cur_task_TCB
+ 322 0200 F091 0000 		lds r31,(nrk_cur_task_TCB)+1
+ 323 0204 C281      		ldd r28,Z+2
+ 324 0206 D381      		ldd r29,Z+3
+ 325               	.LM29:
+ 326 0208 8881      		ld r24,Y
+ 327 020a 8535      		cpi r24,lo8(85)
+ 328 020c 01F0      		breq .L11
+ 329               	.LM30:
+ 330 020e 0E94 0000 		call dump_stack_info
+ 331               	.LM31:
+ 332 0212 81E0      		ldi r24,lo8(1)
+ 333 0214 0E94 0000 		call nrk_error_add
+ 334               	.LM32:
+ 335 0218 85E5      		ldi r24,lo8(85)
+ 336 021a 8883      		st Y,r24
+ 337               	.L11:
+ 338               	.LM33:
+ 339 021c E091 0000 		lds r30,nrk_cur_task_TCB
+ 340 0220 F091 0000 		lds r31,(nrk_cur_task_TCB)+1
+ 341 0224 8081      		ld r24,Z
+ 342 0226 9181      		ldd r25,Z+1
+ 343 0228 8050      		subi r24,lo8(4352)
+ 344 022a 9141      		sbci r25,hi8(4352)
+ 345 022c 00F0      		brlo .L13
+ 346               	.LM34:
+ 347 022e 0E94 0000 		call dump_stack_info
+ 348               	.LM35:
+ 349 0232 82E1      		ldi r24,lo8(18)
+ 350 0234 0E94 0000 		call nrk_error_add
+ 351               	.L13:
+ 352               	/* epilogue start */
+ 353               	.LM36:
+ 354 0238 DF91      		pop r29
+ 355 023a CF91      		pop r28
+ 356 023c 0895      		ret
+ 357               	.LFE4:
+ 359               		.section	.progmem.data,"a",@progbits
+ 362               	__c.1985:
+ 363 0000 0D0A 5354 		.string	"\r\nSTACK DUMP\r\n"
+ 363      4143 4B20 
+ 363      4455 4D50 
+ 363      0D0A 00
+ 364               		.comm _nrk_signal_list,4,1
+ 365               		.comm nrk_idle_task_stk,128,1
+ 366               		.comm nrk_kernel_stk_ptr,2,1
+ 367               		.comm error_task,1,1
+ 368               		.comm error_num,1,1
+ 409               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 nrk_stack_check.c
+C:\cygwin\tmp/ccAwJdG9.s:2      *ABS*:0000003f __SREG__
+C:\cygwin\tmp/ccAwJdG9.s:3      *ABS*:0000003e __SP_H__
+C:\cygwin\tmp/ccAwJdG9.s:4      *ABS*:0000003d __SP_L__
+C:\cygwin\tmp/ccAwJdG9.s:5      *ABS*:00000034 __CCP__
+C:\cygwin\tmp/ccAwJdG9.s:6      *ABS*:00000000 __tmp_reg__
+C:\cygwin\tmp/ccAwJdG9.s:7      *ABS*:00000001 __zero_reg__
+C:\cygwin\tmp/ccAwJdG9.s:18     .text:00000000 nrk_stack_check_pid
+C:\cygwin\tmp/ccAwJdG9.s:84     .text:00000044 dump_stack_info
+C:\cygwin\tmp/ccAwJdG9.s:362    .progmem.data:00000000 __c.1985
+C:\cygwin\tmp/ccAwJdG9.s:313    .text:000001f8 nrk_stack_check
+                            *COM*:00000004 _nrk_signal_list
+                            *COM*:00000080 nrk_idle_task_stk
+                            *COM*:00000002 nrk_kernel_stk_ptr
+                            *COM*:00000001 error_task
+                            *COM*:00000001 error_num
+
+UNDEFINED SYMBOLS
+nrk_task_TCB
+nrk_error_add
+nrk_kprintf
+nrk_cur_task_TCB
+printf
+__do_copy_data
+__do_clear_bss

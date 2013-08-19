@@ -1,0 +1,90 @@
+   1               		.file	"nrk_status.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	_nrk_startup_error
+  18               	_nrk_startup_error:
+  19               	.LFB3:
+  20               	.LM1:
+  21               	/* prologue: function */
+  22               	/* frame size = 0 */
+  23               	.LM2:
+  24 0000 04B6      		in __tmp_reg__,84-32
+  25 0002 03FE      		sbrs __tmp_reg__,3
+  26 0004 00C0      		rjmp .L2
+  27 0006 90E1      		ldi r25,lo8(16)
+  28               	.LVL0:
+  29 0008 00C0      		rjmp .L3
+  30               	.LVL1:
+  31               	.L2:
+  32 000a 90E0      		ldi r25,lo8(0)
+  33               	.LVL2:
+  34               	.L3:
+  35               	.LM3:
+  36 000c 04B6      		in __tmp_reg__,84-32
+  37 000e 02FE      		sbrs __tmp_reg__,2
+  38 0010 00C0      		rjmp .L4
+  39               	.LM4:
+  40 0012 84B7      		in r24,84-32
+  41 0014 8B7F      		andi r24,lo8(-5)
+  42 0016 84BF      		out 84-32,r24
+  43               	.LM5:
+  44 0018 04B6      		in __tmp_reg__,84-32
+  45 001a 00FE      		sbrs __tmp_reg__,0
+  46               	.LM6:
+  47 001c 9460      		ori r25,lo8(4)
+  48               	.L4:
+  49               	.LM7:
+  50 001e 04B6      		in __tmp_reg__,84-32
+  51 0020 01FE      		sbrs __tmp_reg__,1
+  52 0022 00C0      		rjmp .L5
+  53               	.LM8:
+  54 0024 84B7      		in r24,84-32
+  55 0026 8D7F      		andi r24,lo8(-3)
+  56 0028 84BF      		out 84-32,r24
+  57               	.LM9:
+  58 002a 9260      		ori r25,lo8(2)
+  59               	.L5:
+  60               	.LM10:
+  61 002c 9923      		tst r25
+  62 002e 01F4      		brne .L6
+  63               	.LM11:
+  64 0030 04B6      		in __tmp_reg__,84-32
+  65 0032 00FE      		sbrs __tmp_reg__,0
+  66 0034 00C0      		rjmp .L7
+  67               	.LM12:
+  68 0036 84B7      		in r24,84-32
+  69 0038 8E7F      		andi r24,lo8(-2)
+  70 003a 84BF      		out 84-32,r24
+  71               	.L7:
+  72               	.LM13:
+  73 003c 83B7      		in r24,83-32
+  74 003e 8111      		cpse r24,__zero_reg__
+  75 0040 81E0      		ldi r24,lo8(1)
+  76               	.L8:
+  77 0042 982F      		mov r25,r24
+  78               	.L6:
+  79               	.LM14:
+  80 0044 892F      		mov r24,r25
+  81               	/* epilogue start */
+  82 0046 0895      		ret
+  83               	.LFE3:
+  85               		.comm _nrk_signal_list,4,1
+ 110               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 nrk_status.c
+C:\cygwin\tmp/cc4HCgaq.s:2      *ABS*:0000003f __SREG__
+C:\cygwin\tmp/cc4HCgaq.s:3      *ABS*:0000003e __SP_H__
+C:\cygwin\tmp/cc4HCgaq.s:4      *ABS*:0000003d __SP_L__
+C:\cygwin\tmp/cc4HCgaq.s:5      *ABS*:00000034 __CCP__
+C:\cygwin\tmp/cc4HCgaq.s:6      *ABS*:00000000 __tmp_reg__
+C:\cygwin\tmp/cc4HCgaq.s:7      *ABS*:00000001 __zero_reg__
+C:\cygwin\tmp/cc4HCgaq.s:18     .text:00000000 _nrk_startup_error
+                            *COM*:00000004 _nrk_signal_list
+
+UNDEFINED SYMBOLS
+__do_clear_bss

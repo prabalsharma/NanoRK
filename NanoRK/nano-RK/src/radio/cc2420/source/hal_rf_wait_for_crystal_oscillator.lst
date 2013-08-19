@@ -1,0 +1,60 @@
+   1               		.file	"hal_rf_wait_for_crystal_oscillator.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	halRfWaitForCrystalOscillator
+  18               	halRfWaitForCrystalOscillator:
+  19               	.LFB3:
+  20               	.LM1:
+  21               	/* prologue: function */
+  22               	/* frame size = 0 */
+  23               	.LVL0:
+  24               	.L3:
+  25               	.LM2:
+  26               	/* #APP */
+  27               	 ;  46 "../../../src/radio/cc2420/source/hal_rf_wait_for_crystal_oscillator.c" 1
+  28 0000 F894      		cli
+  29               		
+  30               	 ;  0 "" 2
+  31               	.LM3:
+  32               	/* #NOAPP */
+  33 0002 C098      		cbi 56-32,0
+  34 0004 1FB8      		out 47-32,__zero_reg__
+  35               	.L2:
+  36 0006 779B      		sbis 46-32,7
+  37 0008 00C0      		rjmp .L2
+  38 000a 8FB1      		in r24,47-32
+  39 000c C09A      		sbi 56-32,0
+  40               	.LM4:
+  41               	/* #APP */
+  42               	 ;  48 "../../../src/radio/cc2420/source/hal_rf_wait_for_crystal_oscillator.c" 1
+  43 000e 7894      		sei
+  44               		
+  45               	 ;  0 "" 2
+  46               	.LM5:
+  47               	/* #NOAPP */
+  48 0010 86FF      		sbrs r24,6
+  49 0012 00C0      		rjmp .L3
+  50               	/* epilogue start */
+  51               	.LM6:
+  52 0014 0895      		ret
+  53               	.LFE3:
+  55               		.comm _nrk_signal_list,4,1
+  80               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 hal_rf_wait_for_crystal_oscillator.c
+C:\cygwin\tmp/ccdydw0c.s:2      *ABS*:0000003f __SREG__
+C:\cygwin\tmp/ccdydw0c.s:3      *ABS*:0000003e __SP_H__
+C:\cygwin\tmp/ccdydw0c.s:4      *ABS*:0000003d __SP_L__
+C:\cygwin\tmp/ccdydw0c.s:5      *ABS*:00000034 __CCP__
+C:\cygwin\tmp/ccdydw0c.s:6      *ABS*:00000000 __tmp_reg__
+C:\cygwin\tmp/ccdydw0c.s:7      *ABS*:00000001 __zero_reg__
+C:\cygwin\tmp/ccdydw0c.s:18     .text:00000000 halRfWaitForCrystalOscillator
+                            *COM*:00000004 _nrk_signal_list
+
+UNDEFINED SYMBOLS
+__do_clear_bss

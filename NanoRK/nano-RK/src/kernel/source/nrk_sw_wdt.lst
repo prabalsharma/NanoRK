@@ -1,0 +1,512 @@
+   1               		.file	"nrk_sw_wdt.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	_nrk_sw_wdt_init
+  18               	_nrk_sw_wdt_init:
+  19               	.LFB4:
+  20               	.LM1:
+  21               	/* prologue: function */
+  22               	/* frame size = 0 */
+  23               	.LM2:
+  24 0000 1092 0000 		sts sw_wdts+2,__zero_reg__
+  25 0004 1092 0000 		sts sw_wdts+21,__zero_reg__
+  26 0008 1092 0000 		sts sw_wdts+40,__zero_reg__
+  27               	/* epilogue start */
+  28               	.LM3:
+  29 000c 0895      		ret
+  30               	.LFE4:
+  32               	.global	nrk_sw_wdt_init
+  34               	nrk_sw_wdt_init:
+  35               	.LFB5:
+  36               	.LM4:
+  37               	.LVL0:
+  38 000e CF93      		push r28
+  39 0010 DF93      		push r29
+  40               	/* prologue: function */
+  41               	/* frame size = 0 */
+  42 0012 EB01      		movw r28,r22
+  43               	.LM5:
+  44 0014 8330      		cpi r24,lo8(3)
+  45 0016 00F0      		brlo .L4
+  46               	.LVL1:
+  47 0018 8FEF      		ldi r24,lo8(-1)
+  48               	.LVL2:
+  49 001a 00C0      		rjmp .L5
+  50               	.LVL3:
+  51               	.L4:
+  52               	.LM6:
+  53 001c 282F      		mov r18,r24
+  54 001e 30E0      		ldi r19,lo8(0)
+  55 0020 83E1      		ldi r24,lo8(19)
+  56 0022 90E0      		ldi r25,hi8(19)
+  57               	.LVL4:
+  58 0024 289F      		mul r18,r24
+  59 0026 F001      		movw r30,r0
+  60 0028 299F      		mul r18,r25
+  61 002a F00D      		add r31,r0
+  62 002c 389F      		mul r19,r24
+  63 002e F00D      		add r31,r0
+  64 0030 1124      		clr r1
+  65 0032 E050      		subi r30,lo8(-(sw_wdts))
+  66 0034 F040      		sbci r31,hi8(-(sw_wdts))
+  67 0036 5183      		std Z+1,r21
+  68 0038 4083      		st Z,r20
+  69               	.LM7:
+  70 003a 8881      		ld r24,Y
+  71 003c 9981      		ldd r25,Y+1
+  72 003e AA81      		ldd r26,Y+2
+  73 0040 BB81      		ldd r27,Y+3
+  74 0042 8383      		std Z+3,r24
+  75 0044 9483      		std Z+4,r25
+  76 0046 A583      		std Z+5,r26
+  77 0048 B683      		std Z+6,r27
+  78               	.LM8:
+  79 004a 8C81      		ldd r24,Y+4
+  80 004c 9D81      		ldd r25,Y+5
+  81 004e AE81      		ldd r26,Y+6
+  82 0050 BF81      		ldd r27,Y+7
+  83 0052 8783      		std Z+7,r24
+  84 0054 9087      		std Z+8,r25
+  85 0056 A187      		std Z+9,r26
+  86 0058 B287      		std Z+10,r27
+  87               	.LM9:
+  88 005a 1282      		std Z+2,__zero_reg__
+  89 005c 81E0      		ldi r24,lo8(1)
+  90               	.L5:
+  91               	/* epilogue start */
+  92               	.LM10:
+  93 005e DF91      		pop r29
+  94 0060 CF91      		pop r28
+  95               	.LVL5:
+  96 0062 0895      		ret
+  97               	.LFE5:
+  99               	.global	nrk_sw_wdt_stop
+ 101               	nrk_sw_wdt_stop:
+ 102               	.LFB8:
+ 103               	.LM11:
+ 104               	.LVL6:
+ 105               	/* prologue: function */
+ 106               	/* frame size = 0 */
+ 107               	.LM12:
+ 108 0064 8330      		cpi r24,lo8(3)
+ 109 0066 00F0      		brlo .L8
+ 110 0068 8FEF      		ldi r24,lo8(-1)
+ 111               	.LVL7:
+ 112 006a 0895      		ret
+ 113               	.LVL8:
+ 114               	.L8:
+ 115               	.LM13:
+ 116 006c 282F      		mov r18,r24
+ 117 006e 30E0      		ldi r19,lo8(0)
+ 118               	.LVL9:
+ 119 0070 83E1      		ldi r24,lo8(19)
+ 120 0072 90E0      		ldi r25,hi8(19)
+ 121               	.LVL10:
+ 122 0074 289F      		mul r18,r24
+ 123 0076 F001      		movw r30,r0
+ 124 0078 299F      		mul r18,r25
+ 125 007a F00D      		add r31,r0
+ 126 007c 389F      		mul r19,r24
+ 127 007e F00D      		add r31,r0
+ 128 0080 1124      		clr r1
+ 129 0082 E050      		subi r30,lo8(-(sw_wdts))
+ 130 0084 F040      		sbci r31,hi8(-(sw_wdts))
+ 131 0086 1282      		std Z+2,__zero_reg__
+ 132 0088 81E0      		ldi r24,lo8(1)
+ 133               	.LM14:
+ 134 008a 0895      		ret
+ 135               	.LFE8:
+ 137               	.global	nrk_sw_wdt_start
+ 139               	nrk_sw_wdt_start:
+ 140               	.LFB7:
+ 141               	.LM15:
+ 142               	.LVL11:
+ 143 008c 1F93      		push r17
+ 144 008e DF93      		push r29
+ 145 0090 CF93      		push r28
+ 146 0092 CDB7      		in r28,__SP_L__
+ 147 0094 DEB7      		in r29,__SP_H__
+ 148 0096 2897      		sbiw r28,8
+ 149 0098 0FB6      		in __tmp_reg__,__SREG__
+ 150 009a F894      		cli
+ 151 009c DEBF      		out __SP_H__,r29
+ 152 009e 0FBE      		out __SREG__,__tmp_reg__
+ 153 00a0 CDBF      		out __SP_L__,r28
+ 154               	/* prologue: function */
+ 155               	/* frame size = 8 */
+ 156 00a2 182F      		mov r17,r24
+ 157               	.LM16:
+ 158 00a4 8330      		cpi r24,lo8(3)
+ 159 00a6 00F0      		brlo .L12
+ 160 00a8 8FEF      		ldi r24,lo8(-1)
+ 161               	.LVL12:
+ 162 00aa 00C0      		rjmp .L13
+ 163               	.LVL13:
+ 164               	.L12:
+ 165               	.LM17:
+ 166 00ac CE01      		movw r24,r28
+ 167               	.LVL14:
+ 168 00ae 0196      		adiw r24,1
+ 169 00b0 0E94 0000 		call nrk_time_get
+ 170               	.LM18:
+ 171 00b4 212F      		mov r18,r17
+ 172 00b6 30E0      		ldi r19,lo8(0)
+ 173 00b8 83E1      		ldi r24,lo8(19)
+ 174 00ba 90E0      		ldi r25,hi8(19)
+ 175 00bc 289F      		mul r18,r24
+ 176 00be F001      		movw r30,r0
+ 177 00c0 299F      		mul r18,r25
+ 178 00c2 F00D      		add r31,r0
+ 179 00c4 389F      		mul r19,r24
+ 180 00c6 F00D      		add r31,r0
+ 181 00c8 1124      		clr r1
+ 182 00ca E050      		subi r30,lo8(-(sw_wdts))
+ 183 00cc F040      		sbci r31,hi8(-(sw_wdts))
+ 184 00ce 8381      		ldd r24,Z+3
+ 185 00d0 9481      		ldd r25,Z+4
+ 186 00d2 A581      		ldd r26,Z+5
+ 187 00d4 B681      		ldd r27,Z+6
+ 188 00d6 2981      		ldd r18,Y+1
+ 189 00d8 3A81      		ldd r19,Y+2
+ 190 00da 4B81      		ldd r20,Y+3
+ 191 00dc 5C81      		ldd r21,Y+4
+ 192 00de 820F      		add r24,r18
+ 193 00e0 931F      		adc r25,r19
+ 194 00e2 A41F      		adc r26,r20
+ 195 00e4 B51F      		adc r27,r21
+ 196 00e6 8387      		std Z+11,r24
+ 197 00e8 9487      		std Z+12,r25
+ 198 00ea A587      		std Z+13,r26
+ 199 00ec B687      		std Z+14,r27
+ 200               	.LM19:
+ 201 00ee 8781      		ldd r24,Z+7
+ 202 00f0 9085      		ldd r25,Z+8
+ 203 00f2 A185      		ldd r26,Z+9
+ 204 00f4 B285      		ldd r27,Z+10
+ 205 00f6 2D81      		ldd r18,Y+5
+ 206 00f8 3E81      		ldd r19,Y+6
+ 207 00fa 4F81      		ldd r20,Y+7
+ 208 00fc 5885      		ldd r21,Y+8
+ 209 00fe 820F      		add r24,r18
+ 210 0100 931F      		adc r25,r19
+ 211 0102 A41F      		adc r26,r20
+ 212 0104 B51F      		adc r27,r21
+ 213 0106 8787      		std Z+15,r24
+ 214 0108 908B      		std Z+16,r25
+ 215 010a A18B      		std Z+17,r26
+ 216 010c B28B      		std Z+18,r27
+ 217               	.LM20:
+ 218 010e 81E0      		ldi r24,lo8(1)
+ 219 0110 8283      		std Z+2,r24
+ 220               	.L13:
+ 221               	/* epilogue start */
+ 222               	.LM21:
+ 223 0112 2896      		adiw r28,8
+ 224 0114 0FB6      		in __tmp_reg__,__SREG__
+ 225 0116 F894      		cli
+ 226 0118 DEBF      		out __SP_H__,r29
+ 227 011a 0FBE      		out __SREG__,__tmp_reg__
+ 228 011c CDBF      		out __SP_L__,r28
+ 229 011e CF91      		pop r28
+ 230 0120 DF91      		pop r29
+ 231 0122 1F91      		pop r17
+ 232               	.LVL15:
+ 233 0124 0895      		ret
+ 234               	.LFE7:
+ 236               	.global	nrk_sw_wdt_update
+ 238               	nrk_sw_wdt_update:
+ 239               	.LFB6:
+ 240               	.LM22:
+ 241               	.LVL16:
+ 242 0126 CF92      		push r12
+ 243 0128 DF92      		push r13
+ 244 012a EF92      		push r14
+ 245 012c FF92      		push r15
+ 246 012e 0F93      		push r16
+ 247 0130 1F93      		push r17
+ 248 0132 DF93      		push r29
+ 249 0134 CF93      		push r28
+ 250 0136 CDB7      		in r28,__SP_L__
+ 251 0138 DEB7      		in r29,__SP_H__
+ 252 013a 2897      		sbiw r28,8
+ 253 013c 0FB6      		in __tmp_reg__,__SREG__
+ 254 013e F894      		cli
+ 255 0140 DEBF      		out __SP_H__,r29
+ 256 0142 0FBE      		out __SREG__,__tmp_reg__
+ 257 0144 CDBF      		out __SP_L__,r28
+ 258               	/* prologue: function */
+ 259               	/* frame size = 8 */
+ 260 0146 182F      		mov r17,r24
+ 261               	.LM23:
+ 262 0148 8330      		cpi r24,lo8(3)
+ 263 014a 00F0      		brlo .L16
+ 264 014c 8FEF      		ldi r24,lo8(-1)
+ 265               	.LVL17:
+ 266 014e 00C0      		rjmp .L17
+ 267               	.LVL18:
+ 268               	.L16:
+ 269               	.LM24:
+ 270 0150 CE01      		movw r24,r28
+ 271               	.LVL19:
+ 272 0152 0196      		adiw r24,1
+ 273 0154 0E94 0000 		call nrk_time_get
+ 274               	.LM25:
+ 275 0158 212F      		mov r18,r17
+ 276 015a 30E0      		ldi r19,lo8(0)
+ 277 015c 83E1      		ldi r24,lo8(19)
+ 278 015e 90E0      		ldi r25,hi8(19)
+ 279 0160 AC01      		movw r20,r24
+ 280 0162 249F      		mul r18,r20
+ 281 0164 C001      		movw r24,r0
+ 282 0166 259F      		mul r18,r21
+ 283 0168 900D      		add r25,r0
+ 284 016a 349F      		mul r19,r20
+ 285 016c 900D      		add r25,r0
+ 286 016e 1124      		clr r1
+ 287 0170 20E0      		ldi r18,lo8(sw_wdts)
+ 288 0172 C22E      		mov r12,r18
+ 289 0174 20E0      		ldi r18,hi8(sw_wdts)
+ 290 0176 D22E      		mov r13,r18
+ 291 0178 C80E      		add r12,r24
+ 292 017a D91E      		adc r13,r25
+ 293 017c F601      		movw r30,r12
+ 294 017e 2381      		ldd r18,Z+3
+ 295 0180 3481      		ldd r19,Z+4
+ 296 0182 4581      		ldd r20,Z+5
+ 297 0184 5681      		ldd r21,Z+6
+ 298 0186 E980      		ldd r14,Y+1
+ 299 0188 FA80      		ldd r15,Y+2
+ 300 018a 0B81      		ldd r16,Y+3
+ 301 018c 1C81      		ldd r17,Y+4
+ 302 018e 2E0D      		add r18,r14
+ 303 0190 3F1D      		adc r19,r15
+ 304 0192 401F      		adc r20,r16
+ 305 0194 511F      		adc r21,r17
+ 306 0196 2387      		std Z+11,r18
+ 307 0198 3487      		std Z+12,r19
+ 308 019a 4587      		std Z+13,r20
+ 309 019c 5687      		std Z+14,r21
+ 310               	.LM26:
+ 311 019e 2781      		ldd r18,Z+7
+ 312 01a0 3085      		ldd r19,Z+8
+ 313 01a2 4185      		ldd r20,Z+9
+ 314 01a4 5285      		ldd r21,Z+10
+ 315 01a6 ED80      		ldd r14,Y+5
+ 316 01a8 FE80      		ldd r15,Y+6
+ 317 01aa 0F81      		ldd r16,Y+7
+ 318 01ac 1885      		ldd r17,Y+8
+ 319 01ae 2E0D      		add r18,r14
+ 320 01b0 3F1D      		adc r19,r15
+ 321 01b2 401F      		adc r20,r16
+ 322 01b4 511F      		adc r21,r17
+ 323 01b6 2787      		std Z+15,r18
+ 324 01b8 308B      		std Z+16,r19
+ 325 01ba 418B      		std Z+17,r20
+ 326 01bc 528B      		std Z+18,r21
+ 327               	.LM27:
+ 328 01be 8050      		subi r24,lo8(-(sw_wdts+11))
+ 329 01c0 9040      		sbci r25,hi8(-(sw_wdts+11))
+ 330 01c2 0E94 0000 		call nrk_time_compact_nanos
+ 331               	.LM28:
+ 332 01c6 81E0      		ldi r24,lo8(1)
+ 333 01c8 F601      		movw r30,r12
+ 334 01ca 8283      		std Z+2,r24
+ 335               	.L17:
+ 336               	/* epilogue start */
+ 337               	.LM29:
+ 338 01cc 2896      		adiw r28,8
+ 339 01ce 0FB6      		in __tmp_reg__,__SREG__
+ 340 01d0 F894      		cli
+ 341 01d2 DEBF      		out __SP_H__,r29
+ 342 01d4 0FBE      		out __SREG__,__tmp_reg__
+ 343 01d6 CDBF      		out __SP_L__,r28
+ 344 01d8 CF91      		pop r28
+ 345 01da DF91      		pop r29
+ 346 01dc 1F91      		pop r17
+ 347               	.LVL20:
+ 348 01de 0F91      		pop r16
+ 349 01e0 FF90      		pop r15
+ 350 01e2 EF90      		pop r14
+ 351 01e4 DF90      		pop r13
+ 352 01e6 CF90      		pop r12
+ 353 01e8 0895      		ret
+ 354               	.LFE6:
+ 356               	.global	_nrk_sw_wdt_check
+ 358               	_nrk_sw_wdt_check:
+ 359               	.LFB3:
+ 360               	.LM30:
+ 361 01ea 2F92      		push r2
+ 362 01ec 3F92      		push r3
+ 363 01ee 4F92      		push r4
+ 364 01f0 5F92      		push r5
+ 365 01f2 6F92      		push r6
+ 366 01f4 7F92      		push r7
+ 367 01f6 8F92      		push r8
+ 368 01f8 9F92      		push r9
+ 369 01fa AF92      		push r10
+ 370 01fc BF92      		push r11
+ 371 01fe CF92      		push r12
+ 372 0200 DF92      		push r13
+ 373 0202 EF92      		push r14
+ 374 0204 FF92      		push r15
+ 375 0206 0F93      		push r16
+ 376 0208 1F93      		push r17
+ 377 020a DF93      		push r29
+ 378 020c CF93      		push r28
+ 379 020e CDB7      		in r28,__SP_L__
+ 380 0210 DEB7      		in r29,__SP_H__
+ 381 0212 6097      		sbiw r28,16
+ 382 0214 0FB6      		in __tmp_reg__,__SREG__
+ 383 0216 F894      		cli
+ 384 0218 DEBF      		out __SP_H__,r29
+ 385 021a 0FBE      		out __SREG__,__tmp_reg__
+ 386 021c CDBF      		out __SP_L__,r28
+ 387               	/* prologue: function */
+ 388               	/* frame size = 16 */
+ 389               	.LM31:
+ 390 021e CE01      		movw r24,r28
+ 391 0220 0196      		adiw r24,1
+ 392 0222 0E94 0000 		call nrk_time_get
+ 393 0226 40E0      		ldi r20,lo8(sw_wdts)
+ 394 0228 442E      		mov r4,r20
+ 395 022a 40E0      		ldi r20,hi8(sw_wdts)
+ 396 022c 542E      		mov r5,r20
+ 397 022e 6624      		clr r6
+ 398 0230 7724      		clr r7
+ 399               	.LM32:
+ 400 0232 33E1      		ldi r19,lo8(19)
+ 401 0234 232E      		mov r2,r19
+ 402 0236 312C      		mov r3,__zero_reg__
+ 403               	.L22:
+ 404 0238 D201      		movw r26,r4
+ 405 023a 1296      		adiw r26,2
+ 406 023c 8C91      		ld r24,X
+ 407 023e 8130      		cpi r24,lo8(1)
+ 408 0240 01F4      		brne .L20
+ 409 0242 629C      		mul r6,r2
+ 410 0244 F001      		movw r30,r0
+ 411 0246 639C      		mul r6,r3
+ 412 0248 F00D      		add r31,r0
+ 413 024a 729C      		mul r7,r2
+ 414 024c F00D      		add r31,r0
+ 415 024e 1124      		clr r1
+ 416 0250 E050      		subi r30,lo8(-(sw_wdts+11))
+ 417 0252 F040      		sbci r31,hi8(-(sw_wdts+11))
+ 418 0254 CE01      		movw r24,r28
+ 419 0256 0996      		adiw r24,9
+ 420 0258 0081      		ld r16,Z
+ 421 025a 1181      		ldd r17,Z+1
+ 422 025c 2281      		ldd r18,Z+2
+ 423 025e 3381      		ldd r19,Z+3
+ 424 0260 4481      		ldd r20,Z+4
+ 425 0262 5581      		ldd r21,Z+5
+ 426 0264 6681      		ldd r22,Z+6
+ 427 0266 7781      		ldd r23,Z+7
+ 428 0268 8980      		ldd r8,Y+1
+ 429 026a 9A80      		ldd r9,Y+2
+ 430 026c AB80      		ldd r10,Y+3
+ 431 026e BC80      		ldd r11,Y+4
+ 432 0270 CD80      		ldd r12,Y+5
+ 433 0272 DE80      		ldd r13,Y+6
+ 434 0274 EF80      		ldd r14,Y+7
+ 435 0276 F884      		ldd r15,Y+8
+ 436 0278 0E94 0000 		call nrk_time_sub
+ 437 027c 8F3F      		cpi r24,lo8(-1)
+ 438 027e 01F4      		brne .L20
+ 439               	.LM33:
+ 440 0280 85E1      		ldi r24,lo8(21)
+ 441 0282 662D      		mov r22,r6
+ 442 0284 0E94 0000 		call nrk_kernel_error_add
+ 443               	.LM34:
+ 444 0288 D201      		movw r26,r4
+ 445 028a ED91      		ld r30,X+
+ 446 028c FC91      		ld r31,X
+ 447 028e 3097      		sbiw r30,0
+ 448 0290 01F4      		brne .L21
+ 449               	.LM35:
+ 450 0292 0E94 0000 		call nrk_halt
+ 451 0296 00C0      		rjmp .L20
+ 452               	.L21:
+ 453               	.LM36:
+ 454 0298 0995      		icall
+ 455               	.L20:
+ 456 029a 0894      		sec
+ 457 029c 611C      		adc r6,__zero_reg__
+ 458 029e 711C      		adc r7,__zero_reg__
+ 459 02a0 E3E1      		ldi r30,lo8(19)
+ 460 02a2 F0E0      		ldi r31,hi8(19)
+ 461 02a4 4E0E      		add r4,r30
+ 462 02a6 5F1E      		adc r5,r31
+ 463               	.LM37:
+ 464 02a8 F3E0      		ldi r31,lo8(3)
+ 465 02aa 6F16      		cp r6,r31
+ 466 02ac 7104      		cpc r7,__zero_reg__
+ 467 02ae 01F4      		brne .L22
+ 468               	/* epilogue start */
+ 469               	.LM38:
+ 470 02b0 6096      		adiw r28,16
+ 471 02b2 0FB6      		in __tmp_reg__,__SREG__
+ 472 02b4 F894      		cli
+ 473 02b6 DEBF      		out __SP_H__,r29
+ 474 02b8 0FBE      		out __SREG__,__tmp_reg__
+ 475 02ba CDBF      		out __SP_L__,r28
+ 476 02bc CF91      		pop r28
+ 477 02be DF91      		pop r29
+ 478 02c0 1F91      		pop r17
+ 479 02c2 0F91      		pop r16
+ 480 02c4 FF90      		pop r15
+ 481 02c6 EF90      		pop r14
+ 482 02c8 DF90      		pop r13
+ 483 02ca CF90      		pop r12
+ 484 02cc BF90      		pop r11
+ 485 02ce AF90      		pop r10
+ 486 02d0 9F90      		pop r9
+ 487 02d2 8F90      		pop r8
+ 488 02d4 7F90      		pop r7
+ 489 02d6 6F90      		pop r6
+ 490 02d8 5F90      		pop r5
+ 491 02da 4F90      		pop r4
+ 492 02dc 3F90      		pop r3
+ 493 02de 2F90      		pop r2
+ 494 02e0 0895      		ret
+ 495               	.LFE3:
+ 497               		.comm _nrk_signal_list,4,1
+ 498               		.comm nrk_idle_task_stk,128,1
+ 499               		.comm nrk_kernel_stk_ptr,2,1
+ 500               		.comm error_task,1,1
+ 501               		.comm error_num,1,1
+ 502               		.comm sw_wdts,57,1
+ 567               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 nrk_sw_wdt.c
+C:\cygwin\tmp/cc3rcLUG.s:2      *ABS*:0000003f __SREG__
+C:\cygwin\tmp/cc3rcLUG.s:3      *ABS*:0000003e __SP_H__
+C:\cygwin\tmp/cc3rcLUG.s:4      *ABS*:0000003d __SP_L__
+C:\cygwin\tmp/cc3rcLUG.s:5      *ABS*:00000034 __CCP__
+C:\cygwin\tmp/cc3rcLUG.s:6      *ABS*:00000000 __tmp_reg__
+C:\cygwin\tmp/cc3rcLUG.s:7      *ABS*:00000001 __zero_reg__
+C:\cygwin\tmp/cc3rcLUG.s:18     .text:00000000 _nrk_sw_wdt_init
+                            *COM*:00000039 sw_wdts
+C:\cygwin\tmp/cc3rcLUG.s:34     .text:0000000e nrk_sw_wdt_init
+C:\cygwin\tmp/cc3rcLUG.s:101    .text:00000064 nrk_sw_wdt_stop
+C:\cygwin\tmp/cc3rcLUG.s:139    .text:0000008c nrk_sw_wdt_start
+C:\cygwin\tmp/cc3rcLUG.s:238    .text:00000126 nrk_sw_wdt_update
+C:\cygwin\tmp/cc3rcLUG.s:358    .text:000001ea _nrk_sw_wdt_check
+                            *COM*:00000004 _nrk_signal_list
+                            *COM*:00000080 nrk_idle_task_stk
+                            *COM*:00000002 nrk_kernel_stk_ptr
+                            *COM*:00000001 error_task
+                            *COM*:00000001 error_num
+
+UNDEFINED SYMBOLS
+nrk_time_get
+nrk_time_compact_nanos
+nrk_time_sub
+nrk_kernel_error_add
+nrk_halt
+__do_clear_bss

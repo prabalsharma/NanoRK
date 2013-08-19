@@ -1,0 +1,317 @@
+   1               		.file	"mda100_driver.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	mda100_init
+  18               	mda100_init:
+  19               	.LFB4:
+  20               	.LM1:
+  21               	/* prologue: function */
+  22               	/* frame size = 0 */
+  23               	.LM2:
+  24 0000 0E94 0000 		call adc_init
+  25               	.LM3:
+  26 0004 81E0      		ldi r24,lo8(1)
+  27 0006 8093 0000 		sts mda100_initDone,r24
+  28               	/* epilogue start */
+  29               	.LM4:
+  30 000a 0895      		ret
+  31               	.LFE4:
+  33               	.global	mda100_TemperatureSensor_Power
+  35               	mda100_TemperatureSensor_Power:
+  36               	.LFB7:
+  37               	.LM5:
+  38               	.LVL0:
+  39 000c 1F93      		push r17
+  40               	/* prologue: function */
+  41               	/* frame size = 0 */
+  42 000e 182F      		mov r17,r24
+  43               	.LM6:
+  44 0010 8091 0000 		lds r24,mda100_initDone
+  45               	.LVL1:
+  46 0014 8823      		tst r24
+  47 0016 01F4      		brne .L4
+  48 0018 0E94 0000 		call mda100_init
+  49               	.L4:
+  50               	.LM7:
+  51 001c 1D98      		cbi 35-32,5
+  52               	.LM8:
+  53 001e 1598      		cbi 34-32,5
+  54               	.LM9:
+  55 0020 1130      		cpi r17,lo8(1)
+  56 0022 01F4      		brne .L5
+  57               	.LM10:
+  58 0024 A89A      		sbi 53-32,0
+  59               	.LM11:
+  60 0026 A09A      		sbi 52-32,0
+  61 0028 00C0      		rjmp .L7
+  62               	.L5:
+  63               	.LM12:
+  64 002a A898      		cbi 53-32,0
+  65               	.LM13:
+  66 002c A098      		cbi 52-32,0
+  67               	.L7:
+  68               	/* epilogue start */
+  69               	.LM14:
+  70 002e 1F91      		pop r17
+  71               	.LVL2:
+  72 0030 0895      		ret
+  73               	.LFE7:
+  75               	.global	mda100_TemperatureSensor_GetCounts
+  77               	mda100_TemperatureSensor_GetCounts:
+  78               	.LFB9:
+  79               	.LM15:
+  80               	/* prologue: function */
+  81               	/* frame size = 0 */
+  82               	.LM16:
+  83 0032 8091 0000 		lds r24,mda100_initDone
+  84 0036 8823      		tst r24
+  85 0038 01F4      		brne .L9
+  86 003a 0E94 0000 		call mda100_init
+  87               	.L9:
+  88               	.LM17:
+  89 003e 81E0      		ldi r24,lo8(1)
+  90 0040 0E94 0000 		call mda100_TemperatureSensor_Power
+  91               	.LM18:
+  92 0044 81E0      		ldi r24,lo8(1)
+  93 0046 0E94 0000 		call adc_GetChannel
+  94               	/* epilogue start */
+  95               	.LM19:
+  96 004a 0895      		ret
+  97               	.LFE9:
+  99               	.global	mda100_TemperatureSensor_GetKelvin
+ 101               	mda100_TemperatureSensor_GetKelvin:
+ 102               	.LFB10:
+ 103               	.LM20:
+ 104 004c AF92      		push r10
+ 105 004e BF92      		push r11
+ 106 0050 CF92      		push r12
+ 107 0052 DF92      		push r13
+ 108 0054 EF92      		push r14
+ 109 0056 FF92      		push r15
+ 110 0058 0F93      		push r16
+ 111 005a 1F93      		push r17
+ 112               	/* prologue: function */
+ 113               	/* frame size = 0 */
+ 114               	.LM21:
+ 115 005c 0E94 0000 		call mda100_TemperatureSensor_GetCounts
+ 116 0060 A0E0      		ldi r26,lo8(0)
+ 117 0062 B0E0      		ldi r27,hi8(0)
+ 118 0064 BC01      		movw r22,r24
+ 119 0066 CD01      		movw r24,r26
+ 120 0068 0E94 0000 		call __floatunsisf
+ 121 006c 7B01      		movw r14,r22
+ 122 006e 8C01      		movw r16,r24
+ 123               	.LM22:
+ 124 0070 60E0      		ldi r22,lo8(0x447fc000)
+ 125 0072 70EC      		ldi r23,hi8(0x447fc000)
+ 126 0074 8FE7      		ldi r24,hlo8(0x447fc000)
+ 127 0076 94E4      		ldi r25,hhi8(0x447fc000)
+ 128 0078 A801      		movw r20,r16
+ 129 007a 9701      		movw r18,r14
+ 130 007c 0E94 0000 		call __subsf3
+ 131 0080 20E0      		ldi r18,lo8(0x461c4000)
+ 132 0082 30E4      		ldi r19,hi8(0x461c4000)
+ 133 0084 4CE1      		ldi r20,hlo8(0x461c4000)
+ 134 0086 56E4      		ldi r21,hhi8(0x461c4000)
+ 135 0088 0E94 0000 		call __mulsf3
+ 136 008c A801      		movw r20,r16
+ 137 008e 9701      		movw r18,r14
+ 138 0090 0E94 0000 		call __divsf3
+ 139 0094 0E94 0000 		call log
+ 140 0098 5B01      		movw r10,r22
+ 141 009a 6C01      		movw r12,r24
+ 142               	.LVL3:
+ 143               	.LM23:
+ 144 009c 20E0      		ldi r18,lo8(0x40400000)
+ 145 009e 30E0      		ldi r19,hi8(0x40400000)
+ 146 00a0 40E4      		ldi r20,hlo8(0x40400000)
+ 147 00a2 50E4      		ldi r21,hhi8(0x40400000)
+ 148 00a4 0E94 0000 		call pow
+ 149 00a8 7B01      		movw r14,r22
+ 150 00aa 8C01      		movw r16,r24
+ 151 00ac C601      		movw r24,r12
+ 152 00ae B501      		movw r22,r10
+ 153 00b0 29E7      		ldi r18,lo8(0x397de379)
+ 154 00b2 33EE      		ldi r19,hi8(0x397de379)
+ 155 00b4 4DE7      		ldi r20,hlo8(0x397de379)
+ 156 00b6 59E3      		ldi r21,hhi8(0x397de379)
+ 157 00b8 0E94 0000 		call __mulsf3
+ 158 00bc 28EC      		ldi r18,lo8(0x3a8462c8)
+ 159 00be 32E6      		ldi r19,hi8(0x3a8462c8)
+ 160 00c0 44E8      		ldi r20,hlo8(0x3a8462c8)
+ 161 00c2 5AE3      		ldi r21,hhi8(0x3a8462c8)
+ 162 00c4 0E94 0000 		call __addsf3
+ 163 00c8 5B01      		movw r10,r22
+ 164 00ca 6C01      		movw r12,r24
+ 165               	.LVL4:
+ 166 00cc C801      		movw r24,r16
+ 167 00ce B701      		movw r22,r14
+ 168               	.LVL5:
+ 169 00d0 2DE2      		ldi r18,lo8(0x341cc42d)
+ 170 00d2 34EC      		ldi r19,hi8(0x341cc42d)
+ 171 00d4 4CE1      		ldi r20,hlo8(0x341cc42d)
+ 172 00d6 54E3      		ldi r21,hhi8(0x341cc42d)
+ 173 00d8 0E94 0000 		call __mulsf3
+ 174 00dc 9B01      		movw r18,r22
+ 175 00de AC01      		movw r20,r24
+ 176 00e0 C601      		movw r24,r12
+ 177 00e2 B501      		movw r22,r10
+ 178 00e4 0E94 0000 		call __addsf3
+ 179 00e8 9B01      		movw r18,r22
+ 180 00ea AC01      		movw r20,r24
+ 181 00ec 60E0      		ldi r22,lo8(0x3f800000)
+ 182 00ee 70E0      		ldi r23,hi8(0x3f800000)
+ 183 00f0 80E8      		ldi r24,hlo8(0x3f800000)
+ 184 00f2 9FE3      		ldi r25,hhi8(0x3f800000)
+ 185 00f4 0E94 0000 		call __divsf3
+ 186               	/* epilogue start */
+ 187               	.LM24:
+ 188 00f8 1F91      		pop r17
+ 189 00fa 0F91      		pop r16
+ 190 00fc FF90      		pop r15
+ 191 00fe EF90      		pop r14
+ 192               	.LVL6:
+ 193 0100 DF90      		pop r13
+ 194 0102 CF90      		pop r12
+ 195 0104 BF90      		pop r11
+ 196 0106 AF90      		pop r10
+ 197 0108 0895      		ret
+ 198               	.LFE10:
+ 200               	.global	mda100_TemperatureSensor_GetDegreeCelsius
+ 202               	mda100_TemperatureSensor_GetDegreeCelsius:
+ 203               	.LFB11:
+ 204               	.LM25:
+ 205               	/* prologue: function */
+ 206               	/* frame size = 0 */
+ 207               	.LM26:
+ 208 010a 0E94 0000 		call mda100_TemperatureSensor_GetKelvin
+ 209 010e 23E3      		ldi r18,lo8(0x43889333)
+ 210 0110 33E9      		ldi r19,hi8(0x43889333)
+ 211 0112 48E8      		ldi r20,hlo8(0x43889333)
+ 212 0114 53E4      		ldi r21,hhi8(0x43889333)
+ 213 0116 0E94 0000 		call __subsf3
+ 214               	/* epilogue start */
+ 215               	.LM27:
+ 216 011a 0895      		ret
+ 217               	.LFE11:
+ 219               	.global	mda100_LightSensor_Power
+ 221               	mda100_LightSensor_Power:
+ 222               	.LFB6:
+ 223               	.LM28:
+ 224               	.LVL7:
+ 225 011c 1F93      		push r17
+ 226               	/* prologue: function */
+ 227               	/* frame size = 0 */
+ 228 011e 182F      		mov r17,r24
+ 229               	.LM29:
+ 230 0120 8091 0000 		lds r24,mda100_initDone
+ 231               	.LVL8:
+ 232 0124 8823      		tst r24
+ 233 0126 01F4      		brne .L16
+ 234 0128 0E94 0000 		call mda100_init
+ 235               	.L16:
+ 236               	.LM30:
+ 237 012c A898      		cbi 53-32,0
+ 238               	.LM31:
+ 239 012e A098      		cbi 52-32,0
+ 240               	.LM32:
+ 241 0130 1130      		cpi r17,lo8(1)
+ 242 0132 01F4      		brne .L17
+ 243               	.LM33:
+ 244 0134 1D9A      		sbi 35-32,5
+ 245               	.LM34:
+ 246 0136 159A      		sbi 34-32,5
+ 247 0138 00C0      		rjmp .L19
+ 248               	.L17:
+ 249               	.LM35:
+ 250 013a 1D98      		cbi 35-32,5
+ 251               	.LM36:
+ 252 013c 1598      		cbi 34-32,5
+ 253               	.L19:
+ 254               	/* epilogue start */
+ 255               	.LM37:
+ 256 013e 1F91      		pop r17
+ 257               	.LVL9:
+ 258 0140 0895      		ret
+ 259               	.LFE6:
+ 261               	.global	mda100_LightSensor_GetCounts
+ 263               	mda100_LightSensor_GetCounts:
+ 264               	.LFB8:
+ 265               	.LM38:
+ 266               	/* prologue: function */
+ 267               	/* frame size = 0 */
+ 268               	.LM39:
+ 269 0142 8091 0000 		lds r24,mda100_initDone
+ 270 0146 8823      		tst r24
+ 271 0148 01F4      		brne .L21
+ 272 014a 0E94 0000 		call mda100_init
+ 273               	.L21:
+ 274               	.LM40:
+ 275 014e 81E0      		ldi r24,lo8(1)
+ 276 0150 0E94 0000 		call mda100_LightSensor_Power
+ 277               	.LM41:
+ 278 0154 81E0      		ldi r24,lo8(1)
+ 279 0156 0E94 0000 		call adc_GetChannel
+ 280               	/* epilogue start */
+ 281               	.LM42:
+ 282 015a 0895      		ret
+ 283               	.LFE8:
+ 285               	.global	mda100_Powersave
+ 287               	mda100_Powersave:
+ 288               	.LFB5:
+ 289               	.LM43:
+ 290               	/* prologue: function */
+ 291               	/* frame size = 0 */
+ 292               	.LM44:
+ 293 015c 8091 0000 		lds r24,mda100_initDone
+ 294 0160 8823      		tst r24
+ 295 0162 01F4      		brne .L24
+ 296 0164 0E94 0000 		call mda100_init
+ 297               	.L24:
+ 298               	.LM45:
+ 299 0168 0E94 0000 		call adc_Powersave
+ 300               	/* epilogue start */
+ 301               	.LM46:
+ 302 016c 0895      		ret
+ 303               	.LFE5:
+ 305               	.global	mda100_initDone
+ 306               	.global	mda100_initDone
+ 307               		.section .bss
+ 310               	mda100_initDone:
+ 311 0000 00        		.skip 1,0
+ 392               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 mda100_driver.c
+C:\cygwin\tmp/ccr76sUf.s:2      *ABS*:0000003f __SREG__
+C:\cygwin\tmp/ccr76sUf.s:3      *ABS*:0000003e __SP_H__
+C:\cygwin\tmp/ccr76sUf.s:4      *ABS*:0000003d __SP_L__
+C:\cygwin\tmp/ccr76sUf.s:5      *ABS*:00000034 __CCP__
+C:\cygwin\tmp/ccr76sUf.s:6      *ABS*:00000000 __tmp_reg__
+C:\cygwin\tmp/ccr76sUf.s:7      *ABS*:00000001 __zero_reg__
+C:\cygwin\tmp/ccr76sUf.s:18     .text:00000000 mda100_init
+C:\cygwin\tmp/ccr76sUf.s:310    .bss:00000000 mda100_initDone
+C:\cygwin\tmp/ccr76sUf.s:35     .text:0000000c mda100_TemperatureSensor_Power
+C:\cygwin\tmp/ccr76sUf.s:77     .text:00000032 mda100_TemperatureSensor_GetCounts
+C:\cygwin\tmp/ccr76sUf.s:101    .text:0000004c mda100_TemperatureSensor_GetKelvin
+C:\cygwin\tmp/ccr76sUf.s:202    .text:0000010a mda100_TemperatureSensor_GetDegreeCelsius
+C:\cygwin\tmp/ccr76sUf.s:221    .text:0000011c mda100_LightSensor_Power
+C:\cygwin\tmp/ccr76sUf.s:263    .text:00000142 mda100_LightSensor_GetCounts
+C:\cygwin\tmp/ccr76sUf.s:287    .text:0000015c mda100_Powersave
+
+UNDEFINED SYMBOLS
+adc_init
+adc_GetChannel
+__floatunsisf
+__subsf3
+__mulsf3
+__divsf3
+log
+pow
+__addsf3
+adc_Powersave
+__do_clear_bss

@@ -1,0 +1,129 @@
+   1               		.file	"nrk_ext_int.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	nrk_ext_int_enable
+  18               	nrk_ext_int_enable:
+  19               	.LFB3:
+  20               	.LM1:
+  21               	.LVL0:
+  22               	/* prologue: function */
+  23               	/* frame size = 0 */
+  24               	.LM2:
+  25 0000 8FEF      		ldi r24,lo8(-1)
+  26               	.LVL1:
+  27               	/* epilogue start */
+  28 0002 0895      		ret
+  29               	.LFE3:
+  31               	.global	nrk_ext_int_disable
+  33               	nrk_ext_int_disable:
+  34               	.LFB4:
+  35               	.LM3:
+  36               	.LVL2:
+  37               	/* prologue: function */
+  38               	/* frame size = 0 */
+  39               	.LM4:
+  40 0004 8FEF      		ldi r24,lo8(-1)
+  41               	.LVL3:
+  42               	/* epilogue start */
+  43 0006 0895      		ret
+  44               	.LFE4:
+  46               	.global	nrk_ext_int_configure
+  48               	nrk_ext_int_configure:
+  49               	.LFB5:
+  50               	.LM5:
+  51               	.LVL4:
+  52               	/* prologue: function */
+  53               	/* frame size = 0 */
+  54               	.LM6:
+  55 0008 8FEF      		ldi r24,lo8(-1)
+  56               	.LVL5:
+  57               	/* epilogue start */
+  58 000a 0895      		ret
+  59               	.LFE5:
+  61               	.global	__vector_1
+  63               	__vector_1:
+  64               	.LFB6:
+  65               	.LM7:
+  66 000c 1F92      		push __zero_reg__
+  67 000e 0F92      		push r0
+  68 0010 0FB6      		in r0,__SREG__
+  69 0012 0F92      		push r0
+  70 0014 0BB6      		in r0,91-32
+  71 0016 0F92      		push r0
+  72 0018 1124      		clr __zero_reg__
+  73 001a 2F93      		push r18
+  74 001c 3F93      		push r19
+  75 001e 4F93      		push r20
+  76 0020 5F93      		push r21
+  77 0022 6F93      		push r22
+  78 0024 7F93      		push r23
+  79 0026 8F93      		push r24
+  80 0028 9F93      		push r25
+  81 002a AF93      		push r26
+  82 002c BF93      		push r27
+  83 002e EF93      		push r30
+  84 0030 FF93      		push r31
+  85               	/* prologue: Signal */
+  86               	/* frame size = 0 */
+  87               	.LM8:
+  88 0032 8AE0      		ldi r24,lo8(10)
+  89 0034 60E0      		ldi r22,lo8(0)
+  90 0036 0E94 0000 		call nrk_kernel_error_add
+  91               	/* epilogue start */
+  92               	.LM9:
+  93 003a FF91      		pop r31
+  94 003c EF91      		pop r30
+  95 003e BF91      		pop r27
+  96 0040 AF91      		pop r26
+  97 0042 9F91      		pop r25
+  98 0044 8F91      		pop r24
+  99 0046 7F91      		pop r23
+ 100 0048 6F91      		pop r22
+ 101 004a 5F91      		pop r21
+ 102 004c 4F91      		pop r20
+ 103 004e 3F91      		pop r19
+ 104 0050 2F91      		pop r18
+ 105 0052 0F90      		pop r0
+ 106 0054 0BBE      		out 91-32,r0
+ 107 0056 0F90      		pop r0
+ 108 0058 0FBE      		out __SREG__,r0
+ 109 005a 0F90      		pop r0
+ 110 005c 1F90      		pop __zero_reg__
+ 111 005e 1895      		reti
+ 112               	.LFE6:
+ 114               		.comm _nrk_signal_list,4,1
+ 115               		.comm ext_int0_callback,2,1
+ 116               		.comm ext_int1_callback,2,1
+ 117               		.comm ext_int2_callback,2,1
+ 118               		.comm pc_int0_callback,2,1
+ 119               		.comm error_task,1,1
+ 120               		.comm error_num,1,1
+ 169               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 nrk_ext_int.c
+C:\cygwin\tmp/ccqXrpME.s:2      *ABS*:0000003f __SREG__
+C:\cygwin\tmp/ccqXrpME.s:3      *ABS*:0000003e __SP_H__
+C:\cygwin\tmp/ccqXrpME.s:4      *ABS*:0000003d __SP_L__
+C:\cygwin\tmp/ccqXrpME.s:5      *ABS*:00000034 __CCP__
+C:\cygwin\tmp/ccqXrpME.s:6      *ABS*:00000000 __tmp_reg__
+C:\cygwin\tmp/ccqXrpME.s:7      *ABS*:00000001 __zero_reg__
+C:\cygwin\tmp/ccqXrpME.s:18     .text:00000000 nrk_ext_int_enable
+C:\cygwin\tmp/ccqXrpME.s:33     .text:00000004 nrk_ext_int_disable
+C:\cygwin\tmp/ccqXrpME.s:48     .text:00000008 nrk_ext_int_configure
+C:\cygwin\tmp/ccqXrpME.s:63     .text:0000000c __vector_1
+                            *COM*:00000004 _nrk_signal_list
+                            *COM*:00000002 ext_int0_callback
+                            *COM*:00000002 ext_int1_callback
+                            *COM*:00000002 ext_int2_callback
+                            *COM*:00000002 pc_int0_callback
+                            *COM*:00000001 error_task
+                            *COM*:00000001 error_num
+
+UNDEFINED SYMBOLS
+nrk_kernel_error_add
+__do_clear_bss

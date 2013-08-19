@@ -1,0 +1,795 @@
+   1               		.file	"nrk_timer.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	nrk_spin_wait_us
+  18               	nrk_spin_wait_us:
+  19               	.LFB3:
+  20               	.LM1:
+  21               	/* prologue: function */
+  22               	/* frame size = 0 */
+  23               	.LVL0:
+  24               	.L2:
+  25               	.LM2:
+  26               	/* #APP */
+  27               	 ;  41 "../../../src/kernel/hal/atmega128/nrk_timer.c" 1
+  28 0000 0000      		nop
+  29               		
+  30               	 ;  0 "" 2
+  31               	.LM3:
+  32               	 ;  42 "../../../src/kernel/hal/atmega128/nrk_timer.c" 1
+  33 0002 0000      		nop
+  34               		
+  35               	 ;  0 "" 2
+  36               	.LM4:
+  37               	 ;  43 "../../../src/kernel/hal/atmega128/nrk_timer.c" 1
+  38 0004 0000      		nop
+  39               		
+  40               	 ;  0 "" 2
+  41               	.LM5:
+  42               	 ;  44 "../../../src/kernel/hal/atmega128/nrk_timer.c" 1
+  43 0006 0000      		nop
+  44               		
+  45               	 ;  0 "" 2
+  46               	.LM6:
+  47               	/* #NOAPP */
+  48 0008 0197      		sbiw r24,1
+  49               	.LVL1:
+  50 000a 01F4      		brne .L2
+  51               	/* epilogue start */
+  52               	.LM7:
+  53 000c 0895      		ret
+  54               	.LFE3:
+  56               	.global	_nrk_setup_timer
+  58               	_nrk_setup_timer:
+  59               	.LFB4:
+  60               	.LM8:
+  61               	/* prologue: function */
+  62               	/* frame size = 0 */
+  63               	.LM9:
+  64 000e 88E0      		ldi r24,lo8(8)
+  65 0010 80BF      		out 80-32,r24
+  66               	.LM10:
+  67 0012 8EEF      		ldi r24,lo8(-2)
+  68 0014 81BF      		out 81-32,r24
+  69               	.LM11:
+  70 0016 83E0      		ldi r24,lo8(3)
+  71 0018 86BF      		out 86-32,r24
+  72               	.LM12:
+  73 001a 9BE0      		ldi r25,lo8(11)
+  74 001c 93BF      		out 83-32,r25
+  75               	.LM13:
+  76 001e 80B5      		in r24,64-32
+  77 0020 8760      		ori r24,lo8(7)
+  78 0022 80BD      		out 64-32,r24
+  79               	.LM14:
+  80 0024 1FBC      		out 79-32,__zero_reg__
+  81               	.LM15:
+  82 0026 81E0      		ldi r24,lo8(1)
+  83 0028 8EBD      		out 78-32,r24
+  84               	.LM16:
+  85 002a 1DBC      		out (76)+1-32,__zero_reg__
+  86 002c 1CBC      		out 76-32,__zero_reg__
+  87               	.LM17:
+  88 002e 80B5      		in r24,64-32
+  89 0030 8160      		ori r24,lo8(1)
+  90 0032 80BD      		out 64-32,r24
+  91               	.LBB10:
+  92               	.LBB11:
+  93               	.LM18:
+  94 0034 80B5      		in r24,64-32
+  95 0036 8260      		ori r24,lo8(2)
+  96 0038 80BD      		out 64-32,r24
+  97               	.LM19:
+  98 003a 12BE      		out 82-32,__zero_reg__
+  99               	.LM20:
+ 100 003c 1092 0000 		sts _nrk_prev_timer_val,__zero_reg__
+ 101               	.LBE11:
+ 102               	.LBE10:
+ 103               	.LBB12:
+ 104               	.LBB13:
+ 105               	.LM21:
+ 106 0040 93BF      		out 83-32,r25
+ 107               	.LM22:
+ 108 0042 87B7      		in r24,87-32
+ 109 0044 8360      		ori r24,lo8(3)
+ 110 0046 87BF      		out 87-32,r24
+ 111               	.LBE13:
+ 112               	.LBE12:
+ 113               	.LM23:
+ 114 0048 1092 0000 		sts _nrk_time_trigger,__zero_reg__
+ 115               	/* epilogue start */
+ 116               	.LM24:
+ 117 004c 0895      		ret
+ 118               	.LFE4:
+ 120               	.global	_nrk_high_speed_timer_stop
+ 122               	_nrk_high_speed_timer_stop:
+ 123               	.LFB5:
+ 124               	.LM25:
+ 125               	/* prologue: function */
+ 126               	/* frame size = 0 */
+ 127               	.LM26:
+ 128 004e 1EBC      		out 78-32,__zero_reg__
+ 129               	/* epilogue start */
+ 130               	.LM27:
+ 131 0050 0895      		ret
+ 132               	.LFE5:
+ 134               	.global	_nrk_high_speed_timer_start
+ 136               	_nrk_high_speed_timer_start:
+ 137               	.LFB6:
+ 138               	.LM28:
+ 139               	/* prologue: function */
+ 140               	/* frame size = 0 */
+ 141               	.LM29:
+ 142 0052 81E0      		ldi r24,lo8(1)
+ 143 0054 8EBD      		out 78-32,r24
+ 144               	/* epilogue start */
+ 145               	.LM30:
+ 146 0056 0895      		ret
+ 147               	.LFE6:
+ 149               	.global	_nrk_high_speed_timer_reset
+ 151               	_nrk_high_speed_timer_reset:
+ 152               	.LFB7:
+ 153               	.LM31:
+ 154               	/* prologue: function */
+ 155               	/* frame size = 0 */
+ 156               	.LM32:
+ 157 0058 80B5      		in r24,64-32
+ 158 005a 8160      		ori r24,lo8(1)
+ 159 005c 80BD      		out 64-32,r24
+ 160               	.LM33:
+ 161 005e 1DBC      		out (76)+1-32,__zero_reg__
+ 162 0060 1CBC      		out 76-32,__zero_reg__
+ 163               	/* epilogue start */
+ 164               	.LM34:
+ 165 0062 0895      		ret
+ 166               	.LFE7:
+ 168               	.global	nrk_high_speed_timer_wait
+ 170               	nrk_high_speed_timer_wait:
+ 171               	.LFB8:
+ 172               	.LM35:
+ 173               	.LVL2:
+ 174 0064 DF93      		push r29
+ 175 0066 CF93      		push r28
+ 176 0068 00D0      		rcall .
+ 177 006a CDB7      		in r28,__SP_L__
+ 178 006c DEB7      		in r29,__SP_H__
+ 179               	/* prologue: function */
+ 180               	/* frame size = 2 */
+ 181 006e FC01      		movw r30,r24
+ 182               	.LM36:
+ 183 0070 8FEF      		ldi r24,hi8(-135)
+ 184 0072 E937      		cpi r30,lo8(-135)
+ 185 0074 F807      		cpc r31,r24
+ 186               	.LVL3:
+ 187 0076 00F0      		brlo .L14
+ 188 0078 E0E0      		ldi r30,lo8(0)
+ 189 007a F0E0      		ldi r31,hi8(0)
+ 190               	.L14:
+ 191               	.LM37:
+ 192 007c 9F01      		movw r18,r30
+ 193               	.LVL4:
+ 194 007e 40E0      		ldi r20,lo8(0)
+ 195 0080 50E0      		ldi r21,hi8(0)
+ 196               	.LVL5:
+ 197 0082 CB01      		movw r24,r22
+ 198 0084 A0E0      		ldi r26,lo8(0)
+ 199 0086 B0E0      		ldi r27,hi8(0)
+ 200               	.LVL6:
+ 201 0088 280F      		add r18,r24
+ 202 008a 391F      		adc r19,r25
+ 203 008c 4A1F      		adc r20,r26
+ 204 008e 5B1F      		adc r21,r27
+ 205               	.LVL7:
+ 206               	.LM38:
+ 207 0090 2130      		cpi r18,lo8(65537)
+ 208 0092 80E0      		ldi r24,hi8(65537)
+ 209 0094 3807      		cpc r19,r24
+ 210 0096 81E0      		ldi r24,hlo8(65537)
+ 211 0098 4807      		cpc r20,r24
+ 212 009a 80E0      		ldi r24,hhi8(65537)
+ 213 009c 5807      		cpc r21,r24
+ 214 009e 00F0      		brlo .L17
+ 215               	.L19:
+ 216               	.LBB14:
+ 217               	.LBB15:
+ 218               	.LM39:
+ 219 00a0 8CB5      		in r24,76-32
+ 220 00a2 9DB5      		in r25,(76)+1-32
+ 221 00a4 9A83      		std Y+2,r25
+ 222 00a6 8983      		std Y+1,r24
+ 223               	.LVL8:
+ 224               	.LM40:
+ 225 00a8 8981      		ldd r24,Y+1
+ 226 00aa 9A81      		ldd r25,Y+2
+ 227               	.LBE15:
+ 228               	.LBE14:
+ 229               	.LM41:
+ 230 00ac E817      		cp r30,r24
+ 231 00ae F907      		cpc r31,r25
+ 232 00b0 00F0      		brlo .L19
+ 233               	.LM42:
+ 234 00b2 2050      		subi r18,lo8(-(-65536))
+ 235 00b4 3040      		sbci r19,hi8(-(-65536))
+ 236 00b6 4140      		sbci r20,hlo8(-(-65536))
+ 237 00b8 5040      		sbci r21,hhi8(-(-65536))
+ 238               	.L17:
+ 239               	.LBB16:
+ 240               	.LBB17:
+ 241               	.LM43:
+ 242 00ba 8CB5      		in r24,76-32
+ 243 00bc 9DB5      		in r25,(76)+1-32
+ 244 00be 9A83      		std Y+2,r25
+ 245 00c0 8983      		std Y+1,r24
+ 246               	.LVL9:
+ 247               	.LM44:
+ 248 00c2 8981      		ldd r24,Y+1
+ 249 00c4 9A81      		ldd r25,Y+2
+ 250               	.LBE17:
+ 251               	.LBE16:
+ 252               	.LM45:
+ 253 00c6 8217      		cp r24,r18
+ 254 00c8 9307      		cpc r25,r19
+ 255 00ca 00F0      		brlo .L17
+ 256               	.LVL10:
+ 257               	/* epilogue start */
+ 258               	.LM46:
+ 259 00cc 0F90      		pop __tmp_reg__
+ 260 00ce 0F90      		pop __tmp_reg__
+ 261 00d0 CF91      		pop r28
+ 262 00d2 DF91      		pop r29
+ 263 00d4 0895      		ret
+ 264               	.LFE8:
+ 266               	.global	_nrk_high_speed_timer_get
+ 268               	_nrk_high_speed_timer_get:
+ 269               	.LFB9:
+ 270               	.LM47:
+ 271 00d6 DF93      		push r29
+ 272 00d8 CF93      		push r28
+ 273 00da 00D0      		rcall .
+ 274 00dc CDB7      		in r28,__SP_L__
+ 275 00de DEB7      		in r29,__SP_H__
+ 276               	/* prologue: function */
+ 277               	/* frame size = 2 */
+ 278               	.LM48:
+ 279 00e0 8CB5      		in r24,76-32
+ 280 00e2 9DB5      		in r25,(76)+1-32
+ 281               	.LVL11:
+ 282 00e4 9A83      		std Y+2,r25
+ 283 00e6 8983      		std Y+1,r24
+ 284               	.LM49:
+ 285 00e8 2981      		ldd r18,Y+1
+ 286 00ea 3A81      		ldd r19,Y+2
+ 287               	.LM50:
+ 288 00ec C901      		movw r24,r18
+ 289               	.LVL12:
+ 290               	/* epilogue start */
+ 291 00ee 0F90      		pop __tmp_reg__
+ 292 00f0 0F90      		pop __tmp_reg__
+ 293 00f2 CF91      		pop r28
+ 294 00f4 DF91      		pop r29
+ 295 00f6 0895      		ret
+ 296               	.LFE9:
+ 298               	.global	_nrk_os_timer_set
+ 300               	_nrk_os_timer_set:
+ 301               	.LFB10:
+ 302               	.LM51:
+ 303               	.LVL13:
+ 304               	/* prologue: function */
+ 305               	/* frame size = 0 */
+ 306               	.LM52:
+ 307 00f8 82BF      		out 82-32,r24
+ 308               	/* epilogue start */
+ 309               	.LM53:
+ 310 00fa 0895      		ret
+ 311               	.LFE10:
+ 313               	.global	_nrk_os_timer_stop
+ 315               	_nrk_os_timer_stop:
+ 316               	.LFB11:
+ 317               	.LM54:
+ 318               	/* prologue: function */
+ 319               	/* frame size = 0 */
+ 320               	.LM55:
+ 321 00fc 13BE      		out 83-32,__zero_reg__
+ 322               	.LM56:
+ 323 00fe 87B7      		in r24,87-32
+ 324 0100 8D7F      		andi r24,lo8(-3)
+ 325 0102 87BF      		out 87-32,r24
+ 326               	.LM57:
+ 327 0104 87B7      		in r24,87-32
+ 328 0106 8E7F      		andi r24,lo8(-2)
+ 329 0108 87BF      		out 87-32,r24
+ 330               	/* epilogue start */
+ 331               	.LM58:
+ 332 010a 0895      		ret
+ 333               	.LFE11:
+ 335               	.global	_nrk_os_timer_start
+ 337               	_nrk_os_timer_start:
+ 338               	.LFB12:
+ 339               	.LM59:
+ 340               	/* prologue: function */
+ 341               	/* frame size = 0 */
+ 342               	.LM60:
+ 343 010c 8BE0      		ldi r24,lo8(11)
+ 344 010e 83BF      		out 83-32,r24
+ 345               	.LM61:
+ 346 0110 87B7      		in r24,87-32
+ 347 0112 8360      		ori r24,lo8(3)
+ 348 0114 87BF      		out 87-32,r24
+ 349               	/* epilogue start */
+ 350               	.LM62:
+ 351 0116 0895      		ret
+ 352               	.LFE12:
+ 354               	.global	_nrk_os_timer_reset
+ 356               	_nrk_os_timer_reset:
+ 357               	.LFB13:
+ 358               	.LM63:
+ 359               	/* prologue: function */
+ 360               	/* frame size = 0 */
+ 361               	.LM64:
+ 362 0118 80B5      		in r24,64-32
+ 363 011a 8260      		ori r24,lo8(2)
+ 364 011c 80BD      		out 64-32,r24
+ 365               	.LM65:
+ 366 011e 12BE      		out 82-32,__zero_reg__
+ 367               	.LM66:
+ 368 0120 1092 0000 		sts _nrk_time_trigger,__zero_reg__
+ 369               	.LM67:
+ 370 0124 1092 0000 		sts _nrk_prev_timer_val,__zero_reg__
+ 371               	/* epilogue start */
+ 372               	.LM68:
+ 373 0128 0895      		ret
+ 374               	.LFE13:
+ 376               	.global	_nrk_get_next_wakeup
+ 378               	_nrk_get_next_wakeup:
+ 379               	.LFB14:
+ 380               	.LM69:
+ 381               	/* prologue: function */
+ 382               	/* frame size = 0 */
+ 383               	.LM70:
+ 384 012a 81B7      		in r24,81-32
+ 385               	.LM71:
+ 386 012c 8F5F      		subi r24,lo8(-(1))
+ 387               	/* epilogue start */
+ 388 012e 0895      		ret
+ 389               	.LFE14:
+ 391               	.global	_nrk_set_next_wakeup
+ 393               	_nrk_set_next_wakeup:
+ 394               	.LFB15:
+ 395               	.LM72:
+ 396               	.LVL14:
+ 397               	/* prologue: function */
+ 398               	/* frame size = 0 */
+ 399               	.LM73:
+ 400 0130 8150      		subi r24,lo8(-(-1))
+ 401               	.LVL15:
+ 402 0132 81BF      		out 81-32,r24
+ 403               	/* epilogue start */
+ 404               	.LM74:
+ 405 0134 0895      		ret
+ 406               	.LFE15:
+ 408               	.global	_nrk_os_timer_get
+ 410               	_nrk_os_timer_get:
+ 411               	.LFB16:
+ 412               	.LM75:
+ 413               	/* prologue: function */
+ 414               	/* frame size = 0 */
+ 415               	.LM76:
+ 416 0136 82B7      		in r24,82-32
+ 417               	/* epilogue start */
+ 418               	.LM77:
+ 419 0138 0895      		ret
+ 420               	.LFE16:
+ 422               	.global	__vector_16
+ 424               	__vector_16:
+ 425               	.LFB18:
+ 426               	.LM78:
+ 427               	/* prologue: naked */
+ 428               	/* frame size = 0 */
+ 429               	/* epilogue start */
+ 430               	.LM79:
+ 431               	.LFE18:
+ 433               	.global	__vector_15
+ 435               	__vector_15:
+ 436               	.LFB19:
+ 437               	.LM80:
+ 438               	/* prologue: naked */
+ 439               	/* frame size = 0 */
+ 440               	.LM81:
+ 441               	/* #APP */
+ 442               	 ;  202 "../../../src/kernel/hal/atmega128/nrk_timer.c" 1
+ 443 013a 0F92      		push    r0 
+ 444 013c 0FB6      		in      r0, __SREG__  
+ 445 013e 0F92      		push    r0  
+ 446 0140 1F92      		push    r1 
+ 447 0142 2F92      		push    r2 
+ 448 0144 3F92      		push    r3 
+ 449 0146 4F92      		push    r4 
+ 450 0148 5F92      		push    r5 
+ 451 014a 6F92      		push    r6 
+ 452 014c 7F92      		push    r7 
+ 453 014e 8F92      		push    r8 
+ 454 0150 9F92      		push    r9 
+ 455 0152 AF92      		push    r10 
+ 456 0154 BF92      		push    r11 
+ 457 0156 CF92      		push    r12 
+ 458 0158 DF92      		push    r13 
+ 459 015a EF92      		push    r14 
+ 460 015c FF92      		push    r15 
+ 461 015e 0F93      		push    r16 
+ 462 0160 1F93      		push    r17 
+ 463 0162 2F93      		push    r18 
+ 464 0164 3F93      		push    r19 
+ 465 0166 4F93      		push    r20 
+ 466 0168 5F93      		push    r21 
+ 467 016a 6F93      		push    r22 
+ 468 016c 7F93      		push    r23 
+ 469 016e 8F93      		push    r24 
+ 470 0170 9F93      		push    r25 
+ 471 0172 AF93      		push    r26 
+ 472 0174 BF93      		push    r27 
+ 473 0176 CF93      		push    r28 
+ 474 0178 DF93      		push    r29 
+ 475 017a EF93      		push    r30 
+ 476 017c FF93      		push    r31 
+ 477 017e A091 0000 		lds r26,nrk_cur_task_TCB 
+ 478 0182 B091 0000 		lds r27,nrk_cur_task_TCB+1 
+ 479 0186 0DB6      		in r0,__SP_L__ 
+ 480 0188 0D92      		st x+, r0 
+ 481 018a 0EB6      		in r0,__SP_H__ 
+ 482 018c 0D92      		st x+, r0 
+ 483 018e 1F92      		push r1  
+ 484 0190 A091 0000 		lds r26,nrk_kernel_stk_ptr 
+ 485 0194 B091 0000 		lds r27,nrk_kernel_stk_ptr+1 
+ 486 0198 1E90      		ld r1,-x 
+ 487 019a BEBF      		out __SP_H__, r27 
+ 488 019c ADBF      		out __SP_L__, r26 
+ 489 019e 0895      		ret
+ 490               		
+ 491               	 ;  0 "" 2
+ 492               	/* epilogue start */
+ 493               	.LM82:
+ 494               	/* #NOAPP */
+ 495               	.LFE19:
+ 497               	.global	nrk_timer_int_stop
+ 499               	nrk_timer_int_stop:
+ 500               	.LFB20:
+ 501               	.LM83:
+ 502               	.LVL16:
+ 503               	/* prologue: function */
+ 504               	/* frame size = 0 */
+ 505               	.LM84:
+ 506 01a0 8823      		tst r24
+ 507 01a2 01F4      		brne .L43
+ 508               	.LM85:
+ 509 01a4 87B7      		in r24,87-32
+ 510               	.LVL17:
+ 511 01a6 8F77      		andi r24,lo8(127)
+ 512 01a8 87BF      		out 87-32,r24
+ 513               	.LVL18:
+ 514               	.L43:
+ 515               	.LM86:
+ 516 01aa 8FEF      		ldi r24,lo8(-1)
+ 517               	.LVL19:
+ 518               	/* epilogue start */
+ 519 01ac 0895      		ret
+ 520               	.LFE20:
+ 522               	.global	nrk_timer_int_reset
+ 524               	nrk_timer_int_reset:
+ 525               	.LFB21:
+ 526               	.LM87:
+ 527               	.LVL20:
+ 528               	/* prologue: function */
+ 529               	/* frame size = 0 */
+ 530               	.LM88:
+ 531 01ae 8823      		tst r24
+ 532 01b0 01F0      		breq .L46
+ 533 01b2 8FEF      		ldi r24,lo8(-1)
+ 534               	.LVL21:
+ 535 01b4 0895      		ret
+ 536               	.LVL22:
+ 537               	.L46:
+ 538               	.LM89:
+ 539 01b6 14BC      		out 68-32,__zero_reg__
+ 540 01b8 81E0      		ldi r24,lo8(1)
+ 541               	.LVL23:
+ 542               	.LM90:
+ 543 01ba 0895      		ret
+ 544               	.LFE21:
+ 546               	.global	nrk_timer_int_read
+ 548               	nrk_timer_int_read:
+ 549               	.LFB22:
+ 550               	.LM91:
+ 551               	.LVL24:
+ 552               	/* prologue: function */
+ 553               	/* frame size = 0 */
+ 554               	.LM92:
+ 555 01bc 8823      		tst r24
+ 556 01be 01F0      		breq .L50
+ 557 01c0 20E0      		ldi r18,lo8(0)
+ 558 01c2 30E0      		ldi r19,hi8(0)
+ 559 01c4 00C0      		rjmp .L51
+ 560               	.L50:
+ 561               	.LM93:
+ 562 01c6 84B5      		in r24,68-32
+ 563               	.LVL25:
+ 564 01c8 282F      		mov r18,r24
+ 565 01ca 30E0      		ldi r19,lo8(0)
+ 566               	.LVL26:
+ 567               	.L51:
+ 568               	.LM94:
+ 569 01cc C901      		movw r24,r18
+ 570               	.LVL27:
+ 571               	/* epilogue start */
+ 572 01ce 0895      		ret
+ 573               	.LFE22:
+ 575               	.global	nrk_timer_int_start
+ 577               	nrk_timer_int_start:
+ 578               	.LFB23:
+ 579               	.LM95:
+ 580               	.LVL28:
+ 581               	/* prologue: function */
+ 582               	/* frame size = 0 */
+ 583               	.LM96:
+ 584 01d0 8823      		tst r24
+ 585 01d2 01F0      		breq .L54
+ 586 01d4 8FEF      		ldi r24,lo8(-1)
+ 587               	.LVL29:
+ 588 01d6 0895      		ret
+ 589               	.LVL30:
+ 590               	.L54:
+ 591               	.LM97:
+ 592 01d8 87B7      		in r24,87-32
+ 593               	.LVL31:
+ 594 01da 8068      		ori r24,lo8(-128)
+ 595 01dc 87BF      		out 87-32,r24
+ 596 01de 81E0      		ldi r24,lo8(1)
+ 597               	.LM98:
+ 598 01e0 0895      		ret
+ 599               	.LFE23:
+ 601               	.global	nrk_timer_int_configure
+ 603               	nrk_timer_int_configure:
+ 604               	.LFB24:
+ 605               	.LM99:
+ 606               	.LVL32:
+ 607               	/* prologue: function */
+ 608               	/* frame size = 0 */
+ 609               	.LM100:
+ 610 01e2 8823      		tst r24
+ 611 01e4 01F0      		breq .L58
+ 612 01e6 8FEF      		ldi r24,lo8(-1)
+ 613               	.LVL33:
+ 614 01e8 0895      		ret
+ 615               	.LVL34:
+ 616               	.L58:
+ 617               	.LM101:
+ 618 01ea CB01      		movw r24,r22
+ 619               	.LVL35:
+ 620 01ec 0197      		sbiw r24,1
+ 621 01ee 0597      		sbiw r24,5
+ 622 01f0 00F4      		brsh .L60
+ 623 01f2 6093 0000 		sts app_timer0_prescale,r22
+ 624               	.L60:
+ 625               	.LM102:
+ 626 01f6 88E0      		ldi r24,lo8(8)
+ 627 01f8 85BD      		out 69-32,r24
+ 628               	.LM103:
+ 629 01fa 43BD      		out 67-32,r20
+ 630               	.LM104:
+ 631 01fc 3093 0000 		sts (app_timer0_callback)+1,r19
+ 632 0200 2093 0000 		sts app_timer0_callback,r18
+ 633               	.LM105:
+ 634 0204 8091 0000 		lds r24,app_timer0_prescale
+ 635 0208 8130      		cpi r24,lo8(1)
+ 636 020a 01F4      		brne .L61
+ 637 020c 85B5      		in r24,69-32
+ 638 020e 8160      		ori r24,lo8(1)
+ 639 0210 00C0      		rjmp .L68
+ 640               	.L61:
+ 641               	.LM106:
+ 642 0212 8230      		cpi r24,lo8(2)
+ 643 0214 01F4      		brne .L62
+ 644 0216 85B5      		in r24,69-32
+ 645 0218 8260      		ori r24,lo8(2)
+ 646 021a 00C0      		rjmp .L68
+ 647               	.L62:
+ 648               	.LM107:
+ 649 021c 8330      		cpi r24,lo8(3)
+ 650 021e 01F4      		brne .L63
+ 651 0220 85B5      		in r24,69-32
+ 652 0222 8360      		ori r24,lo8(3)
+ 653               	.L68:
+ 654 0224 85BD      		out 69-32,r24
+ 655 0226 00C0      		rjmp .L67
+ 656               	.L63:
+ 657               	.LM108:
+ 658 0228 8430      		cpi r24,lo8(4)
+ 659 022a 01F4      		brne .L64
+ 660 022c 85B5      		in r24,69-32
+ 661 022e 8460      		ori r24,lo8(4)
+ 662 0230 00C0      		rjmp .L68
+ 663               	.L64:
+ 664               	.LM109:
+ 665 0232 8530      		cpi r24,lo8(5)
+ 666 0234 01F0      		breq .L65
+ 667               	.L67:
+ 668 0236 81E0      		ldi r24,lo8(1)
+ 669 0238 0895      		ret
+ 670               	.L65:
+ 671 023a 85B5      		in r24,69-32
+ 672 023c 8560      		ori r24,lo8(5)
+ 673 023e 85BD      		out 69-32,r24
+ 674 0240 81E0      		ldi r24,lo8(1)
+ 675               	.LM110:
+ 676 0242 0895      		ret
+ 677               	.LFE24:
+ 679               	.global	__vector_9
+ 681               	__vector_9:
+ 682               	.LFB25:
+ 683               	.LM111:
+ 684 0244 1F92      		push __zero_reg__
+ 685 0246 0F92      		push r0
+ 686 0248 0FB6      		in r0,__SREG__
+ 687 024a 0F92      		push r0
+ 688 024c 0BB6      		in r0,91-32
+ 689 024e 0F92      		push r0
+ 690 0250 1124      		clr __zero_reg__
+ 691 0252 2F93      		push r18
+ 692 0254 3F93      		push r19
+ 693 0256 4F93      		push r20
+ 694 0258 5F93      		push r21
+ 695 025a 6F93      		push r22
+ 696 025c 7F93      		push r23
+ 697 025e 8F93      		push r24
+ 698 0260 9F93      		push r25
+ 699 0262 AF93      		push r26
+ 700 0264 BF93      		push r27
+ 701 0266 EF93      		push r30
+ 702 0268 FF93      		push r31
+ 703               	/* prologue: Signal */
+ 704               	/* frame size = 0 */
+ 705               	.LM112:
+ 706 026a E091 0000 		lds r30,app_timer0_callback
+ 707 026e F091 0000 		lds r31,(app_timer0_callback)+1
+ 708 0272 3097      		sbiw r30,0
+ 709 0274 01F0      		breq .L70
+ 710 0276 0995      		icall
+ 711 0278 00C0      		rjmp .L72
+ 712               	.L70:
+ 713               	.LM113:
+ 714 027a 8AE0      		ldi r24,lo8(10)
+ 715 027c 60E0      		ldi r22,lo8(0)
+ 716 027e 0E94 0000 		call nrk_kernel_error_add
+ 717               	.L72:
+ 718               	/* epilogue start */
+ 719               	.LM114:
+ 720 0282 FF91      		pop r31
+ 721 0284 EF91      		pop r30
+ 722 0286 BF91      		pop r27
+ 723 0288 AF91      		pop r26
+ 724 028a 9F91      		pop r25
+ 725 028c 8F91      		pop r24
+ 726 028e 7F91      		pop r23
+ 727 0290 6F91      		pop r22
+ 728 0292 5F91      		pop r21
+ 729 0294 4F91      		pop r20
+ 730 0296 3F91      		pop r19
+ 731 0298 2F91      		pop r18
+ 732 029a 0F90      		pop r0
+ 733 029c 0BBE      		out 91-32,r0
+ 734 029e 0F90      		pop r0
+ 735 02a0 0FBE      		out __SREG__,r0
+ 736 02a2 0F90      		pop r0
+ 737 02a4 1F90      		pop __zero_reg__
+ 738 02a6 1895      		reti
+ 739               	.LFE25:
+ 741               	.global	__vector_default
+ 743               	__vector_default:
+ 744               	.LFB17:
+ 745               	.LM115:
+ 746 02a8 1F92      		push __zero_reg__
+ 747 02aa 0F92      		push r0
+ 748 02ac 0FB6      		in r0,__SREG__
+ 749 02ae 0F92      		push r0
+ 750 02b0 0BB6      		in r0,91-32
+ 751 02b2 0F92      		push r0
+ 752 02b4 1124      		clr __zero_reg__
+ 753 02b6 2F93      		push r18
+ 754 02b8 3F93      		push r19
+ 755 02ba 4F93      		push r20
+ 756 02bc 5F93      		push r21
+ 757 02be 6F93      		push r22
+ 758 02c0 7F93      		push r23
+ 759 02c2 8F93      		push r24
+ 760 02c4 9F93      		push r25
+ 761 02c6 AF93      		push r26
+ 762 02c8 BF93      		push r27
+ 763 02ca EF93      		push r30
+ 764 02cc FF93      		push r31
+ 765               	/* prologue: Signal */
+ 766               	/* frame size = 0 */
+ 767               	.LM116:
+ 768 02ce 8AE0      		ldi r24,lo8(10)
+ 769 02d0 60E0      		ldi r22,lo8(0)
+ 770 02d2 0E94 0000 		call nrk_kernel_error_add
+ 771               	/* epilogue start */
+ 772               	.LM117:
+ 773 02d6 FF91      		pop r31
+ 774 02d8 EF91      		pop r30
+ 775 02da BF91      		pop r27
+ 776 02dc AF91      		pop r26
+ 777 02de 9F91      		pop r25
+ 778 02e0 8F91      		pop r24
+ 779 02e2 7F91      		pop r23
+ 780 02e4 6F91      		pop r22
+ 781 02e6 5F91      		pop r21
+ 782 02e8 4F91      		pop r20
+ 783 02ea 3F91      		pop r19
+ 784 02ec 2F91      		pop r18
+ 785 02ee 0F90      		pop r0
+ 786 02f0 0BBE      		out 91-32,r0
+ 787 02f2 0F90      		pop r0
+ 788 02f4 0FBE      		out __SREG__,r0
+ 789 02f6 0F90      		pop r0
+ 790 02f8 1F90      		pop __zero_reg__
+ 791 02fa 1895      		reti
+ 792               	.LFE17:
+ 794               		.comm _nrk_signal_list,4,1
+ 795               		.comm nrk_idle_task_stk,128,1
+ 796               		.comm nrk_kernel_stk_ptr,2,1
+ 797               		.comm _nrk_prev_timer_val,1,1
+ 798               		.comm _nrk_time_trigger,1,1
+ 799               		.comm app_timer0_callback,2,1
+ 800               		.comm app_timer0_prescale,1,1
+ 801               		.comm error_task,1,1
+ 802               		.comm error_num,1,1
+ 1003               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 nrk_timer.c
+C:\cygwin\tmp/cctdCkF2.s:2      *ABS*:0000003f __SREG__
+C:\cygwin\tmp/cctdCkF2.s:3      *ABS*:0000003e __SP_H__
+C:\cygwin\tmp/cctdCkF2.s:4      *ABS*:0000003d __SP_L__
+C:\cygwin\tmp/cctdCkF2.s:5      *ABS*:00000034 __CCP__
+C:\cygwin\tmp/cctdCkF2.s:6      *ABS*:00000000 __tmp_reg__
+C:\cygwin\tmp/cctdCkF2.s:7      *ABS*:00000001 __zero_reg__
+C:\cygwin\tmp/cctdCkF2.s:18     .text:00000000 nrk_spin_wait_us
+C:\cygwin\tmp/cctdCkF2.s:58     .text:0000000e _nrk_setup_timer
+                            *COM*:00000001 _nrk_prev_timer_val
+                            *COM*:00000001 _nrk_time_trigger
+C:\cygwin\tmp/cctdCkF2.s:122    .text:0000004e _nrk_high_speed_timer_stop
+C:\cygwin\tmp/cctdCkF2.s:136    .text:00000052 _nrk_high_speed_timer_start
+C:\cygwin\tmp/cctdCkF2.s:151    .text:00000058 _nrk_high_speed_timer_reset
+C:\cygwin\tmp/cctdCkF2.s:170    .text:00000064 nrk_high_speed_timer_wait
+C:\cygwin\tmp/cctdCkF2.s:268    .text:000000d6 _nrk_high_speed_timer_get
+C:\cygwin\tmp/cctdCkF2.s:300    .text:000000f8 _nrk_os_timer_set
+C:\cygwin\tmp/cctdCkF2.s:315    .text:000000fc _nrk_os_timer_stop
+C:\cygwin\tmp/cctdCkF2.s:337    .text:0000010c _nrk_os_timer_start
+C:\cygwin\tmp/cctdCkF2.s:356    .text:00000118 _nrk_os_timer_reset
+C:\cygwin\tmp/cctdCkF2.s:378    .text:0000012a _nrk_get_next_wakeup
+C:\cygwin\tmp/cctdCkF2.s:393    .text:00000130 _nrk_set_next_wakeup
+C:\cygwin\tmp/cctdCkF2.s:410    .text:00000136 _nrk_os_timer_get
+C:\cygwin\tmp/cctdCkF2.s:424    .text:0000013a __vector_16
+C:\cygwin\tmp/cctdCkF2.s:435    .text:0000013a __vector_15
+                            *COM*:00000002 nrk_kernel_stk_ptr
+C:\cygwin\tmp/cctdCkF2.s:499    .text:000001a0 nrk_timer_int_stop
+C:\cygwin\tmp/cctdCkF2.s:524    .text:000001ae nrk_timer_int_reset
+C:\cygwin\tmp/cctdCkF2.s:548    .text:000001bc nrk_timer_int_read
+C:\cygwin\tmp/cctdCkF2.s:577    .text:000001d0 nrk_timer_int_start
+C:\cygwin\tmp/cctdCkF2.s:603    .text:000001e2 nrk_timer_int_configure
+                            *COM*:00000001 app_timer0_prescale
+                            *COM*:00000002 app_timer0_callback
+C:\cygwin\tmp/cctdCkF2.s:681    .text:00000244 __vector_9
+C:\cygwin\tmp/cctdCkF2.s:743    .text:000002a8 __vector_default
+                            *COM*:00000004 _nrk_signal_list
+                            *COM*:00000080 nrk_idle_task_stk
+                            *COM*:00000001 error_task
+                            *COM*:00000001 error_num
+
+UNDEFINED SYMBOLS
+nrk_cur_task_TCB
+nrk_kernel_error_add
+__do_clear_bss

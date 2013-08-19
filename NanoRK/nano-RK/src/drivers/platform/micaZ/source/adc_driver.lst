@@ -1,0 +1,132 @@
+   1               		.file	"adc_driver.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	adc_init
+  18               	adc_init:
+  19               	.LFB6:
+  20               	.LM1:
+  21 0000 DF93      		push r29
+  22 0002 CF93      		push r28
+  23 0004 00D0      		rcall .
+  24 0006 CDB7      		in r28,__SP_L__
+  25 0008 DEB7      		in r29,__SP_H__
+  26               	/* prologue: function */
+  27               	/* frame size = 2 */
+  28               	.LM2:
+  29 000a 80E4      		ldi r24,lo8(64)
+  30 000c 87B9      		out 39-32,r24
+  31               	.LM3:
+  32 000e 86E0      		ldi r24,lo8(6)
+  33 0010 86B9      		out 38-32,r24
+  34               	.LM4:
+  35 0012 379A      		sbi 38-32,7
+  36               	.LM5:
+  37 0014 369A      		sbi 38-32,6
+  38               	.L2:
+  39               	.LM6:
+  40 0016 3699      		sbic 38-32,6
+  41 0018 00C0      		rjmp .L2
+  42               	.LM7:
+  43 001a 84B1      		in r24,36-32
+  44 001c 95B1      		in r25,(36)+1-32
+  45               	.LVL0:
+  46 001e 9A83      		std Y+2,r25
+  47 0020 8983      		std Y+1,r24
+  48               	/* epilogue start */
+  49               	.LM8:
+  50 0022 0F90      		pop __tmp_reg__
+  51 0024 0F90      		pop __tmp_reg__
+  52 0026 CF91      		pop r28
+  53 0028 DF91      		pop r29
+  54 002a 0895      		ret
+  55               	.LFE6:
+  57               	.global	adc_Powersave
+  59               	adc_Powersave:
+  60               	.LFB7:
+  61               	.LM9:
+  62               	/* prologue: function */
+  63               	/* frame size = 0 */
+  64               	.LM10:
+  65 002c 3798      		cbi 38-32,7
+  66               	/* epilogue start */
+  67               	.LM11:
+  68 002e 0895      		ret
+  69               	.LFE7:
+  71               	.global	adc_GetChannel
+  73               	adc_GetChannel:
+  74               	.LFB8:
+  75               	.LM12:
+  76               	.LVL1:
+  77               	/* prologue: function */
+  78               	/* frame size = 0 */
+  79               	.LM13:
+  80 0030 97B1      		in r25,39-32
+  81 0032 8F71      		andi r24,lo8(31)
+  82               	.LVL2:
+  83 0034 907E      		andi r25,lo8(-32)
+  84 0036 892B      		or r24,r25
+  85 0038 87B9      		out 39-32,r24
+  86               	.LM14:
+  87 003a 369A      		sbi 38-32,6
+  88               	.L8:
+  89               	.LM15:
+  90 003c 3699      		sbic 38-32,6
+  91 003e 00C0      		rjmp .L8
+  92               	.LM16:
+  93 0040 24B1      		in r18,36-32
+  94 0042 35B1      		in r19,(36)+1-32
+  95               	.LM17:
+  96 0044 C901      		movw r24,r18
+  97               	/* epilogue start */
+  98 0046 0895      		ret
+  99               	.LFE8:
+ 101               	.global	adc_GetBatteryVoltage
+ 103               	adc_GetBatteryVoltage:
+ 104               	.LFB9:
+ 105               	.LM18:
+ 106               	/* prologue: function */
+ 107               	/* frame size = 0 */
+ 108               	.LM19:
+ 109 0048 8EE1      		ldi r24,lo8(30)
+ 110 004a 0E94 0000 		call adc_GetChannel
+ 111 004e A0E0      		ldi r26,lo8(0)
+ 112 0050 B0E0      		ldi r27,hi8(0)
+ 113               	.LVL3:
+ 114 0052 BC01      		movw r22,r24
+ 115 0054 CD01      		movw r24,r26
+ 116               	.LVL4:
+ 117 0056 0E94 0000 		call __floatunsisf
+ 118               	.LVL5:
+ 119 005a 9B01      		movw r18,r22
+ 120 005c AC01      		movw r20,r24
+ 121 005e 64EA      		ldi r22,lo8(0x449d70a4)
+ 122 0060 70E7      		ldi r23,hi8(0x449d70a4)
+ 123 0062 8DE9      		ldi r24,hlo8(0x449d70a4)
+ 124 0064 94E4      		ldi r25,hhi8(0x449d70a4)
+ 125 0066 0E94 0000 		call __divsf3
+ 126               	/* epilogue start */
+ 127               	.LM20:
+ 128 006a 0895      		ret
+ 129               	.LFE9:
+ 179               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 adc_driver.c
+C:\cygwin\tmp/ccf5wcdJ.s:2      *ABS*:0000003f __SREG__
+C:\cygwin\tmp/ccf5wcdJ.s:3      *ABS*:0000003e __SP_H__
+C:\cygwin\tmp/ccf5wcdJ.s:4      *ABS*:0000003d __SP_L__
+C:\cygwin\tmp/ccf5wcdJ.s:5      *ABS*:00000034 __CCP__
+C:\cygwin\tmp/ccf5wcdJ.s:6      *ABS*:00000000 __tmp_reg__
+C:\cygwin\tmp/ccf5wcdJ.s:7      *ABS*:00000001 __zero_reg__
+C:\cygwin\tmp/ccf5wcdJ.s:18     .text:00000000 adc_init
+C:\cygwin\tmp/ccf5wcdJ.s:59     .text:0000002c adc_Powersave
+C:\cygwin\tmp/ccf5wcdJ.s:73     .text:00000030 adc_GetChannel
+C:\cygwin\tmp/ccf5wcdJ.s:103    .text:00000048 adc_GetBatteryVoltage
+
+UNDEFINED SYMBOLS
+__floatunsisf
+__divsf3

@@ -1,0 +1,78 @@
+   1               		.file	"ad5242.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	ad5242_set
+  18               	ad5242_set:
+  19               	.LFB3:
+  20               	.LM1:
+  21               	.LVL0:
+  22 0000 0F93      		push r16
+  23 0002 1F93      		push r17
+  24               	/* prologue: function */
+  25               	/* frame size = 0 */
+  26 0004 162F      		mov r17,r22
+  27 0006 042F      		mov r16,r20
+  28               	.LM2:
+  29 0008 8370      		andi r24,lo8(3)
+  30               	.LVL1:
+  31 000a 8C62      		ori r24,lo8(44)
+  32 000c 0E94 0000 		call i2c_controlByte_TX
+  33               	.LVL2:
+  34               	.LM3:
+  35 0010 1130      		cpi r17,lo8(1)
+  36 0012 01F4      		brne .L2
+  37               	.LM4:
+  38 0014 80E0      		ldi r24,lo8(0)
+  39 0016 00C0      		rjmp .L5
+  40               	.L2:
+  41               	.LM5:
+  42 0018 80E8      		ldi r24,lo8(-128)
+  43               	.L5:
+  44 001a 0E94 0000 		call i2c_send
+  45               	.LM6:
+  46 001e 802F      		mov r24,r16
+  47 0020 0E94 0000 		call i2c_send
+  48               	.LM7:
+  49 0024 0E94 0000 		call i2c_stop
+  50               	/* epilogue start */
+  51               	.LM8:
+  52 0028 1F91      		pop r17
+  53               	.LVL3:
+  54 002a 0F91      		pop r16
+  55               	.LVL4:
+  56 002c 0895      		ret
+  57               	.LFE3:
+  59               	.global	ad5242_init
+  61               	ad5242_init:
+  62               	.LFB2:
+  63               	.LM9:
+  64               	/* prologue: function */
+  65               	/* frame size = 0 */
+  66               	.LM10:
+  67 002e 0E94 0000 		call i2c_init
+  68               	/* epilogue start */
+  69               	.LM11:
+  70 0032 0895      		ret
+  71               	.LFE2:
+ 105               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 ad5242.c
+C:\cygwin\tmp/ccDXk9xt.s:2      *ABS*:0000003f __SREG__
+C:\cygwin\tmp/ccDXk9xt.s:3      *ABS*:0000003e __SP_H__
+C:\cygwin\tmp/ccDXk9xt.s:4      *ABS*:0000003d __SP_L__
+C:\cygwin\tmp/ccDXk9xt.s:5      *ABS*:00000034 __CCP__
+C:\cygwin\tmp/ccDXk9xt.s:6      *ABS*:00000000 __tmp_reg__
+C:\cygwin\tmp/ccDXk9xt.s:7      *ABS*:00000001 __zero_reg__
+C:\cygwin\tmp/ccDXk9xt.s:18     .text:00000000 ad5242_set
+C:\cygwin\tmp/ccDXk9xt.s:61     .text:0000002e ad5242_init
+
+UNDEFINED SYMBOLS
+i2c_controlByte_TX
+i2c_send
+i2c_stop
+i2c_init

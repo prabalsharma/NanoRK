@@ -1,0 +1,1253 @@
+   1               		.file	"ulib.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	nrk_uart_rx_signal_get
+  18               	nrk_uart_rx_signal_get:
+  19               	.LFB3:
+  20               	.LM1:
+  21               	/* prologue: function */
+  22               	/* frame size = 0 */
+  23               	.LM2:
+  24 0000 8FEF      		ldi r24,lo8(-1)
+  25               	/* epilogue start */
+  26 0002 0895      		ret
+  27               	.LFE3:
+  29               	.global	nrk_uart_data_ready
+  31               	nrk_uart_data_ready:
+  32               	.LFB4:
+  33               	.LM3:
+  34               	.LVL0:
+  35               	/* prologue: function */
+  36               	/* frame size = 0 */
+  37               	.LM4:
+  38 0004 8823      		tst r24
+  39 0006 01F4      		brne .L4
+  40               	.LM5:
+  41 0008 8BB1      		in r24,43-32
+  42               	.LVL1:
+  43 000a 881F      		rol r24
+  44 000c 8827      		clr r24
+  45 000e 881F      		rol r24
+  46 0010 0895      		ret
+  47               	.LVL2:
+  48               	.L4:
+  49               	.LM6:
+  50 0012 8130      		cpi r24,lo8(1)
+  51 0014 01F0      		breq .L7
+  52 0016 80E0      		ldi r24,lo8(0)
+  53               	.LVL3:
+  54 0018 0895      		ret
+  55               	.LVL4:
+  56               	.L7:
+  57               	.LM7:
+  58 001a 8091 9B00 		lds r24,155
+  59               	.LVL5:
+  60 001e 881F      		rol r24
+  61 0020 8827      		clr r24
+  62 0022 881F      		rol r24
+  63               	.LM8:
+  64 0024 0895      		ret
+  65               	.LFE4:
+  67               	.global	getc0
+  69               	getc0:
+  70               	.LFB5:
+  71               	.LM9:
+  72               	/* prologue: function */
+  73               	/* frame size = 0 */
+  74               	.L11:
+  75               	.LM10:
+  76 0026 5F9B      		sbis 43-32,7
+  77 0028 00C0      		rjmp .L11
+  78 002a 5F98      		cbi 43-32,7
+  79 002c 8CB1      		in r24,44-32
+  80               	.LVL6:
+  81               	.LVL7:
+  82               	/* epilogue start */
+  83               	.LM11:
+  84 002e 0895      		ret
+  85               	.LFE5:
+  87               	.global	nrk_gpio_set
+  89               	nrk_gpio_set:
+  90               	.LFB8:
+  91               	.LM12:
+  92               	.LVL8:
+  93               	/* prologue: function */
+  94               	/* frame size = 0 */
+  95 0030 382F      		mov r19,r24
+  96               	.LM13:
+  97 0032 8F3F      		cpi r24,lo8(-1)
+  98 0034 01F4      		brne .+2
+  99 0036 00C0      		rjmp .L15
+ 100               	.LM14:
+ 101 0038 282F      		mov r18,r24
+ 102 003a 2695      		lsr r18
+ 103 003c 2695      		lsr r18
+ 104 003e 2695      		lsr r18
+ 105 0040 81E0      		ldi r24,lo8(1)
+ 106 0042 90E0      		ldi r25,hi8(1)
+ 107               	.LVL9:
+ 108 0044 00C0      		rjmp 2f
+ 109 0046 880F      	1:	lsl r24
+ 110 0048 991F      		rol r25
+ 111 004a 2A95      	2:	dec r18
+ 112 004c 02F4      		brpl 1b
+ 113 004e 982F      		mov r25,r24
+ 114               	.LVL10:
+ 115               	.LM15:
+ 116 0050 232F      		mov r18,r19
+ 117 0052 30E0      		ldi r19,lo8(0)
+ 118               	.LVL11:
+ 119 0054 2770      		andi r18,lo8(7)
+ 120 0056 3070      		andi r19,hi8(7)
+ 121 0058 2230      		cpi r18,2
+ 122 005a 3105      		cpc r19,__zero_reg__
+ 123 005c 01F0      		breq .L18
+ 124 005e 2330      		cpi r18,3
+ 125 0060 3105      		cpc r19,__zero_reg__
+ 126 0062 04F4      		brge .L22
+ 127 0064 2115      		cp r18,__zero_reg__
+ 128 0066 3105      		cpc r19,__zero_reg__
+ 129 0068 01F0      		breq .L16
+ 130 006a 2130      		cpi r18,1
+ 131 006c 3105      		cpc r19,__zero_reg__
+ 132 006e 01F4      		brne .L15
+ 133 0070 00C0      		rjmp .L26
+ 134               	.L22:
+ 135 0072 2430      		cpi r18,4
+ 136 0074 3105      		cpc r19,__zero_reg__
+ 137 0076 01F0      		breq .L20
+ 138 0078 2430      		cpi r18,4
+ 139 007a 3105      		cpc r19,__zero_reg__
+ 140 007c 04F0      		brlt .L19
+ 141 007e 2530      		cpi r18,5
+ 142 0080 3105      		cpc r19,__zero_reg__
+ 143 0082 01F4      		brne .L15
+ 144 0084 00C0      		rjmp .L27
+ 145               	.L16:
+ 146               	.LM16:
+ 147 0086 8BB3      		in r24,59-32
+ 148 0088 982B      		or r25,r24
+ 149 008a 9BBB      		out 59-32,r25
+ 150 008c 00C0      		rjmp .L25
+ 151               	.L26:
+ 152               	.LM17:
+ 153 008e 88B3      		in r24,56-32
+ 154 0090 982B      		or r25,r24
+ 155 0092 98BB      		out 56-32,r25
+ 156 0094 00C0      		rjmp .L25
+ 157               	.L18:
+ 158               	.LM18:
+ 159 0096 85B3      		in r24,53-32
+ 160 0098 982B      		or r25,r24
+ 161 009a 95BB      		out 53-32,r25
+ 162 009c 00C0      		rjmp .L25
+ 163               	.L19:
+ 164               	.LM19:
+ 165 009e 82B3      		in r24,50-32
+ 166 00a0 982B      		or r25,r24
+ 167 00a2 92BB      		out 50-32,r25
+ 168 00a4 00C0      		rjmp .L25
+ 169               	.L20:
+ 170               	.LM20:
+ 171 00a6 83B1      		in r24,35-32
+ 172 00a8 982B      		or r25,r24
+ 173 00aa 93B9      		out 35-32,r25
+ 174 00ac 00C0      		rjmp .L25
+ 175               	.L27:
+ 176               	.LM21:
+ 177 00ae 8091 6200 		lds r24,98
+ 178 00b2 982B      		or r25,r24
+ 179 00b4 9093 6200 		sts 98,r25
+ 180               	.L25:
+ 181 00b8 81E0      		ldi r24,lo8(1)
+ 182 00ba 0895      		ret
+ 183               	.LVL12:
+ 184               	.L15:
+ 185               	.LM22:
+ 186 00bc 8FEF      		ldi r24,lo8(-1)
+ 187               	.LVL13:
+ 188               	.LM23:
+ 189 00be 0895      		ret
+ 190               	.LFE8:
+ 192               	.global	nrk_gpio_clr
+ 194               	nrk_gpio_clr:
+ 195               	.LFB9:
+ 196               	.LM24:
+ 197               	.LVL14:
+ 198               	/* prologue: function */
+ 199               	/* frame size = 0 */
+ 200 00c0 382F      		mov r19,r24
+ 201               	.LM25:
+ 202 00c2 8F3F      		cpi r24,lo8(-1)
+ 203 00c4 01F4      		brne .+2
+ 204 00c6 00C0      		rjmp .L29
+ 205               	.LM26:
+ 206 00c8 282F      		mov r18,r24
+ 207 00ca 2695      		lsr r18
+ 208 00cc 2695      		lsr r18
+ 209 00ce 2695      		lsr r18
+ 210 00d0 81E0      		ldi r24,lo8(1)
+ 211 00d2 90E0      		ldi r25,hi8(1)
+ 212               	.LVL15:
+ 213 00d4 00C0      		rjmp 2f
+ 214 00d6 880F      	1:	lsl r24
+ 215 00d8 991F      		rol r25
+ 216 00da 2A95      	2:	dec r18
+ 217 00dc 02F4      		brpl 1b
+ 218 00de 982F      		mov r25,r24
+ 219               	.LVL16:
+ 220 00e0 9095      		com r25
+ 221               	.LM27:
+ 222 00e2 232F      		mov r18,r19
+ 223 00e4 30E0      		ldi r19,lo8(0)
+ 224               	.LVL17:
+ 225 00e6 2770      		andi r18,lo8(7)
+ 226 00e8 3070      		andi r19,hi8(7)
+ 227 00ea 2230      		cpi r18,2
+ 228 00ec 3105      		cpc r19,__zero_reg__
+ 229 00ee 01F0      		breq .L32
+ 230 00f0 2330      		cpi r18,3
+ 231 00f2 3105      		cpc r19,__zero_reg__
+ 232 00f4 04F4      		brge .L36
+ 233 00f6 2115      		cp r18,__zero_reg__
+ 234 00f8 3105      		cpc r19,__zero_reg__
+ 235 00fa 01F0      		breq .L30
+ 236 00fc 2130      		cpi r18,1
+ 237 00fe 3105      		cpc r19,__zero_reg__
+ 238 0100 01F4      		brne .L29
+ 239 0102 00C0      		rjmp .L40
+ 240               	.L36:
+ 241 0104 2430      		cpi r18,4
+ 242 0106 3105      		cpc r19,__zero_reg__
+ 243 0108 01F0      		breq .L34
+ 244 010a 2430      		cpi r18,4
+ 245 010c 3105      		cpc r19,__zero_reg__
+ 246 010e 04F0      		brlt .L33
+ 247 0110 2530      		cpi r18,5
+ 248 0112 3105      		cpc r19,__zero_reg__
+ 249 0114 01F4      		brne .L29
+ 250 0116 00C0      		rjmp .L41
+ 251               	.L30:
+ 252               	.LM28:
+ 253 0118 8BB3      		in r24,59-32
+ 254 011a 9823      		and r25,r24
+ 255 011c 9BBB      		out 59-32,r25
+ 256 011e 00C0      		rjmp .L39
+ 257               	.L40:
+ 258               	.LM29:
+ 259 0120 88B3      		in r24,56-32
+ 260 0122 9823      		and r25,r24
+ 261 0124 98BB      		out 56-32,r25
+ 262 0126 00C0      		rjmp .L39
+ 263               	.L32:
+ 264               	.LM30:
+ 265 0128 85B3      		in r24,53-32
+ 266 012a 9823      		and r25,r24
+ 267 012c 95BB      		out 53-32,r25
+ 268 012e 00C0      		rjmp .L39
+ 269               	.L33:
+ 270               	.LM31:
+ 271 0130 82B3      		in r24,50-32
+ 272 0132 9823      		and r25,r24
+ 273 0134 92BB      		out 50-32,r25
+ 274 0136 00C0      		rjmp .L39
+ 275               	.L34:
+ 276               	.LM32:
+ 277 0138 83B1      		in r24,35-32
+ 278 013a 9823      		and r25,r24
+ 279 013c 93B9      		out 35-32,r25
+ 280 013e 00C0      		rjmp .L39
+ 281               	.L41:
+ 282               	.LM33:
+ 283 0140 8091 6200 		lds r24,98
+ 284 0144 9823      		and r25,r24
+ 285 0146 9093 6200 		sts 98,r25
+ 286               	.L39:
+ 287 014a 81E0      		ldi r24,lo8(1)
+ 288 014c 0895      		ret
+ 289               	.LVL18:
+ 290               	.L29:
+ 291               	.LM34:
+ 292 014e 8FEF      		ldi r24,lo8(-1)
+ 293               	.LVL19:
+ 294               	.LM35:
+ 295 0150 0895      		ret
+ 296               	.LFE9:
+ 298               	.global	nrk_gpio_get
+ 300               	nrk_gpio_get:
+ 301               	.LFB10:
+ 302               	.LM36:
+ 303               	.LVL20:
+ 304               	/* prologue: function */
+ 305               	/* frame size = 0 */
+ 306 0152 282F      		mov r18,r24
+ 307               	.LM37:
+ 308 0154 8F3F      		cpi r24,lo8(-1)
+ 309 0156 01F0      		breq .L43
+ 310               	.LM38:
+ 311 0158 90E0      		ldi r25,lo8(0)
+ 312 015a 8770      		andi r24,lo8(7)
+ 313 015c 9070      		andi r25,hi8(7)
+ 314               	.LVL21:
+ 315 015e 8230      		cpi r24,2
+ 316 0160 9105      		cpc r25,__zero_reg__
+ 317 0162 01F0      		breq .L46
+ 318 0164 8330      		cpi r24,3
+ 319 0166 9105      		cpc r25,__zero_reg__
+ 320 0168 04F4      		brge .L50
+ 321 016a 0097      		sbiw r24,0
+ 322 016c 01F0      		breq .L44
+ 323 016e 0197      		sbiw r24,1
+ 324 0170 01F4      		brne .L43
+ 325 0172 00C0      		rjmp .L54
+ 326               	.L50:
+ 327 0174 8430      		cpi r24,4
+ 328 0176 9105      		cpc r25,__zero_reg__
+ 329 0178 01F0      		breq .L48
+ 330 017a 8430      		cpi r24,4
+ 331 017c 9105      		cpc r25,__zero_reg__
+ 332 017e 04F0      		brlt .L47
+ 333 0180 0597      		sbiw r24,5
+ 334 0182 01F4      		brne .L43
+ 335 0184 00C0      		rjmp .L55
+ 336               	.L44:
+ 337               	.LM39:
+ 338 0186 89B3      		in r24,57-32
+ 339 0188 00C0      		rjmp .L53
+ 340               	.L54:
+ 341               	.LM40:
+ 342 018a 86B3      		in r24,54-32
+ 343 018c 00C0      		rjmp .L53
+ 344               	.L46:
+ 345               	.LM41:
+ 346 018e 83B3      		in r24,51-32
+ 347 0190 00C0      		rjmp .L53
+ 348               	.L47:
+ 349               	.LM42:
+ 350 0192 80B3      		in r24,48-32
+ 351 0194 00C0      		rjmp .L53
+ 352               	.L48:
+ 353               	.LM43:
+ 354 0196 81B1      		in r24,33-32
+ 355 0198 00C0      		rjmp .L53
+ 356               	.L55:
+ 357               	.LM44:
+ 358 019a 80B1      		in r24,32-32
+ 359               	.L53:
+ 360 019c 90E0      		ldi r25,lo8(0)
+ 361 019e 2695      		lsr r18
+ 362 01a0 2695      		lsr r18
+ 363 01a2 2695      		lsr r18
+ 364 01a4 00C0      		rjmp 2f
+ 365 01a6 9595      	1:	asr r25
+ 366 01a8 8795      		ror r24
+ 367 01aa 2A95      	2:	dec r18
+ 368 01ac 02F4      		brpl 1b
+ 369 01ae 8170      		andi r24,lo8(1)
+ 370 01b0 0895      		ret
+ 371               	.LVL22:
+ 372               	.L43:
+ 373 01b2 8FEF      		ldi r24,lo8(-1)
+ 374               	.LM45:
+ 375 01b4 0895      		ret
+ 376               	.LFE10:
+ 378               	.global	nrk_gpio_pullups
+ 380               	nrk_gpio_pullups:
+ 381               	.LFB11:
+ 382               	.LM46:
+ 383               	.LVL23:
+ 384               	/* prologue: function */
+ 385               	/* frame size = 0 */
+ 386               	.LM47:
+ 387 01b6 8823      		tst r24
+ 388 01b8 01F0      		breq .L57
+ 389 01ba 80B5      		in r24,64-32
+ 390               	.LVL24:
+ 391 01bc 8B7F      		andi r24,lo8(-5)
+ 392 01be 00C0      		rjmp .L60
+ 393               	.LVL25:
+ 394               	.L57:
+ 395               	.LM48:
+ 396 01c0 80B5      		in r24,64-32
+ 397               	.LVL26:
+ 398 01c2 8460      		ori r24,lo8(4)
+ 399               	.L60:
+ 400 01c4 80BD      		out 64-32,r24
+ 401               	.LM49:
+ 402 01c6 81E0      		ldi r24,lo8(1)
+ 403               	/* epilogue start */
+ 404 01c8 0895      		ret
+ 405               	.LFE11:
+ 407               	.global	nrk_gpio_toggle
+ 409               	nrk_gpio_toggle:
+ 410               	.LFB12:
+ 411               	.LM50:
+ 412               	.LVL27:
+ 413               	/* prologue: function */
+ 414               	/* frame size = 0 */
+ 415 01ca 382F      		mov r19,r24
+ 416               	.LM51:
+ 417 01cc 8F3F      		cpi r24,lo8(-1)
+ 418 01ce 01F4      		brne .+2
+ 419 01d0 00C0      		rjmp .L62
+ 420               	.LM52:
+ 421 01d2 282F      		mov r18,r24
+ 422 01d4 2695      		lsr r18
+ 423 01d6 2695      		lsr r18
+ 424 01d8 2695      		lsr r18
+ 425 01da 81E0      		ldi r24,lo8(1)
+ 426 01dc 90E0      		ldi r25,hi8(1)
+ 427               	.LVL28:
+ 428 01de 00C0      		rjmp 2f
+ 429 01e0 880F      	1:	lsl r24
+ 430 01e2 991F      		rol r25
+ 431 01e4 2A95      	2:	dec r18
+ 432 01e6 02F4      		brpl 1b
+ 433 01e8 982F      		mov r25,r24
+ 434               	.LVL29:
+ 435               	.LM53:
+ 436 01ea 232F      		mov r18,r19
+ 437 01ec 30E0      		ldi r19,lo8(0)
+ 438               	.LVL30:
+ 439 01ee 2770      		andi r18,lo8(7)
+ 440 01f0 3070      		andi r19,hi8(7)
+ 441 01f2 2230      		cpi r18,2
+ 442 01f4 3105      		cpc r19,__zero_reg__
+ 443 01f6 01F0      		breq .L65
+ 444 01f8 2330      		cpi r18,3
+ 445 01fa 3105      		cpc r19,__zero_reg__
+ 446 01fc 04F4      		brge .L69
+ 447 01fe 2115      		cp r18,__zero_reg__
+ 448 0200 3105      		cpc r19,__zero_reg__
+ 449 0202 01F0      		breq .L63
+ 450 0204 2130      		cpi r18,1
+ 451 0206 3105      		cpc r19,__zero_reg__
+ 452 0208 01F4      		brne .L62
+ 453 020a 00C0      		rjmp .L73
+ 454               	.L69:
+ 455 020c 2430      		cpi r18,4
+ 456 020e 3105      		cpc r19,__zero_reg__
+ 457 0210 01F0      		breq .L67
+ 458 0212 2430      		cpi r18,4
+ 459 0214 3105      		cpc r19,__zero_reg__
+ 460 0216 04F0      		brlt .L66
+ 461 0218 2530      		cpi r18,5
+ 462 021a 3105      		cpc r19,__zero_reg__
+ 463 021c 01F4      		brne .L62
+ 464 021e 00C0      		rjmp .L74
+ 465               	.L63:
+ 466               	.LM54:
+ 467 0220 8BB3      		in r24,59-32
+ 468 0222 9827      		eor r25,r24
+ 469 0224 9BBB      		out 59-32,r25
+ 470 0226 00C0      		rjmp .L72
+ 471               	.L73:
+ 472               	.LM55:
+ 473 0228 88B3      		in r24,56-32
+ 474 022a 9827      		eor r25,r24
+ 475 022c 98BB      		out 56-32,r25
+ 476 022e 00C0      		rjmp .L72
+ 477               	.L65:
+ 478               	.LM56:
+ 479 0230 85B3      		in r24,53-32
+ 480 0232 9827      		eor r25,r24
+ 481 0234 95BB      		out 53-32,r25
+ 482 0236 00C0      		rjmp .L72
+ 483               	.L66:
+ 484               	.LM57:
+ 485 0238 82B3      		in r24,50-32
+ 486 023a 9827      		eor r25,r24
+ 487 023c 92BB      		out 50-32,r25
+ 488 023e 00C0      		rjmp .L72
+ 489               	.L67:
+ 490               	.LM58:
+ 491 0240 83B1      		in r24,35-32
+ 492 0242 9827      		eor r25,r24
+ 493 0244 93B9      		out 35-32,r25
+ 494 0246 00C0      		rjmp .L72
+ 495               	.L74:
+ 496               	.LM59:
+ 497 0248 8091 6200 		lds r24,98
+ 498 024c 9827      		eor r25,r24
+ 499 024e 9093 6200 		sts 98,r25
+ 500               	.L72:
+ 501 0252 81E0      		ldi r24,lo8(1)
+ 502 0254 0895      		ret
+ 503               	.LVL31:
+ 504               	.L62:
+ 505               	.LM60:
+ 506 0256 8FEF      		ldi r24,lo8(-1)
+ 507               	.LVL32:
+ 508               	.LM61:
+ 509 0258 0895      		ret
+ 510               	.LFE12:
+ 512               	.global	nrk_gpio_direction
+ 514               	nrk_gpio_direction:
+ 515               	.LFB13:
+ 516               	.LM62:
+ 517               	.LVL33:
+ 518               	/* prologue: function */
+ 519               	/* frame size = 0 */
+ 520 025a 982F      		mov r25,r24
+ 521               	.LM63:
+ 522 025c 8F3F      		cpi r24,lo8(-1)
+ 523 025e 01F4      		brne .+2
+ 524 0260 00C0      		rjmp .L76
+ 525               	.LM64:
+ 526 0262 8695      		lsr r24
+ 527 0264 8695      		lsr r24
+ 528 0266 8695      		lsr r24
+ 529               	.LVL34:
+ 530 0268 21E0      		ldi r18,lo8(1)
+ 531 026a 30E0      		ldi r19,hi8(1)
+ 532 026c 00C0      		rjmp 2f
+ 533 026e 220F      	1:	lsl r18
+ 534 0270 331F      		rol r19
+ 535 0272 8A95      	2:	dec r24
+ 536 0274 02F4      		brpl 1b
+ 537 0276 422F      		mov r20,r18
+ 538               	.LVL35:
+ 539 0278 892F      		mov r24,r25
+ 540 027a 90E0      		ldi r25,lo8(0)
+ 541               	.LVL36:
+ 542               	.LM65:
+ 543 027c 6623      		tst r22
+ 544 027e 01F0      		breq .+2
+ 545 0280 00C0      		rjmp .L77
+ 546               	.LM66:
+ 547 0282 2095      		com r18
+ 548               	.LVL37:
+ 549               	.LM67:
+ 550 0284 8770      		andi r24,lo8(7)
+ 551 0286 9070      		andi r25,hi8(7)
+ 552               	.LVL38:
+ 553 0288 8230      		cpi r24,2
+ 554 028a 9105      		cpc r25,__zero_reg__
+ 555 028c 01F0      		breq .L80
+ 556 028e 8330      		cpi r24,3
+ 557 0290 9105      		cpc r25,__zero_reg__
+ 558 0292 04F4      		brge .L84
+ 559 0294 0097      		sbiw r24,0
+ 560 0296 01F0      		breq .L78
+ 561 0298 0197      		sbiw r24,1
+ 562 029a 01F0      		breq .+2
+ 563 029c 00C0      		rjmp .L76
+ 564 029e 00C0      		rjmp .L95
+ 565               	.L84:
+ 566 02a0 8430      		cpi r24,4
+ 567 02a2 9105      		cpc r25,__zero_reg__
+ 568 02a4 01F0      		breq .L82
+ 569 02a6 8430      		cpi r24,4
+ 570 02a8 9105      		cpc r25,__zero_reg__
+ 571 02aa 04F0      		brlt .L81
+ 572 02ac 0597      		sbiw r24,5
+ 573 02ae 01F0      		breq .+2
+ 574 02b0 00C0      		rjmp .L76
+ 575 02b2 00C0      		rjmp .L96
+ 576               	.L78:
+ 577               	.LM68:
+ 578 02b4 8AB3      		in r24,58-32
+ 579 02b6 2823      		and r18,r24
+ 580 02b8 2ABB      		out 58-32,r18
+ 581               	.LM69:
+ 582 02ba 8BB3      		in r24,59-32
+ 583 02bc 482B      		or r20,r24
+ 584 02be 4BBB      		out 59-32,r20
+ 585 02c0 00C0      		rjmp .L94
+ 586               	.L95:
+ 587               	.LM70:
+ 588 02c2 87B3      		in r24,55-32
+ 589 02c4 2823      		and r18,r24
+ 590 02c6 27BB      		out 55-32,r18
+ 591               	.LM71:
+ 592 02c8 88B3      		in r24,56-32
+ 593 02ca 482B      		or r20,r24
+ 594 02cc 48BB      		out 56-32,r20
+ 595 02ce 00C0      		rjmp .L94
+ 596               	.L80:
+ 597               	.LM72:
+ 598 02d0 84B3      		in r24,52-32
+ 599 02d2 2823      		and r18,r24
+ 600 02d4 24BB      		out 52-32,r18
+ 601               	.LM73:
+ 602 02d6 85B3      		in r24,53-32
+ 603 02d8 482B      		or r20,r24
+ 604 02da 45BB      		out 53-32,r20
+ 605 02dc 00C0      		rjmp .L94
+ 606               	.L81:
+ 607               	.LM74:
+ 608 02de 81B3      		in r24,49-32
+ 609 02e0 2823      		and r18,r24
+ 610 02e2 21BB      		out 49-32,r18
+ 611               	.LM75:
+ 612 02e4 82B3      		in r24,50-32
+ 613 02e6 482B      		or r20,r24
+ 614 02e8 42BB      		out 50-32,r20
+ 615 02ea 00C0      		rjmp .L94
+ 616               	.L82:
+ 617               	.LM76:
+ 618 02ec 82B1      		in r24,34-32
+ 619 02ee 2823      		and r18,r24
+ 620 02f0 22B9      		out 34-32,r18
+ 621               	.LM77:
+ 622 02f2 83B1      		in r24,35-32
+ 623 02f4 482B      		or r20,r24
+ 624 02f6 43B9      		out 35-32,r20
+ 625 02f8 00C0      		rjmp .L94
+ 626               	.L96:
+ 627               	.LM78:
+ 628 02fa 8091 6100 		lds r24,97
+ 629 02fe 2823      		and r18,r24
+ 630 0300 2093 6100 		sts 97,r18
+ 631               	.LM79:
+ 632 0304 8091 6200 		lds r24,98
+ 633 0308 482B      		or r20,r24
+ 634 030a 4093 6200 		sts 98,r20
+ 635 030e 00C0      		rjmp .L94
+ 636               	.LVL39:
+ 637               	.L77:
+ 638               	.LM80:
+ 639 0310 8770      		andi r24,lo8(7)
+ 640 0312 9070      		andi r25,hi8(7)
+ 641               	.LVL40:
+ 642 0314 8230      		cpi r24,2
+ 643 0316 9105      		cpc r25,__zero_reg__
+ 644 0318 01F0      		breq .L88
+ 645 031a 8330      		cpi r24,3
+ 646 031c 9105      		cpc r25,__zero_reg__
+ 647 031e 04F4      		brge .L92
+ 648 0320 0097      		sbiw r24,0
+ 649 0322 01F0      		breq .L86
+ 650 0324 0197      		sbiw r24,1
+ 651 0326 01F4      		brne .L76
+ 652 0328 00C0      		rjmp .L97
+ 653               	.L92:
+ 654 032a 8430      		cpi r24,4
+ 655 032c 9105      		cpc r25,__zero_reg__
+ 656 032e 01F0      		breq .L90
+ 657 0330 8430      		cpi r24,4
+ 658 0332 9105      		cpc r25,__zero_reg__
+ 659 0334 04F0      		brlt .L89
+ 660 0336 0597      		sbiw r24,5
+ 661 0338 01F4      		brne .L76
+ 662 033a 00C0      		rjmp .L98
+ 663               	.L86:
+ 664               	.LM81:
+ 665 033c 8AB3      		in r24,58-32
+ 666 033e 482B      		or r20,r24
+ 667 0340 4ABB      		out 58-32,r20
+ 668 0342 00C0      		rjmp .L94
+ 669               	.L97:
+ 670               	.LM82:
+ 671 0344 87B3      		in r24,55-32
+ 672 0346 482B      		or r20,r24
+ 673 0348 47BB      		out 55-32,r20
+ 674 034a 00C0      		rjmp .L94
+ 675               	.L88:
+ 676               	.LM83:
+ 677 034c 84B3      		in r24,52-32
+ 678 034e 482B      		or r20,r24
+ 679 0350 44BB      		out 52-32,r20
+ 680 0352 00C0      		rjmp .L94
+ 681               	.L89:
+ 682               	.LM84:
+ 683 0354 81B3      		in r24,49-32
+ 684 0356 482B      		or r20,r24
+ 685 0358 41BB      		out 49-32,r20
+ 686 035a 00C0      		rjmp .L94
+ 687               	.L90:
+ 688               	.LM85:
+ 689 035c 82B1      		in r24,34-32
+ 690 035e 482B      		or r20,r24
+ 691 0360 42B9      		out 34-32,r20
+ 692 0362 00C0      		rjmp .L94
+ 693               	.L98:
+ 694               	.LM86:
+ 695 0364 8091 6100 		lds r24,97
+ 696 0368 482B      		or r20,r24
+ 697 036a 4093 6100 		sts 97,r20
+ 698               	.LVL41:
+ 699               	.L94:
+ 700 036e 81E0      		ldi r24,lo8(1)
+ 701 0370 0895      		ret
+ 702               	.LVL42:
+ 703               	.L76:
+ 704               	.LM87:
+ 705 0372 8FEF      		ldi r24,lo8(-1)
+ 706               	.LVL43:
+ 707               	.LM88:
+ 708 0374 0895      		ret
+ 709               	.LFE13:
+ 711               	.global	nrk_get_button
+ 713               	nrk_get_button:
+ 714               	.LFB14:
+ 715               	.LM89:
+ 716               	.LVL44:
+ 717               	/* prologue: function */
+ 718               	/* frame size = 0 */
+ 719               	.LM90:
+ 720 0376 8FEF      		ldi r24,lo8(-1)
+ 721               	.LVL45:
+ 722               	/* epilogue start */
+ 723 0378 0895      		ret
+ 724               	.LFE14:
+ 726               	.global	nrk_led_toggle
+ 728               	nrk_led_toggle:
+ 729               	.LFB15:
+ 730               	.LM91:
+ 731               	.LVL46:
+ 732               	/* prologue: function */
+ 733               	/* frame size = 0 */
+ 734               	.LM92:
+ 735 037a 0097      		sbiw r24,0
+ 736 037c 01F4      		brne .L102
+ 737 037e 80E0      		ldi r24,lo8(0)
+ 738               	.LVL47:
+ 739 0380 00C0      		rjmp .L107
+ 740               	.LVL48:
+ 741               	.L102:
+ 742               	.LM93:
+ 743 0382 8130      		cpi r24,1
+ 744 0384 9105      		cpc r25,__zero_reg__
+ 745 0386 01F4      		brne .L104
+ 746 0388 88E0      		ldi r24,lo8(8)
+ 747               	.LVL49:
+ 748               	.L107:
+ 749 038a 0E94 0000 		call nrk_gpio_toggle
+ 750 038e 81E0      		ldi r24,lo8(1)
+ 751 0390 0895      		ret
+ 752               	.LVL50:
+ 753               	.L104:
+ 754               	.LM94:
+ 755 0392 0297      		sbiw r24,2
+ 756 0394 01F0      		breq .L105
+ 757 0396 8FEF      		ldi r24,lo8(-1)
+ 758               	.LVL51:
+ 759 0398 0895      		ret
+ 760               	.LVL52:
+ 761               	.L105:
+ 762 039a 80E1      		ldi r24,lo8(16)
+ 763               	.LVL53:
+ 764 039c 0E94 0000 		call nrk_gpio_toggle
+ 765 03a0 81E0      		ldi r24,lo8(1)
+ 766               	.LM95:
+ 767 03a2 0895      		ret
+ 768               	.LFE15:
+ 770               	.global	nrk_led_clr
+ 772               	nrk_led_clr:
+ 773               	.LFB16:
+ 774               	.LM96:
+ 775               	.LVL54:
+ 776               	/* prologue: function */
+ 777               	/* frame size = 0 */
+ 778               	.LM97:
+ 779 03a4 0097      		sbiw r24,0
+ 780 03a6 01F4      		brne .L109
+ 781 03a8 80E0      		ldi r24,lo8(0)
+ 782               	.LVL55:
+ 783 03aa 00C0      		rjmp .L114
+ 784               	.LVL56:
+ 785               	.L109:
+ 786               	.LM98:
+ 787 03ac 8130      		cpi r24,1
+ 788 03ae 9105      		cpc r25,__zero_reg__
+ 789 03b0 01F4      		brne .L111
+ 790 03b2 88E0      		ldi r24,lo8(8)
+ 791               	.LVL57:
+ 792               	.L114:
+ 793 03b4 0E94 0000 		call nrk_gpio_set
+ 794 03b8 81E0      		ldi r24,lo8(1)
+ 795 03ba 0895      		ret
+ 796               	.LVL58:
+ 797               	.L111:
+ 798               	.LM99:
+ 799 03bc 0297      		sbiw r24,2
+ 800 03be 01F0      		breq .L112
+ 801 03c0 8FEF      		ldi r24,lo8(-1)
+ 802               	.LVL59:
+ 803 03c2 0895      		ret
+ 804               	.LVL60:
+ 805               	.L112:
+ 806 03c4 80E1      		ldi r24,lo8(16)
+ 807               	.LVL61:
+ 808 03c6 0E94 0000 		call nrk_gpio_set
+ 809 03ca 81E0      		ldi r24,lo8(1)
+ 810               	.LM100:
+ 811 03cc 0895      		ret
+ 812               	.LFE16:
+ 814               	.global	nrk_setup_ports
+ 816               	nrk_setup_ports:
+ 817               	.LFB7:
+ 818               	.LM101:
+ 819               	/* prologue: function */
+ 820               	/* frame size = 0 */
+ 821               	.LM102:
+ 822 03ce 80B5      		in r24,64-32
+ 823 03d0 8460      		ori r24,lo8(4)
+ 824 03d2 80BD      		out 64-32,r24
+ 825 03d4 87E0      		ldi r24,lo8(7)
+ 826 03d6 87BB      		out 55-32,r24
+ 827 03d8 88BB      		out 56-32,r24
+ 828 03da 8FEF      		ldi r24,lo8(-1)
+ 829 03dc 84BB      		out 52-32,r24
+ 830 03de 15BA      		out 53-32,__zero_reg__
+ 831 03e0 82E0      		ldi r24,lo8(2)
+ 832 03e2 82B9      		out 34-32,r24
+ 833 03e4 87E6      		ldi r24,lo8(103)
+ 834 03e6 8ABB      		out 58-32,r24
+ 835 03e8 80E4      		ldi r24,lo8(64)
+ 836 03ea 8BBB      		out 59-32,r24
+ 837               	.LM103:
+ 838 03ec 80E5      		ldi r24,lo8(80)
+ 839 03ee 8DB9      		out 45-32,r24
+ 840 03f0 81E0      		ldi r24,lo8(1)
+ 841 03f2 8EB9      		out 46-32,r24
+ 842               	.LM104:
+ 843 03f4 80E0      		ldi r24,lo8(0)
+ 844 03f6 90E0      		ldi r25,hi8(0)
+ 845 03f8 0E94 0000 		call nrk_led_clr
+ 846               	.LM105:
+ 847 03fc 81E0      		ldi r24,lo8(1)
+ 848 03fe 90E0      		ldi r25,hi8(1)
+ 849 0400 0E94 0000 		call nrk_led_clr
+ 850               	.LM106:
+ 851 0404 82E0      		ldi r24,lo8(2)
+ 852 0406 90E0      		ldi r25,hi8(2)
+ 853 0408 0E94 0000 		call nrk_led_clr
+ 854               	.LM107:
+ 855 040c 83E0      		ldi r24,lo8(3)
+ 856 040e 90E0      		ldi r25,hi8(3)
+ 857 0410 0E94 0000 		call nrk_led_clr
+ 858               	/* epilogue start */
+ 859               	.LM108:
+ 860 0414 0895      		ret
+ 861               	.LFE7:
+ 863               	.global	nrk_led_set
+ 865               	nrk_led_set:
+ 866               	.LFB17:
+ 867               	.LM109:
+ 868               	.LVL62:
+ 869               	/* prologue: function */
+ 870               	/* frame size = 0 */
+ 871               	.LM110:
+ 872 0416 0097      		sbiw r24,0
+ 873 0418 01F4      		brne .L118
+ 874 041a 80E0      		ldi r24,lo8(0)
+ 875               	.LVL63:
+ 876 041c 00C0      		rjmp .L123
+ 877               	.LVL64:
+ 878               	.L118:
+ 879               	.LM111:
+ 880 041e 8130      		cpi r24,1
+ 881 0420 9105      		cpc r25,__zero_reg__
+ 882 0422 01F4      		brne .L120
+ 883 0424 88E0      		ldi r24,lo8(8)
+ 884               	.LVL65:
+ 885               	.L123:
+ 886 0426 0E94 0000 		call nrk_gpio_clr
+ 887 042a 81E0      		ldi r24,lo8(1)
+ 888 042c 0895      		ret
+ 889               	.LVL66:
+ 890               	.L120:
+ 891               	.LM112:
+ 892 042e 0297      		sbiw r24,2
+ 893 0430 01F0      		breq .L121
+ 894 0432 8FEF      		ldi r24,lo8(-1)
+ 895               	.LVL67:
+ 896 0434 0895      		ret
+ 897               	.LVL68:
+ 898               	.L121:
+ 899 0436 80E1      		ldi r24,lo8(16)
+ 900               	.LVL69:
+ 901 0438 0E94 0000 		call nrk_gpio_clr
+ 902 043c 81E0      		ldi r24,lo8(1)
+ 903               	.LM113:
+ 904 043e 0895      		ret
+ 905               	.LFE17:
+ 907               	.global	putc0
+ 909               	putc0:
+ 910               	.LFB18:
+ 911               	.LM114:
+ 912               	/* prologue: function */
+ 913               	/* frame size = 0 */
+ 914               	.LVL70:
+ 915               	.L125:
+ 916               	.LM115:
+ 917 0440 5D9B      		sbis 43-32,5
+ 918 0442 00C0      		rjmp .L125
+ 919 0444 5D98      		cbi 43-32,5
+ 920 0446 8CB9      		out 44-32,r24
+ 921               	/* epilogue start */
+ 922               	.LM116:
+ 923 0448 0895      		ret
+ 924               	.LFE18:
+ 926               	.global	putc1
+ 928               	putc1:
+ 929               	.LFB19:
+ 930               	.LM117:
+ 931               	.LVL71:
+ 932               	/* prologue: function */
+ 933               	/* frame size = 0 */
+ 934 044a 982F      		mov r25,r24
+ 935               	.LVL72:
+ 936               	.L129:
+ 937               	.LM118:
+ 938 044c 8091 9B00 		lds r24,155
+ 939 0450 85FF      		sbrs r24,5
+ 940 0452 00C0      		rjmp .L129
+ 941 0454 8091 9B00 		lds r24,155
+ 942 0458 8F7D      		andi r24,lo8(-33)
+ 943 045a 8093 9B00 		sts 155,r24
+ 944 045e 9093 9C00 		sts 156,r25
+ 945               	/* epilogue start */
+ 946               	.LM119:
+ 947 0462 0895      		ret
+ 948               	.LFE19:
+ 950               	.global	setup_uart0
+ 952               	setup_uart0:
+ 953               	.LFB20:
+ 954               	.LM120:
+ 955               	.LVL73:
+ 956               	/* prologue: function */
+ 957               	/* frame size = 0 */
+ 958               	.LM121:
+ 959 0464 9093 9000 		sts 144,r25
+ 960               	.LVL74:
+ 961 0468 89B9      		out 41-32,r24
+ 962 046a 86E0      		ldi r24,lo8(6)
+ 963               	.LVL75:
+ 964 046c 8093 9500 		sts 149,r24
+ 965 0470 5298      		cbi 42-32,2
+ 966 0472 599A      		sbi 43-32,1
+ 967               	.LM122:
+ 968 0474 8AB1      		in r24,42-32
+ 969 0476 8861      		ori r24,lo8(24)
+ 970 0478 8AB9      		out 42-32,r24
+ 971               	/* epilogue start */
+ 972               	.LM123:
+ 973 047a 0895      		ret
+ 974               	.LFE20:
+ 976               	.global	setup_uart1
+ 978               	setup_uart1:
+ 979               	.LFB22:
+ 980               	.LM124:
+ 981               	.LVL76:
+ 982               	/* prologue: function */
+ 983               	/* frame size = 0 */
+ 984               	.LM125:
+ 985 047c 9093 9800 		sts 152,r25
+ 986               	.LVL77:
+ 987 0480 8093 9900 		sts 153,r24
+ 988 0484 86E0      		ldi r24,lo8(6)
+ 989               	.LVL78:
+ 990 0486 8093 9D00 		sts 157,r24
+ 991 048a EAE9      		ldi r30,lo8(154)
+ 992 048c F0E0      		ldi r31,hi8(154)
+ 993 048e 8081      		ld r24,Z
+ 994 0490 8B7F      		andi r24,lo8(-5)
+ 995 0492 8083      		st Z,r24
+ 996 0494 ABE9      		ldi r26,lo8(155)
+ 997 0496 B0E0      		ldi r27,hi8(155)
+ 998 0498 8C91      		ld r24,X
+ 999 049a 8260      		ori r24,lo8(2)
+ 1000 049c 8C93      		st X,r24
+ 1001               	.LM126:
+ 1002 049e 8081      		ld r24,Z
+ 1003 04a0 8861      		ori r24,lo8(24)
+ 1004 04a2 8083      		st Z,r24
+ 1005               	/* epilogue start */
+ 1006               	.LM127:
+ 1007 04a4 0895      		ret
+ 1008               	.LFE22:
+ 1010               	.global	getc1
+ 1012               	getc1:
+ 1013               	.LFB23:
+ 1014               	.LM128:
+ 1015               	/* prologue: function */
+ 1016               	/* frame size = 0 */
+ 1017               	.L137:
+ 1018               	.LM129:
+ 1019 04a6 8091 9B00 		lds r24,155
+ 1020 04aa 87FF      		sbrs r24,7
+ 1021 04ac 00C0      		rjmp .L137
+ 1022 04ae 8091 9B00 		lds r24,155
+ 1023 04b2 8F77      		andi r24,lo8(127)
+ 1024 04b4 8093 9B00 		sts 155,r24
+ 1025 04b8 8091 9C00 		lds r24,156
+ 1026               	.LVL79:
+ 1027               	.LVL80:
+ 1028               	/* epilogue start */
+ 1029               	.LM130:
+ 1030 04bc 0895      		ret
+ 1031               	.LFE23:
+ 1033               	.global	nrk_setup_uart
+ 1035               	nrk_setup_uart:
+ 1036               	.LFB21:
+ 1037               	.LM131:
+ 1038               	.LVL81:
+ 1039 04be EF92      		push r14
+ 1040 04c0 FF92      		push r15
+ 1041 04c2 0F93      		push r16
+ 1042 04c4 1F93      		push r17
+ 1043               	/* prologue: function */
+ 1044               	/* frame size = 0 */
+ 1045               	.LM132:
+ 1046 04c6 0E94 0000 		call setup_uart0
+ 1047               	.LVL82:
+ 1048               	.LM133:
+ 1049 04ca 00E0      		ldi r16,lo8(gs(putc0))
+ 1050 04cc 10E0      		ldi r17,hi8(gs(putc0))
+ 1051 04ce 80E0      		ldi r24,lo8(gs(getc0))
+ 1052 04d0 E82E      		mov r14,r24
+ 1053 04d2 80E0      		ldi r24,hi8(gs(getc0))
+ 1054 04d4 F82E      		mov r15,r24
+ 1055 04d6 C801      		movw r24,r16
+ 1056 04d8 B701      		movw r22,r14
+ 1057 04da 0E94 0000 		call fdevopen
+ 1058 04de 9093 0000 		sts (__iob+2)+1,r25
+ 1059 04e2 8093 0000 		sts __iob+2,r24
+ 1060               	.LM134:
+ 1061 04e6 C801      		movw r24,r16
+ 1062 04e8 B701      		movw r22,r14
+ 1063 04ea 0E94 0000 		call fdevopen
+ 1064 04ee 9093 0000 		sts (__iob)+1,r25
+ 1065 04f2 8093 0000 		sts __iob,r24
+ 1066               	/* epilogue start */
+ 1067               	.LM135:
+ 1068 04f6 1F91      		pop r17
+ 1069 04f8 0F91      		pop r16
+ 1070 04fa FF90      		pop r15
+ 1071 04fc EF90      		pop r14
+ 1072 04fe 0895      		ret
+ 1073               	.LFE21:
+ 1075               	.global	nrk_kprintf
+ 1077               	nrk_kprintf:
+ 1078               	.LFB6:
+ 1079               	.LM136:
+ 1080               	.LVL83:
+ 1081 0500 CF93      		push r28
+ 1082 0502 DF93      		push r29
+ 1083               	/* prologue: function */
+ 1084               	/* frame size = 0 */
+ 1085 0504 EC01      		movw r28,r24
+ 1086 0506 00C0      		rjmp .L143
+ 1087               	.LVL84:
+ 1088               	.L144:
+ 1089               	.LM137:
+ 1090 0508 6091 0000 		lds r22,__iob+2
+ 1091 050c 7091 0000 		lds r23,(__iob+2)+1
+ 1092 0510 90E0      		ldi r25,lo8(0)
+ 1093 0512 0E94 0000 		call fputc
+ 1094               	.LVL85:
+ 1095               	.L143:
+ 1096 0516 FE01      		movw r30,r28
+ 1097               	.LVL86:
+ 1098               	.LBB2:
+ 1099               	.LM138:
+ 1100 0518 2196      		adiw r28,1
+ 1101               	/* #APP */
+ 1102               	 ;  139 "../../../src/platform/micaZ/source/ulib.c" 1
+ 1103 051a 8491      		lpm r24, Z
+ 1104               		
+ 1105               	 ;  0 "" 2
+ 1106               	.LVL87:
+ 1107               	/* #NOAPP */
+ 1108               	.LBE2:
+ 1109 051c 8823      		tst r24
+ 1110 051e 01F4      		brne .L144
+ 1111               	/* epilogue start */
+ 1112               	.LM139:
+ 1113 0520 DF91      		pop r29
+ 1114 0522 CF91      		pop r28
+ 1115               	.LVL88:
+ 1116 0524 0895      		ret
+ 1117               	.LFE6:
+ 1119               	.global	NRK_LED_0
+ 1120               		.data
+ 1123               	NRK_LED_0:
+ 1124 0000 00        		.skip 1,0
+ 1125               	.global	NRK_LED_1
+ 1128               	NRK_LED_1:
+ 1129 0001 08        		.byte	8
+ 1130               	.global	NRK_LED_2
+ 1133               	NRK_LED_2:
+ 1134 0002 10        		.byte	16
+ 1135               	.global	NRK_VREG_EN
+ 1138               	NRK_VREG_EN:
+ 1139 0003 28        		.byte	40
+ 1140               	.global	NRK_RESET_N
+ 1143               	NRK_RESET_N:
+ 1144 0004 30        		.byte	48
+ 1145               	.global	NRK_CSN
+ 1148               	NRK_CSN:
+ 1149 0005 01        		.byte	1
+ 1150               	.global	NRK_SCK
+ 1153               	NRK_SCK:
+ 1154 0006 09        		.byte	9
+ 1155               	.global	NRK_MOSI
+ 1158               	NRK_MOSI:
+ 1159 0007 11        		.byte	17
+ 1160               	.global	NRK_MISO
+ 1163               	NRK_MISO:
+ 1164 0008 19        		.byte	25
+ 1165               	.global	NRK_FIFO
+ 1168               	NRK_FIFO:
+ 1169 0009 39        		.byte	57
+ 1170               	.global	NRK_UART1_RXD
+ 1173               	NRK_UART1_RXD:
+ 1174 000a 13        		.byte	19
+ 1175               	.global	NRK_UART1_TXD
+ 1178               	NRK_UART1_TXD:
+ 1179 000b 1B        		.byte	27
+ 1180               	.global	NRK_SFD
+ 1183               	NRK_SFD:
+ 1184 000c 23        		.byte	35
+ 1185               	.global	NRK_UART1_RTS
+ 1188               	NRK_UART1_RTS:
+ 1189 000d 2B        		.byte	43
+ 1190               	.global	NRK_CCA
+ 1193               	NRK_CCA:
+ 1194 000e 33        		.byte	51
+ 1195               	.global	NRK_UART1_CTS
+ 1198               	NRK_UART1_CTS:
+ 1199 000f 3B        		.byte	59
+ 1200               	.global	NRK_UART0_RXD
+ 1203               	NRK_UART0_RXD:
+ 1204 0010 04        		.byte	4
+ 1205               	.global	NRK_UART0_TXD
+ 1208               	NRK_UART0_TXD:
+ 1209 0011 0C        		.byte	12
+ 1210               	.global	NRK_FIFOP
+ 1213               	NRK_FIFOP:
+ 1214 0012 34        		.byte	52
+ 1215               	.global	NRK_ADC_INPUT_0
+ 1218               	NRK_ADC_INPUT_0:
+ 1219 0013 05        		.byte	5
+ 1220               	.global	NRK_ADC_INPUT_1
+ 1223               	NRK_ADC_INPUT_1:
+ 1224 0014 0D        		.byte	13
+ 1225               	.global	NRK_ADC_INPUT_2
+ 1228               	NRK_ADC_INPUT_2:
+ 1229 0015 15        		.byte	21
+ 1230               	.global	NRK_ADC_INPUT_3
+ 1233               	NRK_ADC_INPUT_3:
+ 1234 0016 1D        		.byte	29
+ 1235               	.global	NRK_ADC_INPUT_6
+ 1238               	NRK_ADC_INPUT_6:
+ 1239 0017 35        		.byte	53
+ 1240               	.global	NRK_ADC_INPUT_7
+ 1243               	NRK_ADC_INPUT_7:
+ 1244 0018 3D        		.byte	61
+ 1245               	.global	NRK_DEBUG_0
+ 1248               	NRK_DEBUG_0:
+ 1249 0019 0A        		.byte	10
+ 1250               	.global	NRK_DEBUG_1
+ 1253               	NRK_DEBUG_1:
+ 1254 001a 12        		.byte	18
+ 1255               	.global	NRK_DEBUG_2
+ 1258               	NRK_DEBUG_2:
+ 1259 001b FF        		.byte	-1
+ 1260               	.global	NRK_DEBUG_3
+ 1263               	NRK_DEBUG_3:
+ 1264 001c FF        		.byte	-1
+ 1265               	.global	NRK_LED_3
+ 1268               	NRK_LED_3:
+ 1269 001d FF        		.byte	-1
+ 1270               	.global	NRK_BLED
+ 1273               	NRK_BLED:
+ 1274 001e FF        		.byte	-1
+ 1275               	.global	NRK_SPI_SS
+ 1278               	NRK_SPI_SS:
+ 1279 001f FF        		.byte	-1
+ 1280               	.global	NRK_GPIO26
+ 1283               	NRK_GPIO26:
+ 1284 0020 FF        		.byte	-1
+ 1285               	.global	NRK_GPIO28
+ 1288               	NRK_GPIO28:
+ 1289 0021 FF        		.byte	-1
+ 1290               	.global	NRK_GPIO34
+ 1293               	NRK_GPIO34:
+ 1294 0022 FF        		.byte	-1
+ 1295               		.comm _nrk_signal_list,4,1
+ 1296               		.comm error_task,1,1
+ 1297               		.comm error_num,1,1
+ 1482               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 ulib.c
+C:\cygwin\tmp/ccYTjyHS.s:2      *ABS*:0000003f __SREG__
+C:\cygwin\tmp/ccYTjyHS.s:3      *ABS*:0000003e __SP_H__
+C:\cygwin\tmp/ccYTjyHS.s:4      *ABS*:0000003d __SP_L__
+C:\cygwin\tmp/ccYTjyHS.s:5      *ABS*:00000034 __CCP__
+C:\cygwin\tmp/ccYTjyHS.s:6      *ABS*:00000000 __tmp_reg__
+C:\cygwin\tmp/ccYTjyHS.s:7      *ABS*:00000001 __zero_reg__
+C:\cygwin\tmp/ccYTjyHS.s:18     .text:00000000 nrk_uart_rx_signal_get
+C:\cygwin\tmp/ccYTjyHS.s:31     .text:00000004 nrk_uart_data_ready
+C:\cygwin\tmp/ccYTjyHS.s:69     .text:00000026 getc0
+C:\cygwin\tmp/ccYTjyHS.s:89     .text:00000030 nrk_gpio_set
+C:\cygwin\tmp/ccYTjyHS.s:194    .text:000000c0 nrk_gpio_clr
+C:\cygwin\tmp/ccYTjyHS.s:300    .text:00000152 nrk_gpio_get
+C:\cygwin\tmp/ccYTjyHS.s:380    .text:000001b6 nrk_gpio_pullups
+C:\cygwin\tmp/ccYTjyHS.s:409    .text:000001ca nrk_gpio_toggle
+C:\cygwin\tmp/ccYTjyHS.s:514    .text:0000025a nrk_gpio_direction
+C:\cygwin\tmp/ccYTjyHS.s:713    .text:00000376 nrk_get_button
+C:\cygwin\tmp/ccYTjyHS.s:728    .text:0000037a nrk_led_toggle
+C:\cygwin\tmp/ccYTjyHS.s:772    .text:000003a4 nrk_led_clr
+C:\cygwin\tmp/ccYTjyHS.s:816    .text:000003ce nrk_setup_ports
+C:\cygwin\tmp/ccYTjyHS.s:865    .text:00000416 nrk_led_set
+C:\cygwin\tmp/ccYTjyHS.s:909    .text:00000440 putc0
+C:\cygwin\tmp/ccYTjyHS.s:928    .text:0000044a putc1
+C:\cygwin\tmp/ccYTjyHS.s:952    .text:00000464 setup_uart0
+C:\cygwin\tmp/ccYTjyHS.s:978    .text:0000047c setup_uart1
+C:\cygwin\tmp/ccYTjyHS.s:1012   .text:000004a6 getc1
+C:\cygwin\tmp/ccYTjyHS.s:1035   .text:000004be nrk_setup_uart
+C:\cygwin\tmp/ccYTjyHS.s:1077   .text:00000500 nrk_kprintf
+C:\cygwin\tmp/ccYTjyHS.s:1123   .data:00000000 NRK_LED_0
+C:\cygwin\tmp/ccYTjyHS.s:1128   .data:00000001 NRK_LED_1
+C:\cygwin\tmp/ccYTjyHS.s:1133   .data:00000002 NRK_LED_2
+C:\cygwin\tmp/ccYTjyHS.s:1138   .data:00000003 NRK_VREG_EN
+C:\cygwin\tmp/ccYTjyHS.s:1143   .data:00000004 NRK_RESET_N
+C:\cygwin\tmp/ccYTjyHS.s:1148   .data:00000005 NRK_CSN
+C:\cygwin\tmp/ccYTjyHS.s:1153   .data:00000006 NRK_SCK
+C:\cygwin\tmp/ccYTjyHS.s:1158   .data:00000007 NRK_MOSI
+C:\cygwin\tmp/ccYTjyHS.s:1163   .data:00000008 NRK_MISO
+C:\cygwin\tmp/ccYTjyHS.s:1168   .data:00000009 NRK_FIFO
+C:\cygwin\tmp/ccYTjyHS.s:1173   .data:0000000a NRK_UART1_RXD
+C:\cygwin\tmp/ccYTjyHS.s:1178   .data:0000000b NRK_UART1_TXD
+C:\cygwin\tmp/ccYTjyHS.s:1183   .data:0000000c NRK_SFD
+C:\cygwin\tmp/ccYTjyHS.s:1188   .data:0000000d NRK_UART1_RTS
+C:\cygwin\tmp/ccYTjyHS.s:1193   .data:0000000e NRK_CCA
+C:\cygwin\tmp/ccYTjyHS.s:1198   .data:0000000f NRK_UART1_CTS
+C:\cygwin\tmp/ccYTjyHS.s:1203   .data:00000010 NRK_UART0_RXD
+C:\cygwin\tmp/ccYTjyHS.s:1208   .data:00000011 NRK_UART0_TXD
+C:\cygwin\tmp/ccYTjyHS.s:1213   .data:00000012 NRK_FIFOP
+C:\cygwin\tmp/ccYTjyHS.s:1218   .data:00000013 NRK_ADC_INPUT_0
+C:\cygwin\tmp/ccYTjyHS.s:1223   .data:00000014 NRK_ADC_INPUT_1
+C:\cygwin\tmp/ccYTjyHS.s:1228   .data:00000015 NRK_ADC_INPUT_2
+C:\cygwin\tmp/ccYTjyHS.s:1233   .data:00000016 NRK_ADC_INPUT_3
+C:\cygwin\tmp/ccYTjyHS.s:1238   .data:00000017 NRK_ADC_INPUT_6
+C:\cygwin\tmp/ccYTjyHS.s:1243   .data:00000018 NRK_ADC_INPUT_7
+C:\cygwin\tmp/ccYTjyHS.s:1248   .data:00000019 NRK_DEBUG_0
+C:\cygwin\tmp/ccYTjyHS.s:1253   .data:0000001a NRK_DEBUG_1
+C:\cygwin\tmp/ccYTjyHS.s:1258   .data:0000001b NRK_DEBUG_2
+C:\cygwin\tmp/ccYTjyHS.s:1263   .data:0000001c NRK_DEBUG_3
+C:\cygwin\tmp/ccYTjyHS.s:1268   .data:0000001d NRK_LED_3
+C:\cygwin\tmp/ccYTjyHS.s:1273   .data:0000001e NRK_BLED
+C:\cygwin\tmp/ccYTjyHS.s:1278   .data:0000001f NRK_SPI_SS
+C:\cygwin\tmp/ccYTjyHS.s:1283   .data:00000020 NRK_GPIO26
+C:\cygwin\tmp/ccYTjyHS.s:1288   .data:00000021 NRK_GPIO28
+C:\cygwin\tmp/ccYTjyHS.s:1293   .data:00000022 NRK_GPIO34
+                            *COM*:00000004 _nrk_signal_list
+                            *COM*:00000001 error_task
+                            *COM*:00000001 error_num
+
+UNDEFINED SYMBOLS
+fdevopen
+__iob
+fputc
+__do_copy_data
+__do_clear_bss

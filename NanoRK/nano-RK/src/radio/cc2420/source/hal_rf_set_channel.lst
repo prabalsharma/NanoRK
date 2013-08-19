@@ -1,0 +1,84 @@
+   1               		.file	"hal_rf_set_channel.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	halRfSetChannel
+  18               	halRfSetChannel:
+  19               	.LFB3:
+  20               	.LM1:
+  21               	.LVL0:
+  22               	/* prologue: function */
+  23               	/* frame size = 0 */
+  24               	.LM2:
+  25 0000 90E0      		ldi r25,lo8(0)
+  26               	.LVL1:
+  27 0002 0B97      		sbiw r24,11
+  28               	.LVL2:
+  29               	.LM3:
+  30 0004 9C01      		movw r18,r24
+  31               	.LVL3:
+  32 0006 2B59      		subi r18,lo8(-(16741))
+  33 0008 3E4B      		sbci r19,hi8(-(16741))
+  34 000a 880F      		lsl r24
+  35 000c 991F      		rol r25
+  36 000e 880F      		lsl r24
+  37 0010 991F      		rol r25
+  38               	.LVL4:
+  39               	.LM4:
+  40 0012 280F      		add r18,r24
+  41 0014 391F      		adc r19,r25
+  42               	.LM5:
+  43               	/* #APP */
+  44               	 ;  53 "../../../src/radio/cc2420/source/hal_rf_set_channel.c" 1
+  45 0016 F894      		cli
+  46               		
+  47               	 ;  0 "" 2
+  48               	.LM6:
+  49               	/* #NOAPP */
+  50 0018 C098      		cbi 56-32,0
+  51 001a 88E1      		ldi r24,lo8(24)
+  52               	.LVL5:
+  53 001c 8FB9      		out 47-32,r24
+  54               	.L2:
+  55 001e 779B      		sbis 46-32,7
+  56 0020 00C0      		rjmp .L2
+  57 0022 3FB9      		out 47-32,r19
+  58               	.LVL6:
+  59               	.L3:
+  60 0024 779B      		sbis 46-32,7
+  61 0026 00C0      		rjmp .L3
+  62 0028 2FB9      		out 47-32,r18
+  63               	.L4:
+  64 002a 779B      		sbis 46-32,7
+  65 002c 00C0      		rjmp .L4
+  66 002e C09A      		sbi 56-32,0
+  67               	.LM7:
+  68               	/* #APP */
+  69               	 ;  55 "../../../src/radio/cc2420/source/hal_rf_set_channel.c" 1
+  70 0030 7894      		sei
+  71               		
+  72               	 ;  0 "" 2
+  73               	/* epilogue start */
+  74               	.LM8:
+  75               	/* #NOAPP */
+  76 0032 0895      		ret
+  77               	.LFE3:
+  79               		.comm _nrk_signal_list,4,1
+ 104               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 hal_rf_set_channel.c
+C:\cygwin\tmp/ccqTGTt3.s:2      *ABS*:0000003f __SREG__
+C:\cygwin\tmp/ccqTGTt3.s:3      *ABS*:0000003e __SP_H__
+C:\cygwin\tmp/ccqTGTt3.s:4      *ABS*:0000003d __SP_L__
+C:\cygwin\tmp/ccqTGTt3.s:5      *ABS*:00000034 __CCP__
+C:\cygwin\tmp/ccqTGTt3.s:6      *ABS*:00000000 __tmp_reg__
+C:\cygwin\tmp/ccqTGTt3.s:7      *ABS*:00000001 __zero_reg__
+C:\cygwin\tmp/ccqTGTt3.s:18     .text:00000000 halRfSetChannel
+                            *COM*:00000004 _nrk_signal_list
+
+UNDEFINED SYMBOLS
+__do_clear_bss

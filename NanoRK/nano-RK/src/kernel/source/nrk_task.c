@@ -76,19 +76,34 @@ void nrk_add_to_readyQ (int8_t task_ID)
     if (_head_node != NULL)
     {
 
-        while (NextNode != NULL)
-        {
-            if (nrk_task_TCB[NextNode->task_ID].elevated_prio_flag)
-                if (nrk_task_TCB[NextNode->task_ID].task_prio_ceil <
-                        nrk_task_TCB[task_ID].task_prio)
-                    break;
-            if (nrk_task_TCB[task_ID].elevated_prio_flag)
-                if (nrk_task_TCB[NextNode->task_ID].task_prio <
-                        nrk_task_TCB[task_ID].task_prio_ceil)
-                    break;
-            if (nrk_task_TCB[NextNode->task_ID].task_prio <
-                    nrk_task_TCB[task_ID].task_prio)
-                break;
+    while (NextNode != NULL) {
+
+	#ifdef NRK_EDF
+    		  
+			 // nrk_kprintf(" NN");
+    		 // nrk_printnum(NextNode->task_ID);
+    		 // nrk_kprintf(":NP:");
+    		 // nrk_printnum(nrk_task_TCB[NextNode->task_ID].next_period);
+
+
+			if (NextNode->task_ID == NRK_IDLE_TASK_ID || nrk_task_TCB[NextNode->task_ID].next_period > nrk_task_TCB[task_ID].next_period)
+			  break;
+
+    		//if((earliestDeadlineID == NRK_IDLE_TASK_ID || nrk_task_TCB[task_ID].next_period < nrk_task_TCB[earliestDeadlineID].next_period) && nrk_task_TCB[task_ID].task_state == READY)
+			//	earliestDeadlineID = task_ID;
+	#else
+		  if (nrk_task_TCB[NextNode->task_ID].elevated_prio_flag)
+			if (nrk_task_TCB[NextNode->task_ID].task_prio_ceil <
+				nrk_task_TCB[task_ID].task_prio)
+			  break;
+		  if (nrk_task_TCB[task_ID].elevated_prio_flag)
+			if (nrk_task_TCB[NextNode->task_ID].task_prio <
+				nrk_task_TCB[task_ID].task_prio_ceil)
+			  break;
+		  if (nrk_task_TCB[NextNode->task_ID].task_prio <
+			  nrk_task_TCB[task_ID].task_prio)
+			break;
+	#endif
 
             NextNode = NextNode->Next;
         }
@@ -294,6 +309,7 @@ int8_t nrk_wait_until_next_period ()
     nrk_int_disable ();
     nrk_cur_task_TCB->num_periods = 1;
     nrk_cur_task_TCB->suspend_flag = 1;
+  nrk_cur_task_TCB->next_wakeup = nrk_cur_task_TCB->next_period;
     timer = _nrk_os_timer_get ();
 
 //nrk_cur_task_TCB->cpu_remaining=_nrk_prev_timer_val+1;

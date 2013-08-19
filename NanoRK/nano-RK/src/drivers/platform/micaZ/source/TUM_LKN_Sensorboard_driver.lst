@@ -1,0 +1,1592 @@
+   1               		.file	"TUM_LKN_Sensorboard_driver.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	setLedMode
+  18               	setLedMode:
+  19               	.LFB8:
+  20               	.LM1:
+  21               	.LVL0:
+  22               	/* prologue: function */
+  23               	/* frame size = 0 */
+  24               	.LM2:
+  25 0000 8370      		andi r24,lo8(3)
+  26               	.LVL1:
+  27               	.LM3:
+  28 0002 880F      		lsl r24
+  29 0004 23E0      		ldi r18,lo8(3)
+  30 0006 30E0      		ldi r19,hi8(3)
+  31 0008 082E      		mov r0,r24
+  32 000a 00C0      		rjmp 2f
+  33 000c 220F      	1:	lsl r18
+  34 000e 0A94      	2:	dec r0
+  35 0010 02F4      		brpl 1b
+  36               	.LM4:
+  37 0012 922F      		mov r25,r18
+  38 0014 9095      		com r25
+  39 0016 4091 0000 		lds r20,m_ledstate
+  40 001a 9423      		and r25,r20
+  41 001c 00C0      		rjmp 2f
+  42 001e 660F      	1:	lsl r22
+  43 0020 8A95      	2:	dec r24
+  44 0022 02F4      		brpl 1b
+  45               	.LVL2:
+  46 0024 2623      		and r18,r22
+  47 0026 922B      		or r25,r18
+  48 0028 9093 0000 		sts m_ledstate,r25
+  49               	/* epilogue start */
+  50               	.LM5:
+  51 002c 0895      		ret
+  52               	.LFE8:
+  54               	.global	getLedMode
+  56               	getLedMode:
+  57               	.LFB9:
+  58               	.LM6:
+  59               	.LVL3:
+  60               	/* prologue: function */
+  61               	/* frame size = 0 */
+  62               	.LM7:
+  63 002e 8370      		andi r24,lo8(3)
+  64               	.LVL4:
+  65               	.LM8:
+  66 0030 880F      		lsl r24
+  67 0032 23E0      		ldi r18,lo8(3)
+  68 0034 30E0      		ldi r19,hi8(3)
+  69 0036 082E      		mov r0,r24
+  70 0038 00C0      		rjmp 2f
+  71 003a 220F      	1:	lsl r18
+  72 003c 331F      		rol r19
+  73 003e 0A94      	2:	dec r0
+  74 0040 02F4      		brpl 1b
+  75 0042 4091 0000 		lds r20,m_ledstate
+  76 0046 50E0      		ldi r21,lo8(0)
+  77 0048 2423      		and r18,r20
+  78 004a 3523      		and r19,r21
+  79 004c 00C0      		rjmp 2f
+  80 004e 3595      	1:	asr r19
+  81 0050 2795      		ror r18
+  82 0052 8A95      	2:	dec r24
+  83 0054 02F4      		brpl 1b
+  84               	.LM9:
+  85 0056 822F      		mov r24,r18
+  86               	/* epilogue start */
+  87 0058 0895      		ret
+  88               	.LFE9:
+  90               	.global	S2V
+  92               	S2V:
+  93               	.LFB10:
+  94               	.LM10:
+  95               	.LVL5:
+  96               	/* prologue: function */
+  97               	/* frame size = 0 */
+  98               	.LM11:
+  99 005a 90E0      		ldi r25,lo8(0)
+ 100               	.LVL6:
+ 101 005c A0E0      		ldi r26,lo8(0)
+ 102 005e B0E0      		ldi r27,hi8(0)
+ 103               	.LVL7:
+ 104 0060 BC01      		movw r22,r24
+ 105 0062 CD01      		movw r24,r26
+ 106 0064 0E94 0000 		call __floatunsisf
+ 107               	.LVL8:
+ 108 0068 2091 0000 		lds r18,m_vbatt
+ 109 006c 3091 0000 		lds r19,(m_vbatt)+1
+ 110 0070 4091 0000 		lds r20,(m_vbatt)+2
+ 111 0074 5091 0000 		lds r21,(m_vbatt)+3
+ 112 0078 0E94 0000 		call __mulsf3
+ 113 007c 20E0      		ldi r18,lo8(0x3b800000)
+ 114 007e 30E0      		ldi r19,hi8(0x3b800000)
+ 115 0080 40E8      		ldi r20,hlo8(0x3b800000)
+ 116 0082 5BE3      		ldi r21,hhi8(0x3b800000)
+ 117 0084 0E94 0000 		call __mulsf3
+ 118               	/* epilogue start */
+ 119 0088 0895      		ret
+ 120               	.LFE10:
+ 122               	.global	V2S
+ 124               	V2S:
+ 125               	.LFB11:
+ 126               	.LM12:
+ 127               	.LVL9:
+ 128               	/* prologue: function */
+ 129               	/* frame size = 0 */
+ 130               	.LM13:
+ 131 008a 20E0      		ldi r18,lo8(0x43800000)
+ 132 008c 30E0      		ldi r19,hi8(0x43800000)
+ 133 008e 40E8      		ldi r20,hlo8(0x43800000)
+ 134 0090 53E4      		ldi r21,hhi8(0x43800000)
+ 135 0092 0E94 0000 		call __mulsf3
+ 136               	.LVL10:
+ 137 0096 2091 0000 		lds r18,m_vbatt
+ 138 009a 3091 0000 		lds r19,(m_vbatt)+1
+ 139 009e 4091 0000 		lds r20,(m_vbatt)+2
+ 140 00a2 5091 0000 		lds r21,(m_vbatt)+3
+ 141 00a6 0E94 0000 		call __divsf3
+ 142 00aa 0E94 0000 		call __fixunssfsi
+ 143 00ae DC01      		movw r26,r24
+ 144 00b0 CB01      		movw r24,r22
+ 145               	/* epilogue start */
+ 146 00b2 0895      		ret
+ 147               	.LFE11:
+ 149               	.global	setBits
+ 151               	setBits:
+ 152               	.LFB12:
+ 153               	.LM14:
+ 154               	.LVL11:
+ 155               	/* prologue: function */
+ 156               	/* frame size = 0 */
+ 157               	.LM15:
+ 158 00b4 6823      		and r22,r24
+ 159               	.LVL12:
+ 160 00b6 842F      		mov r24,r20
+ 161               	.LVL13:
+ 162 00b8 862B      		or r24,r22
+ 163               	/* epilogue start */
+ 164 00ba 0895      		ret
+ 165               	.LFE12:
+ 167               	.global	prescalerSec2Hex
+ 169               	prescalerSec2Hex:
+ 170               	.LFB13:
+ 171               	.LM16:
+ 172               	.LVL14:
+ 173 00bc EF92      		push r14
+ 174 00be FF92      		push r15
+ 175 00c0 0F93      		push r16
+ 176 00c2 1F93      		push r17
+ 177               	/* prologue: function */
+ 178               	/* frame size = 0 */
+ 179 00c4 7B01      		movw r14,r22
+ 180 00c6 8C01      		movw r16,r24
+ 181               	.LM17:
+ 182 00c8 20E0      		ldi r18,lo8(0x47176800)
+ 183 00ca 38E6      		ldi r19,hi8(0x47176800)
+ 184 00cc 47E1      		ldi r20,hlo8(0x47176800)
+ 185 00ce 57E4      		ldi r21,hhi8(0x47176800)
+ 186 00d0 0E94 0000 		call __gtsf2
+ 187               	.LVL15:
+ 188 00d4 1816      		cp __zero_reg__,r24
+ 189 00d6 04F4      		brge .L18
+ 190 00d8 8FEF      		ldi r24,lo8(-1)
+ 191 00da 00C0      		rjmp .L14
+ 192               	.L18:
+ 193               	.LM18:
+ 194 00dc C801      		movw r24,r16
+ 195 00de B701      		movw r22,r14
+ 196 00e0 26E3      		ldi r18,lo8(0x3bd79436)
+ 197 00e2 34E9      		ldi r19,hi8(0x3bd79436)
+ 198 00e4 47ED      		ldi r20,hlo8(0x3bd79436)
+ 199 00e6 5BE3      		ldi r21,hhi8(0x3bd79436)
+ 200 00e8 0E94 0000 		call __gesf2
+ 201 00ec 87FF      		sbrs r24,7
+ 202 00ee 00C0      		rjmp .L15
+ 203 00f0 80E0      		ldi r24,lo8(0)
+ 204 00f2 00C0      		rjmp .L14
+ 205               	.L15:
+ 206               	.LM19:
+ 207 00f4 C801      		movw r24,r16
+ 208 00f6 B701      		movw r22,r14
+ 209 00f8 20E0      		ldi r18,lo8(0x43180000)
+ 210 00fa 30E0      		ldi r19,hi8(0x43180000)
+ 211 00fc 48E1      		ldi r20,hlo8(0x43180000)
+ 212 00fe 53E4      		ldi r21,hhi8(0x43180000)
+ 213 0100 0E94 0000 		call __mulsf3
+ 214 0104 20E0      		ldi r18,lo8(0x3f800000)
+ 215 0106 30E0      		ldi r19,hi8(0x3f800000)
+ 216 0108 40E8      		ldi r20,hlo8(0x3f800000)
+ 217 010a 5FE3      		ldi r21,hhi8(0x3f800000)
+ 218 010c 0E94 0000 		call __subsf3
+ 219 0110 0E94 0000 		call __fixunssfsi
+ 220 0114 862F      		mov r24,r22
+ 221               	.L14:
+ 222               	/* epilogue start */
+ 223               	.LM20:
+ 224 0116 1F91      		pop r17
+ 225 0118 0F91      		pop r16
+ 226 011a FF90      		pop r15
+ 227 011c EF90      		pop r14
+ 228               	.LVL16:
+ 229 011e 0895      		ret
+ 230               	.LFE13:
+ 232               	.global	pwmFrac2Hex
+ 234               	pwmFrac2Hex:
+ 235               	.LFB14:
+ 236               	.LM21:
+ 237               	.LVL17:
+ 238 0120 EF92      		push r14
+ 239 0122 FF92      		push r15
+ 240 0124 0F93      		push r16
+ 241 0126 1F93      		push r17
+ 242               	/* prologue: function */
+ 243               	/* frame size = 0 */
+ 244 0128 7B01      		movw r14,r22
+ 245 012a 8C01      		movw r16,r24
+ 246               	.LM22:
+ 247 012c 20E0      		ldi r18,lo8(0x3f800000)
+ 248 012e 30E0      		ldi r19,hi8(0x3f800000)
+ 249 0130 40E8      		ldi r20,hlo8(0x3f800000)
+ 250 0132 5FE3      		ldi r21,hhi8(0x3f800000)
+ 251 0134 0E94 0000 		call __gesf2
+ 252               	.LVL18:
+ 253 0138 8823      		tst r24
+ 254 013a 04F0      		brlt .L26
+ 255 013c 8FEF      		ldi r24,lo8(-1)
+ 256 013e 00C0      		rjmp .L22
+ 257               	.L26:
+ 258               	.LM23:
+ 259 0140 C801      		movw r24,r16
+ 260 0142 B701      		movw r22,r14
+ 261 0144 20E0      		ldi r18,lo8(0x3b800000)
+ 262 0146 30E0      		ldi r19,hi8(0x3b800000)
+ 263 0148 40E8      		ldi r20,hlo8(0x3b800000)
+ 264 014a 5BE3      		ldi r21,hhi8(0x3b800000)
+ 265 014c 0E94 0000 		call __gesf2
+ 266 0150 87FF      		sbrs r24,7
+ 267 0152 00C0      		rjmp .L23
+ 268 0154 80E0      		ldi r24,lo8(0)
+ 269 0156 00C0      		rjmp .L22
+ 270               	.L23:
+ 271               	.LM24:
+ 272 0158 C801      		movw r24,r16
+ 273 015a B701      		movw r22,r14
+ 274 015c 20E0      		ldi r18,lo8(0x43800000)
+ 275 015e 30E0      		ldi r19,hi8(0x43800000)
+ 276 0160 40E8      		ldi r20,hlo8(0x43800000)
+ 277 0162 53E4      		ldi r21,hhi8(0x43800000)
+ 278 0164 0E94 0000 		call __mulsf3
+ 279 0168 0E94 0000 		call __fixunssfsi
+ 280 016c 862F      		mov r24,r22
+ 281               	.L22:
+ 282               	/* epilogue start */
+ 283               	.LM25:
+ 284 016e 1F91      		pop r17
+ 285 0170 0F91      		pop r16
+ 286 0172 FF90      		pop r15
+ 287 0174 EF90      		pop r14
+ 288               	.LVL19:
+ 289 0176 0895      		ret
+ 290               	.LFE14:
+ 292               	.global	TUM_LKN_Sensorboard_getCurrentStep
+ 294               	TUM_LKN_Sensorboard_getCurrentStep:
+ 295               	.LFB24:
+ 296               	.LM26:
+ 297               	/* prologue: function */
+ 298               	/* frame size = 0 */
+ 299               	.LM27:
+ 300 0178 8091 0000 		lds r24,m_currentstep
+ 301               	/* epilogue start */
+ 302 017c 0895      		ret
+ 303               	.LFE24:
+ 305               	.global	TUM_LKN_Sensorboard_setControl0
+ 307               	TUM_LKN_Sensorboard_setControl0:
+ 308               	.LFB31:
+ 309               	.LM28:
+ 310               	.LVL20:
+ 311 017e EF92      		push r14
+ 312 0180 FF92      		push r15
+ 313 0182 0F93      		push r16
+ 314 0184 1F93      		push r17
+ 315               	/* prologue: function */
+ 316               	/* frame size = 0 */
+ 317 0186 7901      		movw r14,r18
+ 318 0188 8A01      		movw r16,r20
+ 319               	.LM29:
+ 320 018a 0E94 0000 		call prescalerSec2Hex
+ 321               	.LVL21:
+ 322 018e 8093 0000 		sts m_prescaler,r24
+ 323               	.LBB32:
+ 324               	.LBB33:
+ 325               	.LM30:
+ 326 0192 C801      		movw r24,r16
+ 327 0194 B701      		movw r22,r14
+ 328 0196 20E0      		ldi r18,lo8(0x3f800000)
+ 329 0198 30E0      		ldi r19,hi8(0x3f800000)
+ 330 019a 40E8      		ldi r20,hlo8(0x3f800000)
+ 331 019c 5FE3      		ldi r21,hhi8(0x3f800000)
+ 332 019e 0E94 0000 		call __gesf2
+ 333 01a2 8823      		tst r24
+ 334 01a4 04F0      		brlt .L36
+ 335 01a6 6FEF      		ldi r22,lo8(-1)
+ 336 01a8 00C0      		rjmp .L32
+ 337               	.L36:
+ 338               	.LM31:
+ 339 01aa C801      		movw r24,r16
+ 340 01ac B701      		movw r22,r14
+ 341 01ae 20E0      		ldi r18,lo8(0x3b800000)
+ 342 01b0 30E0      		ldi r19,hi8(0x3b800000)
+ 343 01b2 40E8      		ldi r20,hlo8(0x3b800000)
+ 344 01b4 5BE3      		ldi r21,hhi8(0x3b800000)
+ 345 01b6 0E94 0000 		call __gesf2
+ 346 01ba 87FF      		sbrs r24,7
+ 347 01bc 00C0      		rjmp .L33
+ 348 01be 60E0      		ldi r22,lo8(0)
+ 349 01c0 00C0      		rjmp .L32
+ 350               	.L33:
+ 351               	.LM32:
+ 352 01c2 C801      		movw r24,r16
+ 353 01c4 B701      		movw r22,r14
+ 354 01c6 20E0      		ldi r18,lo8(0x43800000)
+ 355 01c8 30E0      		ldi r19,hi8(0x43800000)
+ 356 01ca 40E8      		ldi r20,hlo8(0x43800000)
+ 357 01cc 53E4      		ldi r21,hhi8(0x43800000)
+ 358 01ce 0E94 0000 		call __mulsf3
+ 359 01d2 0E94 0000 		call __fixunssfsi
+ 360               	.L32:
+ 361               	.LBE33:
+ 362               	.LBE32:
+ 363               	.LM33:
+ 364 01d6 6093 0000 		sts m_pwm,r22
+ 365               	/* epilogue start */
+ 366               	.LM34:
+ 367 01da 1F91      		pop r17
+ 368 01dc 0F91      		pop r16
+ 369 01de FF90      		pop r15
+ 370 01e0 EF90      		pop r14
+ 371               	.LVL22:
+ 372 01e2 0895      		ret
+ 373               	.LFE31:
+ 375               	.global	TUM_LKN_Sensorboard_setControl1
+ 377               	TUM_LKN_Sensorboard_setControl1:
+ 378               	.LFB32:
+ 379               	.LM35:
+ 380               	.LVL23:
+ 381 01e4 EF92      		push r14
+ 382 01e6 FF92      		push r15
+ 383 01e8 0F93      		push r16
+ 384 01ea 1F93      		push r17
+ 385               	/* prologue: function */
+ 386               	/* frame size = 0 */
+ 387 01ec 7901      		movw r14,r18
+ 388 01ee 8A01      		movw r16,r20
+ 389               	.LM36:
+ 390 01f0 0E94 0000 		call prescalerSec2Hex
+ 391               	.LVL24:
+ 392 01f4 8093 0000 		sts m_prescaler+1,r24
+ 393               	.LBB34:
+ 394               	.LBB35:
+ 395               	.LM37:
+ 396 01f8 C801      		movw r24,r16
+ 397 01fa B701      		movw r22,r14
+ 398 01fc 20E0      		ldi r18,lo8(0x3f800000)
+ 399 01fe 30E0      		ldi r19,hi8(0x3f800000)
+ 400 0200 40E8      		ldi r20,hlo8(0x3f800000)
+ 401 0202 5FE3      		ldi r21,hhi8(0x3f800000)
+ 402 0204 0E94 0000 		call __gesf2
+ 403 0208 8823      		tst r24
+ 404 020a 04F0      		brlt .L44
+ 405 020c 6FEF      		ldi r22,lo8(-1)
+ 406 020e 00C0      		rjmp .L40
+ 407               	.L44:
+ 408               	.LM38:
+ 409 0210 C801      		movw r24,r16
+ 410 0212 B701      		movw r22,r14
+ 411 0214 20E0      		ldi r18,lo8(0x3b800000)
+ 412 0216 30E0      		ldi r19,hi8(0x3b800000)
+ 413 0218 40E8      		ldi r20,hlo8(0x3b800000)
+ 414 021a 5BE3      		ldi r21,hhi8(0x3b800000)
+ 415 021c 0E94 0000 		call __gesf2
+ 416 0220 87FF      		sbrs r24,7
+ 417 0222 00C0      		rjmp .L41
+ 418 0224 60E0      		ldi r22,lo8(0)
+ 419 0226 00C0      		rjmp .L40
+ 420               	.L41:
+ 421               	.LM39:
+ 422 0228 C801      		movw r24,r16
+ 423 022a B701      		movw r22,r14
+ 424 022c 20E0      		ldi r18,lo8(0x43800000)
+ 425 022e 30E0      		ldi r19,hi8(0x43800000)
+ 426 0230 40E8      		ldi r20,hlo8(0x43800000)
+ 427 0232 53E4      		ldi r21,hhi8(0x43800000)
+ 428 0234 0E94 0000 		call __mulsf3
+ 429 0238 0E94 0000 		call __fixunssfsi
+ 430               	.L40:
+ 431               	.LBE35:
+ 432               	.LBE34:
+ 433               	.LM40:
+ 434 023c 6093 0000 		sts m_pwm+1,r22
+ 435               	/* epilogue start */
+ 436               	.LM41:
+ 437 0240 1F91      		pop r17
+ 438 0242 0F91      		pop r16
+ 439 0244 FF90      		pop r15
+ 440 0246 EF90      		pop r14
+ 441               	.LVL25:
+ 442 0248 0895      		ret
+ 443               	.LFE32:
+ 445               	.global	TUM_LKN_Sensorboard_setBrightness0
+ 447               	TUM_LKN_Sensorboard_setBrightness0:
+ 448               	.LFB33:
+ 449               	.LM42:
+ 450               	.LVL26:
+ 451 024a EF92      		push r14
+ 452 024c FF92      		push r15
+ 453 024e 0F93      		push r16
+ 454 0250 1F93      		push r17
+ 455               	/* prologue: function */
+ 456               	/* frame size = 0 */
+ 457 0252 7B01      		movw r14,r22
+ 458 0254 8C01      		movw r16,r24
+ 459               	.LM43:
+ 460 0256 1092 0000 		sts m_prescaler,__zero_reg__
+ 461               	.LBB36:
+ 462               	.LBB37:
+ 463               	.LM44:
+ 464 025a 20E0      		ldi r18,lo8(0x3f800000)
+ 465 025c 30E0      		ldi r19,hi8(0x3f800000)
+ 466 025e 40E8      		ldi r20,hlo8(0x3f800000)
+ 467 0260 5FE3      		ldi r21,hhi8(0x3f800000)
+ 468 0262 0E94 0000 		call __gesf2
+ 469               	.LVL27:
+ 470 0266 8823      		tst r24
+ 471 0268 04F0      		brlt .L52
+ 472 026a 6FEF      		ldi r22,lo8(-1)
+ 473 026c 00C0      		rjmp .L48
+ 474               	.L52:
+ 475               	.LM45:
+ 476 026e C801      		movw r24,r16
+ 477 0270 B701      		movw r22,r14
+ 478 0272 20E0      		ldi r18,lo8(0x3b800000)
+ 479 0274 30E0      		ldi r19,hi8(0x3b800000)
+ 480 0276 40E8      		ldi r20,hlo8(0x3b800000)
+ 481 0278 5BE3      		ldi r21,hhi8(0x3b800000)
+ 482 027a 0E94 0000 		call __gesf2
+ 483 027e 87FF      		sbrs r24,7
+ 484 0280 00C0      		rjmp .L49
+ 485 0282 60E0      		ldi r22,lo8(0)
+ 486 0284 00C0      		rjmp .L48
+ 487               	.L49:
+ 488               	.LM46:
+ 489 0286 C801      		movw r24,r16
+ 490 0288 B701      		movw r22,r14
+ 491 028a 20E0      		ldi r18,lo8(0x43800000)
+ 492 028c 30E0      		ldi r19,hi8(0x43800000)
+ 493 028e 40E8      		ldi r20,hlo8(0x43800000)
+ 494 0290 53E4      		ldi r21,hhi8(0x43800000)
+ 495 0292 0E94 0000 		call __mulsf3
+ 496 0296 0E94 0000 		call __fixunssfsi
+ 497               	.L48:
+ 498               	.LBE37:
+ 499               	.LBE36:
+ 500               	.LM47:
+ 501 029a 6093 0000 		sts m_pwm,r22
+ 502               	/* epilogue start */
+ 503               	.LM48:
+ 504 029e 1F91      		pop r17
+ 505 02a0 0F91      		pop r16
+ 506 02a2 FF90      		pop r15
+ 507 02a4 EF90      		pop r14
+ 508               	.LVL28:
+ 509 02a6 0895      		ret
+ 510               	.LFE33:
+ 512               	.global	TUM_LKN_Sensorboard_setBrightness1
+ 514               	TUM_LKN_Sensorboard_setBrightness1:
+ 515               	.LFB34:
+ 516               	.LM49:
+ 517               	.LVL29:
+ 518 02a8 EF92      		push r14
+ 519 02aa FF92      		push r15
+ 520 02ac 0F93      		push r16
+ 521 02ae 1F93      		push r17
+ 522               	/* prologue: function */
+ 523               	/* frame size = 0 */
+ 524 02b0 7B01      		movw r14,r22
+ 525 02b2 8C01      		movw r16,r24
+ 526               	.LM50:
+ 527 02b4 1092 0000 		sts m_prescaler+1,__zero_reg__
+ 528               	.LBB38:
+ 529               	.LBB39:
+ 530               	.LM51:
+ 531 02b8 20E0      		ldi r18,lo8(0x3f800000)
+ 532 02ba 30E0      		ldi r19,hi8(0x3f800000)
+ 533 02bc 40E8      		ldi r20,hlo8(0x3f800000)
+ 534 02be 5FE3      		ldi r21,hhi8(0x3f800000)
+ 535 02c0 0E94 0000 		call __gesf2
+ 536               	.LVL30:
+ 537 02c4 8823      		tst r24
+ 538 02c6 04F0      		brlt .L60
+ 539 02c8 6FEF      		ldi r22,lo8(-1)
+ 540 02ca 00C0      		rjmp .L56
+ 541               	.L60:
+ 542               	.LM52:
+ 543 02cc C801      		movw r24,r16
+ 544 02ce B701      		movw r22,r14
+ 545 02d0 20E0      		ldi r18,lo8(0x3b800000)
+ 546 02d2 30E0      		ldi r19,hi8(0x3b800000)
+ 547 02d4 40E8      		ldi r20,hlo8(0x3b800000)
+ 548 02d6 5BE3      		ldi r21,hhi8(0x3b800000)
+ 549 02d8 0E94 0000 		call __gesf2
+ 550 02dc 87FF      		sbrs r24,7
+ 551 02de 00C0      		rjmp .L57
+ 552 02e0 60E0      		ldi r22,lo8(0)
+ 553 02e2 00C0      		rjmp .L56
+ 554               	.L57:
+ 555               	.LM53:
+ 556 02e4 C801      		movw r24,r16
+ 557 02e6 B701      		movw r22,r14
+ 558 02e8 20E0      		ldi r18,lo8(0x43800000)
+ 559 02ea 30E0      		ldi r19,hi8(0x43800000)
+ 560 02ec 40E8      		ldi r20,hlo8(0x43800000)
+ 561 02ee 53E4      		ldi r21,hhi8(0x43800000)
+ 562 02f0 0E94 0000 		call __mulsf3
+ 563 02f4 0E94 0000 		call __fixunssfsi
+ 564               	.L56:
+ 565               	.LBE39:
+ 566               	.LBE38:
+ 567               	.LM54:
+ 568 02f8 6093 0000 		sts m_pwm+1,r22
+ 569               	/* epilogue start */
+ 570               	.LM55:
+ 571 02fc 1F91      		pop r17
+ 572 02fe 0F91      		pop r16
+ 573 0300 FF90      		pop r15
+ 574 0302 EF90      		pop r14
+ 575               	.LVL31:
+ 576 0304 0895      		ret
+ 577               	.LFE34:
+ 579               	.global	TWI_write
+ 581               	TWI_write:
+ 582               	.LFB51:
+ 583               	.LM56:
+ 584               	.LVL32:
+ 585               	/* prologue: function */
+ 586               	/* frame size = 0 */
+ 587 0306 982F      		mov r25,r24
+ 588               	.LM57:
+ 589 0308 82B3      		in r24,50-32
+ 590               	.LVL33:
+ 591 030a 8360      		ori r24,lo8(3)
+ 592 030c 82BB      		out 50-32,r24
+ 593               	.LM58:
+ 594 030e 1092 7100 		sts 113,__zero_reg__
+ 595               	.LM59:
+ 596 0312 8EE3      		ldi r24,lo8(62)
+ 597 0314 8093 7000 		sts 112,r24
+ 598               	.LM60:
+ 599 0318 1092 7200 		sts 114,__zero_reg__
+ 600               	.LM61:
+ 601 031c 1092 7400 		sts 116,__zero_reg__
+ 602               	.LM62:
+ 603 0320 84EA      		ldi r24,lo8(-92)
+ 604 0322 8093 7400 		sts 116,r24
+ 605               	.L62:
+ 606               	.LM63:
+ 607 0326 8091 7400 		lds r24,116
+ 608 032a 87FF      		sbrs r24,7
+ 609 032c 00C0      		rjmp .L62
+ 610               	.LM64:
+ 611 032e 9093 7300 		sts 115,r25
+ 612               	.LM65:
+ 613 0332 84E8      		ldi r24,lo8(-124)
+ 614 0334 8093 7400 		sts 116,r24
+ 615               	.L63:
+ 616               	.LM66:
+ 617 0338 8091 7400 		lds r24,116
+ 618 033c 87FF      		sbrs r24,7
+ 619 033e 00C0      		rjmp .L63
+ 620 0340 FA01      		movw r30,r20
+ 621               	.LVL34:
+ 622 0342 90E0      		ldi r25,lo8(0)
+ 623               	.LVL35:
+ 624               	.LM67:
+ 625 0344 24E8      		ldi r18,lo8(-124)
+ 626 0346 00C0      		rjmp .L64
+ 627               	.L66:
+ 628               	.LM68:
+ 629 0348 8081      		ld r24,Z
+ 630 034a 8093 7300 		sts 115,r24
+ 631               	.LM69:
+ 632 034e 2093 7400 		sts 116,r18
+ 633               	.L65:
+ 634               	.LM70:
+ 635 0352 8091 7400 		lds r24,116
+ 636 0356 87FF      		sbrs r24,7
+ 637 0358 00C0      		rjmp .L65
+ 638               	.LM71:
+ 639 035a 9F5F      		subi r25,lo8(-(1))
+ 640 035c 3196      		adiw r30,1
+ 641               	.L64:
+ 642 035e 9617      		cp r25,r22
+ 643 0360 00F0      		brlo .L66
+ 644               	.LM72:
+ 645 0362 84E9      		ldi r24,lo8(-108)
+ 646 0364 8093 7400 		sts 116,r24
+ 647               	/* epilogue start */
+ 648               	.LM73:
+ 649 0368 0895      		ret
+ 650               	.LFE51:
+ 652               	.global	TWI_read
+ 654               	TWI_read:
+ 655               	.LFB52:
+ 656               	.LM74:
+ 657               	.LVL36:
+ 658               	/* prologue: function */
+ 659               	/* frame size = 0 */
+ 660 036a 982F      		mov r25,r24
+ 661               	.LM75:
+ 662 036c 82B3      		in r24,50-32
+ 663               	.LVL37:
+ 664 036e 8360      		ori r24,lo8(3)
+ 665 0370 82BB      		out 50-32,r24
+ 666               	.LM76:
+ 667 0372 1092 7100 		sts 113,__zero_reg__
+ 668               	.LM77:
+ 669 0376 8EE3      		ldi r24,lo8(62)
+ 670 0378 8093 7000 		sts 112,r24
+ 671               	.LM78:
+ 672 037c 1092 7200 		sts 114,__zero_reg__
+ 673               	.LM79:
+ 674 0380 1092 7400 		sts 116,__zero_reg__
+ 675               	.LM80:
+ 676 0384 84EA      		ldi r24,lo8(-92)
+ 677 0386 8093 7400 		sts 116,r24
+ 678               	.L72:
+ 679               	.LM81:
+ 680 038a 8091 7400 		lds r24,116
+ 681 038e 87FF      		sbrs r24,7
+ 682 0390 00C0      		rjmp .L72
+ 683               	.LM82:
+ 684 0392 9160      		ori r25,lo8(1)
+ 685               	.LM83:
+ 686 0394 9093 7300 		sts 115,r25
+ 687               	.LM84:
+ 688 0398 84E8      		ldi r24,lo8(-124)
+ 689 039a 8093 7400 		sts 116,r24
+ 690               	.L73:
+ 691               	.LM85:
+ 692 039e 8091 7400 		lds r24,116
+ 693 03a2 87FF      		sbrs r24,7
+ 694 03a4 00C0      		rjmp .L73
+ 695 03a6 FA01      		movw r30,r20
+ 696               	.LVL38:
+ 697 03a8 40E0      		ldi r20,lo8(0)
+ 698               	.LVL39:
+ 699               	.LM86:
+ 700 03aa 262F      		mov r18,r22
+ 701 03ac 30E0      		ldi r19,lo8(0)
+ 702 03ae 2150      		subi r18,lo8(-(-1))
+ 703 03b0 3040      		sbci r19,hi8(-(-1))
+ 704               	.LM87:
+ 705 03b2 74E8      		ldi r23,lo8(-124)
+ 706               	.LM88:
+ 707 03b4 54EC      		ldi r21,lo8(-60)
+ 708 03b6 00C0      		rjmp .L74
+ 709               	.LVL40:
+ 710               	.L77:
+ 711 03b8 842F      		mov r24,r20
+ 712 03ba 90E0      		ldi r25,lo8(0)
+ 713               	.LVL41:
+ 714 03bc 8217      		cp r24,r18
+ 715 03be 9307      		cpc r25,r19
+ 716 03c0 04F4      		brge .L75
+ 717               	.LVL42:
+ 718 03c2 5093 7400 		sts 116,r21
+ 719 03c6 00C0      		rjmp .L79
+ 720               	.L75:
+ 721               	.LM89:
+ 722 03c8 7093 7400 		sts 116,r23
+ 723               	.L79:
+ 724               	.LM90:
+ 725 03cc 8091 7400 		lds r24,116
+ 726               	.LVL43:
+ 727 03d0 87FF      		sbrs r24,7
+ 728 03d2 00C0      		rjmp .L79
+ 729               	.LM91:
+ 730 03d4 8091 7300 		lds r24,115
+ 731 03d8 8193      		st Z+,r24
+ 732               	.LM92:
+ 733 03da 4F5F      		subi r20,lo8(-(1))
+ 734               	.LVL44:
+ 735               	.L74:
+ 736 03dc 4617      		cp r20,r22
+ 737 03de 00F0      		brlo .L77
+ 738               	.LM93:
+ 739 03e0 84E9      		ldi r24,lo8(-108)
+ 740 03e2 8093 7400 		sts 116,r24
+ 741               	/* epilogue start */
+ 742               	.LM94:
+ 743 03e6 0895      		ret
+ 744               	.LFE52:
+ 746               	.global	i2cAction
+ 748               	i2cAction:
+ 749               	.LFB53:
+ 750               	.LM95:
+ 751               	/* prologue: function */
+ 752               	/* frame size = 0 */
+ 753               	.LM96:
+ 754 03e8 8091 0000 		lds r24,i2cDataDirection
+ 755 03ec 8823      		tst r24
+ 756 03ee 01F4      		brne .L84
+ 757               	.LM97:
+ 758 03f0 8091 0000 		lds r24,i2cDestination
+ 759 03f4 6091 0000 		lds r22,i2cDataLen
+ 760 03f8 40E0      		ldi r20,lo8(i2cData)
+ 761 03fa 50E0      		ldi r21,hi8(i2cData)
+ 762 03fc 0E94 0000 		call TWI_write
+ 763 0400 0895      		ret
+ 764               	.L84:
+ 765               	.LM98:
+ 766 0402 8091 0000 		lds r24,i2cDestination
+ 767 0406 6091 0000 		lds r22,i2cDataLen
+ 768 040a 40E0      		ldi r20,lo8(i2cData)
+ 769 040c 50E0      		ldi r21,hi8(i2cData)
+ 770 040e 0E94 0000 		call TWI_read
+ 771 0412 0895      		ret
+ 772               	.LFE53:
+ 774               	.global	setLeds
+ 776               	setLeds:
+ 777               	.LFB7:
+ 778               	.LM99:
+ 779               	/* prologue: function */
+ 780               	/* frame size = 0 */
+ 781               	.LM100:
+ 782 0414 86E0      		ldi r24,lo8(6)
+ 783 0416 8093 0000 		sts i2cDataLen,r24
+ 784               	.LM101:
+ 785 041a 81E1      		ldi r24,lo8(17)
+ 786 041c 8093 0000 		sts i2cData,r24
+ 787               	.LM102:
+ 788 0420 8091 0000 		lds r24,m_prescaler
+ 789 0424 8093 0000 		sts i2cData+1,r24
+ 790               	.LM103:
+ 791 0428 8091 0000 		lds r24,m_pwm
+ 792 042c 8093 0000 		sts i2cData+2,r24
+ 793               	.LM104:
+ 794 0430 8091 0000 		lds r24,m_prescaler+1
+ 795 0434 8093 0000 		sts i2cData+3,r24
+ 796               	.LM105:
+ 797 0438 8091 0000 		lds r24,m_pwm+1
+ 798 043c 8093 0000 		sts i2cData+4,r24
+ 799               	.LM106:
+ 800 0440 8091 0000 		lds r24,m_ledstate
+ 801 0444 8093 0000 		sts i2cData+5,r24
+ 802               	.LM107:
+ 803 0448 1092 0000 		sts i2cDataDirection,__zero_reg__
+ 804               	.LM108:
+ 805 044c 86EC      		ldi r24,lo8(198)
+ 806 044e 90E0      		ldi r25,hi8(198)
+ 807 0450 9093 0000 		sts (i2cDestination)+1,r25
+ 808 0454 8093 0000 		sts i2cDestination,r24
+ 809               	.LM109:
+ 810 0458 0E94 0000 		call i2cAction
+ 811               	/* epilogue start */
+ 812               	.LM110:
+ 813 045c 0895      		ret
+ 814               	.LFE7:
+ 816               	.global	TUM_LKN_Sensorboard_greenBlink
+ 818               	TUM_LKN_Sensorboard_greenBlink:
+ 819               	.LFB50:
+ 820               	.LM111:
+ 821               	.LVL45:
+ 822               	/* prologue: function */
+ 823               	/* frame size = 0 */
+ 824               	.LM112:
+ 825 045e 682F      		mov r22,r24
+ 826 0460 6170      		andi r22,lo8(1)
+ 827 0462 6260      		ori r22,lo8(2)
+ 828 0464 82E0      		ldi r24,lo8(2)
+ 829               	.LVL46:
+ 830 0466 0E94 0000 		call setLedMode
+ 831 046a 0E94 0000 		call setLeds
+ 832               	/* epilogue start */
+ 833 046e 0895      		ret
+ 834               	.LFE50:
+ 836               	.global	TUM_LKN_Sensorboard_greenToggle
+ 838               	TUM_LKN_Sensorboard_greenToggle:
+ 839               	.LFB49:
+ 840               	.LM113:
+ 841               	/* prologue: function */
+ 842               	/* frame size = 0 */
+ 843               	.LM114:
+ 844 0470 8091 0000 		lds r24,m_ledstate
+ 845 0474 90E0      		ldi r25,lo8(0)
+ 846 0476 8073      		andi r24,lo8(48)
+ 847 0478 9070      		andi r25,hi8(48)
+ 848 047a 24E0      		ldi r18,4
+ 849 047c 9595      	1:	asr r25
+ 850 047e 8795      		ror r24
+ 851 0480 2A95      		dec r18
+ 852 0482 01F4      		brne 1b
+ 853 0484 61E0      		ldi r22,lo8(1)
+ 854 0486 6827      		eor r22,r24
+ 855 0488 82E0      		ldi r24,lo8(2)
+ 856 048a 0E94 0000 		call setLedMode
+ 857 048e 0E94 0000 		call setLeds
+ 858               	/* epilogue start */
+ 859 0492 0895      		ret
+ 860               	.LFE49:
+ 862               	.global	TUM_LKN_Sensorboard_greenOff
+ 864               	TUM_LKN_Sensorboard_greenOff:
+ 865               	.LFB48:
+ 866               	.LM115:
+ 867               	/* prologue: function */
+ 868               	/* frame size = 0 */
+ 869               	.LM116:
+ 870 0494 82E0      		ldi r24,lo8(2)
+ 871 0496 60E0      		ldi r22,lo8(0)
+ 872 0498 0E94 0000 		call setLedMode
+ 873 049c 0E94 0000 		call setLeds
+ 874               	/* epilogue start */
+ 875 04a0 0895      		ret
+ 876               	.LFE48:
+ 878               	.global	TUM_LKN_Sensorboard_greenOn
+ 880               	TUM_LKN_Sensorboard_greenOn:
+ 881               	.LFB47:
+ 882               	.LM117:
+ 883               	/* prologue: function */
+ 884               	/* frame size = 0 */
+ 885               	.LM118:
+ 886 04a2 82E0      		ldi r24,lo8(2)
+ 887 04a4 61E0      		ldi r22,lo8(1)
+ 888 04a6 0E94 0000 		call setLedMode
+ 889 04aa 0E94 0000 		call setLeds
+ 890               	/* epilogue start */
+ 891 04ae 0895      		ret
+ 892               	.LFE47:
+ 894               	.global	TUM_LKN_Sensorboard_yellowBlink
+ 896               	TUM_LKN_Sensorboard_yellowBlink:
+ 897               	.LFB46:
+ 898               	.LM119:
+ 899               	.LVL47:
+ 900               	/* prologue: function */
+ 901               	/* frame size = 0 */
+ 902               	.LM120:
+ 903 04b0 682F      		mov r22,r24
+ 904 04b2 6170      		andi r22,lo8(1)
+ 905 04b4 6260      		ori r22,lo8(2)
+ 906 04b6 81E0      		ldi r24,lo8(1)
+ 907               	.LVL48:
+ 908 04b8 0E94 0000 		call setLedMode
+ 909 04bc 0E94 0000 		call setLeds
+ 910               	/* epilogue start */
+ 911 04c0 0895      		ret
+ 912               	.LFE46:
+ 914               	.global	TUM_LKN_Sensorboard_yellowToggle
+ 916               	TUM_LKN_Sensorboard_yellowToggle:
+ 917               	.LFB45:
+ 918               	.LM121:
+ 919               	/* prologue: function */
+ 920               	/* frame size = 0 */
+ 921               	.LM122:
+ 922 04c2 8091 0000 		lds r24,m_ledstate
+ 923 04c6 90E0      		ldi r25,lo8(0)
+ 924 04c8 8C70      		andi r24,lo8(12)
+ 925 04ca 9070      		andi r25,hi8(12)
+ 926 04cc 9595      		asr r25
+ 927 04ce 8795      		ror r24
+ 928 04d0 9595      		asr r25
+ 929 04d2 8795      		ror r24
+ 930 04d4 61E0      		ldi r22,lo8(1)
+ 931 04d6 6827      		eor r22,r24
+ 932 04d8 81E0      		ldi r24,lo8(1)
+ 933 04da 0E94 0000 		call setLedMode
+ 934 04de 0E94 0000 		call setLeds
+ 935               	/* epilogue start */
+ 936 04e2 0895      		ret
+ 937               	.LFE45:
+ 939               	.global	TUM_LKN_Sensorboard_yellowOff
+ 941               	TUM_LKN_Sensorboard_yellowOff:
+ 942               	.LFB44:
+ 943               	.LM123:
+ 944               	/* prologue: function */
+ 945               	/* frame size = 0 */
+ 946               	.LM124:
+ 947 04e4 81E0      		ldi r24,lo8(1)
+ 948 04e6 60E0      		ldi r22,lo8(0)
+ 949 04e8 0E94 0000 		call setLedMode
+ 950 04ec 0E94 0000 		call setLeds
+ 951               	/* epilogue start */
+ 952 04f0 0895      		ret
+ 953               	.LFE44:
+ 955               	.global	TUM_LKN_Sensorboard_yellowOn
+ 957               	TUM_LKN_Sensorboard_yellowOn:
+ 958               	.LFB43:
+ 959               	.LM125:
+ 960               	/* prologue: function */
+ 961               	/* frame size = 0 */
+ 962               	.LM126:
+ 963 04f2 81E0      		ldi r24,lo8(1)
+ 964 04f4 61E0      		ldi r22,lo8(1)
+ 965 04f6 0E94 0000 		call setLedMode
+ 966 04fa 0E94 0000 		call setLeds
+ 967               	/* epilogue start */
+ 968 04fe 0895      		ret
+ 969               	.LFE43:
+ 971               	.global	TUM_LKN_Sensorboard_redBlink
+ 973               	TUM_LKN_Sensorboard_redBlink:
+ 974               	.LFB42:
+ 975               	.LM127:
+ 976               	.LVL49:
+ 977               	/* prologue: function */
+ 978               	/* frame size = 0 */
+ 979               	.LM128:
+ 980 0500 682F      		mov r22,r24
+ 981 0502 6170      		andi r22,lo8(1)
+ 982 0504 6260      		ori r22,lo8(2)
+ 983 0506 80E0      		ldi r24,lo8(0)
+ 984               	.LVL50:
+ 985 0508 0E94 0000 		call setLedMode
+ 986 050c 0E94 0000 		call setLeds
+ 987               	/* epilogue start */
+ 988 0510 0895      		ret
+ 989               	.LFE42:
+ 991               	.global	TUM_LKN_Sensorboard_redToggle
+ 993               	TUM_LKN_Sensorboard_redToggle:
+ 994               	.LFB41:
+ 995               	.LM129:
+ 996               	/* prologue: function */
+ 997               	/* frame size = 0 */
+ 998               	.LM130:
+ 999 0512 6091 0000 		lds r22,m_ledstate
+ 1000 0516 6370      		andi r22,lo8(3)
+ 1001 0518 81E0      		ldi r24,lo8(1)
+ 1002 051a 6827      		eor r22,r24
+ 1003 051c 80E0      		ldi r24,lo8(0)
+ 1004 051e 0E94 0000 		call setLedMode
+ 1005 0522 0E94 0000 		call setLeds
+ 1006               	/* epilogue start */
+ 1007 0526 0895      		ret
+ 1008               	.LFE41:
+ 1010               	.global	TUM_LKN_Sensorboard_redOff
+ 1012               	TUM_LKN_Sensorboard_redOff:
+ 1013               	.LFB40:
+ 1014               	.LM131:
+ 1015               	/* prologue: function */
+ 1016               	/* frame size = 0 */
+ 1017               	.LM132:
+ 1018 0528 80E0      		ldi r24,lo8(0)
+ 1019 052a 60E0      		ldi r22,lo8(0)
+ 1020 052c 0E94 0000 		call setLedMode
+ 1021 0530 0E94 0000 		call setLeds
+ 1022               	/* epilogue start */
+ 1023 0534 0895      		ret
+ 1024               	.LFE40:
+ 1026               	.global	TUM_LKN_Sensorboard_redOn
+ 1028               	TUM_LKN_Sensorboard_redOn:
+ 1029               	.LFB39:
+ 1030               	.LM133:
+ 1031               	/* prologue: function */
+ 1032               	/* frame size = 0 */
+ 1033               	.LM134:
+ 1034 0536 80E0      		ldi r24,lo8(0)
+ 1035 0538 61E0      		ldi r22,lo8(1)
+ 1036 053a 0E94 0000 		call setLedMode
+ 1037 053e 0E94 0000 		call setLeds
+ 1038               	/* epilogue start */
+ 1039 0542 0895      		ret
+ 1040               	.LFE39:
+ 1042               	.global	TUM_LKN_Sensorboard_laserBlink
+ 1044               	TUM_LKN_Sensorboard_laserBlink:
+ 1045               	.LFB38:
+ 1046               	.LM135:
+ 1047               	.LVL51:
+ 1048               	/* prologue: function */
+ 1049               	/* frame size = 0 */
+ 1050               	.LM136:
+ 1051 0544 682F      		mov r22,r24
+ 1052 0546 6170      		andi r22,lo8(1)
+ 1053 0548 6260      		ori r22,lo8(2)
+ 1054 054a 83E0      		ldi r24,lo8(3)
+ 1055               	.LVL52:
+ 1056 054c 0E94 0000 		call setLedMode
+ 1057 0550 0E94 0000 		call setLeds
+ 1058               	/* epilogue start */
+ 1059 0554 0895      		ret
+ 1060               	.LFE38:
+ 1062               	.global	TUM_LKN_Sensorboard_laserToggle
+ 1064               	TUM_LKN_Sensorboard_laserToggle:
+ 1065               	.LFB37:
+ 1066               	.LM137:
+ 1067               	/* prologue: function */
+ 1068               	/* frame size = 0 */
+ 1069               	.LM138:
+ 1070 0556 6091 0000 		lds r22,m_ledstate
+ 1071 055a 6295      		swap r22
+ 1072 055c 6695      		lsr r22
+ 1073 055e 6695      		lsr r22
+ 1074 0560 6370      		andi r22,lo8(3)
+ 1075 0562 81E0      		ldi r24,lo8(1)
+ 1076 0564 6827      		eor r22,r24
+ 1077 0566 83E0      		ldi r24,lo8(3)
+ 1078 0568 0E94 0000 		call setLedMode
+ 1079 056c 0E94 0000 		call setLeds
+ 1080               	/* epilogue start */
+ 1081 0570 0895      		ret
+ 1082               	.LFE37:
+ 1084               	.global	TUM_LKN_Sensorboard_laserOff
+ 1086               	TUM_LKN_Sensorboard_laserOff:
+ 1087               	.LFB36:
+ 1088               	.LM139:
+ 1089               	/* prologue: function */
+ 1090               	/* frame size = 0 */
+ 1091               	.LM140:
+ 1092 0572 83E0      		ldi r24,lo8(3)
+ 1093 0574 60E0      		ldi r22,lo8(0)
+ 1094 0576 0E94 0000 		call setLedMode
+ 1095 057a 0E94 0000 		call setLeds
+ 1096               	/* epilogue start */
+ 1097 057e 0895      		ret
+ 1098               	.LFE36:
+ 1100               	.global	TUM_LKN_Sensorboard_laserOn
+ 1102               	TUM_LKN_Sensorboard_laserOn:
+ 1103               	.LFB35:
+ 1104               	.LM141:
+ 1105               	/* prologue: function */
+ 1106               	/* frame size = 0 */
+ 1107               	.LM142:
+ 1108 0580 83E0      		ldi r24,lo8(3)
+ 1109 0582 61E0      		ldi r22,lo8(1)
+ 1110 0584 0E94 0000 		call setLedMode
+ 1111 0588 0E94 0000 		call setLeds
+ 1112               	/* epilogue start */
+ 1113 058c 0895      		ret
+ 1114               	.LFE35:
+ 1116               	.global	readADC
+ 1118               	readADC:
+ 1119               	.LFB6:
+ 1120               	.LM143:
+ 1121               	.LVL53:
+ 1122 058e FF92      		push r15
+ 1123 0590 0F93      		push r16
+ 1124 0592 1F93      		push r17
+ 1125               	/* prologue: function */
+ 1126               	/* frame size = 0 */
+ 1127               	.LM144:
+ 1128 0594 8370      		andi r24,lo8(3)
+ 1129               	.LVL54:
+ 1130               	.LM145:
+ 1131 0596 8093 0000 		sts m_channel,r24
+ 1132               	.LM146:
+ 1133 059a 1092 0000 		sts i2cDataDirection,__zero_reg__
+ 1134               	.LM147:
+ 1135 059e FF24      		clr r15
+ 1136 05a0 F394      		inc r15
+ 1137 05a2 F092 0000 		sts i2cDataLen,r15
+ 1138               	.LM148:
+ 1139 05a6 8064      		ori r24,lo8(64)
+ 1140 05a8 8093 0000 		sts i2cData,r24
+ 1141               	.LM149:
+ 1142 05ac 00E9      		ldi r16,lo8(144)
+ 1143 05ae 10E0      		ldi r17,hi8(144)
+ 1144 05b0 1093 0000 		sts (i2cDestination)+1,r17
+ 1145 05b4 0093 0000 		sts i2cDestination,r16
+ 1146               	.LM150:
+ 1147 05b8 0E94 0000 		call i2cAction
+ 1148               	.LVL55:
+ 1149               	.LM151:
+ 1150 05bc F092 0000 		sts i2cDataDirection,r15
+ 1151               	.LM152:
+ 1152 05c0 82E0      		ldi r24,lo8(2)
+ 1153 05c2 8093 0000 		sts i2cDataLen,r24
+ 1154               	.LM153:
+ 1155 05c6 1093 0000 		sts (i2cDestination)+1,r17
+ 1156 05ca 0093 0000 		sts i2cDestination,r16
+ 1157               	.LM154:
+ 1158 05ce 0E94 0000 		call i2cAction
+ 1159               	/* epilogue start */
+ 1160               	.LM155:
+ 1161 05d2 1F91      		pop r17
+ 1162 05d4 0F91      		pop r16
+ 1163 05d6 FF90      		pop r15
+ 1164 05d8 0895      		ret
+ 1165               	.LFE6:
+ 1167               	.global	TUM_LKN_Sensorboard_readChannel
+ 1169               	TUM_LKN_Sensorboard_readChannel:
+ 1170               	.LFB29:
+ 1171               	.LM156:
+ 1172               	.LVL56:
+ 1173               	/* prologue: function */
+ 1174               	/* frame size = 0 */
+ 1175               	.LM157:
+ 1176 05da 0E94 0000 		call readADC
+ 1177               	.LVL57:
+ 1178               	/* epilogue start */
+ 1179 05de 0895      		ret
+ 1180               	.LFE29:
+ 1182               	.global	TUM_LKN_Sensorboard_readChannel3
+ 1184               	TUM_LKN_Sensorboard_readChannel3:
+ 1185               	.LFB28:
+ 1186               	.LM158:
+ 1187               	/* prologue: function */
+ 1188               	/* frame size = 0 */
+ 1189               	.LM159:
+ 1190 05e0 83E0      		ldi r24,lo8(3)
+ 1191 05e2 0E94 0000 		call readADC
+ 1192               	/* epilogue start */
+ 1193 05e6 0895      		ret
+ 1194               	.LFE28:
+ 1196               	.global	TUM_LKN_Sensorboard_readChannel2
+ 1198               	TUM_LKN_Sensorboard_readChannel2:
+ 1199               	.LFB27:
+ 1200               	.LM160:
+ 1201               	/* prologue: function */
+ 1202               	/* frame size = 0 */
+ 1203               	.LM161:
+ 1204 05e8 82E0      		ldi r24,lo8(2)
+ 1205 05ea 0E94 0000 		call readADC
+ 1206               	/* epilogue start */
+ 1207 05ee 0895      		ret
+ 1208               	.LFE27:
+ 1210               	.global	TUM_LKN_Sensorboard_readChannel1
+ 1212               	TUM_LKN_Sensorboard_readChannel1:
+ 1213               	.LFB26:
+ 1214               	.LM162:
+ 1215               	/* prologue: function */
+ 1216               	/* frame size = 0 */
+ 1217               	.LM163:
+ 1218 05f0 81E0      		ldi r24,lo8(1)
+ 1219 05f2 0E94 0000 		call readADC
+ 1220               	/* epilogue start */
+ 1221 05f6 0895      		ret
+ 1222               	.LFE26:
+ 1224               	.global	TUM_LKN_Sensorboard_readPhotoVoltage
+ 1226               	TUM_LKN_Sensorboard_readPhotoVoltage:
+ 1227               	.LFB25:
+ 1228               	.LM164:
+ 1229               	/* prologue: function */
+ 1230               	/* frame size = 0 */
+ 1231               	.LM165:
+ 1232 05f8 80E0      		ldi r24,lo8(0)
+ 1233 05fa 0E94 0000 		call readADC
+ 1234               	/* epilogue start */
+ 1235 05fe 0895      		ret
+ 1236               	.LFE25:
+ 1238               	.global	writeDAC
+ 1240               	writeDAC:
+ 1241               	.LFB5:
+ 1242               	.LM166:
+ 1243               	.LVL58:
+ 1244               	/* prologue: function */
+ 1245               	/* frame size = 0 */
+ 1246               	.LM167:
+ 1247 0600 1092 0000 		sts i2cDataDirection,__zero_reg__
+ 1248               	.LM168:
+ 1249 0604 92E0      		ldi r25,lo8(2)
+ 1250 0606 9093 0000 		sts i2cDataLen,r25
+ 1251               	.LM169:
+ 1252 060a 90E4      		ldi r25,lo8(64)
+ 1253 060c 9093 0000 		sts i2cData,r25
+ 1254               	.LM170:
+ 1255 0610 8093 0000 		sts i2cData+1,r24
+ 1256               	.LM171:
+ 1257 0614 80E9      		ldi r24,lo8(144)
+ 1258 0616 90E0      		ldi r25,hi8(144)
+ 1259               	.LVL59:
+ 1260 0618 9093 0000 		sts (i2cDestination)+1,r25
+ 1261 061c 8093 0000 		sts i2cDestination,r24
+ 1262               	.LM172:
+ 1263 0620 0E94 0000 		call i2cAction
+ 1264               	/* epilogue start */
+ 1265               	.LM173:
+ 1266 0624 0895      		ret
+ 1267               	.LFE5:
+ 1269               	.global	TUM_LKN_Sensorboard_writeValue
+ 1271               	TUM_LKN_Sensorboard_writeValue:
+ 1272               	.LFB30:
+ 1273               	.LM174:
+ 1274               	.LVL60:
+ 1275               	/* prologue: function */
+ 1276               	/* frame size = 0 */
+ 1277               	.LM175:
+ 1278 0626 0E94 0000 		call V2S
+ 1279               	.LVL61:
+ 1280 062a 0E94 0000 		call writeDAC
+ 1281               	/* epilogue start */
+ 1282 062e 0895      		ret
+ 1283               	.LFE30:
+ 1285               	.global	readIOs
+ 1287               	readIOs:
+ 1288               	.LFB4:
+ 1289               	.LM176:
+ 1290               	/* prologue: function */
+ 1291               	/* frame size = 0 */
+ 1292               	.LM177:
+ 1293 0630 81E0      		ldi r24,lo8(1)
+ 1294 0632 8093 0000 		sts i2cDataDirection,r24
+ 1295               	.LM178:
+ 1296 0636 8093 0000 		sts i2cDataLen,r24
+ 1297               	.LM179:
+ 1298 063a 80E4      		ldi r24,lo8(64)
+ 1299 063c 90E0      		ldi r25,hi8(64)
+ 1300 063e 9093 0000 		sts (i2cDestination)+1,r25
+ 1301 0642 8093 0000 		sts i2cDestination,r24
+ 1302               	.LM180:
+ 1303 0646 0E94 0000 		call i2cAction
+ 1304               	/* epilogue start */
+ 1305               	.LM181:
+ 1306 064a 0895      		ret
+ 1307               	.LFE4:
+ 1309               	.global	writeIOs
+ 1311               	writeIOs:
+ 1312               	.LFB3:
+ 1313               	.LM182:
+ 1314               	.LVL62:
+ 1315               	/* prologue: function */
+ 1316               	/* frame size = 0 */
+ 1317               	.LM183:
+ 1318 064c 8093 0000 		sts m_lastxs,r24
+ 1319 0650 8093 0000 		sts i2cData,r24
+ 1320               	.LM184:
+ 1321 0654 81E0      		ldi r24,lo8(1)
+ 1322               	.LVL63:
+ 1323 0656 8093 0000 		sts i2cDataLen,r24
+ 1324               	.LM185:
+ 1325 065a 1092 0000 		sts i2cDataDirection,__zero_reg__
+ 1326               	.LM186:
+ 1327 065e 80E4      		ldi r24,lo8(64)
+ 1328 0660 90E0      		ldi r25,hi8(64)
+ 1329 0662 9093 0000 		sts (i2cDestination)+1,r25
+ 1330 0666 8093 0000 		sts i2cDestination,r24
+ 1331               	.LM187:
+ 1332 066a 0E94 0000 		call i2cAction
+ 1333               	/* epilogue start */
+ 1334               	.LM188:
+ 1335 066e 0895      		ret
+ 1336               	.LFE3:
+ 1338               	.global	TUM_LKN_Sensorboard_halfStepCW
+ 1340               	TUM_LKN_Sensorboard_halfStepCW:
+ 1341               	.LFB23:
+ 1342               	.LM189:
+ 1343               	/* prologue: function */
+ 1344               	/* frame size = 0 */
+ 1345               	.LM190:
+ 1346 0670 8091 0000 		lds r24,m_currentstep
+ 1347 0674 E0E0      		ldi r30,lo8(steps)
+ 1348 0676 F0E0      		ldi r31,hi8(steps)
+ 1349 0678 E80F      		add r30,r24
+ 1350 067a F11D      		adc r31,__zero_reg__
+ 1351 067c 8091 0000 		lds r24,m_lastxs
+ 1352 0680 8F70      		andi r24,lo8(15)
+ 1353 0682 9081      		ld r25,Z
+ 1354 0684 892B      		or r24,r25
+ 1355 0686 0E94 0000 		call writeIOs
+ 1356               	.LM191:
+ 1357 068a 8091 0000 		lds r24,m_currentstep
+ 1358 068e 895F      		subi r24,lo8(-(7))
+ 1359 0690 8770      		andi r24,lo8(7)
+ 1360 0692 8093 0000 		sts m_currentstep,r24
+ 1361               	/* epilogue start */
+ 1362               	.LM192:
+ 1363 0696 0895      		ret
+ 1364               	.LFE23:
+ 1366               	.global	TUM_LKN_Sensorboard_halfStepCCW
+ 1368               	TUM_LKN_Sensorboard_halfStepCCW:
+ 1369               	.LFB22:
+ 1370               	.LM193:
+ 1371               	/* prologue: function */
+ 1372               	/* frame size = 0 */
+ 1373               	.LM194:
+ 1374 0698 8091 0000 		lds r24,m_currentstep
+ 1375 069c E0E0      		ldi r30,lo8(steps)
+ 1376 069e F0E0      		ldi r31,hi8(steps)
+ 1377 06a0 E80F      		add r30,r24
+ 1378 06a2 F11D      		adc r31,__zero_reg__
+ 1379 06a4 8091 0000 		lds r24,m_lastxs
+ 1380 06a8 8F70      		andi r24,lo8(15)
+ 1381 06aa 9081      		ld r25,Z
+ 1382 06ac 892B      		or r24,r25
+ 1383 06ae 0E94 0000 		call writeIOs
+ 1384               	.LM195:
+ 1385 06b2 8091 0000 		lds r24,m_currentstep
+ 1386 06b6 8F5F      		subi r24,lo8(-(1))
+ 1387 06b8 8770      		andi r24,lo8(7)
+ 1388 06ba 8093 0000 		sts m_currentstep,r24
+ 1389               	/* epilogue start */
+ 1390               	.LM196:
+ 1391 06be 0895      		ret
+ 1392               	.LFE22:
+ 1394               	.global	TUM_LKN_Sensorboard_stepCW
+ 1396               	TUM_LKN_Sensorboard_stepCW:
+ 1397               	.LFB21:
+ 1398               	.LM197:
+ 1399               	/* prologue: function */
+ 1400               	/* frame size = 0 */
+ 1401               	.LM198:
+ 1402 06c0 8091 0000 		lds r24,m_currentstep
+ 1403 06c4 E0E0      		ldi r30,lo8(steps)
+ 1404 06c6 F0E0      		ldi r31,hi8(steps)
+ 1405 06c8 E80F      		add r30,r24
+ 1406 06ca F11D      		adc r31,__zero_reg__
+ 1407 06cc 8091 0000 		lds r24,m_lastxs
+ 1408 06d0 8F70      		andi r24,lo8(15)
+ 1409 06d2 9081      		ld r25,Z
+ 1410 06d4 892B      		or r24,r25
+ 1411 06d6 0E94 0000 		call writeIOs
+ 1412               	.LM199:
+ 1413 06da 8091 0000 		lds r24,m_currentstep
+ 1414 06de 8A5F      		subi r24,lo8(-(6))
+ 1415 06e0 8670      		andi r24,lo8(6)
+ 1416 06e2 8093 0000 		sts m_currentstep,r24
+ 1417               	/* epilogue start */
+ 1418               	.LM200:
+ 1419 06e6 0895      		ret
+ 1420               	.LFE21:
+ 1422               	.global	TUM_LKN_Sensorboard_stepCCW
+ 1424               	TUM_LKN_Sensorboard_stepCCW:
+ 1425               	.LFB20:
+ 1426               	.LM201:
+ 1427               	/* prologue: function */
+ 1428               	/* frame size = 0 */
+ 1429               	.LM202:
+ 1430 06e8 8091 0000 		lds r24,m_currentstep
+ 1431 06ec E0E0      		ldi r30,lo8(steps)
+ 1432 06ee F0E0      		ldi r31,hi8(steps)
+ 1433 06f0 E80F      		add r30,r24
+ 1434 06f2 F11D      		adc r31,__zero_reg__
+ 1435 06f4 8091 0000 		lds r24,m_lastxs
+ 1436 06f8 8F70      		andi r24,lo8(15)
+ 1437 06fa 9081      		ld r25,Z
+ 1438 06fc 892B      		or r24,r25
+ 1439 06fe 0E94 0000 		call writeIOs
+ 1440               	.LM203:
+ 1441 0702 8091 0000 		lds r24,m_currentstep
+ 1442 0706 8E5F      		subi r24,lo8(-(2))
+ 1443 0708 8670      		andi r24,lo8(6)
+ 1444 070a 8093 0000 		sts m_currentstep,r24
+ 1445               	/* epilogue start */
+ 1446               	.LM204:
+ 1447 070e 0895      		ret
+ 1448               	.LFE20:
+ 1450               	.global	TUM_LKN_Sensorboard_StepperIdle
+ 1452               	TUM_LKN_Sensorboard_StepperIdle:
+ 1453               	.LFB19:
+ 1454               	.LM205:
+ 1455               	/* prologue: function */
+ 1456               	/* frame size = 0 */
+ 1457               	.LM206:
+ 1458 0710 8091 0000 		lds r24,m_lastxs
+ 1459 0714 806F      		ori r24,lo8(-16)
+ 1460 0716 0E94 0000 		call writeIOs
+ 1461               	/* epilogue start */
+ 1462               	.LM207:
+ 1463 071a 0895      		ret
+ 1464               	.LFE19:
+ 1466               	.global	TUM_LKN_Sensorboard_setBeeper
+ 1468               	TUM_LKN_Sensorboard_setBeeper:
+ 1469               	.LFB18:
+ 1470               	.LM208:
+ 1471               	.LVL64:
+ 1472               	/* prologue: function */
+ 1473               	/* frame size = 0 */
+ 1474               	.LM209:
+ 1475 071c 9091 0000 		lds r25,m_lastxs
+ 1476 0720 8823      		tst r24
+ 1477 0722 01F0      		breq .L152
+ 1478 0724 80E0      		ldi r24,lo8(0)
+ 1479               	.LVL65:
+ 1480 0726 00C0      		rjmp .L153
+ 1481               	.LVL66:
+ 1482               	.L152:
+ 1483 0728 88E0      		ldi r24,lo8(8)
+ 1484               	.LVL67:
+ 1485               	.L153:
+ 1486 072a 977F      		andi r25,lo8(-9)
+ 1487 072c 892B      		or r24,r25
+ 1488 072e 0E94 0000 		call writeIOs
+ 1489               	/* epilogue start */
+ 1490 0732 0895      		ret
+ 1491               	.LFE18:
+ 1493               	.global	TUM_LKN_Sensorboard_writeIO
+ 1495               	TUM_LKN_Sensorboard_writeIO:
+ 1496               	.LFB17:
+ 1497               	.LM210:
+ 1498               	.LVL68:
+ 1499               	/* prologue: function */
+ 1500               	/* frame size = 0 */
+ 1501               	.LM211:
+ 1502 0734 4091 0000 		lds r20,m_lastxs
+ 1503 0738 21E0      		ldi r18,lo8(1)
+ 1504 073a 30E0      		ldi r19,hi8(1)
+ 1505 073c 00C0      		rjmp 2f
+ 1506 073e 220F      	1:	lsl r18
+ 1507 0740 331F      		rol r19
+ 1508 0742 8A95      	2:	dec r24
+ 1509 0744 02F4      		brpl 1b
+ 1510 0746 6623      		tst r22
+ 1511 0748 01F4      		brne .L156
+ 1512 074a 90E0      		ldi r25,lo8(0)
+ 1513 074c 00C0      		rjmp .L157
+ 1514               	.L156:
+ 1515 074e 922F      		mov r25,r18
+ 1516               	.L157:
+ 1517 0750 822F      		mov r24,r18
+ 1518               	.LVL69:
+ 1519 0752 8095      		com r24
+ 1520 0754 8423      		and r24,r20
+ 1521 0756 892B      		or r24,r25
+ 1522 0758 0E94 0000 		call writeIOs
+ 1523               	.LVL70:
+ 1524               	/* epilogue start */
+ 1525 075c 0895      		ret
+ 1526               	.LFE17:
+ 1528               	.global	TUM_LKN_Sensorboard_writeIOs
+ 1530               	TUM_LKN_Sensorboard_writeIOs:
+ 1531               	.LFB16:
+ 1532               	.LM212:
+ 1533               	.LVL71:
+ 1534               	/* prologue: function */
+ 1535               	/* frame size = 0 */
+ 1536               	.LM213:
+ 1537 075e 0E94 0000 		call writeIOs
+ 1538               	.LVL72:
+ 1539               	/* epilogue start */
+ 1540 0762 0895      		ret
+ 1541               	.LFE16:
+ 1543               	.global	TUM_LKN_Sensorboard_init
+ 1545               	TUM_LKN_Sensorboard_init:
+ 1546               	.LFB15:
+ 1547               	.LM214:
+ 1548               	/* prologue: function */
+ 1549               	/* frame size = 0 */
+ 1550               	.LM215:
+ 1551 0764 8FEF      		ldi r24,lo8(-1)
+ 1552 0766 0E94 0000 		call writeIOs
+ 1553 076a 80E0      		ldi r24,lo8(0)
+ 1554 076c 0E94 0000 		call writeDAC
+ 1555               	/* epilogue start */
+ 1556 0770 0895      		ret
+ 1557               	.LFE15:
+ 1559               	.global	steppertimeout
+ 1560               		.data
+ 1563               	steppertimeout:
+ 1564 0000 6400      		.word	100
+ 1565               	.global	steps
+ 1568               	steps:
+ 1569 0002 50        		.byte	80
+ 1570 0003 10        		.byte	16
+ 1571 0004 90        		.byte	-112
+ 1572 0005 80        		.byte	-128
+ 1573 0006 A0        		.byte	-96
+ 1574 0007 20        		.byte	32
+ 1575 0008 60        		.byte	96
+ 1576 0009 40        		.byte	64
+ 1577               	.global	m_currentstep
+ 1578               	.global	m_currentstep
+ 1579               		.section .bss
+ 1582               	m_currentstep:
+ 1583 0000 00        		.skip 1,0
+ 1584               	.global	i2cData
+ 1585               	.global	i2cData
+ 1588               	i2cData:
+ 1589 0001 0000 0000 		.skip 8,0
+ 1589      0000 0000 
+ 1590               	.global	m_lastxs
+ 1591               	.global	m_lastxs
+ 1594               	m_lastxs:
+ 1595 0009 00        		.skip 1,0
+ 1596               	.global	m_vbatt
+ 1597               		.data
+ 1600               	m_vbatt:
+ 1601 000a 00        		.byte	0
+ 1602 000b 00        		.byte	0
+ 1603 000c 40        		.byte	64
+ 1604 000d 40        		.byte	64
+ 1605               	.global	m_ledstate
+ 1606               	.global	m_ledstate
+ 1607               		.section .bss
+ 1610               	m_ledstate:
+ 1611 000a 00        		.skip 1,0
+ 1612               	.global	m_prescaler
+ 1613               	.global	m_prescaler
+ 1616               	m_prescaler:
+ 1617 000b 0000      		.skip 2,0
+ 1618               	.global	m_pwm
+ 1619               		.data
+ 1622               	m_pwm:
+ 1623 000e FF        		.byte	-1
+ 1624 000f FF        		.byte	-1
+ 1625               		.comm _nrk_signal_list,4,1
+ 1626               		.comm nrk_idle_task_stk,128,1
+ 1627               		.comm nrk_kernel_stk_ptr,2,1
+ 1628               		.comm i2cDataLen,1,1
+ 1629               		.comm i2cDataDirection,1,1
+ 1630               		.comm i2cDestination,2,1
+ 1631               		.comm m_channel,1,1
+ 2056               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 TUM_LKN_Sensorboard_driver.c
+C:\cygwin\tmp/ccODXVJg.s:2      *ABS*:0000003f __SREG__
+C:\cygwin\tmp/ccODXVJg.s:3      *ABS*:0000003e __SP_H__
+C:\cygwin\tmp/ccODXVJg.s:4      *ABS*:0000003d __SP_L__
+C:\cygwin\tmp/ccODXVJg.s:5      *ABS*:00000034 __CCP__
+C:\cygwin\tmp/ccODXVJg.s:6      *ABS*:00000000 __tmp_reg__
+C:\cygwin\tmp/ccODXVJg.s:7      *ABS*:00000001 __zero_reg__
+C:\cygwin\tmp/ccODXVJg.s:18     .text:00000000 setLedMode
+C:\cygwin\tmp/ccODXVJg.s:1610   .bss:0000000a m_ledstate
+C:\cygwin\tmp/ccODXVJg.s:56     .text:0000002e getLedMode
+C:\cygwin\tmp/ccODXVJg.s:92     .text:0000005a S2V
+C:\cygwin\tmp/ccODXVJg.s:1600   .data:0000000a m_vbatt
+C:\cygwin\tmp/ccODXVJg.s:124    .text:0000008a V2S
+C:\cygwin\tmp/ccODXVJg.s:151    .text:000000b4 setBits
+C:\cygwin\tmp/ccODXVJg.s:169    .text:000000bc prescalerSec2Hex
+C:\cygwin\tmp/ccODXVJg.s:234    .text:00000120 pwmFrac2Hex
+C:\cygwin\tmp/ccODXVJg.s:294    .text:00000178 TUM_LKN_Sensorboard_getCurrentStep
+C:\cygwin\tmp/ccODXVJg.s:1582   .bss:00000000 m_currentstep
+C:\cygwin\tmp/ccODXVJg.s:307    .text:0000017e TUM_LKN_Sensorboard_setControl0
+C:\cygwin\tmp/ccODXVJg.s:1616   .bss:0000000b m_prescaler
+C:\cygwin\tmp/ccODXVJg.s:1622   .data:0000000e m_pwm
+C:\cygwin\tmp/ccODXVJg.s:377    .text:000001e4 TUM_LKN_Sensorboard_setControl1
+C:\cygwin\tmp/ccODXVJg.s:447    .text:0000024a TUM_LKN_Sensorboard_setBrightness0
+C:\cygwin\tmp/ccODXVJg.s:514    .text:000002a8 TUM_LKN_Sensorboard_setBrightness1
+C:\cygwin\tmp/ccODXVJg.s:581    .text:00000306 TWI_write
+C:\cygwin\tmp/ccODXVJg.s:654    .text:0000036a TWI_read
+C:\cygwin\tmp/ccODXVJg.s:748    .text:000003e8 i2cAction
+                            *COM*:00000001 i2cDataDirection
+                            *COM*:00000002 i2cDestination
+                            *COM*:00000001 i2cDataLen
+C:\cygwin\tmp/ccODXVJg.s:1588   .bss:00000001 i2cData
+C:\cygwin\tmp/ccODXVJg.s:776    .text:00000414 setLeds
+C:\cygwin\tmp/ccODXVJg.s:818    .text:0000045e TUM_LKN_Sensorboard_greenBlink
+C:\cygwin\tmp/ccODXVJg.s:838    .text:00000470 TUM_LKN_Sensorboard_greenToggle
+C:\cygwin\tmp/ccODXVJg.s:864    .text:00000494 TUM_LKN_Sensorboard_greenOff
+C:\cygwin\tmp/ccODXVJg.s:880    .text:000004a2 TUM_LKN_Sensorboard_greenOn
+C:\cygwin\tmp/ccODXVJg.s:896    .text:000004b0 TUM_LKN_Sensorboard_yellowBlink
+C:\cygwin\tmp/ccODXVJg.s:916    .text:000004c2 TUM_LKN_Sensorboard_yellowToggle
+C:\cygwin\tmp/ccODXVJg.s:941    .text:000004e4 TUM_LKN_Sensorboard_yellowOff
+C:\cygwin\tmp/ccODXVJg.s:957    .text:000004f2 TUM_LKN_Sensorboard_yellowOn
+C:\cygwin\tmp/ccODXVJg.s:973    .text:00000500 TUM_LKN_Sensorboard_redBlink
+C:\cygwin\tmp/ccODXVJg.s:993    .text:00000512 TUM_LKN_Sensorboard_redToggle
+C:\cygwin\tmp/ccODXVJg.s:1012   .text:00000528 TUM_LKN_Sensorboard_redOff
+C:\cygwin\tmp/ccODXVJg.s:1028   .text:00000536 TUM_LKN_Sensorboard_redOn
+C:\cygwin\tmp/ccODXVJg.s:1044   .text:00000544 TUM_LKN_Sensorboard_laserBlink
+C:\cygwin\tmp/ccODXVJg.s:1064   .text:00000556 TUM_LKN_Sensorboard_laserToggle
+C:\cygwin\tmp/ccODXVJg.s:1086   .text:00000572 TUM_LKN_Sensorboard_laserOff
+C:\cygwin\tmp/ccODXVJg.s:1102   .text:00000580 TUM_LKN_Sensorboard_laserOn
+C:\cygwin\tmp/ccODXVJg.s:1118   .text:0000058e readADC
+                            *COM*:00000001 m_channel
+C:\cygwin\tmp/ccODXVJg.s:1169   .text:000005da TUM_LKN_Sensorboard_readChannel
+C:\cygwin\tmp/ccODXVJg.s:1184   .text:000005e0 TUM_LKN_Sensorboard_readChannel3
+C:\cygwin\tmp/ccODXVJg.s:1198   .text:000005e8 TUM_LKN_Sensorboard_readChannel2
+C:\cygwin\tmp/ccODXVJg.s:1212   .text:000005f0 TUM_LKN_Sensorboard_readChannel1
+C:\cygwin\tmp/ccODXVJg.s:1226   .text:000005f8 TUM_LKN_Sensorboard_readPhotoVoltage
+C:\cygwin\tmp/ccODXVJg.s:1240   .text:00000600 writeDAC
+C:\cygwin\tmp/ccODXVJg.s:1271   .text:00000626 TUM_LKN_Sensorboard_writeValue
+C:\cygwin\tmp/ccODXVJg.s:1287   .text:00000630 readIOs
+C:\cygwin\tmp/ccODXVJg.s:1311   .text:0000064c writeIOs
+C:\cygwin\tmp/ccODXVJg.s:1594   .bss:00000009 m_lastxs
+C:\cygwin\tmp/ccODXVJg.s:1340   .text:00000670 TUM_LKN_Sensorboard_halfStepCW
+C:\cygwin\tmp/ccODXVJg.s:1568   .data:00000002 steps
+C:\cygwin\tmp/ccODXVJg.s:1368   .text:00000698 TUM_LKN_Sensorboard_halfStepCCW
+C:\cygwin\tmp/ccODXVJg.s:1396   .text:000006c0 TUM_LKN_Sensorboard_stepCW
+C:\cygwin\tmp/ccODXVJg.s:1424   .text:000006e8 TUM_LKN_Sensorboard_stepCCW
+C:\cygwin\tmp/ccODXVJg.s:1452   .text:00000710 TUM_LKN_Sensorboard_StepperIdle
+C:\cygwin\tmp/ccODXVJg.s:1468   .text:0000071c TUM_LKN_Sensorboard_setBeeper
+C:\cygwin\tmp/ccODXVJg.s:1495   .text:00000734 TUM_LKN_Sensorboard_writeIO
+C:\cygwin\tmp/ccODXVJg.s:1530   .text:0000075e TUM_LKN_Sensorboard_writeIOs
+C:\cygwin\tmp/ccODXVJg.s:1545   .text:00000764 TUM_LKN_Sensorboard_init
+C:\cygwin\tmp/ccODXVJg.s:1563   .data:00000000 steppertimeout
+                            *COM*:00000004 _nrk_signal_list
+                            *COM*:00000080 nrk_idle_task_stk
+                            *COM*:00000002 nrk_kernel_stk_ptr
+
+UNDEFINED SYMBOLS
+__floatunsisf
+__mulsf3
+__divsf3
+__fixunssfsi
+__gtsf2
+__gesf2
+__subsf3
+__do_copy_data
+__do_clear_bss
