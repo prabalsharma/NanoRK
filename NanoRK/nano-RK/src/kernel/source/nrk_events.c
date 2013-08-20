@@ -234,7 +234,7 @@ int8_t nrk_sem_pend(nrk_sem_t *rsrc )
 	nrk_cur_task_TCB->task_prio_ceil=nrk_sem_list[id].resource_ceiling;
 	nrk_cur_task_TCB->elevated_prio_flag=1;
 	nrk_int_enable();
-	system_ceiling();
+	system_ceiling(); //calling ceiling function
 	return NRK_OK;
 }
 
@@ -266,7 +266,7 @@ int8_t nrk_sem_post(nrk_sem_t *rsrc)
 				}   
 
 		}
-		system_ceiling();
+		system_ceiling(); //calling system ceiling function
 		nrk_int_enable();
 	}
 
@@ -313,6 +313,7 @@ int8_t nrk_get_resource_index(nrk_sem_t *resrc)
 	return NRK_ERROR;
 }
 
+//implements system ceiling
 void system_ceiling()
 {
 	uint32_t sysCeiling = 0;

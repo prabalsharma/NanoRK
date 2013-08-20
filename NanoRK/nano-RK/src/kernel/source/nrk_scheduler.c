@@ -43,7 +43,7 @@
 #include <nrk_sw_wdt.h>
 
 
-/*This is the variable to store the task ID of the next scheduled task. This will be the task with the earliest deadline*/
+// feeding task ID of upcomming scheduled task i.e the task with the earliest deadline
 uint8_t earliestDeadlineID = 0;
 
 void inline _nrk_scheduler()
@@ -168,9 +168,10 @@ void inline _nrk_scheduler()
         }
     }
 
-	printf("Earliest Deadline  ----> \r\n");
-	earliestDeadlineID = 0;
 
+	earliestDeadlineID = 0;
+    // Add eligable tasks back to the ready Queue
+    // At the same time find the next earliest wakeup
 	for (task_ID=0; task_ID < NRK_MAX_TASKS; task_ID++)
 	{
 	   if(nrk_task_TCB[task_ID].task_ID==-1) continue;
@@ -203,10 +204,8 @@ void inline _nrk_scheduler()
 			}
 		}
 
-	/*}
-	for (task_ID=0; task_ID < NRK_MAX_TASKS; task_ID++)
-	{*/
 
+         // Look for Next Task that Might Wakeup to interrupt current task
 		if (nrk_task_TCB[task_ID].task_state == SUSPENDED ) 
 		{
 			if (nrk_task_TCB[task_ID].next_wakeup == 0) 
@@ -223,7 +222,6 @@ void inline _nrk_scheduler()
 					nrk_task_TCB[task_ID].cpu_remaining = nrk_task_TCB[task_ID].cpu_reserve;
 					nrk_task_TCB[task_ID].task_state = READY;
 					nrk_task_TCB[task_ID].next_wakeup = nrk_task_TCB[task_ID].next_period;
-					//nrk_task_TCB[task_ID].next_period += nrk_task_TCB[task_ID].period;
 					nrk_add_to_readyQ(task_ID);				
 				} 
 				else 
@@ -243,22 +241,13 @@ void inline _nrk_scheduler()
 
 		}
 
-// Logging the task id and its READY state
-		//if (nrk_task_TCB[task_ID].task_state == READY) {
-		//	nrk_kprintf("T");
-		//	nrk_printnum(task_ID);
-		//	nrk_kprintf(":NP:");
-		//	nrk_printnum(nrk_task_TCB[task_ID].next_period);
-		//	nrk_kprintf("\r\n");
-		//}
-		
 
-		//Select the task who has the next earliest deadline.		
+		//earliest deadline task selection		
 		printf("Select the task %d for time :%u ", task_ID, nrk_task_TCB[task_ID].next_period);
 		if((earliestDeadlineID == NRK_IDLE_TASK_ID || nrk_task_TCB[task_ID].next_period < nrk_task_TCB[earliestDeadlineID].next_period) && nrk_task_TCB[task_ID].task_state == READY)
 			earliestDeadlineID = task_ID;
 		
-} // For ends here
+} 
 
 
 #ifdef NRK_STATS_TRACKER

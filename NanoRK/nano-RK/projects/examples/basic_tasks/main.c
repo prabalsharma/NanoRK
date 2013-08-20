@@ -82,7 +82,7 @@ main ()
   return 0;
 }
 
-//To create Task1 and uses the semaphore1
+//creates Task1 and uses semaphore1
 void Task1()
 {
   nrk_time_t t;
@@ -102,7 +102,7 @@ void Task1()
 	 }
 }
 
-// To create Task2
+// creates Task2
 void Task2()
 {
   int16_t counter;
@@ -118,7 +118,7 @@ void Task2()
   }
 }
 
-// To create Task3 with the utilization of semaphore1
+//creates Task3 and uses semaphore1
 void Task3()
 {
   uint8_t counter = 0;
@@ -148,7 +148,7 @@ void Task3()
 
 }
 
-// To create Task4 with the utilization of semaphore1
+// creates Task4 and uses semaphore1
 void Task4()
 {
   uint8_t counter;
@@ -212,6 +212,7 @@ nrk_create_taskset()
    // TaskTwo.offset.nano_secs= 0; 
    // nrk_activate_task (&TaskTwo); 
   
+  //sets enrty function for task3
   nrk_task_set_entry_function( &TaskThree, Task3); 
    nrk_task_set_stk( &TaskThree, Stack3, NRK_APP_STACKSIZE); 
    TaskThree.prio = 3; 
@@ -225,8 +226,9 @@ nrk_create_taskset()
    TaskThree.cpu_reserve.nano_secs = 100*NANOS_PER_MS; 
    TaskThree.offset.secs = 0; 
    TaskThree.offset.nano_secs= 0; 
-   
+   //activate task3
    nrk_activate_task (&TaskThree); 
+   //sets entry function for task3
    nrk_task_set_entry_function( &TaskFour, Task4); 
    nrk_task_set_stk( &TaskFour, Stack4, NRK_APP_STACKSIZE); 
    TaskFour.prio = 4; 
