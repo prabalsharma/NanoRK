@@ -510,8 +510,8 @@
  536               	.LM57:
  537 02ac 6283      		std Z+2,r22
  538               	.LM58:
- 539 02ae 108A      		std Z+16,__zero_reg__
- 540 02b0 1786      		std Z+15,__zero_reg__
+ 539 02ae 118A      		std Z+17,__zero_reg__
+ 540 02b0 108A      		std Z+16,__zero_reg__
  541               	.LM59:
  542 02b2 1082      		st Z,__zero_reg__
  543               	.LM60:
@@ -520,10 +520,10 @@
  546 02b8 1486      		std Z+12,__zero_reg__
  547 02ba 1586      		std Z+13,__zero_reg__
  548               	.L44:
- 549 02bc B296      		adiw r30,34
+ 549 02bc B396      		adiw r30,35
  550               	.LM61:
- 551 02be 80E0      		ldi r24,hi8(nrk_task_TCB+177)
- 552 02c0 E030      		cpi r30,lo8(nrk_task_TCB+177)
+ 551 02be 80E0      		ldi r24,hi8(nrk_task_TCB+182)
+ 552 02c0 E030      		cpi r30,lo8(nrk_task_TCB+182)
  553 02c2 F807      		cpc r31,r24
  554 02c4 01F4      		brne .L45
  555               	.LM62:
@@ -615,8 +615,8 @@
  643               	.LM72:
  644 0348 2283      		std Z+2,r18
  645               	.LM73:
- 646 034a 108A      		std Z+16,__zero_reg__
- 647 034c 1786      		std Z+15,__zero_reg__
+ 646 034a 118A      		std Z+17,__zero_reg__
+ 647 034c 108A      		std Z+16,__zero_reg__
  648               	.LM74:
  649 034e 1082      		st Z,__zero_reg__
  650               	.LM75:
@@ -644,8 +644,8 @@
  672               	.LM78:
  673 0374 2283      		std Z+2,r18
  674               	.LM79:
- 675 0376 108A      		std Z+16,__zero_reg__
- 676 0378 1786      		std Z+15,__zero_reg__
+ 675 0376 118A      		std Z+17,__zero_reg__
+ 676 0378 108A      		std Z+16,__zero_reg__
  677               	.LM80:
  678 037a 1082      		st Z,__zero_reg__
  679               	.LM81:
@@ -656,10 +656,10 @@
  684 0384 DD24      		clr r13
  685 0386 D394      		inc r13
  686               	.L54:
- 687 0388 B296      		adiw r30,34
+ 687 0388 B396      		adiw r30,35
  688               	.LM82:
- 689 038a 80E0      		ldi r24,hi8(nrk_task_TCB+177)
- 690 038c E030      		cpi r30,lo8(nrk_task_TCB+177)
+ 689 038a 80E0      		ldi r24,hi8(nrk_task_TCB+182)
+ 690 038c E030      		cpi r30,lo8(nrk_task_TCB+182)
  691 038e F807      		cpc r31,r24
  692 0390 01F4      		brne .L55
  693               	.LM83:
@@ -801,10 +801,10 @@
  831 046a A487      		std Z+12,r26
  832 046c B587      		std Z+13,r27
  833               	.L63:
- 834 046e B296      		adiw r30,34
+ 834 046e B396      		adiw r30,35
  835               	.LM100:
- 836 0470 80E0      		ldi r24,hi8(nrk_task_TCB+177)
- 837 0472 E030      		cpi r30,lo8(nrk_task_TCB+177)
+ 836 0470 80E0      		ldi r24,hi8(nrk_task_TCB+182)
+ 837 0472 E030      		cpi r30,lo8(nrk_task_TCB+182)
  838 0474 F807      		cpc r31,r24
  839 0476 01F4      		brne .L65
  840               	.LM101:
@@ -1047,7 +1047,7 @@
  1082               		.comm _nrk_signal_list,4,1
  1083               		.comm nrk_idle_task_stk,128,1
  1084               		.comm nrk_kernel_stk_ptr,2,1
- 1085               		.comm nrk_task_TCB,170,1
+ 1085               		.comm nrk_task_TCB,175,1
  1086               		.comm nrk_wakeup_signal,1,1
  1087               		.comm _nrk_readyQ,30,1
  1088               		.comm _free_node,2,1
@@ -1070,32 +1070,32 @@
  1233               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 nrk_events.c
-C:\cygwin\tmp/ccuaoILQ.s:2      *ABS*:0000003f __SREG__
-C:\cygwin\tmp/ccuaoILQ.s:3      *ABS*:0000003e __SP_H__
-C:\cygwin\tmp/ccuaoILQ.s:4      *ABS*:0000003d __SP_L__
-C:\cygwin\tmp/ccuaoILQ.s:5      *ABS*:00000034 __CCP__
-C:\cygwin\tmp/ccuaoILQ.s:6      *ABS*:00000000 __tmp_reg__
-C:\cygwin\tmp/ccuaoILQ.s:7      *ABS*:00000001 __zero_reg__
-C:\cygwin\tmp/ccuaoILQ.s:18     .text:00000000 nrk_signal_create
+C:\cygwin\tmp/ccQKBqWL.s:2      *ABS*:0000003f __SREG__
+C:\cygwin\tmp/ccQKBqWL.s:3      *ABS*:0000003e __SP_H__
+C:\cygwin\tmp/ccQKBqWL.s:4      *ABS*:0000003d __SP_L__
+C:\cygwin\tmp/ccQKBqWL.s:5      *ABS*:00000034 __CCP__
+C:\cygwin\tmp/ccQKBqWL.s:6      *ABS*:00000000 __tmp_reg__
+C:\cygwin\tmp/ccQKBqWL.s:7      *ABS*:00000001 __zero_reg__
+C:\cygwin\tmp/ccQKBqWL.s:18     .text:00000000 nrk_signal_create
                             *COM*:00000004 _nrk_signal_list
-C:\cygwin\tmp/ccuaoILQ.s:87     .text:00000072 nrk_signal_get_registered_mask
+C:\cygwin\tmp/ccQKBqWL.s:87     .text:00000072 nrk_signal_get_registered_mask
                             *COM*:00000002 nrk_cur_task_TCB
-C:\cygwin\tmp/ccuaoILQ.s:106    .text:00000084 nrk_signal_unregister
-C:\cygwin\tmp/ccuaoILQ.s:191    .text:00000106 nrk_signal_register
-C:\cygwin\tmp/ccuaoILQ.s:255    .text:00000174 nrk_sem_create
-C:\cygwin\tmp/ccuaoILQ.s:271    .text:0000017a nrk_get_resource_index
+C:\cygwin\tmp/ccQKBqWL.s:106    .text:00000084 nrk_signal_unregister
+C:\cygwin\tmp/ccQKBqWL.s:191    .text:00000106 nrk_signal_register
+C:\cygwin\tmp/ccQKBqWL.s:255    .text:00000174 nrk_sem_create
+C:\cygwin\tmp/ccQKBqWL.s:271    .text:0000017a nrk_get_resource_index
                             *COM*:00000003 nrk_sem_list
-C:\cygwin\tmp/ccuaoILQ.s:295    .text:00000188 system_ceiling
+C:\cygwin\tmp/ccQKBqWL.s:295    .text:00000188 system_ceiling
                             *COM*:00000004 systemCeiling
-C:\cygwin\tmp/ccuaoILQ.s:341    .text:000001ba nrk_sem_delete
+C:\cygwin\tmp/ccQKBqWL.s:341    .text:000001ba nrk_sem_delete
                             *COM*:00000001 _nrk_resource_cnt
-C:\cygwin\tmp/ccuaoILQ.s:399    .text:000001fe nrk_sem_query
-C:\cygwin\tmp/ccuaoILQ.s:448    .text:00000230 nrk_sem_post
-                            *COM*:000000aa nrk_task_TCB
-C:\cygwin\tmp/ccuaoILQ.s:575    .text:000002d8 nrk_event_signal
-C:\cygwin\tmp/ccuaoILQ.s:721    .text:000003b2 nrk_signal_delete
-C:\cygwin\tmp/ccuaoILQ.s:882    .text:000004ca nrk_sem_pend
-C:\cygwin\tmp/ccuaoILQ.s:1000   .text:00000576 nrk_event_wait
+C:\cygwin\tmp/ccQKBqWL.s:399    .text:000001fe nrk_sem_query
+C:\cygwin\tmp/ccQKBqWL.s:448    .text:00000230 nrk_sem_post
+                            *COM*:000000af nrk_task_TCB
+C:\cygwin\tmp/ccQKBqWL.s:575    .text:000002d8 nrk_event_signal
+C:\cygwin\tmp/ccQKBqWL.s:721    .text:000003b2 nrk_signal_delete
+C:\cygwin\tmp/ccQKBqWL.s:882    .text:000004ca nrk_sem_pend
+C:\cygwin\tmp/ccQKBqWL.s:1000   .text:00000576 nrk_event_wait
                             *COM*:00000001 nrk_wakeup_signal
                             *COM*:00000080 nrk_idle_task_stk
                             *COM*:00000002 nrk_kernel_stk_ptr

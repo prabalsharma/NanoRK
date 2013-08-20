@@ -485,19 +485,19 @@
  568               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 nrk_sw_wdt.c
-C:\cygwin\tmp/ccer8AyW.s:2      *ABS*:0000003f __SREG__
-C:\cygwin\tmp/ccer8AyW.s:3      *ABS*:0000003e __SP_H__
-C:\cygwin\tmp/ccer8AyW.s:4      *ABS*:0000003d __SP_L__
-C:\cygwin\tmp/ccer8AyW.s:5      *ABS*:00000034 __CCP__
-C:\cygwin\tmp/ccer8AyW.s:6      *ABS*:00000000 __tmp_reg__
-C:\cygwin\tmp/ccer8AyW.s:7      *ABS*:00000001 __zero_reg__
-C:\cygwin\tmp/ccer8AyW.s:18     .text:00000000 _nrk_sw_wdt_init
+C:\cygwin\tmp/ccakobB1.s:2      *ABS*:0000003f __SREG__
+C:\cygwin\tmp/ccakobB1.s:3      *ABS*:0000003e __SP_H__
+C:\cygwin\tmp/ccakobB1.s:4      *ABS*:0000003d __SP_L__
+C:\cygwin\tmp/ccakobB1.s:5      *ABS*:00000034 __CCP__
+C:\cygwin\tmp/ccakobB1.s:6      *ABS*:00000000 __tmp_reg__
+C:\cygwin\tmp/ccakobB1.s:7      *ABS*:00000001 __zero_reg__
+C:\cygwin\tmp/ccakobB1.s:18     .text:00000000 _nrk_sw_wdt_init
                             *COM*:00000039 sw_wdts
-C:\cygwin\tmp/ccer8AyW.s:34     .text:0000000e nrk_sw_wdt_init
-C:\cygwin\tmp/ccer8AyW.s:101    .text:00000064 nrk_sw_wdt_stop
-C:\cygwin\tmp/ccer8AyW.s:139    .text:0000008c nrk_sw_wdt_start
-C:\cygwin\tmp/ccer8AyW.s:238    .text:00000126 nrk_sw_wdt_update
-C:\cygwin\tmp/ccer8AyW.s:358    .text:000001ea _nrk_sw_wdt_check
+C:\cygwin\tmp/ccakobB1.s:34     .text:0000000e nrk_sw_wdt_init
+C:\cygwin\tmp/ccakobB1.s:101    .text:00000064 nrk_sw_wdt_stop
+C:\cygwin\tmp/ccakobB1.s:139    .text:0000008c nrk_sw_wdt_start
+C:\cygwin\tmp/ccakobB1.s:238    .text:00000126 nrk_sw_wdt_update
+C:\cygwin\tmp/ccakobB1.s:358    .text:000001ea _nrk_sw_wdt_check
                             *COM*:00000004 systemCeiling
                             *COM*:00000004 _nrk_signal_list
                             *COM*:00000080 nrk_idle_task_stk

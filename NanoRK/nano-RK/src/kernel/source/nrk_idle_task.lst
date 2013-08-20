@@ -70,13 +70,13 @@
  103               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 nrk_idle_task.c
-C:\cygwin\tmp/ccng2HQ2.s:2      *ABS*:0000003f __SREG__
-C:\cygwin\tmp/ccng2HQ2.s:3      *ABS*:0000003e __SP_H__
-C:\cygwin\tmp/ccng2HQ2.s:4      *ABS*:0000003d __SP_L__
-C:\cygwin\tmp/ccng2HQ2.s:5      *ABS*:00000034 __CCP__
-C:\cygwin\tmp/ccng2HQ2.s:6      *ABS*:00000000 __tmp_reg__
-C:\cygwin\tmp/ccng2HQ2.s:7      *ABS*:00000001 __zero_reg__
-C:\cygwin\tmp/ccng2HQ2.s:18     .text:00000000 nrk_idle_task
+C:\cygwin\tmp/ccrHKyb4.s:2      *ABS*:0000003f __SREG__
+C:\cygwin\tmp/ccrHKyb4.s:3      *ABS*:0000003e __SP_H__
+C:\cygwin\tmp/ccrHKyb4.s:4      *ABS*:0000003d __SP_L__
+C:\cygwin\tmp/ccrHKyb4.s:5      *ABS*:00000034 __CCP__
+C:\cygwin\tmp/ccrHKyb4.s:6      *ABS*:00000000 __tmp_reg__
+C:\cygwin\tmp/ccrHKyb4.s:7      *ABS*:00000001 __zero_reg__
+C:\cygwin\tmp/ccrHKyb4.s:18     .text:00000000 nrk_idle_task
                             *COM*:00000001 _nrk_cpu_state
                             *COM*:00000080 nrk_idle_task_stk
                             *COM*:00000004 systemCeiling

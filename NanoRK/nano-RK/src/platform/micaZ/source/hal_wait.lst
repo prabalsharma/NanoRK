@@ -49,13 +49,13 @@
   82               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 hal_wait.c
-C:\cygwin\tmp/ccO7cVrA.s:2      *ABS*:0000003f __SREG__
-C:\cygwin\tmp/ccO7cVrA.s:3      *ABS*:0000003e __SP_H__
-C:\cygwin\tmp/ccO7cVrA.s:4      *ABS*:0000003d __SP_L__
-C:\cygwin\tmp/ccO7cVrA.s:5      *ABS*:00000034 __CCP__
-C:\cygwin\tmp/ccO7cVrA.s:6      *ABS*:00000000 __tmp_reg__
-C:\cygwin\tmp/ccO7cVrA.s:7      *ABS*:00000001 __zero_reg__
-C:\cygwin\tmp/ccO7cVrA.s:18     .text:00000000 halWait
+C:\cygwin\tmp/ccSYuWcG.s:2      *ABS*:0000003f __SREG__
+C:\cygwin\tmp/ccSYuWcG.s:3      *ABS*:0000003e __SP_H__
+C:\cygwin\tmp/ccSYuWcG.s:4      *ABS*:0000003d __SP_L__
+C:\cygwin\tmp/ccSYuWcG.s:5      *ABS*:00000034 __CCP__
+C:\cygwin\tmp/ccSYuWcG.s:6      *ABS*:00000000 __tmp_reg__
+C:\cygwin\tmp/ccSYuWcG.s:7      *ABS*:00000001 __zero_reg__
+C:\cygwin\tmp/ccSYuWcG.s:18     .text:00000000 halWait
                             *COM*:00000004 systemCeiling
                             *COM*:00000004 _nrk_signal_list
 

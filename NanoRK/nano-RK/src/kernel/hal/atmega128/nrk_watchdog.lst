@@ -117,16 +117,16 @@
  180               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 nrk_watchdog.c
-C:\cygwin\tmp/ccDtBrlT.s:2      *ABS*:0000003f __SREG__
-C:\cygwin\tmp/ccDtBrlT.s:3      *ABS*:0000003e __SP_H__
-C:\cygwin\tmp/ccDtBrlT.s:4      *ABS*:0000003d __SP_L__
-C:\cygwin\tmp/ccDtBrlT.s:5      *ABS*:00000034 __CCP__
-C:\cygwin\tmp/ccDtBrlT.s:6      *ABS*:00000000 __tmp_reg__
-C:\cygwin\tmp/ccDtBrlT.s:7      *ABS*:00000001 __zero_reg__
-C:\cygwin\tmp/ccDtBrlT.s:18     .text:00000000 nrk_watchdog_check
-C:\cygwin\tmp/ccDtBrlT.s:37     .text:0000000e nrk_watchdog_reset
-C:\cygwin\tmp/ccDtBrlT.s:55     .text:00000012 nrk_watchdog_enable
-C:\cygwin\tmp/ccDtBrlT.s:92     .text:0000002e nrk_watchdog_disable
+C:\cygwin\tmp/ccU8V7Hs.s:2      *ABS*:0000003f __SREG__
+C:\cygwin\tmp/ccU8V7Hs.s:3      *ABS*:0000003e __SP_H__
+C:\cygwin\tmp/ccU8V7Hs.s:4      *ABS*:0000003d __SP_L__
+C:\cygwin\tmp/ccU8V7Hs.s:5      *ABS*:00000034 __CCP__
+C:\cygwin\tmp/ccU8V7Hs.s:6      *ABS*:00000000 __tmp_reg__
+C:\cygwin\tmp/ccU8V7Hs.s:7      *ABS*:00000001 __zero_reg__
+C:\cygwin\tmp/ccU8V7Hs.s:18     .text:00000000 nrk_watchdog_check
+C:\cygwin\tmp/ccU8V7Hs.s:37     .text:0000000e nrk_watchdog_reset
+C:\cygwin\tmp/ccU8V7Hs.s:55     .text:00000012 nrk_watchdog_enable
+C:\cygwin\tmp/ccU8V7Hs.s:92     .text:0000002e nrk_watchdog_disable
                             *COM*:00000004 systemCeiling
                             *COM*:00000004 _nrk_signal_list
                             *COM*:00000001 error_task

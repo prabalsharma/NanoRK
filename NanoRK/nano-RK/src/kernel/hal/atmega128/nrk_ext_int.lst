@@ -107,16 +107,16 @@
  170               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 nrk_ext_int.c
-C:\cygwin\tmp/cczHoRsF.s:2      *ABS*:0000003f __SREG__
-C:\cygwin\tmp/cczHoRsF.s:3      *ABS*:0000003e __SP_H__
-C:\cygwin\tmp/cczHoRsF.s:4      *ABS*:0000003d __SP_L__
-C:\cygwin\tmp/cczHoRsF.s:5      *ABS*:00000034 __CCP__
-C:\cygwin\tmp/cczHoRsF.s:6      *ABS*:00000000 __tmp_reg__
-C:\cygwin\tmp/cczHoRsF.s:7      *ABS*:00000001 __zero_reg__
-C:\cygwin\tmp/cczHoRsF.s:18     .text:00000000 nrk_ext_int_enable
-C:\cygwin\tmp/cczHoRsF.s:33     .text:00000004 nrk_ext_int_disable
-C:\cygwin\tmp/cczHoRsF.s:48     .text:00000008 nrk_ext_int_configure
-C:\cygwin\tmp/cczHoRsF.s:63     .text:0000000c __vector_1
+C:\cygwin\tmp/ccpNECqe.s:2      *ABS*:0000003f __SREG__
+C:\cygwin\tmp/ccpNECqe.s:3      *ABS*:0000003e __SP_H__
+C:\cygwin\tmp/ccpNECqe.s:4      *ABS*:0000003d __SP_L__
+C:\cygwin\tmp/ccpNECqe.s:5      *ABS*:00000034 __CCP__
+C:\cygwin\tmp/ccpNECqe.s:6      *ABS*:00000000 __tmp_reg__
+C:\cygwin\tmp/ccpNECqe.s:7      *ABS*:00000001 __zero_reg__
+C:\cygwin\tmp/ccpNECqe.s:18     .text:00000000 nrk_ext_int_enable
+C:\cygwin\tmp/ccpNECqe.s:33     .text:00000004 nrk_ext_int_disable
+C:\cygwin\tmp/ccpNECqe.s:48     .text:00000008 nrk_ext_int_configure
+C:\cygwin\tmp/ccpNECqe.s:63     .text:0000000c __vector_1
                             *COM*:00000004 systemCeiling
                             *COM*:00000004 _nrk_signal_list
                             *COM*:00000002 ext_int0_callback

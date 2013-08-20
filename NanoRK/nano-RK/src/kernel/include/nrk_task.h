@@ -64,6 +64,7 @@ typedef struct os_tcb {
 	uint32_t  active_signal_mask;     // List of events currently waiting on
 	uint8_t	  task_prelevel;		  // Premetion level
 	// Inside TCB, all timer values stored in tick multiples to save memory
+	uint8_t	  Type;						//For CBS_TASK
 	uint16_t  next_wakeup;
 	uint16_t  next_period;
 	uint16_t  cpu_remaining;	
@@ -155,6 +156,7 @@ int8_t nrk_set_next_wakeup(nrk_time_t t);
 #define	INVALID_TASK 	0
 #define	BASIC_TASK    	1
 #define	IDLE_TASK      	2
+#define	CBS_TASK      	3
 
 #define TCB_EMPTY_PRIO	99
 #define RES_FREE		99

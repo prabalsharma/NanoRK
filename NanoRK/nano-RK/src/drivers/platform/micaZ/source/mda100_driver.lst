@@ -287,21 +287,21 @@
  392               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 mda100_driver.c
-C:\cygwin\tmp/ccENZnpW.s:2      *ABS*:0000003f __SREG__
-C:\cygwin\tmp/ccENZnpW.s:3      *ABS*:0000003e __SP_H__
-C:\cygwin\tmp/ccENZnpW.s:4      *ABS*:0000003d __SP_L__
-C:\cygwin\tmp/ccENZnpW.s:5      *ABS*:00000034 __CCP__
-C:\cygwin\tmp/ccENZnpW.s:6      *ABS*:00000000 __tmp_reg__
-C:\cygwin\tmp/ccENZnpW.s:7      *ABS*:00000001 __zero_reg__
-C:\cygwin\tmp/ccENZnpW.s:18     .text:00000000 mda100_init
-C:\cygwin\tmp/ccENZnpW.s:310    .bss:00000000 mda100_initDone
-C:\cygwin\tmp/ccENZnpW.s:35     .text:0000000c mda100_TemperatureSensor_Power
-C:\cygwin\tmp/ccENZnpW.s:77     .text:00000032 mda100_TemperatureSensor_GetCounts
-C:\cygwin\tmp/ccENZnpW.s:101    .text:0000004c mda100_TemperatureSensor_GetKelvin
-C:\cygwin\tmp/ccENZnpW.s:202    .text:0000010a mda100_TemperatureSensor_GetDegreeCelsius
-C:\cygwin\tmp/ccENZnpW.s:221    .text:0000011c mda100_LightSensor_Power
-C:\cygwin\tmp/ccENZnpW.s:263    .text:00000142 mda100_LightSensor_GetCounts
-C:\cygwin\tmp/ccENZnpW.s:287    .text:0000015c mda100_Powersave
+C:\cygwin\tmp/ccZkB6k0.s:2      *ABS*:0000003f __SREG__
+C:\cygwin\tmp/ccZkB6k0.s:3      *ABS*:0000003e __SP_H__
+C:\cygwin\tmp/ccZkB6k0.s:4      *ABS*:0000003d __SP_L__
+C:\cygwin\tmp/ccZkB6k0.s:5      *ABS*:00000034 __CCP__
+C:\cygwin\tmp/ccZkB6k0.s:6      *ABS*:00000000 __tmp_reg__
+C:\cygwin\tmp/ccZkB6k0.s:7      *ABS*:00000001 __zero_reg__
+C:\cygwin\tmp/ccZkB6k0.s:18     .text:00000000 mda100_init
+C:\cygwin\tmp/ccZkB6k0.s:310    .bss:00000000 mda100_initDone
+C:\cygwin\tmp/ccZkB6k0.s:35     .text:0000000c mda100_TemperatureSensor_Power
+C:\cygwin\tmp/ccZkB6k0.s:77     .text:00000032 mda100_TemperatureSensor_GetCounts
+C:\cygwin\tmp/ccZkB6k0.s:101    .text:0000004c mda100_TemperatureSensor_GetKelvin
+C:\cygwin\tmp/ccZkB6k0.s:202    .text:0000010a mda100_TemperatureSensor_GetDegreeCelsius
+C:\cygwin\tmp/ccZkB6k0.s:221    .text:0000011c mda100_LightSensor_Power
+C:\cygwin\tmp/ccZkB6k0.s:263    .text:00000142 mda100_LightSensor_GetCounts
+C:\cygwin\tmp/ccZkB6k0.s:287    .text:0000015c mda100_Powersave
 
 UNDEFINED SYMBOLS
 adc_init

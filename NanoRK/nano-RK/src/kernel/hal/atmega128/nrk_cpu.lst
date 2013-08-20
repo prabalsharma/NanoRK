@@ -271,7 +271,7 @@
  296               		.comm _nrk_signal_list,4,1
  297               		.comm nrk_idle_task_stk,128,1
  298               		.comm nrk_kernel_stk_ptr,2,1
- 299               		.comm nrk_task_TCB,170,1
+ 299               		.comm nrk_task_TCB,175,1
  300               		.comm nrk_wakeup_signal,1,1
  301               		.comm _nrk_readyQ,30,1
  302               		.comm _free_node,2,1
@@ -292,26 +292,26 @@
  405               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 nrk_cpu.c
-C:\cygwin\tmp/cc7UYWza.s:2      *ABS*:0000003f __SREG__
-C:\cygwin\tmp/cc7UYWza.s:3      *ABS*:0000003e __SP_H__
-C:\cygwin\tmp/cc7UYWza.s:4      *ABS*:0000003d __SP_L__
-C:\cygwin\tmp/cc7UYWza.s:5      *ABS*:00000034 __CCP__
-C:\cygwin\tmp/cc7UYWza.s:6      *ABS*:00000000 __tmp_reg__
-C:\cygwin\tmp/cc7UYWza.s:7      *ABS*:00000001 __zero_reg__
-C:\cygwin\tmp/cc7UYWza.s:18     .text:00000000 nrk_battery_save
-C:\cygwin\tmp/cc7UYWza.s:30     .text:00000002 nrk_task_set_entry_function
-C:\cygwin\tmp/cc7UYWza.s:47     .text:0000000a nrk_sleep
-C:\cygwin\tmp/cc7UYWza.s:77     .text:00000022 nrk_idle
-C:\cygwin\tmp/cc7UYWza.s:106    .text:00000038 nrk_task_stk_init
-C:\cygwin\tmp/cc7UYWza.s:187    .text:0000008e nrk_stack_pointer_restore
-C:\cygwin\tmp/cc7UYWza.s:205    .text:0000009c nrk_stack_pointer_init
+C:\cygwin\tmp/ccCTnQWP.s:2      *ABS*:0000003f __SREG__
+C:\cygwin\tmp/ccCTnQWP.s:3      *ABS*:0000003e __SP_H__
+C:\cygwin\tmp/ccCTnQWP.s:4      *ABS*:0000003d __SP_L__
+C:\cygwin\tmp/ccCTnQWP.s:5      *ABS*:00000034 __CCP__
+C:\cygwin\tmp/ccCTnQWP.s:6      *ABS*:00000000 __tmp_reg__
+C:\cygwin\tmp/ccCTnQWP.s:7      *ABS*:00000001 __zero_reg__
+C:\cygwin\tmp/ccCTnQWP.s:18     .text:00000000 nrk_battery_save
+C:\cygwin\tmp/ccCTnQWP.s:30     .text:00000002 nrk_task_set_entry_function
+C:\cygwin\tmp/ccCTnQWP.s:47     .text:0000000a nrk_sleep
+C:\cygwin\tmp/ccCTnQWP.s:77     .text:00000022 nrk_idle
+C:\cygwin\tmp/ccCTnQWP.s:106    .text:00000038 nrk_task_stk_init
+C:\cygwin\tmp/ccCTnQWP.s:187    .text:0000008e nrk_stack_pointer_restore
+C:\cygwin\tmp/ccCTnQWP.s:205    .text:0000009c nrk_stack_pointer_init
                             *COM*:00000002 nrk_kernel_stk_ptr
-C:\cygwin\tmp/cc7UYWza.s:231    .text:000000ba nrk_target_start
-C:\cygwin\tmp/cc7UYWza.s:247    .text:000000c4 nrk_task_set_stk
+C:\cygwin\tmp/ccCTnQWP.s:231    .text:000000ba nrk_target_start
+C:\cygwin\tmp/ccCTnQWP.s:247    .text:000000c4 nrk_task_set_stk
                             *COM*:00000004 systemCeiling
                             *COM*:00000004 _nrk_signal_list
                             *COM*:00000080 nrk_idle_task_stk
-                            *COM*:000000aa nrk_task_TCB
+                            *COM*:000000af nrk_task_TCB
                             *COM*:00000001 nrk_wakeup_signal
                             *COM*:0000001e _nrk_readyQ
                             *COM*:00000002 _free_node

@@ -299,22 +299,22 @@
  422               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 nrk_eeprom.c
-C:\cygwin\tmp/ccQEZpTS.s:2      *ABS*:0000003f __SREG__
-C:\cygwin\tmp/ccQEZpTS.s:3      *ABS*:0000003e __SP_H__
-C:\cygwin\tmp/ccQEZpTS.s:4      *ABS*:0000003d __SP_L__
-C:\cygwin\tmp/ccQEZpTS.s:5      *ABS*:00000034 __CCP__
-C:\cygwin\tmp/ccQEZpTS.s:6      *ABS*:00000000 __tmp_reg__
-C:\cygwin\tmp/ccQEZpTS.s:7      *ABS*:00000001 __zero_reg__
-C:\cygwin\tmp/ccQEZpTS.s:18     .text:00000000 write_eeprom_current_image_checksum
-C:\cygwin\tmp/ccQEZpTS.s:40     .text:00000010 write_eeprom_aes_key
-C:\cygwin\tmp/ccQEZpTS.s:79     .text:0000003e write_eeprom_load_img_pages
-C:\cygwin\tmp/ccQEZpTS.s:101    .text:0000004e nrk_eeprom_write_byte
-C:\cygwin\tmp/ccQEZpTS.s:118    .text:00000056 read_eeprom_current_image_checksum
-C:\cygwin\tmp/ccQEZpTS.s:145    .text:00000070 read_eeprom_aes_key
-C:\cygwin\tmp/ccQEZpTS.s:184    .text:0000009e read_eeprom_load_img_pages
-C:\cygwin\tmp/ccQEZpTS.s:211    .text:000000b8 read_eeprom_channel
-C:\cygwin\tmp/ccQEZpTS.s:238    .text:000000d2 read_eeprom_mac_address
-C:\cygwin\tmp/ccQEZpTS.s:308    .text:00000134 nrk_eeprom_read_byte
+C:\cygwin\tmp/ccOYzG5U.s:2      *ABS*:0000003f __SREG__
+C:\cygwin\tmp/ccOYzG5U.s:3      *ABS*:0000003e __SP_H__
+C:\cygwin\tmp/ccOYzG5U.s:4      *ABS*:0000003d __SP_L__
+C:\cygwin\tmp/ccOYzG5U.s:5      *ABS*:00000034 __CCP__
+C:\cygwin\tmp/ccOYzG5U.s:6      *ABS*:00000000 __tmp_reg__
+C:\cygwin\tmp/ccOYzG5U.s:7      *ABS*:00000001 __zero_reg__
+C:\cygwin\tmp/ccOYzG5U.s:18     .text:00000000 write_eeprom_current_image_checksum
+C:\cygwin\tmp/ccOYzG5U.s:40     .text:00000010 write_eeprom_aes_key
+C:\cygwin\tmp/ccOYzG5U.s:79     .text:0000003e write_eeprom_load_img_pages
+C:\cygwin\tmp/ccOYzG5U.s:101    .text:0000004e nrk_eeprom_write_byte
+C:\cygwin\tmp/ccOYzG5U.s:118    .text:00000056 read_eeprom_current_image_checksum
+C:\cygwin\tmp/ccOYzG5U.s:145    .text:00000070 read_eeprom_aes_key
+C:\cygwin\tmp/ccOYzG5U.s:184    .text:0000009e read_eeprom_load_img_pages
+C:\cygwin\tmp/ccOYzG5U.s:211    .text:000000b8 read_eeprom_channel
+C:\cygwin\tmp/ccOYzG5U.s:238    .text:000000d2 read_eeprom_mac_address
+C:\cygwin\tmp/ccOYzG5U.s:308    .text:00000134 nrk_eeprom_read_byte
                             *COM*:00000004 systemCeiling
                             *COM*:00000004 _nrk_signal_list
                             *COM*:00000001 error_task

@@ -78,13 +78,13 @@
  111               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 nrk_status.c
-C:\cygwin\tmp/ccpqpIru.s:2      *ABS*:0000003f __SREG__
-C:\cygwin\tmp/ccpqpIru.s:3      *ABS*:0000003e __SP_H__
-C:\cygwin\tmp/ccpqpIru.s:4      *ABS*:0000003d __SP_L__
-C:\cygwin\tmp/ccpqpIru.s:5      *ABS*:00000034 __CCP__
-C:\cygwin\tmp/ccpqpIru.s:6      *ABS*:00000000 __tmp_reg__
-C:\cygwin\tmp/ccpqpIru.s:7      *ABS*:00000001 __zero_reg__
-C:\cygwin\tmp/ccpqpIru.s:18     .text:00000000 _nrk_startup_error
+C:\cygwin\tmp/ccxHQZJL.s:2      *ABS*:0000003f __SREG__
+C:\cygwin\tmp/ccxHQZJL.s:3      *ABS*:0000003e __SP_H__
+C:\cygwin\tmp/ccxHQZJL.s:4      *ABS*:0000003d __SP_L__
+C:\cygwin\tmp/ccxHQZJL.s:5      *ABS*:00000034 __CCP__
+C:\cygwin\tmp/ccxHQZJL.s:6      *ABS*:00000000 __tmp_reg__
+C:\cygwin\tmp/ccxHQZJL.s:7      *ABS*:00000001 __zero_reg__
+C:\cygwin\tmp/ccxHQZJL.s:18     .text:00000000 _nrk_startup_error
                             *COM*:00000004 systemCeiling
                             *COM*:00000004 _nrk_signal_list
 

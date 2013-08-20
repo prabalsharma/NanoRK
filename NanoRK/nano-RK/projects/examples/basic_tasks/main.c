@@ -82,27 +82,31 @@ main ()
   return 0;
 }
 
-//creates Task1 and uses semaphore1
+//To create Task1 and uses the semaphore1
 void Task1()
 {
-  nrk_time_t t;
   uint16_t counter;
   counter=0;
 
   printf( "My node's address is %u\r\n",NODE_ADDR );  
   printf( "Task1 PID=%u\r\n",nrk_get_pid());
-  t.secs=30;
-  t.nano_secs=0;
+
 	 while(1) 
 	 {
 		nrk_led_toggle(ORANGE_LED);
 		printf( "Task1 counter=%u\r\n",counter );
 		nrk_wait_until_next_period();
+// To halt at 50 and show the stats
+  if(counter==50) 
+    {
+     nrk_stats_display_all();
+     nrk_halt();
+   }
 		counter++;
 	 }
 }
 
-// creates Task2
+// To create Task2
 void Task2()
 {
   int16_t counter;
@@ -118,63 +122,58 @@ void Task2()
   }
 }
 
-//creates Task3 and uses semaphore1
+// To create Task3 with the utilization of semaphore1
 void Task3()
 {
   uint8_t counter = 0;
   printf( "Task3 PID=%d\r\n",nrk_get_pid());
-  uint8_t waitCount = 7;
+  uint8_t count = 0;
+  uint8_t waitCount=0;
   
-  while(1) 
+ while(1) 
   {
         nrk_led_toggle(GREEN_LED);
-        printf( "Task3 counter=%d\r\n",counter );
+//        printf( "Task3 counter=%d\r\n",counter );
 		if(0==waitCount)
 		{
-			nrk_kprintf( PSTR("Task3 accessing semaphore1\r\n"));
-			nrk_sem_pend(semaphore1);
-			nrk_kprintf( PSTR("\r\n Task3 holding semaphore1 \r\n"));
+			printf("Task3 CBS_TASK counter %d \r\n",counter);
+			counter++;
 		}
 	   	 waitCount++;
 	   if(7==waitCount)
 	   {
-			nrk_sem_post(semaphore1);
-			nrk_kprintf( PSTR("Task3 released semaphore1\r\n"));
 			waitCount=0;
 		}
         nrk_wait_until_next_period();
-        counter++;
+        
     }
 
 }
 
-// creates Task4 and uses semaphore1
+// To create Task4 with the utilization of semaphore1
 void Task4()
 {
   uint8_t counter;
-  uint8_t waitCount=3;
+  uint8_t waitCount=0;
 
   printf( "Task4 PID=%d\r\n",nrk_get_pid());
   counter=0;
    while(1) 
   {
-        nrk_led_toggle(GREEN_LED);
-        printf( "Task4 counter=%d\r\n",counter );
+        nrk_led_toggle(RED_LED);
+//        printf( "Task4 counter=%d\r\n",counter );
 		if(0==waitCount)
 		{
-			nrk_kprintf( PSTR("Task4 accessing semaphore1\r\n"));
-			nrk_sem_pend(semaphore1);
-			nrk_kprintf( PSTR("Task4 holding semaphore1\r\n"));
+			printf("Task4 CBS_TASK counter %d \r\n",counter);
+			counter++;
 		}
 	   	 waitCount++;
 	   if(3==waitCount)
 	   {
-			nrk_sem_post(semaphore1);
-			nrk_kprintf( PSTR("Task4 released semaphore1\r\n"));
 			waitCount=0;
 		}
         nrk_wait_until_next_period();
-        counter++;
+  
     }
 
 }
@@ -184,15 +183,15 @@ nrk_create_taskset()
 {
   nrk_task_set_entry_function( &TaskOne, Task1);
   nrk_task_set_stk( &TaskOne, Stack1, NRK_APP_STACKSIZE);
-  TaskOne.prio = 1;
+  TaskOne.prio = 3;
   TaskOne.FirstActivation = TRUE;
   TaskOne.Type = BASIC_TASK;
   TaskOne.SchType = PREEMPTIVE;
-  TaskOne.period.secs = 2;
-  TaskOne.period.nano_secs = 500*NANOS_PER_MS;
+  TaskOne.period.secs = 6;
+  TaskOne.period.nano_secs = 0*NANOS_PER_MS;
   TaskOne.prelevel=1;
   TaskOne.cpu_reserve.secs = 1;
-  TaskOne.cpu_reserve.nano_secs = 500*NANOS_PER_MS;
+  TaskOne.cpu_reserve.nano_secs = 100*NANOS_PER_MS;
   TaskOne.offset.secs = 0;
   TaskOne.offset.nano_secs= 0;
   nrk_activate_task (&TaskOne);
@@ -212,41 +211,40 @@ nrk_create_taskset()
    // TaskTwo.offset.nano_secs= 0; 
    // nrk_activate_task (&TaskTwo); 
   
-  //sets enrty function for task3
   nrk_task_set_entry_function( &TaskThree, Task3); 
    nrk_task_set_stk( &TaskThree, Stack3, NRK_APP_STACKSIZE); 
-   TaskThree.prio = 3; 
+   TaskThree.prio = 1; 
    TaskThree.FirstActivation = TRUE; 
-   TaskThree.Type = BASIC_TASK; 
+   TaskThree.Type = CBS_TASK; 
    TaskThree.SchType = PREEMPTIVE; 
    TaskThree.period.secs = 1; 
-   TaskThree.period.nano_secs = 100*NANOS_PER_MS;
+   TaskThree.period.nano_secs = 0;
    TaskThree.prelevel=2;
-   TaskThree.cpu_reserve.secs = 0; 
-   TaskThree.cpu_reserve.nano_secs = 100*NANOS_PER_MS; 
+   TaskThree.cpu_reserve.secs = 3; 
+   TaskThree.cpu_reserve.nano_secs = 50*NANOS_PER_MS; 
    TaskThree.offset.secs = 0; 
    TaskThree.offset.nano_secs= 0; 
-   //activate task3
+    nrk_activate_task (&TaskThree);
+   
    nrk_activate_task (&TaskThree); 
-   //sets entry function for task3
    nrk_task_set_entry_function( &TaskFour, Task4); 
    nrk_task_set_stk( &TaskFour, Stack4, NRK_APP_STACKSIZE); 
-   TaskFour.prio = 4; 
+   TaskFour.prio = 1; 
    TaskFour.FirstActivation = TRUE; 
-   TaskFour.Type = BASIC_TASK; 
+   TaskFour.Type = CBS_TASK; 
    TaskFour.SchType = PREEMPTIVE; 
    TaskFour.period.secs = 1; 
    TaskFour.period.nano_secs = 0; 
-   TaskFour.prelevel=4;
-   TaskFour.cpu_reserve.secs = 0; 
-   TaskFour.cpu_reserve.nano_secs = 100*NANOS_PER_MS; 
+   TaskFour.prelevel=2;
+   TaskFour.cpu_reserve.secs = 3; 
+   TaskFour.cpu_reserve.nano_secs = 50*NANOS_PER_MS; 
    TaskFour.offset.secs = 0; 
    TaskFour.offset.nano_secs= 0; 
-   //  nrk_activate_task (&TaskFour); 
+   nrk_activate_task (&TaskFour); 
 }
 
 uint8_t kill_stack(uint8_t val)
-{
+{	
 char bad_memory[10];
 uint8_t i;
 for(i=0; i<10; i++ ) bad_memory[i]=i;

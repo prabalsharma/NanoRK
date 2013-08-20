@@ -43,7 +43,7 @@
 #include <nrk_sw_wdt.h>
 
 
-// feeding task ID of upcomming scheduled task i.e the task with the earliest deadline
+/*This is the variable to store the task ID of the next scheduled task. This will be the task with the earliest deadline*/
 uint8_t earliestDeadlineID = 0;
 
 void inline _nrk_scheduler()
@@ -136,42 +136,45 @@ void inline _nrk_scheduler()
         }
         nrk_rem_from_readyQ(nrk_cur_task_TCB->task_ID);
     }
-    // nrk_print_readyQ();
 
-    // Update cpu used value for ended task
-    // If the task has used its reserve, suspend task
-    // Don't disable IdleTask which is 0
-    // Don't decrease cpu_remaining if reserve is 0 and hence disabled
     if(nrk_cur_task_TCB->cpu_reserve!=0 && nrk_cur_task_TCB->task_ID!=NRK_IDLE_TASK_ID && nrk_cur_task_TCB->task_state!=FINISHED )
     {
-        if(nrk_cur_task_TCB->cpu_remaining<_nrk_prev_timer_val)
-        {
-#ifdef NRK_STATS_TRACKER
-            _nrk_stats_add_violation(nrk_cur_task_TCB->task_ID);
-#endif
-            nrk_kernel_error_add(NRK_RESERVE_ERROR,nrk_cur_task_TCB->task_ID);
-            nrk_cur_task_TCB->cpu_remaining=0;
-        }
-        else
-            nrk_cur_task_TCB->cpu_remaining-=_nrk_prev_timer_val;
+		if(nrk_cur_task_TCB->cpu_remaining<_nrk_prev_timer_val)
+		{
+		#ifdef NRK_STATS_TRACKER
+				_nrk_stats_add_violation(nrk_cur_task_TCB->task_ID);
+		#endif
+				nrk_kernel_error_add(NRK_RESERVE_ERROR,nrk_cur_task_TCB->task_ID);
+				nrk_cur_task_TCB->cpu_remaining=0;
+		}
+		else
+		nrk_cur_task_TCB->cpu_remaining-=_nrk_prev_timer_val;
+		
+		task_ID= nrk_cur_task_TCB->task_ID;
 
-        task_ID= nrk_cur_task_TCB->task_ID;
+		if (nrk_cur_task_TCB->cpu_remaining ==0 )
+		{
+		#ifdef NRK_STATS_TRACKER
+				_nrk_stats_add_violation(nrk_cur_task_TCB->task_ID);
+		#endif
+				// Checks the CBS_TASK type
+				if( nrk_cur_task_TCB->Type == CBS_TASK )
+				{
+					//Prepare TCB to add to the ready queue
+					nrk_cur_task_TCB->cpu_remaining = nrk_cur_task_TCB->cpu_reserve;
+					nrk_cur_task_TCB->next_period += nrk_cur_task_TCB->period;
+					nrk_rem_from_readyQ(task_ID);
+					nrk_add_to_readyQ(task_ID);
+				} 
+				else 
+				{
+					nrk_kernel_error_add(NRK_RESERVE_VIOLATED,task_ID);
+					nrk_cur_task_TCB->task_state = SUSPENDED;
+					nrk_rem_from_readyQ(task_ID);
+				}
+			}
+	}
 
-        if (nrk_cur_task_TCB->cpu_remaining ==0 )
-        {
-#ifdef NRK_STATS_TRACKER
-            _nrk_stats_add_violation(nrk_cur_task_TCB->task_ID);
-#endif
-            nrk_kernel_error_add(NRK_RESERVE_VIOLATED,task_ID);
-            nrk_cur_task_TCB->task_state = SUSPENDED;
-            nrk_rem_from_readyQ(task_ID);
-        }
-    }
-
-
-	earliestDeadlineID = 0;
-    // Add eligable tasks back to the ready Queue
-    // At the same time find the next earliest wakeup
 	for (task_ID=0; task_ID < NRK_MAX_TASKS; task_ID++)
 	{
 	   if(nrk_task_TCB[task_ID].task_ID==-1) continue;
@@ -204,8 +207,6 @@ void inline _nrk_scheduler()
 			}
 		}
 
-
-         // Look for Next Task that Might Wakeup to interrupt current task
 		if (nrk_task_TCB[task_ID].task_state == SUSPENDED ) 
 		{
 			if (nrk_task_TCB[task_ID].next_wakeup == 0) 
@@ -222,6 +223,14 @@ void inline _nrk_scheduler()
 					nrk_task_TCB[task_ID].cpu_remaining = nrk_task_TCB[task_ID].cpu_reserve;
 					nrk_task_TCB[task_ID].task_state = READY;
 					nrk_task_TCB[task_ID].next_wakeup = nrk_task_TCB[task_ID].next_period;
+                    if(nrk_task_TCB[task_ID].period==0) nrk_task_TCB[task_ID].next_wakeup = MAX_SCHED_WAKEUP_TIME;
+					
+					// Sets the next period of the suspended CBS_TASK 
+					 if( nrk_task_TCB[task_ID].Type == CBS_TASK && 
+						 (nrk_task_TCB[task_ID].cpu_remaining > nrk_task_TCB[task_ID].next_period * nrk_task_TCB[task_ID].cpu_reserve / nrk_task_TCB[task_ID].period) )
+					 {
+						 nrk_task_TCB[task_ID].next_period = nrk_task_TCB[task_ID].period;
+                     }
 					nrk_add_to_readyQ(task_ID);				
 				} 
 				else 
@@ -229,6 +238,7 @@ void inline _nrk_scheduler()
 					nrk_task_TCB[task_ID].cpu_remaining = nrk_task_TCB[task_ID].cpu_reserve;
 					nrk_task_TCB[task_ID].next_wakeup = (nrk_task_TCB[task_ID].period*(nrk_task_TCB[task_ID].num_periods-1));
 					nrk_task_TCB[task_ID].next_period = (nrk_task_TCB[task_ID].period*(nrk_task_TCB[task_ID].num_periods-1));
+                    if(nrk_task_TCB[task_ID].period==0) nrk_task_TCB[task_ID].next_wakeup = MAX_SCHED_WAKEUP_TIME;
 					nrk_task_TCB[task_ID].num_periods=1;
 				}
 			}
@@ -241,13 +251,7 @@ void inline _nrk_scheduler()
 
 		}
 
-
-		//earliest deadline task selection		
-		printf("Select the task %d for time :%u ", task_ID, nrk_task_TCB[task_ID].next_period);
-		if((earliestDeadlineID == NRK_IDLE_TASK_ID || nrk_task_TCB[task_ID].next_period < nrk_task_TCB[earliestDeadlineID].next_period) && nrk_task_TCB[task_ID].task_state == READY)
-			earliestDeadlineID = task_ID;
-		
-} 
+	} // For ends here
 
 
 #ifdef NRK_STATS_TRACKER

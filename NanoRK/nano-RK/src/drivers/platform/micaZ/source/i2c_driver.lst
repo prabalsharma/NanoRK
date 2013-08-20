@@ -261,20 +261,20 @@
  374               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 i2c_driver.c
-C:\cygwin\tmp/cckVurFG.s:2      *ABS*:0000003f __SREG__
-C:\cygwin\tmp/cckVurFG.s:3      *ABS*:0000003e __SP_H__
-C:\cygwin\tmp/cckVurFG.s:4      *ABS*:0000003d __SP_L__
-C:\cygwin\tmp/cckVurFG.s:5      *ABS*:00000034 __CCP__
-C:\cygwin\tmp/cckVurFG.s:6      *ABS*:00000000 __tmp_reg__
-C:\cygwin\tmp/cckVurFG.s:7      *ABS*:00000001 __zero_reg__
-C:\cygwin\tmp/cckVurFG.s:18     .text:00000000 i2c_init
-C:\cygwin\tmp/cckVurFG.s:41     .text:00000016 i2c_waitForInterruptFlag
-C:\cygwin\tmp/cckVurFG.s:58     .text:00000020 i2c_actionStart
-C:\cygwin\tmp/cckVurFG.s:76     .text:0000002c i2c_start
-C:\cygwin\tmp/cckVurFG.s:113    .text:00000054 i2c_stop
-C:\cygwin\tmp/cckVurFG.s:142    .text:00000072 i2c_send
-C:\cygwin\tmp/cckVurFG.s:192    .text:000000a8 i2c_receive
-C:\cygwin\tmp/cckVurFG.s:239    .text:000000d6 i2c_controlByte_RX
-C:\cygwin\tmp/cckVurFG.s:264    .text:000000ec i2c_controlByte_TX
+C:\cygwin\tmp/cclMYgrG.s:2      *ABS*:0000003f __SREG__
+C:\cygwin\tmp/cclMYgrG.s:3      *ABS*:0000003e __SP_H__
+C:\cygwin\tmp/cclMYgrG.s:4      *ABS*:0000003d __SP_L__
+C:\cygwin\tmp/cclMYgrG.s:5      *ABS*:00000034 __CCP__
+C:\cygwin\tmp/cclMYgrG.s:6      *ABS*:00000000 __tmp_reg__
+C:\cygwin\tmp/cclMYgrG.s:7      *ABS*:00000001 __zero_reg__
+C:\cygwin\tmp/cclMYgrG.s:18     .text:00000000 i2c_init
+C:\cygwin\tmp/cclMYgrG.s:41     .text:00000016 i2c_waitForInterruptFlag
+C:\cygwin\tmp/cclMYgrG.s:58     .text:00000020 i2c_actionStart
+C:\cygwin\tmp/cclMYgrG.s:76     .text:0000002c i2c_start
+C:\cygwin\tmp/cclMYgrG.s:113    .text:00000054 i2c_stop
+C:\cygwin\tmp/cclMYgrG.s:142    .text:00000072 i2c_send
+C:\cygwin\tmp/cclMYgrG.s:192    .text:000000a8 i2c_receive
+C:\cygwin\tmp/cclMYgrG.s:239    .text:000000d6 i2c_controlByte_RX
+C:\cygwin\tmp/cclMYgrG.s:264    .text:000000ec i2c_controlByte_TX
 
 NO UNDEFINED SYMBOLS

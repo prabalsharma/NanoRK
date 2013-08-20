@@ -48,13 +48,13 @@
   81               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 hal_rf_wait_for_crystal_oscillator.c
-C:\cygwin\tmp/cc8aDmUp.s:2      *ABS*:0000003f __SREG__
-C:\cygwin\tmp/cc8aDmUp.s:3      *ABS*:0000003e __SP_H__
-C:\cygwin\tmp/cc8aDmUp.s:4      *ABS*:0000003d __SP_L__
-C:\cygwin\tmp/cc8aDmUp.s:5      *ABS*:00000034 __CCP__
-C:\cygwin\tmp/cc8aDmUp.s:6      *ABS*:00000000 __tmp_reg__
-C:\cygwin\tmp/cc8aDmUp.s:7      *ABS*:00000001 __zero_reg__
-C:\cygwin\tmp/cc8aDmUp.s:18     .text:00000000 halRfWaitForCrystalOscillator
+C:\cygwin\tmp/cckumoau.s:2      *ABS*:0000003f __SREG__
+C:\cygwin\tmp/cckumoau.s:3      *ABS*:0000003e __SP_H__
+C:\cygwin\tmp/cckumoau.s:4      *ABS*:0000003d __SP_L__
+C:\cygwin\tmp/cckumoau.s:5      *ABS*:00000034 __CCP__
+C:\cygwin\tmp/cckumoau.s:6      *ABS*:00000000 __tmp_reg__
+C:\cygwin\tmp/cckumoau.s:7      *ABS*:00000001 __zero_reg__
+C:\cygwin\tmp/cckumoau.s:18     .text:00000000 halRfWaitForCrystalOscillator
                             *COM*:00000004 systemCeiling
                             *COM*:00000004 _nrk_signal_list
 
