@@ -286,7 +286,7 @@ int8_t nrk_TCB_init (nrk_task_type *Task, NRK_STK *ptos, NRK_STK *pbos, uint16_t
     nrk_task_TCB[Task->task_ID].OSTaskStkPtr = ptos;
     nrk_task_TCB[Task->task_ID].task_prio = Task->prio;
     nrk_task_TCB[Task->task_ID].task_state = SUSPENDED;
-    
+   nrk_task_TCB[Task->task_ID].task_prelevel = Task->prelevel;    
     nrk_task_TCB[Task->task_ID].task_ID = Task->task_ID;
     nrk_task_TCB[Task->task_ID].suspend_flag = 0;
     nrk_task_TCB[Task->task_ID].period= _nrk_time_to_ticks( &(Task->period) );

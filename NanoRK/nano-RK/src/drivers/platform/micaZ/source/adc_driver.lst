@@ -116,16 +116,16 @@
  179               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 adc_driver.c
-C:\cygwin\tmp/ccf5wcdJ.s:2      *ABS*:0000003f __SREG__
-C:\cygwin\tmp/ccf5wcdJ.s:3      *ABS*:0000003e __SP_H__
-C:\cygwin\tmp/ccf5wcdJ.s:4      *ABS*:0000003d __SP_L__
-C:\cygwin\tmp/ccf5wcdJ.s:5      *ABS*:00000034 __CCP__
-C:\cygwin\tmp/ccf5wcdJ.s:6      *ABS*:00000000 __tmp_reg__
-C:\cygwin\tmp/ccf5wcdJ.s:7      *ABS*:00000001 __zero_reg__
-C:\cygwin\tmp/ccf5wcdJ.s:18     .text:00000000 adc_init
-C:\cygwin\tmp/ccf5wcdJ.s:59     .text:0000002c adc_Powersave
-C:\cygwin\tmp/ccf5wcdJ.s:73     .text:00000030 adc_GetChannel
-C:\cygwin\tmp/ccf5wcdJ.s:103    .text:00000048 adc_GetBatteryVoltage
+C:\cygwin\tmp/ccSuDoAq.s:2      *ABS*:0000003f __SREG__
+C:\cygwin\tmp/ccSuDoAq.s:3      *ABS*:0000003e __SP_H__
+C:\cygwin\tmp/ccSuDoAq.s:4      *ABS*:0000003d __SP_L__
+C:\cygwin\tmp/ccSuDoAq.s:5      *ABS*:00000034 __CCP__
+C:\cygwin\tmp/ccSuDoAq.s:6      *ABS*:00000000 __tmp_reg__
+C:\cygwin\tmp/ccSuDoAq.s:7      *ABS*:00000001 __zero_reg__
+C:\cygwin\tmp/ccSuDoAq.s:18     .text:00000000 adc_init
+C:\cygwin\tmp/ccSuDoAq.s:59     .text:0000002c adc_Powersave
+C:\cygwin\tmp/ccSuDoAq.s:73     .text:00000030 adc_GetChannel
+C:\cygwin\tmp/ccSuDoAq.s:103    .text:00000048 adc_GetBatteryVoltage
 
 UNDEFINED SYMBOLS
 __floatunsisf

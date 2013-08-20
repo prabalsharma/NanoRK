@@ -1740,17 +1740,17 @@
  1815               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 DOGM128-6_Graphicdisplay_driver.c
-C:\cygwin\tmp/ccDkYSKl.s:2      *ABS*:0000003f __SREG__
-C:\cygwin\tmp/ccDkYSKl.s:3      *ABS*:0000003e __SP_H__
-C:\cygwin\tmp/ccDkYSKl.s:4      *ABS*:0000003d __SP_L__
-C:\cygwin\tmp/ccDkYSKl.s:5      *ABS*:00000034 __CCP__
-C:\cygwin\tmp/ccDkYSKl.s:6      *ABS*:00000000 __tmp_reg__
-C:\cygwin\tmp/ccDkYSKl.s:7      *ABS*:00000001 __zero_reg__
-C:\cygwin\tmp/ccDkYSKl.s:18     .text:00000000 DOGM128_6_usart1_sendByte
-C:\cygwin\tmp/ccDkYSKl.s:134    .text:00000078 DOGM128_6_clear_display
-C:\cygwin\tmp/ccDkYSKl.s:210    .text:000000da DOGM128_6_display_init
-C:\cygwin\tmp/ccDkYSKl.s:353    .text:00000180 DOGM128_6_display_backlight
-C:\cygwin\tmp/ccDkYSKl.s:372    .text:0000018c DOGM128_6_LCD_print
-C:\cygwin\tmp/ccDkYSKl.s:478    .progmem.data:00000000 font5x7
+C:\cygwin\tmp/ccPgRPIT.s:2      *ABS*:0000003f __SREG__
+C:\cygwin\tmp/ccPgRPIT.s:3      *ABS*:0000003e __SP_H__
+C:\cygwin\tmp/ccPgRPIT.s:4      *ABS*:0000003d __SP_L__
+C:\cygwin\tmp/ccPgRPIT.s:5      *ABS*:00000034 __CCP__
+C:\cygwin\tmp/ccPgRPIT.s:6      *ABS*:00000000 __tmp_reg__
+C:\cygwin\tmp/ccPgRPIT.s:7      *ABS*:00000001 __zero_reg__
+C:\cygwin\tmp/ccPgRPIT.s:18     .text:00000000 DOGM128_6_usart1_sendByte
+C:\cygwin\tmp/ccPgRPIT.s:134    .text:00000078 DOGM128_6_clear_display
+C:\cygwin\tmp/ccPgRPIT.s:210    .text:000000da DOGM128_6_display_init
+C:\cygwin\tmp/ccPgRPIT.s:353    .text:00000180 DOGM128_6_display_backlight
+C:\cygwin\tmp/ccPgRPIT.s:372    .text:0000018c DOGM128_6_LCD_print
+C:\cygwin\tmp/ccPgRPIT.s:478    .progmem.data:00000000 font5x7
 
 NO UNDEFINED SYMBOLS

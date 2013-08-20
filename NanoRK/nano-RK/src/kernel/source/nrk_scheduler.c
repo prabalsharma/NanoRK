@@ -45,28 +45,6 @@
 
 /*This is the variable to store the task ID of the next scheduled task. This will be the task with the earliest deadline*/
 uint8_t earliestDeadlineID = 0;
-char buf[64];
-int cur, ind;
-void nrk_printnum(uint32_t val) {
-	char *ptr = buf, *ptr2 = buf;
-	char tmp;
-	do {
-		*ptr++ = '0' + val % 10;
-		val /= 10;
-	} while (val > 0);
-
-	*ptr-- = 0;
-	while (ptr > ptr2) {
-		tmp = *ptr2;
-		*ptr2 = *ptr;
-		*ptr = tmp;
-		ptr--;
-		ptr2++;
-	}
-	nrk_kprintf(buf);
-}
-
-
 
 void inline _nrk_scheduler()
 {
@@ -190,44 +168,53 @@ void inline _nrk_scheduler()
         }
     }
 
-		printf("Sch\r\n");
+	printf("Earliest Deadline  ----> \r\n");
 	earliestDeadlineID = 0;
-	/*Turn off the LEDs*/
-	nrk_led_clr(BLUE_LED);
-	nrk_led_clr(GREEN_LED);
-	nrk_led_clr(RED_LED);
-	for (task_ID=0; task_ID < NRK_MAX_TASKS; task_ID++){
+
+	for (task_ID=0; task_ID < NRK_MAX_TASKS; task_ID++)
+	{
 	   if(nrk_task_TCB[task_ID].task_ID==-1) continue;
 		nrk_task_TCB[task_ID].suspend_flag=0;
 		if( nrk_task_TCB[task_ID].task_ID!=NRK_IDLE_TASK_ID && nrk_task_TCB[task_ID].task_state!=FINISHED )
 		{
-			if(  nrk_task_TCB[task_ID].next_wakeup >= _nrk_prev_timer_val ) {
+			if(  nrk_task_TCB[task_ID].next_wakeup >= _nrk_prev_timer_val ) 
+			{
 				nrk_task_TCB[task_ID].next_wakeup-=_nrk_prev_timer_val;
 			}
-			else {
+			else 
+			{
 				nrk_task_TCB[task_ID].next_wakeup=0;
 			}
 		
-			if( nrk_task_TCB[task_ID].next_period >= _nrk_prev_timer_val ) {
+			if( nrk_task_TCB[task_ID].next_period >= _nrk_prev_timer_val ) 
+			{
 				nrk_task_TCB[task_ID].next_period-=_nrk_prev_timer_val;
 			}
-			else {	
+			else 
+			{	
 			if(nrk_task_TCB[task_ID].period>_nrk_prev_timer_val)
-					nrk_task_TCB[task_ID].next_period= nrk_task_TCB[task_ID].period-_nrk_prev_timer_val;
-				else
-					nrk_task_TCB[task_ID].next_period= _nrk_prev_timer_val % nrk_task_TCB[task_ID].period;
+				nrk_task_TCB[task_ID].next_period= nrk_task_TCB[task_ID].period-_nrk_prev_timer_val;
+			else
+				nrk_task_TCB[task_ID].next_period= _nrk_prev_timer_val % nrk_task_TCB[task_ID].period;
 			}
-			if(nrk_task_TCB[task_ID].next_period==0) {
+			if(nrk_task_TCB[task_ID].next_period==0) 
+			{
 				nrk_task_TCB[task_ID].next_period=nrk_task_TCB[task_ID].period;
 			}
 		}
-#ifdef NRK_EDF
-	}
-	for (task_ID=0; task_ID < NRK_MAX_TASKS; task_ID++){
-#endif
-		if (nrk_task_TCB[task_ID].task_state == SUSPENDED ) {
-			if (nrk_task_TCB[task_ID].next_wakeup == 0) {
-				if(nrk_task_TCB[task_ID].event_suspend>0 && nrk_task_TCB[task_ID].nw_flag==1) nrk_task_TCB[task_ID].active_signal_mask=SIG(nrk_wakeup_signal);
+
+	/*}
+	for (task_ID=0; task_ID < NRK_MAX_TASKS; task_ID++)
+	{*/
+
+		if (nrk_task_TCB[task_ID].task_state == SUSPENDED ) 
+		{
+			if (nrk_task_TCB[task_ID].next_wakeup == 0) 
+			{
+				if(nrk_task_TCB[task_ID].event_suspend>0 && nrk_task_TCB[task_ID].nw_flag==1) 
+				{
+					nrk_task_TCB[task_ID].active_signal_mask=SIG(nrk_wakeup_signal);
+				}
 				nrk_task_TCB[task_ID].event_suspend=0;
 				nrk_task_TCB[task_ID].nw_flag=0;
 				nrk_task_TCB[task_ID].suspend_flag=0;
@@ -238,7 +225,8 @@ void inline _nrk_scheduler()
 					nrk_task_TCB[task_ID].next_wakeup = nrk_task_TCB[task_ID].next_period;
 					//nrk_task_TCB[task_ID].next_period += nrk_task_TCB[task_ID].period;
 					nrk_add_to_readyQ(task_ID);				
-				} else 
+				} 
+				else 
 				{
 					nrk_task_TCB[task_ID].cpu_remaining = nrk_task_TCB[task_ID].cpu_reserve;
 					nrk_task_TCB[task_ID].next_wakeup = (nrk_task_TCB[task_ID].period*(nrk_task_TCB[task_ID].num_periods-1));
@@ -246,8 +234,7 @@ void inline _nrk_scheduler()
 					nrk_task_TCB[task_ID].num_periods=1;
 				}
 			}
-
-            if(nrk_task_TCB[task_ID].next_wakeup!=0 &&
+			if(nrk_task_TCB[task_ID].next_wakeup!=0 &&
                     nrk_task_TCB[task_ID].next_wakeup<next_wake )
             {
                 // Find closest next_wake task
@@ -256,39 +243,30 @@ void inline _nrk_scheduler()
 
 		}
 
-		if (nrk_task_TCB[task_ID].task_state == READY) {
-			nrk_kprintf("T");
-			nrk_printnum(task_ID);
-			nrk_kprintf(":NP:");
-			nrk_printnum(nrk_task_TCB[task_ID].next_period);
-			nrk_kprintf("\r\n");
-		}
-		/*
-#ifdef NRK_EDF
-		//Select the task who has the next earliest deadline.
-		nrk_printnum(task_ID);
-		nrk_kprintf(":");
-		nrk_printnum(nrk_task_TCB[task_ID].next_period);
-		nrk_kprintf(",");
-		nrk_printnum(nrk_task_TCB[task_ID].next_wakeup);
-		nrk_kprintf("\r\n");
+// Logging the task id and its READY state
+		//if (nrk_task_TCB[task_ID].task_state == READY) {
+		//	nrk_kprintf("T");
+		//	nrk_printnum(task_ID);
+		//	nrk_kprintf(":NP:");
+		//	nrk_printnum(nrk_task_TCB[task_ID].next_period);
+		//	nrk_kprintf("\r\n");
+		//}
 		
-//		nrk_kprintf("%d:%u ", task_ID, nrk_task_TCB[task_ID].next_period);
+
+		//Select the task who has the next earliest deadline.		
+		printf("Select the task %d for time :%u ", task_ID, nrk_task_TCB[task_ID].next_period);
 		if((earliestDeadlineID == NRK_IDLE_TASK_ID || nrk_task_TCB[task_ID].next_period < nrk_task_TCB[earliestDeadlineID].next_period) && nrk_task_TCB[task_ID].task_state == READY)
 			earliestDeadlineID = task_ID;
-#endif
-		*/
-}
+		
+} // For ends here
 
 
 #ifdef NRK_STATS_TRACKER
-    _nrk_stats_task_start(nrk_cur_task_TCB->task_ID);
+    
+	_nrk_stats_task_start(nrk_cur_task_TCB->task_ID);
 #endif
-#ifdef NRK_EDF
-		task_ID = earliestDeadlineID;
-#else
+
 	task_ID = nrk_get_high_ready_task_ID();
-#endif
 	nrk_high_ready_prio = nrk_task_TCB[task_ID].task_prio;
 	nrk_high_ready_TCB = &nrk_task_TCB[task_ID];
 

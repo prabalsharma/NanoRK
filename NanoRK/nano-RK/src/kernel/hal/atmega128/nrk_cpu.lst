@@ -267,49 +267,51 @@
  291               	.LVL11:
  292 00fe 0895      		ret
  293               	.LFE8:
- 295               		.comm _nrk_signal_list,4,1
- 296               		.comm nrk_idle_task_stk,128,1
- 297               		.comm nrk_kernel_stk_ptr,2,1
- 298               		.comm nrk_task_TCB,165,1
- 299               		.comm nrk_wakeup_signal,1,1
- 300               		.comm _nrk_readyQ,30,1
- 301               		.comm _free_node,2,1
- 302               		.comm _head_node,2,1
- 303               		.comm nrk_cur_task_prio,1,1
- 304               		.comm nrk_cur_task_TCB,2,1
- 305               		.comm nrk_high_ready_prio,1,1
- 306               		.comm nrk_high_ready_TCB,2,1
- 307               		.comm _nrk_resource_cnt,1,1
- 308               		.comm nrk_system_time,8,1
- 309               		.comm error_task,1,1
- 310               		.comm error_num,1,1
- 311               		.comm nrk_sem_list,3,1
- 312               		.comm _nrk_prev_timer_val,1,1
- 313               		.comm _nrk_time_trigger,1,1
- 314               		.comm app_timer0_callback,2,1
- 315               		.comm app_timer0_prescale,1,1
- 404               	.Letext0:
+ 295               		.comm systemCeiling,4,1
+ 296               		.comm _nrk_signal_list,4,1
+ 297               		.comm nrk_idle_task_stk,128,1
+ 298               		.comm nrk_kernel_stk_ptr,2,1
+ 299               		.comm nrk_task_TCB,170,1
+ 300               		.comm nrk_wakeup_signal,1,1
+ 301               		.comm _nrk_readyQ,30,1
+ 302               		.comm _free_node,2,1
+ 303               		.comm _head_node,2,1
+ 304               		.comm nrk_cur_task_prio,1,1
+ 305               		.comm nrk_cur_task_TCB,2,1
+ 306               		.comm nrk_high_ready_prio,1,1
+ 307               		.comm nrk_high_ready_TCB,2,1
+ 308               		.comm _nrk_resource_cnt,1,1
+ 309               		.comm nrk_system_time,8,1
+ 310               		.comm error_task,1,1
+ 311               		.comm error_num,1,1
+ 312               		.comm nrk_sem_list,3,1
+ 313               		.comm _nrk_prev_timer_val,1,1
+ 314               		.comm _nrk_time_trigger,1,1
+ 315               		.comm app_timer0_callback,2,1
+ 316               		.comm app_timer0_prescale,1,1
+ 405               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 nrk_cpu.c
-C:\cygwin\tmp/ccO5evKf.s:2      *ABS*:0000003f __SREG__
-C:\cygwin\tmp/ccO5evKf.s:3      *ABS*:0000003e __SP_H__
-C:\cygwin\tmp/ccO5evKf.s:4      *ABS*:0000003d __SP_L__
-C:\cygwin\tmp/ccO5evKf.s:5      *ABS*:00000034 __CCP__
-C:\cygwin\tmp/ccO5evKf.s:6      *ABS*:00000000 __tmp_reg__
-C:\cygwin\tmp/ccO5evKf.s:7      *ABS*:00000001 __zero_reg__
-C:\cygwin\tmp/ccO5evKf.s:18     .text:00000000 nrk_battery_save
-C:\cygwin\tmp/ccO5evKf.s:30     .text:00000002 nrk_task_set_entry_function
-C:\cygwin\tmp/ccO5evKf.s:47     .text:0000000a nrk_sleep
-C:\cygwin\tmp/ccO5evKf.s:77     .text:00000022 nrk_idle
-C:\cygwin\tmp/ccO5evKf.s:106    .text:00000038 nrk_task_stk_init
-C:\cygwin\tmp/ccO5evKf.s:187    .text:0000008e nrk_stack_pointer_restore
-C:\cygwin\tmp/ccO5evKf.s:205    .text:0000009c nrk_stack_pointer_init
+C:\cygwin\tmp/cc7UYWza.s:2      *ABS*:0000003f __SREG__
+C:\cygwin\tmp/cc7UYWza.s:3      *ABS*:0000003e __SP_H__
+C:\cygwin\tmp/cc7UYWza.s:4      *ABS*:0000003d __SP_L__
+C:\cygwin\tmp/cc7UYWza.s:5      *ABS*:00000034 __CCP__
+C:\cygwin\tmp/cc7UYWza.s:6      *ABS*:00000000 __tmp_reg__
+C:\cygwin\tmp/cc7UYWza.s:7      *ABS*:00000001 __zero_reg__
+C:\cygwin\tmp/cc7UYWza.s:18     .text:00000000 nrk_battery_save
+C:\cygwin\tmp/cc7UYWza.s:30     .text:00000002 nrk_task_set_entry_function
+C:\cygwin\tmp/cc7UYWza.s:47     .text:0000000a nrk_sleep
+C:\cygwin\tmp/cc7UYWza.s:77     .text:00000022 nrk_idle
+C:\cygwin\tmp/cc7UYWza.s:106    .text:00000038 nrk_task_stk_init
+C:\cygwin\tmp/cc7UYWza.s:187    .text:0000008e nrk_stack_pointer_restore
+C:\cygwin\tmp/cc7UYWza.s:205    .text:0000009c nrk_stack_pointer_init
                             *COM*:00000002 nrk_kernel_stk_ptr
-C:\cygwin\tmp/ccO5evKf.s:231    .text:000000ba nrk_target_start
-C:\cygwin\tmp/ccO5evKf.s:247    .text:000000c4 nrk_task_set_stk
+C:\cygwin\tmp/cc7UYWza.s:231    .text:000000ba nrk_target_start
+C:\cygwin\tmp/cc7UYWza.s:247    .text:000000c4 nrk_task_set_stk
+                            *COM*:00000004 systemCeiling
                             *COM*:00000004 _nrk_signal_list
                             *COM*:00000080 nrk_idle_task_stk
-                            *COM*:000000a5 nrk_task_TCB
+                            *COM*:000000aa nrk_task_TCB
                             *COM*:00000001 nrk_wakeup_signal
                             *COM*:0000001e _nrk_readyQ
                             *COM*:00000002 _free_node

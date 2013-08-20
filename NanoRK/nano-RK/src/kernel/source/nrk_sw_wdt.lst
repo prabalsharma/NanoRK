@@ -475,28 +475,30 @@
  493 02de 2F90      		pop r2
  494 02e0 0895      		ret
  495               	.LFE3:
- 497               		.comm _nrk_signal_list,4,1
- 498               		.comm nrk_idle_task_stk,128,1
- 499               		.comm nrk_kernel_stk_ptr,2,1
- 500               		.comm error_task,1,1
- 501               		.comm error_num,1,1
- 502               		.comm sw_wdts,57,1
- 567               	.Letext0:
+ 497               		.comm systemCeiling,4,1
+ 498               		.comm _nrk_signal_list,4,1
+ 499               		.comm nrk_idle_task_stk,128,1
+ 500               		.comm nrk_kernel_stk_ptr,2,1
+ 501               		.comm error_task,1,1
+ 502               		.comm error_num,1,1
+ 503               		.comm sw_wdts,57,1
+ 568               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 nrk_sw_wdt.c
-C:\cygwin\tmp/cc3rcLUG.s:2      *ABS*:0000003f __SREG__
-C:\cygwin\tmp/cc3rcLUG.s:3      *ABS*:0000003e __SP_H__
-C:\cygwin\tmp/cc3rcLUG.s:4      *ABS*:0000003d __SP_L__
-C:\cygwin\tmp/cc3rcLUG.s:5      *ABS*:00000034 __CCP__
-C:\cygwin\tmp/cc3rcLUG.s:6      *ABS*:00000000 __tmp_reg__
-C:\cygwin\tmp/cc3rcLUG.s:7      *ABS*:00000001 __zero_reg__
-C:\cygwin\tmp/cc3rcLUG.s:18     .text:00000000 _nrk_sw_wdt_init
+C:\cygwin\tmp/ccer8AyW.s:2      *ABS*:0000003f __SREG__
+C:\cygwin\tmp/ccer8AyW.s:3      *ABS*:0000003e __SP_H__
+C:\cygwin\tmp/ccer8AyW.s:4      *ABS*:0000003d __SP_L__
+C:\cygwin\tmp/ccer8AyW.s:5      *ABS*:00000034 __CCP__
+C:\cygwin\tmp/ccer8AyW.s:6      *ABS*:00000000 __tmp_reg__
+C:\cygwin\tmp/ccer8AyW.s:7      *ABS*:00000001 __zero_reg__
+C:\cygwin\tmp/ccer8AyW.s:18     .text:00000000 _nrk_sw_wdt_init
                             *COM*:00000039 sw_wdts
-C:\cygwin\tmp/cc3rcLUG.s:34     .text:0000000e nrk_sw_wdt_init
-C:\cygwin\tmp/cc3rcLUG.s:101    .text:00000064 nrk_sw_wdt_stop
-C:\cygwin\tmp/cc3rcLUG.s:139    .text:0000008c nrk_sw_wdt_start
-C:\cygwin\tmp/cc3rcLUG.s:238    .text:00000126 nrk_sw_wdt_update
-C:\cygwin\tmp/cc3rcLUG.s:358    .text:000001ea _nrk_sw_wdt_check
+C:\cygwin\tmp/ccer8AyW.s:34     .text:0000000e nrk_sw_wdt_init
+C:\cygwin\tmp/ccer8AyW.s:101    .text:00000064 nrk_sw_wdt_stop
+C:\cygwin\tmp/ccer8AyW.s:139    .text:0000008c nrk_sw_wdt_start
+C:\cygwin\tmp/ccer8AyW.s:238    .text:00000126 nrk_sw_wdt_update
+C:\cygwin\tmp/ccer8AyW.s:358    .text:000001ea _nrk_sw_wdt_check
+                            *COM*:00000004 systemCeiling
                             *COM*:00000004 _nrk_signal_list
                             *COM*:00000080 nrk_idle_task_stk
                             *COM*:00000002 nrk_kernel_stk_ptr

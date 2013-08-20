@@ -1173,74 +1173,76 @@
  1290               	.global	NRK_GPIO34
  1293               	NRK_GPIO34:
  1294 0022 FF        		.byte	-1
- 1295               		.comm _nrk_signal_list,4,1
- 1296               		.comm error_task,1,1
- 1297               		.comm error_num,1,1
- 1482               	.Letext0:
+ 1295               		.comm systemCeiling,4,1
+ 1296               		.comm _nrk_signal_list,4,1
+ 1297               		.comm error_task,1,1
+ 1298               		.comm error_num,1,1
+ 1483               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 ulib.c
-C:\cygwin\tmp/ccYTjyHS.s:2      *ABS*:0000003f __SREG__
-C:\cygwin\tmp/ccYTjyHS.s:3      *ABS*:0000003e __SP_H__
-C:\cygwin\tmp/ccYTjyHS.s:4      *ABS*:0000003d __SP_L__
-C:\cygwin\tmp/ccYTjyHS.s:5      *ABS*:00000034 __CCP__
-C:\cygwin\tmp/ccYTjyHS.s:6      *ABS*:00000000 __tmp_reg__
-C:\cygwin\tmp/ccYTjyHS.s:7      *ABS*:00000001 __zero_reg__
-C:\cygwin\tmp/ccYTjyHS.s:18     .text:00000000 nrk_uart_rx_signal_get
-C:\cygwin\tmp/ccYTjyHS.s:31     .text:00000004 nrk_uart_data_ready
-C:\cygwin\tmp/ccYTjyHS.s:69     .text:00000026 getc0
-C:\cygwin\tmp/ccYTjyHS.s:89     .text:00000030 nrk_gpio_set
-C:\cygwin\tmp/ccYTjyHS.s:194    .text:000000c0 nrk_gpio_clr
-C:\cygwin\tmp/ccYTjyHS.s:300    .text:00000152 nrk_gpio_get
-C:\cygwin\tmp/ccYTjyHS.s:380    .text:000001b6 nrk_gpio_pullups
-C:\cygwin\tmp/ccYTjyHS.s:409    .text:000001ca nrk_gpio_toggle
-C:\cygwin\tmp/ccYTjyHS.s:514    .text:0000025a nrk_gpio_direction
-C:\cygwin\tmp/ccYTjyHS.s:713    .text:00000376 nrk_get_button
-C:\cygwin\tmp/ccYTjyHS.s:728    .text:0000037a nrk_led_toggle
-C:\cygwin\tmp/ccYTjyHS.s:772    .text:000003a4 nrk_led_clr
-C:\cygwin\tmp/ccYTjyHS.s:816    .text:000003ce nrk_setup_ports
-C:\cygwin\tmp/ccYTjyHS.s:865    .text:00000416 nrk_led_set
-C:\cygwin\tmp/ccYTjyHS.s:909    .text:00000440 putc0
-C:\cygwin\tmp/ccYTjyHS.s:928    .text:0000044a putc1
-C:\cygwin\tmp/ccYTjyHS.s:952    .text:00000464 setup_uart0
-C:\cygwin\tmp/ccYTjyHS.s:978    .text:0000047c setup_uart1
-C:\cygwin\tmp/ccYTjyHS.s:1012   .text:000004a6 getc1
-C:\cygwin\tmp/ccYTjyHS.s:1035   .text:000004be nrk_setup_uart
-C:\cygwin\tmp/ccYTjyHS.s:1077   .text:00000500 nrk_kprintf
-C:\cygwin\tmp/ccYTjyHS.s:1123   .data:00000000 NRK_LED_0
-C:\cygwin\tmp/ccYTjyHS.s:1128   .data:00000001 NRK_LED_1
-C:\cygwin\tmp/ccYTjyHS.s:1133   .data:00000002 NRK_LED_2
-C:\cygwin\tmp/ccYTjyHS.s:1138   .data:00000003 NRK_VREG_EN
-C:\cygwin\tmp/ccYTjyHS.s:1143   .data:00000004 NRK_RESET_N
-C:\cygwin\tmp/ccYTjyHS.s:1148   .data:00000005 NRK_CSN
-C:\cygwin\tmp/ccYTjyHS.s:1153   .data:00000006 NRK_SCK
-C:\cygwin\tmp/ccYTjyHS.s:1158   .data:00000007 NRK_MOSI
-C:\cygwin\tmp/ccYTjyHS.s:1163   .data:00000008 NRK_MISO
-C:\cygwin\tmp/ccYTjyHS.s:1168   .data:00000009 NRK_FIFO
-C:\cygwin\tmp/ccYTjyHS.s:1173   .data:0000000a NRK_UART1_RXD
-C:\cygwin\tmp/ccYTjyHS.s:1178   .data:0000000b NRK_UART1_TXD
-C:\cygwin\tmp/ccYTjyHS.s:1183   .data:0000000c NRK_SFD
-C:\cygwin\tmp/ccYTjyHS.s:1188   .data:0000000d NRK_UART1_RTS
-C:\cygwin\tmp/ccYTjyHS.s:1193   .data:0000000e NRK_CCA
-C:\cygwin\tmp/ccYTjyHS.s:1198   .data:0000000f NRK_UART1_CTS
-C:\cygwin\tmp/ccYTjyHS.s:1203   .data:00000010 NRK_UART0_RXD
-C:\cygwin\tmp/ccYTjyHS.s:1208   .data:00000011 NRK_UART0_TXD
-C:\cygwin\tmp/ccYTjyHS.s:1213   .data:00000012 NRK_FIFOP
-C:\cygwin\tmp/ccYTjyHS.s:1218   .data:00000013 NRK_ADC_INPUT_0
-C:\cygwin\tmp/ccYTjyHS.s:1223   .data:00000014 NRK_ADC_INPUT_1
-C:\cygwin\tmp/ccYTjyHS.s:1228   .data:00000015 NRK_ADC_INPUT_2
-C:\cygwin\tmp/ccYTjyHS.s:1233   .data:00000016 NRK_ADC_INPUT_3
-C:\cygwin\tmp/ccYTjyHS.s:1238   .data:00000017 NRK_ADC_INPUT_6
-C:\cygwin\tmp/ccYTjyHS.s:1243   .data:00000018 NRK_ADC_INPUT_7
-C:\cygwin\tmp/ccYTjyHS.s:1248   .data:00000019 NRK_DEBUG_0
-C:\cygwin\tmp/ccYTjyHS.s:1253   .data:0000001a NRK_DEBUG_1
-C:\cygwin\tmp/ccYTjyHS.s:1258   .data:0000001b NRK_DEBUG_2
-C:\cygwin\tmp/ccYTjyHS.s:1263   .data:0000001c NRK_DEBUG_3
-C:\cygwin\tmp/ccYTjyHS.s:1268   .data:0000001d NRK_LED_3
-C:\cygwin\tmp/ccYTjyHS.s:1273   .data:0000001e NRK_BLED
-C:\cygwin\tmp/ccYTjyHS.s:1278   .data:0000001f NRK_SPI_SS
-C:\cygwin\tmp/ccYTjyHS.s:1283   .data:00000020 NRK_GPIO26
-C:\cygwin\tmp/ccYTjyHS.s:1288   .data:00000021 NRK_GPIO28
-C:\cygwin\tmp/ccYTjyHS.s:1293   .data:00000022 NRK_GPIO34
+C:\cygwin\tmp/cchXiXoa.s:2      *ABS*:0000003f __SREG__
+C:\cygwin\tmp/cchXiXoa.s:3      *ABS*:0000003e __SP_H__
+C:\cygwin\tmp/cchXiXoa.s:4      *ABS*:0000003d __SP_L__
+C:\cygwin\tmp/cchXiXoa.s:5      *ABS*:00000034 __CCP__
+C:\cygwin\tmp/cchXiXoa.s:6      *ABS*:00000000 __tmp_reg__
+C:\cygwin\tmp/cchXiXoa.s:7      *ABS*:00000001 __zero_reg__
+C:\cygwin\tmp/cchXiXoa.s:18     .text:00000000 nrk_uart_rx_signal_get
+C:\cygwin\tmp/cchXiXoa.s:31     .text:00000004 nrk_uart_data_ready
+C:\cygwin\tmp/cchXiXoa.s:69     .text:00000026 getc0
+C:\cygwin\tmp/cchXiXoa.s:89     .text:00000030 nrk_gpio_set
+C:\cygwin\tmp/cchXiXoa.s:194    .text:000000c0 nrk_gpio_clr
+C:\cygwin\tmp/cchXiXoa.s:300    .text:00000152 nrk_gpio_get
+C:\cygwin\tmp/cchXiXoa.s:380    .text:000001b6 nrk_gpio_pullups
+C:\cygwin\tmp/cchXiXoa.s:409    .text:000001ca nrk_gpio_toggle
+C:\cygwin\tmp/cchXiXoa.s:514    .text:0000025a nrk_gpio_direction
+C:\cygwin\tmp/cchXiXoa.s:713    .text:00000376 nrk_get_button
+C:\cygwin\tmp/cchXiXoa.s:728    .text:0000037a nrk_led_toggle
+C:\cygwin\tmp/cchXiXoa.s:772    .text:000003a4 nrk_led_clr
+C:\cygwin\tmp/cchXiXoa.s:816    .text:000003ce nrk_setup_ports
+C:\cygwin\tmp/cchXiXoa.s:865    .text:00000416 nrk_led_set
+C:\cygwin\tmp/cchXiXoa.s:909    .text:00000440 putc0
+C:\cygwin\tmp/cchXiXoa.s:928    .text:0000044a putc1
+C:\cygwin\tmp/cchXiXoa.s:952    .text:00000464 setup_uart0
+C:\cygwin\tmp/cchXiXoa.s:978    .text:0000047c setup_uart1
+C:\cygwin\tmp/cchXiXoa.s:1012   .text:000004a6 getc1
+C:\cygwin\tmp/cchXiXoa.s:1035   .text:000004be nrk_setup_uart
+C:\cygwin\tmp/cchXiXoa.s:1077   .text:00000500 nrk_kprintf
+C:\cygwin\tmp/cchXiXoa.s:1123   .data:00000000 NRK_LED_0
+C:\cygwin\tmp/cchXiXoa.s:1128   .data:00000001 NRK_LED_1
+C:\cygwin\tmp/cchXiXoa.s:1133   .data:00000002 NRK_LED_2
+C:\cygwin\tmp/cchXiXoa.s:1138   .data:00000003 NRK_VREG_EN
+C:\cygwin\tmp/cchXiXoa.s:1143   .data:00000004 NRK_RESET_N
+C:\cygwin\tmp/cchXiXoa.s:1148   .data:00000005 NRK_CSN
+C:\cygwin\tmp/cchXiXoa.s:1153   .data:00000006 NRK_SCK
+C:\cygwin\tmp/cchXiXoa.s:1158   .data:00000007 NRK_MOSI
+C:\cygwin\tmp/cchXiXoa.s:1163   .data:00000008 NRK_MISO
+C:\cygwin\tmp/cchXiXoa.s:1168   .data:00000009 NRK_FIFO
+C:\cygwin\tmp/cchXiXoa.s:1173   .data:0000000a NRK_UART1_RXD
+C:\cygwin\tmp/cchXiXoa.s:1178   .data:0000000b NRK_UART1_TXD
+C:\cygwin\tmp/cchXiXoa.s:1183   .data:0000000c NRK_SFD
+C:\cygwin\tmp/cchXiXoa.s:1188   .data:0000000d NRK_UART1_RTS
+C:\cygwin\tmp/cchXiXoa.s:1193   .data:0000000e NRK_CCA
+C:\cygwin\tmp/cchXiXoa.s:1198   .data:0000000f NRK_UART1_CTS
+C:\cygwin\tmp/cchXiXoa.s:1203   .data:00000010 NRK_UART0_RXD
+C:\cygwin\tmp/cchXiXoa.s:1208   .data:00000011 NRK_UART0_TXD
+C:\cygwin\tmp/cchXiXoa.s:1213   .data:00000012 NRK_FIFOP
+C:\cygwin\tmp/cchXiXoa.s:1218   .data:00000013 NRK_ADC_INPUT_0
+C:\cygwin\tmp/cchXiXoa.s:1223   .data:00000014 NRK_ADC_INPUT_1
+C:\cygwin\tmp/cchXiXoa.s:1228   .data:00000015 NRK_ADC_INPUT_2
+C:\cygwin\tmp/cchXiXoa.s:1233   .data:00000016 NRK_ADC_INPUT_3
+C:\cygwin\tmp/cchXiXoa.s:1238   .data:00000017 NRK_ADC_INPUT_6
+C:\cygwin\tmp/cchXiXoa.s:1243   .data:00000018 NRK_ADC_INPUT_7
+C:\cygwin\tmp/cchXiXoa.s:1248   .data:00000019 NRK_DEBUG_0
+C:\cygwin\tmp/cchXiXoa.s:1253   .data:0000001a NRK_DEBUG_1
+C:\cygwin\tmp/cchXiXoa.s:1258   .data:0000001b NRK_DEBUG_2
+C:\cygwin\tmp/cchXiXoa.s:1263   .data:0000001c NRK_DEBUG_3
+C:\cygwin\tmp/cchXiXoa.s:1268   .data:0000001d NRK_LED_3
+C:\cygwin\tmp/cchXiXoa.s:1273   .data:0000001e NRK_BLED
+C:\cygwin\tmp/cchXiXoa.s:1278   .data:0000001f NRK_SPI_SS
+C:\cygwin\tmp/cchXiXoa.s:1283   .data:00000020 NRK_GPIO26
+C:\cygwin\tmp/cchXiXoa.s:1288   .data:00000021 NRK_GPIO28
+C:\cygwin\tmp/cchXiXoa.s:1293   .data:00000022 NRK_GPIO34
+                            *COM*:00000004 systemCeiling
                             *COM*:00000004 _nrk_signal_list
                             *COM*:00000001 error_task
                             *COM*:00000001 error_num

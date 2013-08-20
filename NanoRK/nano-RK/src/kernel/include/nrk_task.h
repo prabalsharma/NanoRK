@@ -62,7 +62,7 @@ typedef struct os_tcb {
 	uint8_t   errno;                  // 0 no error 1-255 error code 
 	uint32_t  registered_signal_mask; // List of events that are registered 
 	uint32_t  active_signal_mask;     // List of events currently waiting on
-
+	uint8_t	  task_prelevel;		  // Premetion level
 	// Inside TCB, all timer values stored in tick multiples to save memory
 	uint16_t  next_wakeup;
 	uint16_t  next_period;
@@ -98,6 +98,7 @@ typedef struct task_type {
 	nrk_time_t period;
 	nrk_time_t cpu_reserve;
 	nrk_time_t offset;
+	uint8_t prelevel;	// Premption level
 
 } nrk_task_type;
 

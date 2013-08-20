@@ -108,24 +108,26 @@
  122               	.LM22:
  123 0046 0895      		ret
  124               	.LFE3:
- 126               		.comm _nrk_signal_list,4,1
- 127               		.comm error_task,1,1
- 128               		.comm error_num,1,1
- 129               		.comm nrk_idle_task_stk,128,1
- 130               		.comm nrk_kernel_stk_ptr,2,1
- 179               	.Letext0:
+ 126               		.comm systemCeiling,4,1
+ 127               		.comm _nrk_signal_list,4,1
+ 128               		.comm error_task,1,1
+ 129               		.comm error_num,1,1
+ 130               		.comm nrk_idle_task_stk,128,1
+ 131               		.comm nrk_kernel_stk_ptr,2,1
+ 180               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 nrk_watchdog.c
-C:\cygwin\tmp/ccqdquJV.s:2      *ABS*:0000003f __SREG__
-C:\cygwin\tmp/ccqdquJV.s:3      *ABS*:0000003e __SP_H__
-C:\cygwin\tmp/ccqdquJV.s:4      *ABS*:0000003d __SP_L__
-C:\cygwin\tmp/ccqdquJV.s:5      *ABS*:00000034 __CCP__
-C:\cygwin\tmp/ccqdquJV.s:6      *ABS*:00000000 __tmp_reg__
-C:\cygwin\tmp/ccqdquJV.s:7      *ABS*:00000001 __zero_reg__
-C:\cygwin\tmp/ccqdquJV.s:18     .text:00000000 nrk_watchdog_check
-C:\cygwin\tmp/ccqdquJV.s:37     .text:0000000e nrk_watchdog_reset
-C:\cygwin\tmp/ccqdquJV.s:55     .text:00000012 nrk_watchdog_enable
-C:\cygwin\tmp/ccqdquJV.s:92     .text:0000002e nrk_watchdog_disable
+C:\cygwin\tmp/ccDtBrlT.s:2      *ABS*:0000003f __SREG__
+C:\cygwin\tmp/ccDtBrlT.s:3      *ABS*:0000003e __SP_H__
+C:\cygwin\tmp/ccDtBrlT.s:4      *ABS*:0000003d __SP_L__
+C:\cygwin\tmp/ccDtBrlT.s:5      *ABS*:00000034 __CCP__
+C:\cygwin\tmp/ccDtBrlT.s:6      *ABS*:00000000 __tmp_reg__
+C:\cygwin\tmp/ccDtBrlT.s:7      *ABS*:00000001 __zero_reg__
+C:\cygwin\tmp/ccDtBrlT.s:18     .text:00000000 nrk_watchdog_check
+C:\cygwin\tmp/ccDtBrlT.s:37     .text:0000000e nrk_watchdog_reset
+C:\cygwin\tmp/ccDtBrlT.s:55     .text:00000012 nrk_watchdog_enable
+C:\cygwin\tmp/ccDtBrlT.s:92     .text:0000002e nrk_watchdog_disable
+                            *COM*:00000004 systemCeiling
                             *COM*:00000004 _nrk_signal_list
                             *COM*:00000001 error_task
                             *COM*:00000001 error_num

@@ -144,14 +144,14 @@
  151               	nrk_create_taskset:
  152               	.LFB8:
  153               	.LM8:
- 154 00d8 6F92      		push r6
- 155 00da 7F92      		push r7
- 156 00dc 8F92      		push r8
- 157 00de 9F92      		push r9
- 158 00e0 AF92      		push r10
- 159 00e2 BF92      		push r11
- 160 00e4 CF92      		push r12
- 161 00e6 DF92      		push r13
+ 154 00d8 7F92      		push r7
+ 155 00da 8F92      		push r8
+ 156 00dc 9F92      		push r9
+ 157 00de AF92      		push r10
+ 158 00e0 BF92      		push r11
+ 159 00e2 CF92      		push r12
+ 160 00e4 DF92      		push r13
+ 161 00e6 EF92      		push r14
  162 00e8 FF92      		push r15
  163 00ea 0F93      		push r16
  164 00ec 1F93      		push r17
@@ -172,709 +172,808 @@
  179 0104 50E0      		ldi r21,hi8(128)
  180 0106 0E94 0000 		call nrk_task_set_stk
  181               	.LM11:
- 182 010a FF24      		clr r15
- 183 010c F394      		inc r15
- 184 010e F092 0000 		sts TaskOne+8,r15
+ 182 010a 7724      		clr r7
+ 183 010c 7394      		inc r7
+ 184 010e 7092 0000 		sts TaskOne+8,r7
  185               	.LM12:
- 186 0112 F092 0000 		sts TaskOne+7,r15
+ 186 0112 7092 0000 		sts TaskOne+7,r7
  187               	.LM13:
- 188 0116 F092 0000 		sts TaskOne+9,r15
+ 188 0116 7092 0000 		sts TaskOne+9,r7
  189               	.LM14:
- 190 011a F092 0000 		sts TaskOne+10,r15
+ 190 011a 7092 0000 		sts TaskOne+10,r7
  191               	.LM15:
- 192 011e 8AE0      		ldi r24,lo8(10)
- 193 0120 90E0      		ldi r25,hi8(10)
- 194 0122 A0E0      		ldi r26,hlo8(10)
- 195 0124 B0E0      		ldi r27,hhi8(10)
+ 192 011e 82E0      		ldi r24,lo8(2)
+ 193 0120 90E0      		ldi r25,hi8(2)
+ 194 0122 A0E0      		ldi r26,hlo8(2)
+ 195 0124 B0E0      		ldi r27,hhi8(2)
  196 0126 8093 0000 		sts TaskOne+11,r24
  197 012a 9093 0000 		sts (TaskOne+11)+1,r25
  198 012e A093 0000 		sts (TaskOne+11)+2,r26
  199 0132 B093 0000 		sts (TaskOne+11)+3,r27
  200               	.LM16:
- 201 0136 1092 0000 		sts TaskOne+15,__zero_reg__
- 202 013a 1092 0000 		sts (TaskOne+15)+1,__zero_reg__
- 203 013e 1092 0000 		sts (TaskOne+15)+2,__zero_reg__
- 204 0142 1092 0000 		sts (TaskOne+15)+3,__zero_reg__
- 205               	.LM17:
- 206 0146 21E0      		ldi r18,lo8(1)
- 207 0148 622E      		mov r6,r18
- 208 014a 712C      		mov r7,__zero_reg__
- 209 014c 812C      		mov r8,__zero_reg__
- 210 014e 912C      		mov r9,__zero_reg__
- 211 0150 6092 0000 		sts TaskOne+19,r6
- 212 0154 7092 0000 		sts (TaskOne+19)+1,r7
- 213 0158 8092 0000 		sts (TaskOne+19)+2,r8
- 214 015c 9092 0000 		sts (TaskOne+19)+3,r9
- 215               	.LM18:
- 216 0160 1092 0000 		sts TaskOne+23,__zero_reg__
- 217 0164 1092 0000 		sts (TaskOne+23)+1,__zero_reg__
- 218 0168 1092 0000 		sts (TaskOne+23)+2,__zero_reg__
- 219 016c 1092 0000 		sts (TaskOne+23)+3,__zero_reg__
- 220               	.LM19:
- 221 0170 1092 0000 		sts TaskOne+27,__zero_reg__
- 222 0174 1092 0000 		sts (TaskOne+27)+1,__zero_reg__
- 223 0178 1092 0000 		sts (TaskOne+27)+2,__zero_reg__
- 224 017c 1092 0000 		sts (TaskOne+27)+3,__zero_reg__
- 225               	.LM20:
- 226 0180 1092 0000 		sts TaskOne+31,__zero_reg__
- 227 0184 1092 0000 		sts (TaskOne+31)+1,__zero_reg__
- 228 0188 1092 0000 		sts (TaskOne+31)+2,__zero_reg__
- 229 018c 1092 0000 		sts (TaskOne+31)+3,__zero_reg__
- 230               	.LM21:
- 231 0190 C801      		movw r24,r16
- 232 0192 0E94 0000 		call nrk_activate_task
- 233               	.LM22:
- 234 0196 00E0      		ldi r16,lo8(TaskTwo)
- 235 0198 10E0      		ldi r17,hi8(TaskTwo)
- 236 019a C801      		movw r24,r16
- 237 019c 60E0      		ldi r22,lo8(gs(Task2))
- 238 019e 70E0      		ldi r23,hi8(gs(Task2))
- 239 01a0 0E94 0000 		call nrk_task_set_entry_function
- 240               	.LM23:
- 241 01a4 C801      		movw r24,r16
- 242 01a6 60E0      		ldi r22,lo8(Stack2)
- 243 01a8 70E0      		ldi r23,hi8(Stack2)
- 244 01aa 40E8      		ldi r20,lo8(128)
- 245 01ac 50E0      		ldi r21,hi8(128)
- 246 01ae 0E94 0000 		call nrk_task_set_stk
- 247               	.LM24:
- 248 01b2 82E0      		ldi r24,lo8(2)
- 249 01b4 8093 0000 		sts TaskTwo+8,r24
- 250               	.LM25:
- 251 01b8 F092 0000 		sts TaskTwo+7,r15
- 252               	.LM26:
- 253 01bc F092 0000 		sts TaskTwo+9,r15
- 254               	.LM27:
- 255 01c0 F092 0000 		sts TaskTwo+10,r15
- 256               	.LM28:
- 257 01c4 95E0      		ldi r25,lo8(5)
- 258 01c6 A92E      		mov r10,r25
- 259 01c8 B12C      		mov r11,__zero_reg__
- 260 01ca C12C      		mov r12,__zero_reg__
- 261 01cc D12C      		mov r13,__zero_reg__
- 262 01ce A092 0000 		sts TaskTwo+11,r10
- 263 01d2 B092 0000 		sts (TaskTwo+11)+1,r11
- 264 01d6 C092 0000 		sts (TaskTwo+11)+2,r12
- 265 01da D092 0000 		sts (TaskTwo+11)+3,r13
- 266               	.LM29:
- 267 01de 1092 0000 		sts TaskTwo+15,__zero_reg__
- 268 01e2 1092 0000 		sts (TaskTwo+15)+1,__zero_reg__
- 269 01e6 1092 0000 		sts (TaskTwo+15)+2,__zero_reg__
- 270 01ea 1092 0000 		sts (TaskTwo+15)+3,__zero_reg__
- 271               	.LM30:
- 272 01ee 82E0      		ldi r24,lo8(2)
- 273 01f0 90E0      		ldi r25,hi8(2)
- 274 01f2 A0E0      		ldi r26,hlo8(2)
- 275 01f4 B0E0      		ldi r27,hhi8(2)
- 276 01f6 8093 0000 		sts TaskTwo+19,r24
- 277 01fa 9093 0000 		sts (TaskTwo+19)+1,r25
- 278 01fe A093 0000 		sts (TaskTwo+19)+2,r26
- 279 0202 B093 0000 		sts (TaskTwo+19)+3,r27
- 280               	.LM31:
- 281 0206 1092 0000 		sts TaskTwo+23,__zero_reg__
- 282 020a 1092 0000 		sts (TaskTwo+23)+1,__zero_reg__
- 283 020e 1092 0000 		sts (TaskTwo+23)+2,__zero_reg__
- 284 0212 1092 0000 		sts (TaskTwo+23)+3,__zero_reg__
- 285               	.LM32:
- 286 0216 1092 0000 		sts TaskTwo+27,__zero_reg__
- 287 021a 1092 0000 		sts (TaskTwo+27)+1,__zero_reg__
- 288 021e 1092 0000 		sts (TaskTwo+27)+2,__zero_reg__
- 289 0222 1092 0000 		sts (TaskTwo+27)+3,__zero_reg__
- 290               	.LM33:
- 291 0226 1092 0000 		sts TaskTwo+31,__zero_reg__
- 292 022a 1092 0000 		sts (TaskTwo+31)+1,__zero_reg__
- 293 022e 1092 0000 		sts (TaskTwo+31)+2,__zero_reg__
- 294 0232 1092 0000 		sts (TaskTwo+31)+3,__zero_reg__
- 295               	.LM34:
- 296 0236 C801      		movw r24,r16
- 297 0238 0E94 0000 		call nrk_activate_task
- 298               	.LM35:
- 299 023c 00E0      		ldi r16,lo8(TaskThree)
- 300 023e 10E0      		ldi r17,hi8(TaskThree)
- 301 0240 C801      		movw r24,r16
- 302 0242 60E0      		ldi r22,lo8(gs(Task3))
- 303 0244 70E0      		ldi r23,hi8(gs(Task3))
- 304 0246 0E94 0000 		call nrk_task_set_entry_function
- 305               	.LM36:
- 306 024a C801      		movw r24,r16
- 307 024c 60E0      		ldi r22,lo8(Stack3)
- 308 024e 70E0      		ldi r23,hi8(Stack3)
- 309 0250 40E8      		ldi r20,lo8(128)
- 310 0252 50E0      		ldi r21,hi8(128)
- 311 0254 0E94 0000 		call nrk_task_set_stk
- 312               	.LM37:
- 313 0258 83E0      		ldi r24,lo8(3)
- 314 025a 8093 0000 		sts TaskThree+8,r24
- 315               	.LM38:
- 316 025e F092 0000 		sts TaskThree+7,r15
- 317               	.LM39:
- 318 0262 F092 0000 		sts TaskThree+9,r15
- 319               	.LM40:
- 320 0266 F092 0000 		sts TaskThree+10,r15
- 321               	.LM41:
- 322 026a A092 0000 		sts TaskThree+11,r10
- 323 026e B092 0000 		sts (TaskThree+11)+1,r11
- 324 0272 C092 0000 		sts (TaskThree+11)+2,r12
- 325 0276 D092 0000 		sts (TaskThree+11)+3,r13
+ 201 0136 80E0      		ldi r24,lo8(500000000)
+ 202 0138 95E6      		ldi r25,hi8(500000000)
+ 203 013a ADEC      		ldi r26,hlo8(500000000)
+ 204 013c BDE1      		ldi r27,hhi8(500000000)
+ 205 013e 8093 0000 		sts TaskOne+15,r24
+ 206 0142 9093 0000 		sts (TaskOne+15)+1,r25
+ 207 0146 A093 0000 		sts (TaskOne+15)+2,r26
+ 208 014a B093 0000 		sts (TaskOne+15)+3,r27
+ 209               	.LM17:
+ 210 014e 7092 0000 		sts TaskOne+35,r7
+ 211               	.LM18:
+ 212 0152 21E0      		ldi r18,lo8(1)
+ 213 0154 822E      		mov r8,r18
+ 214 0156 912C      		mov r9,__zero_reg__
+ 215 0158 A12C      		mov r10,__zero_reg__
+ 216 015a B12C      		mov r11,__zero_reg__
+ 217 015c 8092 0000 		sts TaskOne+19,r8
+ 218 0160 9092 0000 		sts (TaskOne+19)+1,r9
+ 219 0164 A092 0000 		sts (TaskOne+19)+2,r10
+ 220 0168 B092 0000 		sts (TaskOne+19)+3,r11
+ 221               	.LM19:
+ 222 016c 8093 0000 		sts TaskOne+23,r24
+ 223 0170 9093 0000 		sts (TaskOne+23)+1,r25
+ 224 0174 A093 0000 		sts (TaskOne+23)+2,r26
+ 225 0178 B093 0000 		sts (TaskOne+23)+3,r27
+ 226               	.LM20:
+ 227 017c 1092 0000 		sts TaskOne+27,__zero_reg__
+ 228 0180 1092 0000 		sts (TaskOne+27)+1,__zero_reg__
+ 229 0184 1092 0000 		sts (TaskOne+27)+2,__zero_reg__
+ 230 0188 1092 0000 		sts (TaskOne+27)+3,__zero_reg__
+ 231               	.LM21:
+ 232 018c 1092 0000 		sts TaskOne+31,__zero_reg__
+ 233 0190 1092 0000 		sts (TaskOne+31)+1,__zero_reg__
+ 234 0194 1092 0000 		sts (TaskOne+31)+2,__zero_reg__
+ 235 0198 1092 0000 		sts (TaskOne+31)+3,__zero_reg__
+ 236               	.LM22:
+ 237 019c C801      		movw r24,r16
+ 238 019e 0E94 0000 		call nrk_activate_task
+ 239               	.LM23:
+ 240 01a2 00E0      		ldi r16,lo8(TaskThree)
+ 241 01a4 10E0      		ldi r17,hi8(TaskThree)
+ 242 01a6 C801      		movw r24,r16
+ 243 01a8 60E0      		ldi r22,lo8(gs(Task3))
+ 244 01aa 70E0      		ldi r23,hi8(gs(Task3))
+ 245 01ac 0E94 0000 		call nrk_task_set_entry_function
+ 246               	.LM24:
+ 247 01b0 C801      		movw r24,r16
+ 248 01b2 60E0      		ldi r22,lo8(Stack3)
+ 249 01b4 70E0      		ldi r23,hi8(Stack3)
+ 250 01b6 40E8      		ldi r20,lo8(128)
+ 251 01b8 50E0      		ldi r21,hi8(128)
+ 252 01ba 0E94 0000 		call nrk_task_set_stk
+ 253               	.LM25:
+ 254 01be 83E0      		ldi r24,lo8(3)
+ 255 01c0 8093 0000 		sts TaskThree+8,r24
+ 256               	.LM26:
+ 257 01c4 7092 0000 		sts TaskThree+7,r7
+ 258               	.LM27:
+ 259 01c8 7092 0000 		sts TaskThree+9,r7
+ 260               	.LM28:
+ 261 01cc 7092 0000 		sts TaskThree+10,r7
+ 262               	.LM29:
+ 263 01d0 8092 0000 		sts TaskThree+11,r8
+ 264 01d4 9092 0000 		sts (TaskThree+11)+1,r9
+ 265 01d8 A092 0000 		sts (TaskThree+11)+2,r10
+ 266 01dc B092 0000 		sts (TaskThree+11)+3,r11
+ 267               	.LM30:
+ 268 01e0 C12C      		mov r12,__zero_reg__
+ 269 01e2 91EE      		ldi r25,hi8(100000000)
+ 270 01e4 D92E      		mov r13,r25
+ 271 01e6 95EF      		ldi r25,hlo8(100000000)
+ 272 01e8 E92E      		mov r14,r25
+ 273 01ea 95E0      		ldi r25,hhi8(100000000)
+ 274 01ec F92E      		mov r15,r25
+ 275 01ee C092 0000 		sts TaskThree+15,r12
+ 276 01f2 D092 0000 		sts (TaskThree+15)+1,r13
+ 277 01f6 E092 0000 		sts (TaskThree+15)+2,r14
+ 278 01fa F092 0000 		sts (TaskThree+15)+3,r15
+ 279               	.LM31:
+ 280 01fe 82E0      		ldi r24,lo8(2)
+ 281 0200 8093 0000 		sts TaskThree+35,r24
+ 282               	.LM32:
+ 283 0204 1092 0000 		sts TaskThree+19,__zero_reg__
+ 284 0208 1092 0000 		sts (TaskThree+19)+1,__zero_reg__
+ 285 020c 1092 0000 		sts (TaskThree+19)+2,__zero_reg__
+ 286 0210 1092 0000 		sts (TaskThree+19)+3,__zero_reg__
+ 287               	.LM33:
+ 288 0214 C092 0000 		sts TaskThree+23,r12
+ 289 0218 D092 0000 		sts (TaskThree+23)+1,r13
+ 290 021c E092 0000 		sts (TaskThree+23)+2,r14
+ 291 0220 F092 0000 		sts (TaskThree+23)+3,r15
+ 292               	.LM34:
+ 293 0224 1092 0000 		sts TaskThree+27,__zero_reg__
+ 294 0228 1092 0000 		sts (TaskThree+27)+1,__zero_reg__
+ 295 022c 1092 0000 		sts (TaskThree+27)+2,__zero_reg__
+ 296 0230 1092 0000 		sts (TaskThree+27)+3,__zero_reg__
+ 297               	.LM35:
+ 298 0234 1092 0000 		sts TaskThree+31,__zero_reg__
+ 299 0238 1092 0000 		sts (TaskThree+31)+1,__zero_reg__
+ 300 023c 1092 0000 		sts (TaskThree+31)+2,__zero_reg__
+ 301 0240 1092 0000 		sts (TaskThree+31)+3,__zero_reg__
+ 302               	.LM36:
+ 303 0244 C801      		movw r24,r16
+ 304 0246 0E94 0000 		call nrk_activate_task
+ 305               	.LM37:
+ 306 024a 00E0      		ldi r16,lo8(TaskFour)
+ 307 024c 10E0      		ldi r17,hi8(TaskFour)
+ 308 024e C801      		movw r24,r16
+ 309 0250 60E0      		ldi r22,lo8(gs(Task4))
+ 310 0252 70E0      		ldi r23,hi8(gs(Task4))
+ 311 0254 0E94 0000 		call nrk_task_set_entry_function
+ 312               	.LM38:
+ 313 0258 C801      		movw r24,r16
+ 314 025a 60E0      		ldi r22,lo8(Stack4)
+ 315 025c 70E0      		ldi r23,hi8(Stack4)
+ 316 025e 40E8      		ldi r20,lo8(128)
+ 317 0260 50E0      		ldi r21,hi8(128)
+ 318 0262 0E94 0000 		call nrk_task_set_stk
+ 319               	.LM39:
+ 320 0266 84E0      		ldi r24,lo8(4)
+ 321 0268 8093 0000 		sts TaskFour+8,r24
+ 322               	.LM40:
+ 323 026c 7092 0000 		sts TaskFour+7,r7
+ 324               	.LM41:
+ 325 0270 7092 0000 		sts TaskFour+9,r7
  326               	.LM42:
- 327 027a 1092 0000 		sts TaskThree+15,__zero_reg__
- 328 027e 1092 0000 		sts (TaskThree+15)+1,__zero_reg__
- 329 0282 1092 0000 		sts (TaskThree+15)+2,__zero_reg__
- 330 0286 1092 0000 		sts (TaskThree+15)+3,__zero_reg__
- 331               	.LM43:
- 332 028a 6092 0000 		sts TaskThree+19,r6
- 333 028e 7092 0000 		sts (TaskThree+19)+1,r7
- 334 0292 8092 0000 		sts (TaskThree+19)+2,r8
- 335 0296 9092 0000 		sts (TaskThree+19)+3,r9
- 336               	.LM44:
- 337 029a 1092 0000 		sts TaskThree+23,__zero_reg__
- 338 029e 1092 0000 		sts (TaskThree+23)+1,__zero_reg__
- 339 02a2 1092 0000 		sts (TaskThree+23)+2,__zero_reg__
- 340 02a6 1092 0000 		sts (TaskThree+23)+3,__zero_reg__
- 341               	.LM45:
- 342 02aa 1092 0000 		sts TaskThree+27,__zero_reg__
- 343 02ae 1092 0000 		sts (TaskThree+27)+1,__zero_reg__
- 344 02b2 1092 0000 		sts (TaskThree+27)+2,__zero_reg__
- 345 02b6 1092 0000 		sts (TaskThree+27)+3,__zero_reg__
- 346               	.LM46:
- 347 02ba 1092 0000 		sts TaskThree+31,__zero_reg__
- 348 02be 1092 0000 		sts (TaskThree+31)+1,__zero_reg__
- 349 02c2 1092 0000 		sts (TaskThree+31)+2,__zero_reg__
- 350 02c6 1092 0000 		sts (TaskThree+31)+3,__zero_reg__
- 351               	.LM47:
- 352 02ca C801      		movw r24,r16
- 353 02cc 0E94 0000 		call nrk_activate_task
- 354               	.LM48:
- 355 02d0 00E0      		ldi r16,lo8(TaskFour)
- 356 02d2 10E0      		ldi r17,hi8(TaskFour)
- 357 02d4 C801      		movw r24,r16
- 358 02d6 60E0      		ldi r22,lo8(gs(Task4))
- 359 02d8 70E0      		ldi r23,hi8(gs(Task4))
- 360 02da 0E94 0000 		call nrk_task_set_entry_function
- 361               	.LM49:
- 362 02de C801      		movw r24,r16
- 363 02e0 60E0      		ldi r22,lo8(Stack4)
- 364 02e2 70E0      		ldi r23,hi8(Stack4)
- 365 02e4 40E8      		ldi r20,lo8(128)
- 366 02e6 50E0      		ldi r21,hi8(128)
- 367 02e8 0E94 0000 		call nrk_task_set_stk
- 368               	.LM50:
- 369 02ec 84E0      		ldi r24,lo8(4)
- 370 02ee 8093 0000 		sts TaskFour+8,r24
- 371               	.LM51:
- 372 02f2 F092 0000 		sts TaskFour+7,r15
- 373               	.LM52:
- 374 02f6 F092 0000 		sts TaskFour+9,r15
- 375               	.LM53:
- 376 02fa F092 0000 		sts TaskFour+10,r15
- 377               	.LM54:
- 378 02fe 87E0      		ldi r24,lo8(7)
- 379 0300 90E0      		ldi r25,hi8(7)
- 380 0302 A0E0      		ldi r26,hlo8(7)
- 381 0304 B0E0      		ldi r27,hhi8(7)
- 382 0306 8093 0000 		sts TaskFour+11,r24
- 383 030a 9093 0000 		sts (TaskFour+11)+1,r25
- 384 030e A093 0000 		sts (TaskFour+11)+2,r26
- 385 0312 B093 0000 		sts (TaskFour+11)+3,r27
- 386               	.LM55:
- 387 0316 1092 0000 		sts TaskFour+15,__zero_reg__
- 388 031a 1092 0000 		sts (TaskFour+15)+1,__zero_reg__
- 389 031e 1092 0000 		sts (TaskFour+15)+2,__zero_reg__
- 390 0322 1092 0000 		sts (TaskFour+15)+3,__zero_reg__
- 391               	.LM56:
- 392 0326 6092 0000 		sts TaskFour+19,r6
- 393 032a 7092 0000 		sts (TaskFour+19)+1,r7
- 394 032e 8092 0000 		sts (TaskFour+19)+2,r8
- 395 0332 9092 0000 		sts (TaskFour+19)+3,r9
- 396               	.LM57:
- 397 0336 1092 0000 		sts TaskFour+23,__zero_reg__
- 398 033a 1092 0000 		sts (TaskFour+23)+1,__zero_reg__
- 399 033e 1092 0000 		sts (TaskFour+23)+2,__zero_reg__
- 400 0342 1092 0000 		sts (TaskFour+23)+3,__zero_reg__
- 401               	.LM58:
- 402 0346 1092 0000 		sts TaskFour+27,__zero_reg__
- 403 034a 1092 0000 		sts (TaskFour+27)+1,__zero_reg__
- 404 034e 1092 0000 		sts (TaskFour+27)+2,__zero_reg__
- 405 0352 1092 0000 		sts (TaskFour+27)+3,__zero_reg__
- 406               	.LM59:
- 407 0356 1092 0000 		sts TaskFour+31,__zero_reg__
- 408 035a 1092 0000 		sts (TaskFour+31)+1,__zero_reg__
- 409 035e 1092 0000 		sts (TaskFour+31)+2,__zero_reg__
- 410 0362 1092 0000 		sts (TaskFour+31)+3,__zero_reg__
- 411               	.LM60:
- 412 0366 C801      		movw r24,r16
- 413 0368 0E94 0000 		call nrk_activate_task
- 414               	/* epilogue start */
- 415               	.LM61:
- 416 036c 1F91      		pop r17
- 417 036e 0F91      		pop r16
- 418 0370 FF90      		pop r15
- 419 0372 DF90      		pop r13
- 420 0374 CF90      		pop r12
- 421 0376 BF90      		pop r11
- 422 0378 AF90      		pop r10
- 423 037a 9F90      		pop r9
- 424 037c 8F90      		pop r8
- 425 037e 7F90      		pop r7
- 426 0380 6F90      		pop r6
- 427 0382 0895      		ret
- 428               	.LFE8:
- 430               		.data
- 431               	.LC2:
- 432 0013 5461 736B 		.string	"Task4 PID=%u\r\n"
- 432      3420 5049 
- 432      443D 2575 
- 432      0D0A 00
- 433               	.LC3:
- 434 0022 5461 736B 		.string	"Task4 cnt=%u\r\n"
- 434      3420 636E 
- 434      743D 2575 
- 434      0D0A 00
- 435               		.text
- 436               	.global	Task4
- 438               	Task4:
- 439               	.LFB7:
- 440               	.LM62:
- 441 0384 FF92      		push r15
- 442 0386 0F93      		push r16
- 443 0388 1F93      		push r17
- 444 038a CF93      		push r28
- 445 038c DF93      		push r29
- 446               	/* prologue: function */
- 447               	/* frame size = 0 */
- 448               	.LM63:
- 449 038e 0E94 0000 		call nrk_get_pid
- 450 0392 00D0      		rcall .
- 451 0394 00D0      		rcall .
- 452 0396 EDB7      		in r30,__SP_L__
- 453 0398 FEB7      		in r31,__SP_H__
- 454 039a 3196      		adiw r30,1
- 455 039c 20E0      		ldi r18,lo8(.LC2)
- 456 039e 30E0      		ldi r19,hi8(.LC2)
- 457 03a0 ADB7      		in r26,__SP_L__
- 458 03a2 BEB7      		in r27,__SP_H__
- 459 03a4 1296      		adiw r26,1+1
- 460 03a6 3C93      		st X,r19
- 461 03a8 2E93      		st -X,r18
- 462 03aa 1197      		sbiw r26,1
- 463 03ac 8283      		std Z+2,r24
- 464 03ae 1382      		std Z+3,__zero_reg__
- 465 03b0 0E94 0000 		call printf
- 466               	.LM64:
- 467 03b4 F090 0000 		lds r15,NRK_DEBUG_3
- 468 03b8 C0E0      		ldi r28,lo8(0)
- 469 03ba D0E0      		ldi r29,hi8(0)
- 470               	.LVL3:
- 471 03bc 0F90      		pop __tmp_reg__
- 472 03be 0F90      		pop __tmp_reg__
- 473 03c0 0F90      		pop __tmp_reg__
- 474 03c2 0F90      		pop __tmp_reg__
- 475               	.LM65:
- 476 03c4 00E0      		ldi r16,lo8(.LC3)
- 477 03c6 10E0      		ldi r17,hi8(.LC3)
- 478               	.L12:
- 479               	.LM66:
- 480 03c8 82E0      		ldi r24,lo8(2)
- 481 03ca 90E0      		ldi r25,hi8(2)
- 482 03cc 0E94 0000 		call nrk_led_toggle
- 483               	.LM67:
- 484 03d0 8F2D      		mov r24,r15
- 485 03d2 0E94 0000 		call nrk_gpio_toggle
- 486               	.LM68:
- 487 03d6 00D0      		rcall .
- 488 03d8 00D0      		rcall .
- 489 03da EDB7      		in r30,__SP_L__
- 490 03dc FEB7      		in r31,__SP_H__
- 491 03de 1283      		std Z+2,r17
- 492 03e0 0183      		std Z+1,r16
- 493 03e2 D483      		std Z+4,r29
- 494 03e4 C383      		std Z+3,r28
- 495 03e6 0E94 0000 		call printf
- 496               	.LM69:
- 497 03ea 0F90      		pop __tmp_reg__
- 498 03ec 0F90      		pop __tmp_reg__
- 499 03ee 0F90      		pop __tmp_reg__
- 500 03f0 0F90      		pop __tmp_reg__
- 501 03f2 0E94 0000 		call nrk_wait_until_next_period
- 502               	.LM70:
- 503 03f6 2196      		adiw r28,1
- 504 03f8 00C0      		rjmp .L12
- 505               	.LFE7:
- 507               		.data
- 508               	.LC4:
- 509 0031 5461 736B 		.string	"Task3 PID=%u\r\n"
- 509      3320 5049 
- 509      443D 2575 
- 509      0D0A 00
- 510               	.LC5:
- 511 0040 5461 736B 		.string	"Task3 cnt=%u\r\n"
- 511      3320 636E 
- 511      743D 2575 
- 511      0D0A 00
- 512               		.text
- 513               	.global	Task3
- 515               	Task3:
- 516               	.LFB6:
- 517               	.LM71:
- 518 03fa FF92      		push r15
- 519 03fc 0F93      		push r16
- 520 03fe 1F93      		push r17
- 521 0400 CF93      		push r28
- 522 0402 DF93      		push r29
- 523               	/* prologue: function */
- 524               	/* frame size = 0 */
- 525               	.LM72:
- 526 0404 0E94 0000 		call nrk_get_pid
- 527 0408 00D0      		rcall .
- 528 040a 00D0      		rcall .
- 529 040c EDB7      		in r30,__SP_L__
- 530 040e FEB7      		in r31,__SP_H__
- 531 0410 3196      		adiw r30,1
- 532 0412 20E0      		ldi r18,lo8(.LC4)
- 533 0414 30E0      		ldi r19,hi8(.LC4)
- 534 0416 ADB7      		in r26,__SP_L__
- 535 0418 BEB7      		in r27,__SP_H__
- 536 041a 1296      		adiw r26,1+1
- 537 041c 3C93      		st X,r19
- 538 041e 2E93      		st -X,r18
- 539 0420 1197      		sbiw r26,1
- 540 0422 8283      		std Z+2,r24
- 541 0424 1382      		std Z+3,__zero_reg__
- 542 0426 0E94 0000 		call printf
- 543               	.LM73:
- 544 042a F090 0000 		lds r15,NRK_DEBUG_2
- 545 042e C0E0      		ldi r28,lo8(0)
- 546 0430 D0E0      		ldi r29,hi8(0)
- 547               	.LVL4:
- 548 0432 0F90      		pop __tmp_reg__
- 549 0434 0F90      		pop __tmp_reg__
- 550 0436 0F90      		pop __tmp_reg__
- 551 0438 0F90      		pop __tmp_reg__
- 552               	.LM74:
- 553 043a 00E0      		ldi r16,lo8(.LC5)
- 554 043c 10E0      		ldi r17,hi8(.LC5)
- 555               	.L15:
- 556               	.LM75:
- 557 043e 81E0      		ldi r24,lo8(1)
- 558 0440 90E0      		ldi r25,hi8(1)
- 559 0442 0E94 0000 		call nrk_led_toggle
- 560               	.LM76:
- 561 0446 8F2D      		mov r24,r15
- 562 0448 0E94 0000 		call nrk_gpio_toggle
- 563               	.LM77:
- 564 044c 00D0      		rcall .
- 565 044e 00D0      		rcall .
- 566 0450 EDB7      		in r30,__SP_L__
- 567 0452 FEB7      		in r31,__SP_H__
- 568 0454 1283      		std Z+2,r17
- 569 0456 0183      		std Z+1,r16
- 570 0458 D483      		std Z+4,r29
- 571 045a C383      		std Z+3,r28
- 572 045c 0E94 0000 		call printf
- 573               	.LM78:
- 574 0460 0F90      		pop __tmp_reg__
- 575 0462 0F90      		pop __tmp_reg__
- 576 0464 0F90      		pop __tmp_reg__
- 577 0466 0F90      		pop __tmp_reg__
- 578 0468 0E94 0000 		call nrk_wait_until_next_period
- 579               	.LM79:
- 580 046c 2196      		adiw r28,1
- 581 046e 00C0      		rjmp .L15
- 582               	.LFE6:
- 584               		.data
- 585               	.LC6:
- 586 004f 5461 736B 		.string	"Task2 PID=%u\r\n"
- 586      3220 5049 
- 586      443D 2575 
- 586      0D0A 00
- 587               	.LC7:
- 588 005e 5461 736B 		.string	"Task2 signed cnt=%d\r\n"
- 588      3220 7369 
- 588      676E 6564 
- 588      2063 6E74 
- 588      3D25 640D 
- 589               		.text
- 590               	.global	Task2
- 592               	Task2:
- 593               	.LFB5:
- 594               	.LM80:
- 595 0470 FF92      		push r15
- 596 0472 0F93      		push r16
- 597 0474 1F93      		push r17
- 598 0476 CF93      		push r28
- 599 0478 DF93      		push r29
- 600               	/* prologue: function */
- 601               	/* frame size = 0 */
- 602               	.LM81:
- 603 047a 0E94 0000 		call nrk_get_pid
- 604 047e 00D0      		rcall .
- 605 0480 00D0      		rcall .
- 606 0482 EDB7      		in r30,__SP_L__
- 607 0484 FEB7      		in r31,__SP_H__
- 608 0486 3196      		adiw r30,1
- 609 0488 20E0      		ldi r18,lo8(.LC6)
- 610 048a 30E0      		ldi r19,hi8(.LC6)
- 611 048c ADB7      		in r26,__SP_L__
- 612 048e BEB7      		in r27,__SP_H__
- 613 0490 1296      		adiw r26,1+1
- 614 0492 3C93      		st X,r19
- 615 0494 2E93      		st -X,r18
- 616 0496 1197      		sbiw r26,1
- 617 0498 8283      		std Z+2,r24
- 618 049a 1382      		std Z+3,__zero_reg__
- 619 049c 0E94 0000 		call printf
- 620               	.LM82:
- 621 04a0 F090 0000 		lds r15,NRK_DEBUG_1
- 622 04a4 C0E0      		ldi r28,lo8(0)
- 623 04a6 D0E0      		ldi r29,hi8(0)
- 624               	.LVL5:
- 625 04a8 0F90      		pop __tmp_reg__
- 626 04aa 0F90      		pop __tmp_reg__
- 627 04ac 0F90      		pop __tmp_reg__
- 628 04ae 0F90      		pop __tmp_reg__
- 629               	.LM83:
- 630 04b0 00E0      		ldi r16,lo8(.LC7)
- 631 04b2 10E0      		ldi r17,hi8(.LC7)
- 632               	.L18:
- 633               	.LM84:
- 634 04b4 8FEF      		ldi r24,lo8(255)
- 635 04b6 90E0      		ldi r25,hi8(255)
- 636 04b8 0E94 0000 		call nrk_led_toggle
- 637               	.LM85:
- 638 04bc 8F2D      		mov r24,r15
- 639 04be 0E94 0000 		call nrk_gpio_toggle
- 640               	.LM86:
- 641 04c2 00D0      		rcall .
- 642 04c4 00D0      		rcall .
- 643 04c6 EDB7      		in r30,__SP_L__
- 644 04c8 FEB7      		in r31,__SP_H__
- 645 04ca 1283      		std Z+2,r17
- 646 04cc 0183      		std Z+1,r16
- 647 04ce D483      		std Z+4,r29
- 648 04d0 C383      		std Z+3,r28
- 649 04d2 0E94 0000 		call printf
- 650               	.LM87:
- 651 04d6 0F90      		pop __tmp_reg__
- 652 04d8 0F90      		pop __tmp_reg__
- 653 04da 0F90      		pop __tmp_reg__
- 654 04dc 0F90      		pop __tmp_reg__
- 655 04de 0E94 0000 		call nrk_wait_until_next_period
- 656               	.LM88:
- 657 04e2 2197      		sbiw r28,1
- 658 04e4 00C0      		rjmp .L18
- 659               	.LFE5:
- 661               		.data
- 662               	.LC8:
- 663 0074 4D79 206E 		.string	"My node's address is %u\r\n"
- 663      6F64 6527 
- 663      7320 6164 
- 663      6472 6573 
- 663      7320 6973 
- 664               	.LC9:
- 665 008e 5461 736B 		.string	"Task1 PID=%u\r\n"
- 665      3120 5049 
- 665      443D 2575 
- 665      0D0A 00
- 666               	.LC10:
- 667 009d 5461 736B 		.string	"Task1 cnt=%u\r\n"
- 667      3120 636E 
- 667      743D 2575 
- 667      0D0A 00
- 668               		.text
- 669               	.global	Task1
- 671               	Task1:
- 672               	.LFB4:
- 673               	.LM89:
- 674 04e6 FF92      		push r15
- 675 04e8 0F93      		push r16
- 676 04ea 1F93      		push r17
- 677 04ec CF93      		push r28
- 678 04ee DF93      		push r29
- 679               	/* prologue: function */
- 680               	/* frame size = 0 */
- 681               	.LM90:
- 682 04f0 00D0      		rcall .
- 683 04f2 00D0      		rcall .
- 684 04f4 80E0      		ldi r24,lo8(.LC8)
- 685 04f6 90E0      		ldi r25,hi8(.LC8)
- 686 04f8 ADB7      		in r26,__SP_L__
- 687 04fa BEB7      		in r27,__SP_H__
- 688 04fc 1296      		adiw r26,1+1
- 689 04fe 9C93      		st X,r25
- 690 0500 8E93      		st -X,r24
- 691 0502 1197      		sbiw r26,1
- 692 0504 1496      		adiw r26,3+1
- 693 0506 1C92      		st X,__zero_reg__
- 694 0508 1E92      		st -X,__zero_reg__
- 695 050a 1397      		sbiw r26,3
- 696 050c 0E94 0000 		call printf
- 697               	.LM91:
- 698 0510 0F90      		pop __tmp_reg__
- 699 0512 0F90      		pop __tmp_reg__
- 700 0514 0F90      		pop __tmp_reg__
- 701 0516 0F90      		pop __tmp_reg__
- 702 0518 0E94 0000 		call nrk_get_pid
- 703 051c 00D0      		rcall .
- 704 051e 00D0      		rcall .
- 705 0520 EDB7      		in r30,__SP_L__
- 706 0522 FEB7      		in r31,__SP_H__
- 707 0524 3196      		adiw r30,1
- 708 0526 20E0      		ldi r18,lo8(.LC9)
- 709 0528 30E0      		ldi r19,hi8(.LC9)
- 710 052a ADB7      		in r26,__SP_L__
- 711 052c BEB7      		in r27,__SP_H__
- 712 052e 1296      		adiw r26,1+1
- 713 0530 3C93      		st X,r19
- 714 0532 2E93      		st -X,r18
- 715 0534 1197      		sbiw r26,1
- 716 0536 8283      		std Z+2,r24
- 717 0538 1382      		std Z+3,__zero_reg__
- 718 053a 0E94 0000 		call printf
- 719               	.LM92:
- 720 053e F090 0000 		lds r15,NRK_DEBUG_0
- 721 0542 C0E0      		ldi r28,lo8(0)
- 722 0544 D0E0      		ldi r29,hi8(0)
- 723               	.LVL6:
- 724 0546 0F90      		pop __tmp_reg__
- 725 0548 0F90      		pop __tmp_reg__
- 726 054a 0F90      		pop __tmp_reg__
- 727 054c 0F90      		pop __tmp_reg__
- 728               	.LM93:
- 729 054e 00E0      		ldi r16,lo8(.LC10)
- 730 0550 10E0      		ldi r17,hi8(.LC10)
- 731               	.L21:
- 732               	.LM94:
- 733 0552 80E0      		ldi r24,lo8(0)
- 734 0554 90E0      		ldi r25,hi8(0)
- 735 0556 0E94 0000 		call nrk_led_toggle
- 736               	.LM95:
- 737 055a 8F2D      		mov r24,r15
- 738 055c 0E94 0000 		call nrk_gpio_toggle
- 739               	.LM96:
- 740 0560 00D0      		rcall .
- 741 0562 00D0      		rcall .
- 742 0564 EDB7      		in r30,__SP_L__
- 743 0566 FEB7      		in r31,__SP_H__
- 744 0568 1283      		std Z+2,r17
- 745 056a 0183      		std Z+1,r16
- 746 056c D483      		std Z+4,r29
- 747 056e C383      		std Z+3,r28
- 748 0570 0E94 0000 		call printf
- 749               	.LM97:
- 750 0574 0F90      		pop __tmp_reg__
- 751 0576 0F90      		pop __tmp_reg__
- 752 0578 0F90      		pop __tmp_reg__
- 753 057a 0F90      		pop __tmp_reg__
- 754 057c 0E94 0000 		call nrk_wait_until_next_period
- 755               	.LM98:
- 756 0580 2196      		adiw r28,1
- 757 0582 00C0      		rjmp .L21
- 758               	.LFE4:
- 760               	.global	main
- 762               	main:
- 763               	.LFB3:
- 764               	.LM99:
- 765               	/* prologue: function */
- 766               	/* frame size = 0 */
- 767               	.LM100:
- 768 0584 0E94 0000 		call nrk_setup_ports
- 769               	.LM101:
- 770 0588 87E0      		ldi r24,lo8(7)
- 771 058a 90E0      		ldi r25,hi8(7)
- 772 058c 0E94 0000 		call nrk_setup_uart
- 773               	.LM102:
- 774 0590 0E94 0000 		call nrk_init
- 775               	.LM103:
- 776 0594 88E1      		ldi r24,lo8(24)
- 777               	/* #APP */
- 778               	 ;  63 "main.c" 1
- 779 0596 0FB6      		in __tmp_reg__, __SREG__
- 780 0598 F894      		cli
- 781 059a 81BD      		out 33, r24
- 782 059c 11BC      		out 33, __zero_reg__
- 783 059e 0FBE      		out __SREG__,__tmp_reg__
- 784               		
- 785               	 ;  0 "" 2
+ 327 0274 7092 0000 		sts TaskFour+10,r7
+ 328               	.LM43:
+ 329 0278 8092 0000 		sts TaskFour+11,r8
+ 330 027c 9092 0000 		sts (TaskFour+11)+1,r9
+ 331 0280 A092 0000 		sts (TaskFour+11)+2,r10
+ 332 0284 B092 0000 		sts (TaskFour+11)+3,r11
+ 333               	.LM44:
+ 334 0288 1092 0000 		sts TaskFour+15,__zero_reg__
+ 335 028c 1092 0000 		sts (TaskFour+15)+1,__zero_reg__
+ 336 0290 1092 0000 		sts (TaskFour+15)+2,__zero_reg__
+ 337 0294 1092 0000 		sts (TaskFour+15)+3,__zero_reg__
+ 338               	.LM45:
+ 339 0298 8093 0000 		sts TaskFour+35,r24
+ 340               	.LM46:
+ 341 029c 1092 0000 		sts TaskFour+19,__zero_reg__
+ 342 02a0 1092 0000 		sts (TaskFour+19)+1,__zero_reg__
+ 343 02a4 1092 0000 		sts (TaskFour+19)+2,__zero_reg__
+ 344 02a8 1092 0000 		sts (TaskFour+19)+3,__zero_reg__
+ 345               	.LM47:
+ 346 02ac C092 0000 		sts TaskFour+23,r12
+ 347 02b0 D092 0000 		sts (TaskFour+23)+1,r13
+ 348 02b4 E092 0000 		sts (TaskFour+23)+2,r14
+ 349 02b8 F092 0000 		sts (TaskFour+23)+3,r15
+ 350               	.LM48:
+ 351 02bc 1092 0000 		sts TaskFour+27,__zero_reg__
+ 352 02c0 1092 0000 		sts (TaskFour+27)+1,__zero_reg__
+ 353 02c4 1092 0000 		sts (TaskFour+27)+2,__zero_reg__
+ 354 02c8 1092 0000 		sts (TaskFour+27)+3,__zero_reg__
+ 355               	.LM49:
+ 356 02cc 1092 0000 		sts TaskFour+31,__zero_reg__
+ 357 02d0 1092 0000 		sts (TaskFour+31)+1,__zero_reg__
+ 358 02d4 1092 0000 		sts (TaskFour+31)+2,__zero_reg__
+ 359 02d8 1092 0000 		sts (TaskFour+31)+3,__zero_reg__
+ 360               	/* epilogue start */
+ 361               	.LM50:
+ 362 02dc 1F91      		pop r17
+ 363 02de 0F91      		pop r16
+ 364 02e0 FF90      		pop r15
+ 365 02e2 EF90      		pop r14
+ 366 02e4 DF90      		pop r13
+ 367 02e6 CF90      		pop r12
+ 368 02e8 BF90      		pop r11
+ 369 02ea AF90      		pop r10
+ 370 02ec 9F90      		pop r9
+ 371 02ee 8F90      		pop r8
+ 372 02f0 7F90      		pop r7
+ 373 02f2 0895      		ret
+ 374               	.LFE8:
+ 376               		.data
+ 377               	.LC2:
+ 378 0013 5461 736B 		.string	"Task4 PID=%d\r\n"
+ 378      3420 5049 
+ 378      443D 2564 
+ 378      0D0A 00
+ 379               	.LC3:
+ 380 0022 5461 736B 		.string	"Task4 counter=%d\r\n"
+ 380      3420 636F 
+ 380      756E 7465 
+ 380      723D 2564 
+ 380      0D0A 00
+ 381               		.text
+ 382               	.global	Task4
+ 384               	Task4:
+ 385               	.LFB7:
+ 386               	.LM51:
+ 387 02f4 0F93      		push r16
+ 388 02f6 1F93      		push r17
+ 389 02f8 CF93      		push r28
+ 390 02fa DF93      		push r29
+ 391               	/* prologue: function */
+ 392               	/* frame size = 0 */
+ 393               	.LM52:
+ 394 02fc 0E94 0000 		call nrk_get_pid
+ 395 0300 00D0      		rcall .
+ 396 0302 00D0      		rcall .
+ 397 0304 EDB7      		in r30,__SP_L__
+ 398 0306 FEB7      		in r31,__SP_H__
+ 399 0308 3196      		adiw r30,1
+ 400 030a 20E0      		ldi r18,lo8(.LC2)
+ 401 030c 30E0      		ldi r19,hi8(.LC2)
+ 402 030e ADB7      		in r26,__SP_L__
+ 403 0310 BEB7      		in r27,__SP_H__
+ 404 0312 1296      		adiw r26,1+1
+ 405 0314 3C93      		st X,r19
+ 406 0316 2E93      		st -X,r18
+ 407 0318 1197      		sbiw r26,1
+ 408 031a 8283      		std Z+2,r24
+ 409 031c 1382      		std Z+3,__zero_reg__
+ 410 031e 0E94 0000 		call printf
+ 411 0322 00E0      		ldi r16,lo8(0)
+ 412               	.LVL3:
+ 413 0324 13E0      		ldi r17,lo8(3)
+ 414               	.LVL4:
+ 415 0326 0F90      		pop __tmp_reg__
+ 416 0328 0F90      		pop __tmp_reg__
+ 417 032a 0F90      		pop __tmp_reg__
+ 418 032c 0F90      		pop __tmp_reg__
+ 419               	.LM53:
+ 420 032e C0E0      		ldi r28,lo8(.LC3)
+ 421 0330 D0E0      		ldi r29,hi8(.LC3)
+ 422               	.L14:
+ 423               	.LM54:
+ 424 0332 81E0      		ldi r24,lo8(1)
+ 425 0334 90E0      		ldi r25,hi8(1)
+ 426 0336 0E94 0000 		call nrk_led_toggle
+ 427               	.LM55:
+ 428 033a 00D0      		rcall .
+ 429 033c 00D0      		rcall .
+ 430 033e EDB7      		in r30,__SP_L__
+ 431 0340 FEB7      		in r31,__SP_H__
+ 432 0342 3196      		adiw r30,1
+ 433 0344 ADB7      		in r26,__SP_L__
+ 434 0346 BEB7      		in r27,__SP_H__
+ 435 0348 1296      		adiw r26,1+1
+ 436 034a DC93      		st X,r29
+ 437 034c CE93      		st -X,r28
+ 438 034e 1197      		sbiw r26,1
+ 439 0350 0283      		std Z+2,r16
+ 440 0352 1382      		std Z+3,__zero_reg__
+ 441 0354 0E94 0000 		call printf
+ 442               	.LM56:
+ 443 0358 0F90      		pop __tmp_reg__
+ 444 035a 0F90      		pop __tmp_reg__
+ 445 035c 0F90      		pop __tmp_reg__
+ 446 035e 0F90      		pop __tmp_reg__
+ 447 0360 1123      		tst r17
+ 448 0362 01F4      		brne .L12
+ 449               	.LM57:
+ 450 0364 80E0      		ldi r24,lo8(__c.2135)
+ 451 0366 90E0      		ldi r25,hi8(__c.2135)
+ 452 0368 0E94 0000 		call nrk_kprintf
+ 453               	.LM58:
+ 454 036c 8091 0000 		lds r24,semaphore1
+ 455 0370 9091 0000 		lds r25,(semaphore1)+1
+ 456 0374 0E94 0000 		call nrk_sem_pend
+ 457               	.LM59:
+ 458 0378 80E0      		ldi r24,lo8(__c.2137)
+ 459 037a 90E0      		ldi r25,hi8(__c.2137)
+ 460 037c 0E94 0000 		call nrk_kprintf
+ 461               	.L12:
+ 462               	.LM60:
+ 463 0380 1F5F      		subi r17,lo8(-(1))
+ 464               	.LM61:
+ 465 0382 1330      		cpi r17,lo8(3)
+ 466 0384 01F4      		brne .L13
+ 467               	.LM62:
+ 468 0386 8091 0000 		lds r24,semaphore1
+ 469 038a 9091 0000 		lds r25,(semaphore1)+1
+ 470 038e 0E94 0000 		call nrk_sem_post
+ 471               	.LM63:
+ 472 0392 80E0      		ldi r24,lo8(__c.2139)
+ 473 0394 90E0      		ldi r25,hi8(__c.2139)
+ 474 0396 0E94 0000 		call nrk_kprintf
+ 475 039a 10E0      		ldi r17,lo8(0)
+ 476               	.L13:
+ 477               	.LM64:
+ 478 039c 0E94 0000 		call nrk_wait_until_next_period
+ 479               	.LM65:
+ 480 03a0 0F5F      		subi r16,lo8(-(1))
+ 481 03a2 00C0      		rjmp .L14
+ 482               	.LFE7:
+ 484               		.data
+ 485               	.LC4:
+ 486 0035 5461 736B 		.string	"Task3 PID=%d\r\n"
+ 486      3320 5049 
+ 486      443D 2564 
+ 486      0D0A 00
+ 487               	.LC5:
+ 488 0044 5461 736B 		.string	"Task3 counter=%d\r\n"
+ 488      3320 636F 
+ 488      756E 7465 
+ 488      723D 2564 
+ 488      0D0A 00
+ 489               		.text
+ 490               	.global	Task3
+ 492               	Task3:
+ 493               	.LFB6:
+ 494               	.LM66:
+ 495 03a4 0F93      		push r16
+ 496 03a6 1F93      		push r17
+ 497 03a8 CF93      		push r28
+ 498 03aa DF93      		push r29
+ 499               	/* prologue: function */
+ 500               	/* frame size = 0 */
+ 501               	.LM67:
+ 502 03ac 0E94 0000 		call nrk_get_pid
+ 503 03b0 00D0      		rcall .
+ 504 03b2 00D0      		rcall .
+ 505 03b4 EDB7      		in r30,__SP_L__
+ 506 03b6 FEB7      		in r31,__SP_H__
+ 507 03b8 3196      		adiw r30,1
+ 508 03ba 20E0      		ldi r18,lo8(.LC4)
+ 509 03bc 30E0      		ldi r19,hi8(.LC4)
+ 510 03be ADB7      		in r26,__SP_L__
+ 511 03c0 BEB7      		in r27,__SP_H__
+ 512 03c2 1296      		adiw r26,1+1
+ 513 03c4 3C93      		st X,r19
+ 514 03c6 2E93      		st -X,r18
+ 515 03c8 1197      		sbiw r26,1
+ 516 03ca 8283      		std Z+2,r24
+ 517 03cc 1382      		std Z+3,__zero_reg__
+ 518 03ce 0E94 0000 		call printf
+ 519 03d2 00E0      		ldi r16,lo8(0)
+ 520               	.LVL5:
+ 521 03d4 17E0      		ldi r17,lo8(7)
+ 522               	.LVL6:
+ 523 03d6 0F90      		pop __tmp_reg__
+ 524 03d8 0F90      		pop __tmp_reg__
+ 525 03da 0F90      		pop __tmp_reg__
+ 526 03dc 0F90      		pop __tmp_reg__
+ 527               	.LM68:
+ 528 03de C0E0      		ldi r28,lo8(.LC5)
+ 529 03e0 D0E0      		ldi r29,hi8(.LC5)
+ 530               	.L19:
+ 531               	.LM69:
+ 532 03e2 81E0      		ldi r24,lo8(1)
+ 533 03e4 90E0      		ldi r25,hi8(1)
+ 534 03e6 0E94 0000 		call nrk_led_toggle
+ 535               	.LM70:
+ 536 03ea 00D0      		rcall .
+ 537 03ec 00D0      		rcall .
+ 538 03ee EDB7      		in r30,__SP_L__
+ 539 03f0 FEB7      		in r31,__SP_H__
+ 540 03f2 3196      		adiw r30,1
+ 541 03f4 ADB7      		in r26,__SP_L__
+ 542 03f6 BEB7      		in r27,__SP_H__
+ 543 03f8 1296      		adiw r26,1+1
+ 544 03fa DC93      		st X,r29
+ 545 03fc CE93      		st -X,r28
+ 546 03fe 1197      		sbiw r26,1
+ 547 0400 0283      		std Z+2,r16
+ 548 0402 1382      		std Z+3,__zero_reg__
+ 549 0404 0E94 0000 		call printf
+ 550               	.LM71:
+ 551 0408 0F90      		pop __tmp_reg__
+ 552 040a 0F90      		pop __tmp_reg__
+ 553 040c 0F90      		pop __tmp_reg__
+ 554 040e 0F90      		pop __tmp_reg__
+ 555 0410 1123      		tst r17
+ 556 0412 01F4      		brne .L17
+ 557               	.LM72:
+ 558 0414 80E0      		ldi r24,lo8(__c.2120)
+ 559 0416 90E0      		ldi r25,hi8(__c.2120)
+ 560 0418 0E94 0000 		call nrk_kprintf
+ 561               	.LM73:
+ 562 041c 8091 0000 		lds r24,semaphore1
+ 563 0420 9091 0000 		lds r25,(semaphore1)+1
+ 564 0424 0E94 0000 		call nrk_sem_pend
+ 565               	.LM74:
+ 566 0428 80E0      		ldi r24,lo8(__c.2122)
+ 567 042a 90E0      		ldi r25,hi8(__c.2122)
+ 568 042c 0E94 0000 		call nrk_kprintf
+ 569               	.L17:
+ 570               	.LM75:
+ 571 0430 1F5F      		subi r17,lo8(-(1))
+ 572               	.LM76:
+ 573 0432 1730      		cpi r17,lo8(7)
+ 574 0434 01F4      		brne .L18
+ 575               	.LM77:
+ 576 0436 8091 0000 		lds r24,semaphore1
+ 577 043a 9091 0000 		lds r25,(semaphore1)+1
+ 578 043e 0E94 0000 		call nrk_sem_post
+ 579               	.LM78:
+ 580 0442 80E0      		ldi r24,lo8(__c.2124)
+ 581 0444 90E0      		ldi r25,hi8(__c.2124)
+ 582 0446 0E94 0000 		call nrk_kprintf
+ 583 044a 10E0      		ldi r17,lo8(0)
+ 584               	.L18:
+ 585               	.LM79:
+ 586 044c 0E94 0000 		call nrk_wait_until_next_period
+ 587               	.LM80:
+ 588 0450 0F5F      		subi r16,lo8(-(1))
+ 589 0452 00C0      		rjmp .L19
+ 590               	.LFE6:
+ 592               		.data
+ 593               	.LC6:
+ 594 0057 4D79 206E 		.string	"My node's address is %u\r\n"
+ 594      6F64 6527 
+ 594      7320 6164 
+ 594      6472 6573 
+ 594      7320 6973 
+ 595               	.LC7:
+ 596 0071 5461 736B 		.string	"Task1 PID=%u\r\n"
+ 596      3120 5049 
+ 596      443D 2575 
+ 596      0D0A 00
+ 597               	.LC8:
+ 598 0080 5461 736B 		.string	"Task1 counter=%u\r\n"
+ 598      3120 636F 
+ 598      756E 7465 
+ 598      723D 2575 
+ 598      0D0A 00
+ 599               		.text
+ 600               	.global	Task1
+ 602               	Task1:
+ 603               	.LFB4:
+ 604               	.LM81:
+ 605 0454 0F93      		push r16
+ 606 0456 1F93      		push r17
+ 607 0458 CF93      		push r28
+ 608 045a DF93      		push r29
+ 609               	/* prologue: function */
+ 610               	/* frame size = 0 */
+ 611               	.LM82:
+ 612 045c 00D0      		rcall .
+ 613 045e 00D0      		rcall .
+ 614 0460 80E0      		ldi r24,lo8(.LC6)
+ 615 0462 90E0      		ldi r25,hi8(.LC6)
+ 616 0464 ADB7      		in r26,__SP_L__
+ 617 0466 BEB7      		in r27,__SP_H__
+ 618 0468 1296      		adiw r26,1+1
+ 619 046a 9C93      		st X,r25
+ 620 046c 8E93      		st -X,r24
+ 621 046e 1197      		sbiw r26,1
+ 622 0470 1496      		adiw r26,3+1
+ 623 0472 1C92      		st X,__zero_reg__
+ 624 0474 1E92      		st -X,__zero_reg__
+ 625 0476 1397      		sbiw r26,3
+ 626 0478 0E94 0000 		call printf
+ 627               	.LM83:
+ 628 047c 0F90      		pop __tmp_reg__
+ 629 047e 0F90      		pop __tmp_reg__
+ 630 0480 0F90      		pop __tmp_reg__
+ 631 0482 0F90      		pop __tmp_reg__
+ 632 0484 0E94 0000 		call nrk_get_pid
+ 633 0488 00D0      		rcall .
+ 634 048a 00D0      		rcall .
+ 635 048c EDB7      		in r30,__SP_L__
+ 636 048e FEB7      		in r31,__SP_H__
+ 637 0490 3196      		adiw r30,1
+ 638 0492 20E0      		ldi r18,lo8(.LC7)
+ 639 0494 30E0      		ldi r19,hi8(.LC7)
+ 640 0496 ADB7      		in r26,__SP_L__
+ 641 0498 BEB7      		in r27,__SP_H__
+ 642 049a 1296      		adiw r26,1+1
+ 643 049c 3C93      		st X,r19
+ 644 049e 2E93      		st -X,r18
+ 645 04a0 1197      		sbiw r26,1
+ 646 04a2 8283      		std Z+2,r24
+ 647 04a4 1382      		std Z+3,__zero_reg__
+ 648 04a6 0E94 0000 		call printf
+ 649 04aa C0E0      		ldi r28,lo8(0)
+ 650 04ac D0E0      		ldi r29,hi8(0)
+ 651               	.LVL7:
+ 652 04ae 0F90      		pop __tmp_reg__
+ 653 04b0 0F90      		pop __tmp_reg__
+ 654 04b2 0F90      		pop __tmp_reg__
+ 655 04b4 0F90      		pop __tmp_reg__
+ 656               	.LM84:
+ 657 04b6 00E0      		ldi r16,lo8(.LC8)
+ 658 04b8 10E0      		ldi r17,hi8(.LC8)
+ 659               	.L22:
+ 660               	.LM85:
+ 661 04ba 80E0      		ldi r24,lo8(0)
+ 662 04bc 90E0      		ldi r25,hi8(0)
+ 663 04be 0E94 0000 		call nrk_led_toggle
+ 664               	.LM86:
+ 665 04c2 00D0      		rcall .
+ 666 04c4 00D0      		rcall .
+ 667 04c6 EDB7      		in r30,__SP_L__
+ 668 04c8 FEB7      		in r31,__SP_H__
+ 669 04ca 1283      		std Z+2,r17
+ 670 04cc 0183      		std Z+1,r16
+ 671 04ce D483      		std Z+4,r29
+ 672 04d0 C383      		std Z+3,r28
+ 673 04d2 0E94 0000 		call printf
+ 674               	.LM87:
+ 675 04d6 0F90      		pop __tmp_reg__
+ 676 04d8 0F90      		pop __tmp_reg__
+ 677 04da 0F90      		pop __tmp_reg__
+ 678 04dc 0F90      		pop __tmp_reg__
+ 679 04de 0E94 0000 		call nrk_wait_until_next_period
+ 680               	.LM88:
+ 681 04e2 2196      		adiw r28,1
+ 682 04e4 00C0      		rjmp .L22
+ 683               	.LFE4:
+ 685               		.data
+ 686               	.LC9:
+ 687 0093 5461 736B 		.string	"Task2 PID=%u\r\n"
+ 687      3220 5049 
+ 687      443D 2575 
+ 687      0D0A 00
+ 688               	.LC10:
+ 689 00a2 5461 736B 		.string	"Task2 signed counter=%d\r\n"
+ 689      3220 7369 
+ 689      676E 6564 
+ 689      2063 6F75 
+ 689      6E74 6572 
+ 690               		.text
+ 691               	.global	Task2
+ 693               	Task2:
+ 694               	.LFB5:
+ 695               	.LM89:
+ 696 04e6 0F93      		push r16
+ 697 04e8 1F93      		push r17
+ 698 04ea CF93      		push r28
+ 699 04ec DF93      		push r29
+ 700               	/* prologue: function */
+ 701               	/* frame size = 0 */
+ 702               	.LM90:
+ 703 04ee 0E94 0000 		call nrk_get_pid
+ 704 04f2 00D0      		rcall .
+ 705 04f4 00D0      		rcall .
+ 706 04f6 EDB7      		in r30,__SP_L__
+ 707 04f8 FEB7      		in r31,__SP_H__
+ 708 04fa 3196      		adiw r30,1
+ 709 04fc 20E0      		ldi r18,lo8(.LC9)
+ 710 04fe 30E0      		ldi r19,hi8(.LC9)
+ 711 0500 ADB7      		in r26,__SP_L__
+ 712 0502 BEB7      		in r27,__SP_H__
+ 713 0504 1296      		adiw r26,1+1
+ 714 0506 3C93      		st X,r19
+ 715 0508 2E93      		st -X,r18
+ 716 050a 1197      		sbiw r26,1
+ 717 050c 8283      		std Z+2,r24
+ 718 050e 1382      		std Z+3,__zero_reg__
+ 719 0510 0E94 0000 		call printf
+ 720 0514 C0E0      		ldi r28,lo8(0)
+ 721 0516 D0E0      		ldi r29,hi8(0)
+ 722               	.LVL8:
+ 723 0518 0F90      		pop __tmp_reg__
+ 724 051a 0F90      		pop __tmp_reg__
+ 725 051c 0F90      		pop __tmp_reg__
+ 726 051e 0F90      		pop __tmp_reg__
+ 727               	.LM91:
+ 728 0520 00E0      		ldi r16,lo8(.LC10)
+ 729 0522 10E0      		ldi r17,hi8(.LC10)
+ 730               	.L25:
+ 731               	.LM92:
+ 732 0524 8FEF      		ldi r24,lo8(255)
+ 733 0526 90E0      		ldi r25,hi8(255)
+ 734 0528 0E94 0000 		call nrk_led_toggle
+ 735               	.LM93:
+ 736 052c 00D0      		rcall .
+ 737 052e 00D0      		rcall .
+ 738 0530 EDB7      		in r30,__SP_L__
+ 739 0532 FEB7      		in r31,__SP_H__
+ 740 0534 1283      		std Z+2,r17
+ 741 0536 0183      		std Z+1,r16
+ 742 0538 D483      		std Z+4,r29
+ 743 053a C383      		std Z+3,r28
+ 744 053c 0E94 0000 		call printf
+ 745               	.LM94:
+ 746 0540 0F90      		pop __tmp_reg__
+ 747 0542 0F90      		pop __tmp_reg__
+ 748 0544 0F90      		pop __tmp_reg__
+ 749 0546 0F90      		pop __tmp_reg__
+ 750 0548 0E94 0000 		call nrk_get_pid
+ 751 054c 0E94 0000 		call nrk_stats_display_pid
+ 752               	.LM95:
+ 753 0550 0E94 0000 		call nrk_wait_until_next_period
+ 754               	.LM96:
+ 755 0554 2197      		sbiw r28,1
+ 756 0556 00C0      		rjmp .L25
+ 757               	.LFE5:
+ 759               	.global	main
+ 761               	main:
+ 762               	.LFB3:
+ 763               	.LM97:
+ 764               	/* prologue: function */
+ 765               	/* frame size = 0 */
+ 766               	.LM98:
+ 767 0558 0E94 0000 		call nrk_setup_ports
+ 768               	.LM99:
+ 769 055c 87E0      		ldi r24,lo8(7)
+ 770 055e 90E0      		ldi r25,hi8(7)
+ 771 0560 0E94 0000 		call nrk_setup_uart
+ 772               	.LM100:
+ 773 0564 0E94 0000 		call nrk_init
+ 774               	.LM101:
+ 775 0568 80E0      		ldi r24,lo8(0)
+ 776 056a 90E0      		ldi r25,hi8(0)
+ 777 056c 0E94 0000 		call nrk_led_clr
+ 778               	.LM102:
+ 779 0570 8FEF      		ldi r24,lo8(255)
+ 780 0572 90E0      		ldi r25,hi8(255)
+ 781 0574 0E94 0000 		call nrk_led_clr
+ 782               	.LM103:
+ 783 0578 81E0      		ldi r24,lo8(1)
+ 784 057a 90E0      		ldi r25,hi8(1)
+ 785 057c 0E94 0000 		call nrk_led_clr
  786               	.LM104:
- 787               	/* #NOAPP */
- 788 05a0 80E0      		ldi r24,lo8(0)
- 789 05a2 90E0      		ldi r25,hi8(0)
- 790 05a4 0E94 0000 		call nrk_led_clr
- 791               	.LM105:
- 792 05a8 8FEF      		ldi r24,lo8(255)
- 793 05aa 90E0      		ldi r25,hi8(255)
- 794 05ac 0E94 0000 		call nrk_led_clr
- 795               	.LM106:
- 796 05b0 81E0      		ldi r24,lo8(1)
- 797 05b2 90E0      		ldi r25,hi8(1)
- 798 05b4 0E94 0000 		call nrk_led_clr
- 799               	.LM107:
- 800 05b8 82E0      		ldi r24,lo8(2)
- 801 05ba 90E0      		ldi r25,hi8(2)
- 802 05bc 0E94 0000 		call nrk_led_clr
- 803               	.LM108:
- 804 05c0 60E0      		ldi r22,lo8(0)
- 805 05c2 70E0      		ldi r23,hi8(0)
- 806 05c4 80E0      		ldi r24,hlo8(0)
- 807 05c6 90E0      		ldi r25,hhi8(0)
- 808 05c8 20E0      		ldi r18,lo8(0)
- 809 05ca 30E0      		ldi r19,hi8(0)
- 810 05cc 40E0      		ldi r20,hlo8(0)
- 811 05ce 50E0      		ldi r21,hhi8(0)
- 812 05d0 0E94 0000 		call nrk_time_set
- 813               	.LM109:
- 814 05d4 0E94 0000 		call nrk_create_taskset
- 815               	.LM110:
- 816 05d8 0E94 0000 		call nrk_start
- 817               	.LM111:
- 818 05dc 80E0      		ldi r24,lo8(0)
- 819 05de 90E0      		ldi r25,hi8(0)
- 820               	/* epilogue start */
- 821 05e0 0895      		ret
- 822               	.LFE3:
- 824               		.comm _nrk_signal_list,4,1
- 825               		.comm nrk_idle_task_stk,128,1
- 826               		.comm nrk_kernel_stk_ptr,2,1
- 827               		.comm error_task,1,1
- 828               		.comm error_num,1,1
- 829               		.comm _nrk_prev_timer_val,1,1
- 830               		.comm _nrk_time_trigger,1,1
- 831               		.comm app_timer0_callback,2,1
- 832               		.comm app_timer0_prescale,1,1
- 833               		.comm cur_task_stats,150,1
- 834               		.comm _nrk_stats_sleep_time,8,1
- 835               		.comm Stack1,128,1
- 836               		.comm TaskOne,35,1
- 837               		.comm Stack2,128,1
- 838               		.comm TaskTwo,35,1
- 839               		.comm Stack3,128,1
- 840               		.comm TaskThree,35,1
- 841               		.comm Stack4,128,1
- 842               		.comm TaskFour,35,1
- 915               	.Letext0:
+ 787 0580 82E0      		ldi r24,lo8(2)
+ 788 0582 90E0      		ldi r25,hi8(2)
+ 789 0584 0E94 0000 		call nrk_led_clr
+ 790               	.LM105:
+ 791 0588 60E0      		ldi r22,lo8(0)
+ 792 058a 70E0      		ldi r23,hi8(0)
+ 793 058c 80E0      		ldi r24,hlo8(0)
+ 794 058e 90E0      		ldi r25,hhi8(0)
+ 795 0590 20E0      		ldi r18,lo8(0)
+ 796 0592 30E0      		ldi r19,hi8(0)
+ 797 0594 40E0      		ldi r20,hlo8(0)
+ 798 0596 50E0      		ldi r21,hhi8(0)
+ 799 0598 0E94 0000 		call nrk_time_set
+ 800               	.LM106:
+ 801 059c 0E94 0000 		call nrk_create_taskset
+ 802               	.LM107:
+ 803 05a0 81E0      		ldi r24,lo8(1)
+ 804 05a2 63E0      		ldi r22,lo8(3)
+ 805 05a4 0E94 0000 		call nrk_sem_create
+ 806 05a8 9093 0000 		sts (semaphore1)+1,r25
+ 807 05ac 8093 0000 		sts semaphore1,r24
+ 808               	.LM108:
+ 809 05b0 892B      		or r24,r25
+ 810 05b2 01F4      		brne .L28
+ 811 05b4 80E0      		ldi r24,lo8(__c.2089)
+ 812 05b6 90E0      		ldi r25,hi8(__c.2089)
+ 813 05b8 0E94 0000 		call nrk_kprintf
+ 814               	.L28:
+ 815               	.LM109:
+ 816 05bc 81E0      		ldi r24,lo8(1)
+ 817 05be 65E0      		ldi r22,lo8(5)
+ 818 05c0 0E94 0000 		call nrk_sem_create
+ 819 05c4 9093 0000 		sts (semaphore2)+1,r25
+ 820 05c8 8093 0000 		sts semaphore2,r24
+ 821               	.LM110:
+ 822 05cc 892B      		or r24,r25
+ 823 05ce 01F4      		brne .L29
+ 824 05d0 80E0      		ldi r24,lo8(__c.2091)
+ 825 05d2 90E0      		ldi r25,hi8(__c.2091)
+ 826 05d4 0E94 0000 		call nrk_kprintf
+ 827               	.L29:
+ 828               	.LM111:
+ 829 05d8 81E0      		ldi r24,lo8(1)
+ 830 05da 61E0      		ldi r22,lo8(1)
+ 831 05dc 0E94 0000 		call nrk_sem_create
+ 832 05e0 9093 0000 		sts (semaphore3)+1,r25
+ 833 05e4 8093 0000 		sts semaphore3,r24
+ 834               	.LM112:
+ 835 05e8 892B      		or r24,r25
+ 836 05ea 01F4      		brne .L30
+ 837 05ec 80E0      		ldi r24,lo8(__c.2093)
+ 838 05ee 90E0      		ldi r25,hi8(__c.2093)
+ 839 05f0 0E94 0000 		call nrk_kprintf
+ 840               	.L30:
+ 841               	.LM113:
+ 842 05f4 0E94 0000 		call nrk_start
+ 843               	.LM114:
+ 844 05f8 80E0      		ldi r24,lo8(0)
+ 845 05fa 90E0      		ldi r25,hi8(0)
+ 846               	/* epilogue start */
+ 847 05fc 0895      		ret
+ 848               	.LFE3:
+ 850               		.section	.progmem.data,"a",@progbits
+ 853               	__c.2139:
+ 854 0000 5461 736B 		.string	"Task4 released semaphore1\r\n"
+ 854      3420 7265 
+ 854      6C65 6173 
+ 854      6564 2073 
+ 854      656D 6170 
+ 857               	__c.2137:
+ 858 001c 5461 736B 		.string	"Task4 holding semaphore1\r\n"
+ 858      3420 686F 
+ 858      6C64 696E 
+ 858      6720 7365 
+ 858      6D61 7068 
+ 861               	__c.2135:
+ 862 0037 5461 736B 		.string	"Task4 accessing semaphore1\r\n"
+ 862      3420 6163 
+ 862      6365 7373 
+ 862      696E 6720 
+ 862      7365 6D61 
+ 865               	__c.2124:
+ 866 0054 5461 736B 		.string	"Task3 released semaphore1\r\n"
+ 866      3320 7265 
+ 866      6C65 6173 
+ 866      6564 2073 
+ 866      656D 6170 
+ 869               	__c.2122:
+ 870 0070 0D0A 2054 		.string	"\r\n Task3 holding semaphore1 \r\n"
+ 870      6173 6B33 
+ 870      2068 6F6C 
+ 870      6469 6E67 
+ 870      2073 656D 
+ 873               	__c.2120:
+ 874 008f 5461 736B 		.string	"Task3 accessing semaphore1\r\n"
+ 874      3320 6163 
+ 874      6365 7373 
+ 874      696E 6720 
+ 874      7365 6D61 
+ 877               	__c.2093:
+ 878 00ac 4572 726F 		.string	"Error creating sem\r\n"
+ 878      7220 6372 
+ 878      6561 7469 
+ 878      6E67 2073 
+ 878      656D 0D0A 
+ 881               	__c.2091:
+ 882 00c1 4572 726F 		.string	"Error creating sem\r\n"
+ 882      7220 6372 
+ 882      6561 7469 
+ 882      6E67 2073 
+ 882      656D 0D0A 
+ 885               	__c.2089:
+ 886 00d6 4572 726F 		.string	"Error creating sem 1\r\n"
+ 886      7220 6372 
+ 886      6561 7469 
+ 886      6E67 2073 
+ 886      656D 2031 
+ 887               		.comm systemCeiling,4,1
+ 888               		.comm _nrk_signal_list,4,1
+ 889               		.comm nrk_idle_task_stk,128,1
+ 890               		.comm nrk_kernel_stk_ptr,2,1
+ 891               		.comm error_task,1,1
+ 892               		.comm error_num,1,1
+ 893               		.comm _nrk_prev_timer_val,1,1
+ 894               		.comm _nrk_time_trigger,1,1
+ 895               		.comm app_timer0_callback,2,1
+ 896               		.comm app_timer0_prescale,1,1
+ 897               		.comm cur_task_stats,150,1
+ 898               		.comm _nrk_stats_sleep_time,8,1
+ 899               		.comm Stack1,128,1
+ 900               		.comm TaskOne,36,1
+ 901               		.comm Stack2,128,1
+ 902               		.comm TaskTwo,36,1
+ 903               		.comm Stack3,128,1
+ 904               		.comm TaskThree,36,1
+ 905               		.comm Stack4,128,1
+ 906               		.comm TaskFour,36,1
+ 907               		.comm semaphore1,2,1
+ 908               		.comm semaphore2,2,1
+ 909               		.comm semaphore3,2,1
+ 982               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
-C:\cygwin\tmp/ccMAsdAu.s:2      *ABS*:0000003f __SREG__
-C:\cygwin\tmp/ccMAsdAu.s:3      *ABS*:0000003e __SP_H__
-C:\cygwin\tmp/ccMAsdAu.s:4      *ABS*:0000003d __SP_L__
-C:\cygwin\tmp/ccMAsdAu.s:5      *ABS*:00000034 __CCP__
-C:\cygwin\tmp/ccMAsdAu.s:6      *ABS*:00000000 __tmp_reg__
-C:\cygwin\tmp/ccMAsdAu.s:7      *ABS*:00000001 __zero_reg__
-C:\cygwin\tmp/ccMAsdAu.s:24     .text:00000000 kill_stack
-C:\cygwin\tmp/ccMAsdAu.s:151    .text:000000d8 nrk_create_taskset
-                            *COM*:00000023 TaskOne
-C:\cygwin\tmp/ccMAsdAu.s:671    .text:000004e6 Task1
+C:\cygwin\tmp/ccjJzScI.s:2      *ABS*:0000003f __SREG__
+C:\cygwin\tmp/ccjJzScI.s:3      *ABS*:0000003e __SP_H__
+C:\cygwin\tmp/ccjJzScI.s:4      *ABS*:0000003d __SP_L__
+C:\cygwin\tmp/ccjJzScI.s:5      *ABS*:00000034 __CCP__
+C:\cygwin\tmp/ccjJzScI.s:6      *ABS*:00000000 __tmp_reg__
+C:\cygwin\tmp/ccjJzScI.s:7      *ABS*:00000001 __zero_reg__
+C:\cygwin\tmp/ccjJzScI.s:24     .text:00000000 kill_stack
+C:\cygwin\tmp/ccjJzScI.s:151    .text:000000d8 nrk_create_taskset
+                            *COM*:00000024 TaskOne
+C:\cygwin\tmp/ccjJzScI.s:602    .text:00000454 Task1
                             *COM*:00000080 Stack1
-                            *COM*:00000023 TaskTwo
-C:\cygwin\tmp/ccMAsdAu.s:592    .text:00000470 Task2
-                            *COM*:00000080 Stack2
-                            *COM*:00000023 TaskThree
-C:\cygwin\tmp/ccMAsdAu.s:515    .text:000003fa Task3
+                            *COM*:00000024 TaskThree
+C:\cygwin\tmp/ccjJzScI.s:492    .text:000003a4 Task3
                             *COM*:00000080 Stack3
-                            *COM*:00000023 TaskFour
-C:\cygwin\tmp/ccMAsdAu.s:438    .text:00000384 Task4
+                            *COM*:00000024 TaskFour
+C:\cygwin\tmp/ccjJzScI.s:384    .text:000002f4 Task4
                             *COM*:00000080 Stack4
-C:\cygwin\tmp/ccMAsdAu.s:762    .text:00000584 main
+C:\cygwin\tmp/ccjJzScI.s:861    .progmem.data:00000037 __c.2135
+                            *COM*:00000002 semaphore1
+C:\cygwin\tmp/ccjJzScI.s:857    .progmem.data:0000001c __c.2137
+C:\cygwin\tmp/ccjJzScI.s:853    .progmem.data:00000000 __c.2139
+C:\cygwin\tmp/ccjJzScI.s:873    .progmem.data:0000008f __c.2120
+C:\cygwin\tmp/ccjJzScI.s:869    .progmem.data:00000070 __c.2122
+C:\cygwin\tmp/ccjJzScI.s:865    .progmem.data:00000054 __c.2124
+C:\cygwin\tmp/ccjJzScI.s:693    .text:000004e6 Task2
+C:\cygwin\tmp/ccjJzScI.s:761    .text:00000558 main
+C:\cygwin\tmp/ccjJzScI.s:885    .progmem.data:000000d6 __c.2089
+                            *COM*:00000002 semaphore2
+C:\cygwin\tmp/ccjJzScI.s:881    .progmem.data:000000c1 __c.2091
+                            *COM*:00000002 semaphore3
+C:\cygwin\tmp/ccjJzScI.s:877    .progmem.data:000000ac __c.2093
+                            *COM*:00000004 systemCeiling
                             *COM*:00000004 _nrk_signal_list
                             *COM*:00000080 nrk_idle_task_stk
                             *COM*:00000002 nrk_kernel_stk_ptr
@@ -886,6 +985,8 @@ C:\cygwin\tmp/ccMAsdAu.s:762    .text:00000584 main
                             *COM*:00000001 app_timer0_prescale
                             *COM*:00000096 cur_task_stats
                             *COM*:00000008 _nrk_stats_sleep_time
+                            *COM*:00000080 Stack2
+                            *COM*:00000024 TaskTwo
 
 UNDEFINED SYMBOLS
 printf
@@ -893,18 +994,18 @@ nrk_task_set_entry_function
 nrk_task_set_stk
 nrk_activate_task
 nrk_get_pid
-NRK_DEBUG_3
 nrk_led_toggle
-nrk_gpio_toggle
+nrk_kprintf
+nrk_sem_pend
+nrk_sem_post
 nrk_wait_until_next_period
-NRK_DEBUG_2
-NRK_DEBUG_1
-NRK_DEBUG_0
+nrk_stats_display_pid
 nrk_setup_ports
 nrk_setup_uart
 nrk_init
 nrk_led_clr
 nrk_time_set
+nrk_sem_create
 nrk_start
 __do_copy_data
 __do_clear_bss

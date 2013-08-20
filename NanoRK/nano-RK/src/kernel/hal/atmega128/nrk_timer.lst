@@ -738,52 +738,54 @@
  790 02f8 1F90      		pop __zero_reg__
  791 02fa 1895      		reti
  792               	.LFE17:
- 794               		.comm _nrk_signal_list,4,1
- 795               		.comm nrk_idle_task_stk,128,1
- 796               		.comm nrk_kernel_stk_ptr,2,1
- 797               		.comm _nrk_prev_timer_val,1,1
- 798               		.comm _nrk_time_trigger,1,1
- 799               		.comm app_timer0_callback,2,1
- 800               		.comm app_timer0_prescale,1,1
- 801               		.comm error_task,1,1
- 802               		.comm error_num,1,1
- 1003               	.Letext0:
+ 794               		.comm systemCeiling,4,1
+ 795               		.comm _nrk_signal_list,4,1
+ 796               		.comm nrk_idle_task_stk,128,1
+ 797               		.comm nrk_kernel_stk_ptr,2,1
+ 798               		.comm _nrk_prev_timer_val,1,1
+ 799               		.comm _nrk_time_trigger,1,1
+ 800               		.comm app_timer0_callback,2,1
+ 801               		.comm app_timer0_prescale,1,1
+ 802               		.comm error_task,1,1
+ 803               		.comm error_num,1,1
+ 1004               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 nrk_timer.c
-C:\cygwin\tmp/cctdCkF2.s:2      *ABS*:0000003f __SREG__
-C:\cygwin\tmp/cctdCkF2.s:3      *ABS*:0000003e __SP_H__
-C:\cygwin\tmp/cctdCkF2.s:4      *ABS*:0000003d __SP_L__
-C:\cygwin\tmp/cctdCkF2.s:5      *ABS*:00000034 __CCP__
-C:\cygwin\tmp/cctdCkF2.s:6      *ABS*:00000000 __tmp_reg__
-C:\cygwin\tmp/cctdCkF2.s:7      *ABS*:00000001 __zero_reg__
-C:\cygwin\tmp/cctdCkF2.s:18     .text:00000000 nrk_spin_wait_us
-C:\cygwin\tmp/cctdCkF2.s:58     .text:0000000e _nrk_setup_timer
+C:\cygwin\tmp/ccQOdv6g.s:2      *ABS*:0000003f __SREG__
+C:\cygwin\tmp/ccQOdv6g.s:3      *ABS*:0000003e __SP_H__
+C:\cygwin\tmp/ccQOdv6g.s:4      *ABS*:0000003d __SP_L__
+C:\cygwin\tmp/ccQOdv6g.s:5      *ABS*:00000034 __CCP__
+C:\cygwin\tmp/ccQOdv6g.s:6      *ABS*:00000000 __tmp_reg__
+C:\cygwin\tmp/ccQOdv6g.s:7      *ABS*:00000001 __zero_reg__
+C:\cygwin\tmp/ccQOdv6g.s:18     .text:00000000 nrk_spin_wait_us
+C:\cygwin\tmp/ccQOdv6g.s:58     .text:0000000e _nrk_setup_timer
                             *COM*:00000001 _nrk_prev_timer_val
                             *COM*:00000001 _nrk_time_trigger
-C:\cygwin\tmp/cctdCkF2.s:122    .text:0000004e _nrk_high_speed_timer_stop
-C:\cygwin\tmp/cctdCkF2.s:136    .text:00000052 _nrk_high_speed_timer_start
-C:\cygwin\tmp/cctdCkF2.s:151    .text:00000058 _nrk_high_speed_timer_reset
-C:\cygwin\tmp/cctdCkF2.s:170    .text:00000064 nrk_high_speed_timer_wait
-C:\cygwin\tmp/cctdCkF2.s:268    .text:000000d6 _nrk_high_speed_timer_get
-C:\cygwin\tmp/cctdCkF2.s:300    .text:000000f8 _nrk_os_timer_set
-C:\cygwin\tmp/cctdCkF2.s:315    .text:000000fc _nrk_os_timer_stop
-C:\cygwin\tmp/cctdCkF2.s:337    .text:0000010c _nrk_os_timer_start
-C:\cygwin\tmp/cctdCkF2.s:356    .text:00000118 _nrk_os_timer_reset
-C:\cygwin\tmp/cctdCkF2.s:378    .text:0000012a _nrk_get_next_wakeup
-C:\cygwin\tmp/cctdCkF2.s:393    .text:00000130 _nrk_set_next_wakeup
-C:\cygwin\tmp/cctdCkF2.s:410    .text:00000136 _nrk_os_timer_get
-C:\cygwin\tmp/cctdCkF2.s:424    .text:0000013a __vector_16
-C:\cygwin\tmp/cctdCkF2.s:435    .text:0000013a __vector_15
+C:\cygwin\tmp/ccQOdv6g.s:122    .text:0000004e _nrk_high_speed_timer_stop
+C:\cygwin\tmp/ccQOdv6g.s:136    .text:00000052 _nrk_high_speed_timer_start
+C:\cygwin\tmp/ccQOdv6g.s:151    .text:00000058 _nrk_high_speed_timer_reset
+C:\cygwin\tmp/ccQOdv6g.s:170    .text:00000064 nrk_high_speed_timer_wait
+C:\cygwin\tmp/ccQOdv6g.s:268    .text:000000d6 _nrk_high_speed_timer_get
+C:\cygwin\tmp/ccQOdv6g.s:300    .text:000000f8 _nrk_os_timer_set
+C:\cygwin\tmp/ccQOdv6g.s:315    .text:000000fc _nrk_os_timer_stop
+C:\cygwin\tmp/ccQOdv6g.s:337    .text:0000010c _nrk_os_timer_start
+C:\cygwin\tmp/ccQOdv6g.s:356    .text:00000118 _nrk_os_timer_reset
+C:\cygwin\tmp/ccQOdv6g.s:378    .text:0000012a _nrk_get_next_wakeup
+C:\cygwin\tmp/ccQOdv6g.s:393    .text:00000130 _nrk_set_next_wakeup
+C:\cygwin\tmp/ccQOdv6g.s:410    .text:00000136 _nrk_os_timer_get
+C:\cygwin\tmp/ccQOdv6g.s:424    .text:0000013a __vector_16
+C:\cygwin\tmp/ccQOdv6g.s:435    .text:0000013a __vector_15
                             *COM*:00000002 nrk_kernel_stk_ptr
-C:\cygwin\tmp/cctdCkF2.s:499    .text:000001a0 nrk_timer_int_stop
-C:\cygwin\tmp/cctdCkF2.s:524    .text:000001ae nrk_timer_int_reset
-C:\cygwin\tmp/cctdCkF2.s:548    .text:000001bc nrk_timer_int_read
-C:\cygwin\tmp/cctdCkF2.s:577    .text:000001d0 nrk_timer_int_start
-C:\cygwin\tmp/cctdCkF2.s:603    .text:000001e2 nrk_timer_int_configure
+C:\cygwin\tmp/ccQOdv6g.s:499    .text:000001a0 nrk_timer_int_stop
+C:\cygwin\tmp/ccQOdv6g.s:524    .text:000001ae nrk_timer_int_reset
+C:\cygwin\tmp/ccQOdv6g.s:548    .text:000001bc nrk_timer_int_read
+C:\cygwin\tmp/ccQOdv6g.s:577    .text:000001d0 nrk_timer_int_start
+C:\cygwin\tmp/ccQOdv6g.s:603    .text:000001e2 nrk_timer_int_configure
                             *COM*:00000001 app_timer0_prescale
                             *COM*:00000002 app_timer0_callback
-C:\cygwin\tmp/cctdCkF2.s:681    .text:00000244 __vector_9
-C:\cygwin\tmp/cctdCkF2.s:743    .text:000002a8 __vector_default
+C:\cygwin\tmp/ccQOdv6g.s:681    .text:00000244 __vector_9
+C:\cygwin\tmp/ccQOdv6g.s:743    .text:000002a8 __vector_default
+                            *COM*:00000004 systemCeiling
                             *COM*:00000004 _nrk_signal_list
                             *COM*:00000080 nrk_idle_task_stk
                             *COM*:00000001 error_task

@@ -62,14 +62,14 @@
  105               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 ad5242.c
-C:\cygwin\tmp/ccDXk9xt.s:2      *ABS*:0000003f __SREG__
-C:\cygwin\tmp/ccDXk9xt.s:3      *ABS*:0000003e __SP_H__
-C:\cygwin\tmp/ccDXk9xt.s:4      *ABS*:0000003d __SP_L__
-C:\cygwin\tmp/ccDXk9xt.s:5      *ABS*:00000034 __CCP__
-C:\cygwin\tmp/ccDXk9xt.s:6      *ABS*:00000000 __tmp_reg__
-C:\cygwin\tmp/ccDXk9xt.s:7      *ABS*:00000001 __zero_reg__
-C:\cygwin\tmp/ccDXk9xt.s:18     .text:00000000 ad5242_set
-C:\cygwin\tmp/ccDXk9xt.s:61     .text:0000002e ad5242_init
+C:\cygwin\tmp/ccsDw1mf.s:2      *ABS*:0000003f __SREG__
+C:\cygwin\tmp/ccsDw1mf.s:3      *ABS*:0000003e __SP_H__
+C:\cygwin\tmp/ccsDw1mf.s:4      *ABS*:0000003d __SP_L__
+C:\cygwin\tmp/ccsDw1mf.s:5      *ABS*:00000034 __CCP__
+C:\cygwin\tmp/ccsDw1mf.s:6      *ABS*:00000000 __tmp_reg__
+C:\cygwin\tmp/ccsDw1mf.s:7      *ABS*:00000001 __zero_reg__
+C:\cygwin\tmp/ccsDw1mf.s:18     .text:00000000 ad5242_set
+C:\cygwin\tmp/ccsDw1mf.s:61     .text:0000002e ad5242_init
 
 UNDEFINED SYMBOLS
 i2c_controlByte_TX

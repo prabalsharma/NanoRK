@@ -504,32 +504,32 @@
  719               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 mts310cb_driver.c
-C:\cygwin\tmp/ccEXJG7u.s:2      *ABS*:0000003f __SREG__
-C:\cygwin\tmp/ccEXJG7u.s:3      *ABS*:0000003e __SP_H__
-C:\cygwin\tmp/ccEXJG7u.s:4      *ABS*:0000003d __SP_L__
-C:\cygwin\tmp/ccEXJG7u.s:5      *ABS*:00000034 __CCP__
-C:\cygwin\tmp/ccEXJG7u.s:6      *ABS*:00000000 __tmp_reg__
-C:\cygwin\tmp/ccEXJG7u.s:7      *ABS*:00000001 __zero_reg__
-C:\cygwin\tmp/ccEXJG7u.s:18     .text:00000000 mts310cb_init
-C:\cygwin\tmp/ccEXJG7u.s:549    .bss:00000000 mts310cb_initDone
-C:\cygwin\tmp/ccEXJG7u.s:37     .text:00000010 mts310cb_Magnetometer_y_GetCounts
-C:\cygwin\tmp/ccEXJG7u.s:58     .text:00000024 mts310cb_Magnetometer_x_GetCounts
-C:\cygwin\tmp/ccEXJG7u.s:79     .text:00000038 mts310cb_Accelerometer_y_GetCounts
-C:\cygwin\tmp/ccEXJG7u.s:100    .text:0000004c mts310cb_Accelerometer_x_GetCounts
-C:\cygwin\tmp/ccEXJG7u.s:121    .text:00000060 mts310cb_Microphone_GetCounts
-C:\cygwin\tmp/ccEXJG7u.s:142    .text:00000074 mts310cb_Microphone_SetMode
-C:\cygwin\tmp/ccEXJG7u.s:177    .text:00000096 mts310cb_Microphone_SetGain
-C:\cygwin\tmp/ccEXJG7u.s:206    .text:000000b4 mts310cb_Magnetometer_y_SetOffset
-C:\cygwin\tmp/ccEXJG7u.s:235    .text:000000d2 mts310cb_Magnetometer_x_SetOffset
-C:\cygwin\tmp/ccEXJG7u.s:264    .text:000000f0 mts310cb_Microphone_Power
-C:\cygwin\tmp/ccEXJG7u.s:297    .text:0000010e mts310cb_Sounder_Power
-C:\cygwin\tmp/ccEXJG7u.s:330    .text:0000012c mts310cb_TemperatureSensor_Power
-C:\cygwin\tmp/ccEXJG7u.s:371    .text:00000154 mts310cb_LightSensor_Power
-C:\cygwin\tmp/ccEXJG7u.s:412    .text:0000017c mts310cb_LightSensor_GetCounts
-C:\cygwin\tmp/ccEXJG7u.s:436    .text:00000196 mts310cb_TemperatureSensor_GetCounts
-C:\cygwin\tmp/ccEXJG7u.s:460    .text:000001b0 mts310cb_Magnetometer_Power
-C:\cygwin\tmp/ccEXJG7u.s:493    .text:000001ce mts310cb_Accelerometer_Power
-C:\cygwin\tmp/ccEXJG7u.s:526    .text:000001ec mts310cb_Powersave
+C:\cygwin\tmp/ccOIK1ua.s:2      *ABS*:0000003f __SREG__
+C:\cygwin\tmp/ccOIK1ua.s:3      *ABS*:0000003e __SP_H__
+C:\cygwin\tmp/ccOIK1ua.s:4      *ABS*:0000003d __SP_L__
+C:\cygwin\tmp/ccOIK1ua.s:5      *ABS*:00000034 __CCP__
+C:\cygwin\tmp/ccOIK1ua.s:6      *ABS*:00000000 __tmp_reg__
+C:\cygwin\tmp/ccOIK1ua.s:7      *ABS*:00000001 __zero_reg__
+C:\cygwin\tmp/ccOIK1ua.s:18     .text:00000000 mts310cb_init
+C:\cygwin\tmp/ccOIK1ua.s:549    .bss:00000000 mts310cb_initDone
+C:\cygwin\tmp/ccOIK1ua.s:37     .text:00000010 mts310cb_Magnetometer_y_GetCounts
+C:\cygwin\tmp/ccOIK1ua.s:58     .text:00000024 mts310cb_Magnetometer_x_GetCounts
+C:\cygwin\tmp/ccOIK1ua.s:79     .text:00000038 mts310cb_Accelerometer_y_GetCounts
+C:\cygwin\tmp/ccOIK1ua.s:100    .text:0000004c mts310cb_Accelerometer_x_GetCounts
+C:\cygwin\tmp/ccOIK1ua.s:121    .text:00000060 mts310cb_Microphone_GetCounts
+C:\cygwin\tmp/ccOIK1ua.s:142    .text:00000074 mts310cb_Microphone_SetMode
+C:\cygwin\tmp/ccOIK1ua.s:177    .text:00000096 mts310cb_Microphone_SetGain
+C:\cygwin\tmp/ccOIK1ua.s:206    .text:000000b4 mts310cb_Magnetometer_y_SetOffset
+C:\cygwin\tmp/ccOIK1ua.s:235    .text:000000d2 mts310cb_Magnetometer_x_SetOffset
+C:\cygwin\tmp/ccOIK1ua.s:264    .text:000000f0 mts310cb_Microphone_Power
+C:\cygwin\tmp/ccOIK1ua.s:297    .text:0000010e mts310cb_Sounder_Power
+C:\cygwin\tmp/ccOIK1ua.s:330    .text:0000012c mts310cb_TemperatureSensor_Power
+C:\cygwin\tmp/ccOIK1ua.s:371    .text:00000154 mts310cb_LightSensor_Power
+C:\cygwin\tmp/ccOIK1ua.s:412    .text:0000017c mts310cb_LightSensor_GetCounts
+C:\cygwin\tmp/ccOIK1ua.s:436    .text:00000196 mts310cb_TemperatureSensor_GetCounts
+C:\cygwin\tmp/ccOIK1ua.s:460    .text:000001b0 mts310cb_Magnetometer_Power
+C:\cygwin\tmp/ccOIK1ua.s:493    .text:000001ce mts310cb_Accelerometer_Power
+C:\cygwin\tmp/ccOIK1ua.s:526    .text:000001ec mts310cb_Powersave
 
 UNDEFINED SYMBOLS
 adc_init

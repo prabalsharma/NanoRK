@@ -3382,82 +3382,84 @@
  3466               	.LM353:
  3467 119e 0895      		ret
  3468               	.LFE3:
- 3470               		.comm _nrk_signal_list,4,1
- 3471               		.comm rfSettings,9,1
- 3472               		.comm nrk_idle_task_stk,128,1
- 3473               		.comm nrk_kernel_stk_ptr,2,1
- 3474               		.comm error_task,1,1
- 3475               		.comm error_num,1,1
- 3476               		.comm _nrk_prev_timer_val,1,1
- 3477               		.comm _nrk_time_trigger,1,1
- 3478               		.comm app_timer0_callback,2,1
- 3479               		.comm app_timer0_prescale,1,1
- 3480               		.comm radio_sem,2,1
- 3481               		.comm auto_ack_enable,1,1
- 3482               		.comm security_enable,1,1
- 3483               		.comm last_pkt_encrypted,1,1
- 3484               		.comm mdmctrl0,2,1
- 3485               		.comm tx_ctr,4,1
- 3486               		.comm rx_ctr,4,1
- 3487               		.comm rx_ready,1,1
- 3488               		.comm tmp_blah,2,1
- 3817               	.Letext0:
+ 3470               		.comm systemCeiling,4,1
+ 3471               		.comm _nrk_signal_list,4,1
+ 3472               		.comm rfSettings,9,1
+ 3473               		.comm nrk_idle_task_stk,128,1
+ 3474               		.comm nrk_kernel_stk_ptr,2,1
+ 3475               		.comm error_task,1,1
+ 3476               		.comm error_num,1,1
+ 3477               		.comm _nrk_prev_timer_val,1,1
+ 3478               		.comm _nrk_time_trigger,1,1
+ 3479               		.comm app_timer0_callback,2,1
+ 3480               		.comm app_timer0_prescale,1,1
+ 3481               		.comm radio_sem,2,1
+ 3482               		.comm auto_ack_enable,1,1
+ 3483               		.comm security_enable,1,1
+ 3484               		.comm last_pkt_encrypted,1,1
+ 3485               		.comm mdmctrl0,2,1
+ 3486               		.comm tx_ctr,4,1
+ 3487               		.comm rx_ctr,4,1
+ 3488               		.comm rx_ready,1,1
+ 3489               		.comm tmp_blah,2,1
+ 3818               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 basic_rf.c
-C:\cygwin\tmp/ccBYJcWy.s:2      *ABS*:0000003f __SREG__
-C:\cygwin\tmp/ccBYJcWy.s:3      *ABS*:0000003e __SP_H__
-C:\cygwin\tmp/ccBYJcWy.s:4      *ABS*:0000003d __SP_L__
-C:\cygwin\tmp/ccBYJcWy.s:5      *ABS*:00000034 __CCP__
-C:\cygwin\tmp/ccBYJcWy.s:6      *ABS*:00000000 __tmp_reg__
-C:\cygwin\tmp/ccBYJcWy.s:7      *ABS*:00000001 __zero_reg__
-C:\cygwin\tmp/ccBYJcWy.s:18     .text:00000000 rf_power_down
-C:\cygwin\tmp/ccBYJcWy.s:60     .text:0000001e rf_security_last_pkt_status
+C:\cygwin\tmp/ccmMEiqI.s:2      *ABS*:0000003f __SREG__
+C:\cygwin\tmp/ccmMEiqI.s:3      *ABS*:0000003e __SP_H__
+C:\cygwin\tmp/ccmMEiqI.s:4      *ABS*:0000003d __SP_L__
+C:\cygwin\tmp/ccmMEiqI.s:5      *ABS*:00000034 __CCP__
+C:\cygwin\tmp/ccmMEiqI.s:6      *ABS*:00000000 __tmp_reg__
+C:\cygwin\tmp/ccmMEiqI.s:7      *ABS*:00000001 __zero_reg__
+C:\cygwin\tmp/ccmMEiqI.s:18     .text:00000000 rf_power_down
+C:\cygwin\tmp/ccmMEiqI.s:60     .text:0000001e rf_security_last_pkt_status
                             *COM*:00000001 last_pkt_encrypted
-C:\cygwin\tmp/ccBYJcWy.s:73     .text:00000024 rf_security_set_ctr_counter
+C:\cygwin\tmp/ccmMEiqI.s:73     .text:00000024 rf_security_set_ctr_counter
                             *COM*:00000004 tx_ctr
-C:\cygwin\tmp/ccBYJcWy.s:159    .text:0000009e rf_security_enable
+C:\cygwin\tmp/ccmMEiqI.s:159    .text:0000009e rf_security_enable
                             *COM*:00000001 security_enable
-C:\cygwin\tmp/ccBYJcWy.s:212    .text:000000de rf_security_disable
-C:\cygwin\tmp/ccBYJcWy.s:244    .text:00000100 rf_get_sem
+C:\cygwin\tmp/ccmMEiqI.s:212    .text:000000de rf_security_disable
+C:\cygwin\tmp/ccmMEiqI.s:244    .text:00000100 rf_get_sem
                             *COM*:00000002 radio_sem
-C:\cygwin\tmp/ccBYJcWy.s:258    .text:0000010a rf_tx_power
-C:\cygwin\tmp/ccBYJcWy.s:298    .text:00000130 rf_addr_decode_enable
+C:\cygwin\tmp/ccmMEiqI.s:258    .text:0000010a rf_tx_power
+C:\cygwin\tmp/ccmMEiqI.s:298    .text:00000130 rf_addr_decode_enable
                             *COM*:00000002 mdmctrl0
-C:\cygwin\tmp/ccBYJcWy.s:332    .text:0000015c rf_addr_decode_disable
-C:\cygwin\tmp/ccBYJcWy.s:366    .text:00000188 rf_auto_ack_enable
+C:\cygwin\tmp/ccmMEiqI.s:332    .text:0000015c rf_addr_decode_disable
+C:\cygwin\tmp/ccmMEiqI.s:366    .text:00000188 rf_auto_ack_enable
                             *COM*:00000001 auto_ack_enable
-C:\cygwin\tmp/ccBYJcWy.s:403    .text:000001ba rf_auto_ack_disable
-C:\cygwin\tmp/ccBYJcWy.s:439    .text:000001ea rf_rx_on
+C:\cygwin\tmp/ccmMEiqI.s:403    .text:000001ba rf_auto_ack_disable
+C:\cygwin\tmp/ccmMEiqI.s:439    .text:000001ea rf_rx_on
                             *COM*:00000009 rfSettings
                             *COM*:00000001 rx_ready
-C:\cygwin\tmp/ccBYJcWy.s:472    .text:0000020e rf_polling_rx_on
-C:\cygwin\tmp/ccBYJcWy.s:505    .text:00000232 rf_rx_off
-C:\cygwin\tmp/ccBYJcWy.s:529    .text:00000248 rf_busy
-C:\cygwin\tmp/ccBYJcWy.s:550    .text:0000025a rf_rx_check_fifop
-C:\cygwin\tmp/ccBYJcWy.s:571    .text:0000026c rf_rx_check_sfd
-C:\cygwin\tmp/ccBYJcWy.s:592    .text:0000027e rf_polling_rx_packet
+C:\cygwin\tmp/ccmMEiqI.s:472    .text:0000020e rf_polling_rx_on
+C:\cygwin\tmp/ccmMEiqI.s:505    .text:00000232 rf_rx_off
+C:\cygwin\tmp/ccmMEiqI.s:529    .text:00000248 rf_busy
+C:\cygwin\tmp/ccmMEiqI.s:550    .text:0000025a rf_rx_check_fifop
+C:\cygwin\tmp/ccmMEiqI.s:571    .text:0000026c rf_rx_check_sfd
+C:\cygwin\tmp/ccmMEiqI.s:592    .text:0000027e rf_polling_rx_packet
                             *COM*:00000004 rx_ctr
-C:\cygwin\tmp/ccBYJcWy.s:1258   .text:00000646 rf_rx_packet
-C:\cygwin\tmp/ccBYJcWy.s:1280   .text:00000658 rf_flush_rx_fifo
-C:\cygwin\tmp/ccBYJcWy.s:1308   .text:00000672 rf_set_cca_thresh
-C:\cygwin\tmp/ccBYJcWy.s:1348   .text:00000698 rf_test_mode
-C:\cygwin\tmp/ccBYJcWy.s:1405   .text:000006e0 rf_data_mode
-C:\cygwin\tmp/ccBYJcWy.s:1460   .text:00000724 rf_rx_set_serial
-C:\cygwin\tmp/ccBYJcWy.s:1500   .text:00000752 rf_tx_set_serial
-C:\cygwin\tmp/ccBYJcWy.s:1532   .text:00000774 rf_set_preamble_length
-C:\cygwin\tmp/ccBYJcWy.s:1574   .text:000007ac rf_set_cca_mode
-C:\cygwin\tmp/ccBYJcWy.s:1620   .text:000007ec rf_carrier_on
-C:\cygwin\tmp/ccBYJcWy.s:1640   .text:000007fa rf_carrier_off
-C:\cygwin\tmp/ccBYJcWy.s:1660   .text:00000808 rf_tx_packet
-C:\cygwin\tmp/ccBYJcWy.s:2240   .text:00000afa rf_tx_tdma_packet
-C:\cygwin\tmp/ccBYJcWy.s:2760   .text:00000dae rf_addr_decode_set_my_mac
-C:\cygwin\tmp/ccBYJcWy.s:2824   .text:00000e0c rf_security_set_key
-C:\cygwin\tmp/ccBYJcWy.s:3095   .text:00000fbc rf_power_up
-C:\cygwin\tmp/ccBYJcWy.s:3133   .text:00000fd6 rf_set_rx
-C:\cygwin\tmp/ccBYJcWy.s:3176   .text:00001008 rf_set_channel
-C:\cygwin\tmp/ccBYJcWy.s:3192   .text:0000100e rf_init
-C:\cygwin\tmp/ccBYJcWy.s:3436   .text:0000117c cc259x_tx
-C:\cygwin\tmp/ccBYJcWy.s:3454   .text:0000118e cc259x_rx
+C:\cygwin\tmp/ccmMEiqI.s:1258   .text:00000646 rf_rx_packet
+C:\cygwin\tmp/ccmMEiqI.s:1280   .text:00000658 rf_flush_rx_fifo
+C:\cygwin\tmp/ccmMEiqI.s:1308   .text:00000672 rf_set_cca_thresh
+C:\cygwin\tmp/ccmMEiqI.s:1348   .text:00000698 rf_test_mode
+C:\cygwin\tmp/ccmMEiqI.s:1405   .text:000006e0 rf_data_mode
+C:\cygwin\tmp/ccmMEiqI.s:1460   .text:00000724 rf_rx_set_serial
+C:\cygwin\tmp/ccmMEiqI.s:1500   .text:00000752 rf_tx_set_serial
+C:\cygwin\tmp/ccmMEiqI.s:1532   .text:00000774 rf_set_preamble_length
+C:\cygwin\tmp/ccmMEiqI.s:1574   .text:000007ac rf_set_cca_mode
+C:\cygwin\tmp/ccmMEiqI.s:1620   .text:000007ec rf_carrier_on
+C:\cygwin\tmp/ccmMEiqI.s:1640   .text:000007fa rf_carrier_off
+C:\cygwin\tmp/ccmMEiqI.s:1660   .text:00000808 rf_tx_packet
+C:\cygwin\tmp/ccmMEiqI.s:2240   .text:00000afa rf_tx_tdma_packet
+C:\cygwin\tmp/ccmMEiqI.s:2760   .text:00000dae rf_addr_decode_set_my_mac
+C:\cygwin\tmp/ccmMEiqI.s:2824   .text:00000e0c rf_security_set_key
+C:\cygwin\tmp/ccmMEiqI.s:3095   .text:00000fbc rf_power_up
+C:\cygwin\tmp/ccmMEiqI.s:3133   .text:00000fd6 rf_set_rx
+C:\cygwin\tmp/ccmMEiqI.s:3176   .text:00001008 rf_set_channel
+C:\cygwin\tmp/ccmMEiqI.s:3192   .text:0000100e rf_init
+C:\cygwin\tmp/ccmMEiqI.s:3436   .text:0000117c cc259x_tx
+C:\cygwin\tmp/ccmMEiqI.s:3454   .text:0000118e cc259x_rx
+                            *COM*:00000004 systemCeiling
                             *COM*:00000004 _nrk_signal_list
                             *COM*:00000080 nrk_idle_task_stk
                             *COM*:00000002 nrk_kernel_stk_ptr

@@ -33,6 +33,8 @@
 #include <nrk_scheduler.h>
 #include <nrk_error.h>
 #include <nrk_stack_check.h>
+#include <nrk_defs.h>
+#include <nrk_events.h>
 
 //#define TIME_PAD  2
 
@@ -62,6 +64,9 @@ void nrk_add_to_readyQ (int8_t task_ID)
     nrk_queue *NextNode;
     nrk_queue *CurNode;
 
+
+    NextNode = _head_node;
+    CurNode = _free_node;
     //printf( "nrk_add_to_readyQ %d\n",task_ID );
     // nrk_queue full
     if (_free_node == NULL)
@@ -70,44 +75,40 @@ void nrk_add_to_readyQ (int8_t task_ID)
     }
 
 
-    NextNode = _head_node;
-    CurNode = _free_node;
+ 
 
     if (_head_node != NULL)
     {
+		// System ceiling is being set
+		system_ceiling();
 
-    while (NextNode != NULL) {
+		// Ceiling is being checked with the preemption level
+		if(systemCeiling >= nrk_task_TCB[task_ID].task_prelevel )
+		{
+			while (NextNode != NULL) 
+			{		
 
-	#ifdef NRK_EDF
-    		  
-			 // nrk_kprintf(" NN");
-    		 // nrk_printnum(NextNode->task_ID);
-    		 // nrk_kprintf(":NP:");
-    		 // nrk_printnum(nrk_task_TCB[NextNode->task_ID].next_period);
+					if (nrk_task_TCB[NextNode->task_ID].next_period > nrk_task_TCB[task_ID].next_period)
+					  break;
 
+    				//if((earliestDeadlineID == NRK_IDLE_TASK_ID || nrk_task_TCB[task_ID].next_period < nrk_task_TCB[earliestDeadlineID].next_period) && nrk_task_TCB[task_ID].task_state == READY)
+					//	earliestDeadlineID = task_ID;
 
-			if (NextNode->task_ID == NRK_IDLE_TASK_ID || nrk_task_TCB[NextNode->task_ID].next_period > nrk_task_TCB[task_ID].next_period)
-			  break;
+				  if (nrk_task_TCB[NextNode->task_ID].elevated_prio_flag)
+					if (nrk_task_TCB[NextNode->task_ID].task_prio_ceil <
+						nrk_task_TCB[task_ID].task_prio)
+					  break;
+				  if (nrk_task_TCB[task_ID].elevated_prio_flag)
+					if (nrk_task_TCB[NextNode->task_ID].task_prio <
+						nrk_task_TCB[task_ID].task_prio_ceil)
+					  break;
+				  if (nrk_task_TCB[NextNode->task_ID].task_prio <
+					  nrk_task_TCB[task_ID].task_prio)
+					break;
 
-    		//if((earliestDeadlineID == NRK_IDLE_TASK_ID || nrk_task_TCB[task_ID].next_period < nrk_task_TCB[earliestDeadlineID].next_period) && nrk_task_TCB[task_ID].task_state == READY)
-			//	earliestDeadlineID = task_ID;
-	#else
-		  if (nrk_task_TCB[NextNode->task_ID].elevated_prio_flag)
-			if (nrk_task_TCB[NextNode->task_ID].task_prio_ceil <
-				nrk_task_TCB[task_ID].task_prio)
-			  break;
-		  if (nrk_task_TCB[task_ID].elevated_prio_flag)
-			if (nrk_task_TCB[NextNode->task_ID].task_prio <
-				nrk_task_TCB[task_ID].task_prio_ceil)
-			  break;
-		  if (nrk_task_TCB[NextNode->task_ID].task_prio <
-			  nrk_task_TCB[task_ID].task_prio)
-			break;
-	#endif
-
-            NextNode = NextNode->Next;
-        }
-
+					NextNode = NextNode->Next;
+				}
+		}
 
         //      while ((NextNode != NULL) && ((nrk_task_TCB[NextNode->task_ID].task_prio >= nrk_task_TCB[task_ID].task_prio)|| ) {
         //              NextNode = NextNode->Next;}

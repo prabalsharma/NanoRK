@@ -993,32 +993,34 @@
  1015 05ee EF90      		pop r14
  1016 05f0 0895      		ret
  1017               	.LFE3:
- 1019               		.comm _nrk_signal_list,4,1
- 1020               		.comm nrk_idle_task_stk,128,1
- 1021               		.comm nrk_kernel_stk_ptr,2,1
- 1022               		.comm _nrk_prev_timer_val,1,1
- 1023               		.comm _nrk_time_trigger,1,1
- 1024               		.comm app_timer0_callback,2,1
- 1025               		.comm app_timer0_prescale,1,1
- 1026               		.comm error_task,1,1
- 1027               		.comm error_num,1,1
- 1108               	.Letext0:
+ 1019               		.comm systemCeiling,4,1
+ 1020               		.comm _nrk_signal_list,4,1
+ 1021               		.comm nrk_idle_task_stk,128,1
+ 1022               		.comm nrk_kernel_stk_ptr,2,1
+ 1023               		.comm _nrk_prev_timer_val,1,1
+ 1024               		.comm _nrk_time_trigger,1,1
+ 1025               		.comm app_timer0_callback,2,1
+ 1026               		.comm app_timer0_prescale,1,1
+ 1027               		.comm error_task,1,1
+ 1028               		.comm error_num,1,1
+ 1109               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 nrk_time.c
-C:\cygwin\tmp/ccxwbxrd.s:2      *ABS*:0000003f __SREG__
-C:\cygwin\tmp/ccxwbxrd.s:3      *ABS*:0000003e __SP_H__
-C:\cygwin\tmp/ccxwbxrd.s:4      *ABS*:0000003d __SP_L__
-C:\cygwin\tmp/ccxwbxrd.s:5      *ABS*:00000034 __CCP__
-C:\cygwin\tmp/ccxwbxrd.s:6      *ABS*:00000000 __tmp_reg__
-C:\cygwin\tmp/ccxwbxrd.s:7      *ABS*:00000001 __zero_reg__
-C:\cygwin\tmp/ccxwbxrd.s:18     .text:00000000 nrk_time_sub
-C:\cygwin\tmp/ccxwbxrd.s:188    .text:00000118 nrk_time_add
-C:\cygwin\tmp/ccxwbxrd.s:334    .text:0000020a nrk_time_compact_nanos
-C:\cygwin\tmp/ccxwbxrd.s:387    .text:0000024e nrk_time_set
-C:\cygwin\tmp/ccxwbxrd.s:410    .text:00000270 _nrk_time_to_ticks
-C:\cygwin\tmp/ccxwbxrd.s:632    .text:000003a0 _nrk_ticks_to_time
-C:\cygwin\tmp/ccxwbxrd.s:704    .text:00000414 _nrk_time_to_ticks_long
-C:\cygwin\tmp/ccxwbxrd.s:913    .text:00000534 nrk_time_get
+C:\cygwin\tmp/ccPy9ltH.s:2      *ABS*:0000003f __SREG__
+C:\cygwin\tmp/ccPy9ltH.s:3      *ABS*:0000003e __SP_H__
+C:\cygwin\tmp/ccPy9ltH.s:4      *ABS*:0000003d __SP_L__
+C:\cygwin\tmp/ccPy9ltH.s:5      *ABS*:00000034 __CCP__
+C:\cygwin\tmp/ccPy9ltH.s:6      *ABS*:00000000 __tmp_reg__
+C:\cygwin\tmp/ccPy9ltH.s:7      *ABS*:00000001 __zero_reg__
+C:\cygwin\tmp/ccPy9ltH.s:18     .text:00000000 nrk_time_sub
+C:\cygwin\tmp/ccPy9ltH.s:188    .text:00000118 nrk_time_add
+C:\cygwin\tmp/ccPy9ltH.s:334    .text:0000020a nrk_time_compact_nanos
+C:\cygwin\tmp/ccPy9ltH.s:387    .text:0000024e nrk_time_set
+C:\cygwin\tmp/ccPy9ltH.s:410    .text:00000270 _nrk_time_to_ticks
+C:\cygwin\tmp/ccPy9ltH.s:632    .text:000003a0 _nrk_ticks_to_time
+C:\cygwin\tmp/ccPy9ltH.s:704    .text:00000414 _nrk_time_to_ticks_long
+C:\cygwin\tmp/ccPy9ltH.s:913    .text:00000534 nrk_time_get
+                            *COM*:00000004 systemCeiling
                             *COM*:00000004 _nrk_signal_list
                             *COM*:00000080 nrk_idle_task_stk
                             *COM*:00000002 nrk_kernel_stk_ptr

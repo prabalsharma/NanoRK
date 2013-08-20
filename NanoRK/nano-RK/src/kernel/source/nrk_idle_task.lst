@@ -55,29 +55,31 @@
   63 0046 0E94 0000 		call nrk_error_add
   64 004a 00C0      		rjmp .L9
   65               	.LFE3:
-  67               		.comm _nrk_signal_list,4,1
-  68               		.comm nrk_idle_task_stk,128,1
-  69               		.comm nrk_kernel_stk_ptr,2,1
-  70               		.comm error_task,1,1
-  71               		.comm error_num,1,1
-  72               		.comm _nrk_prev_timer_val,1,1
-  73               		.comm _nrk_time_trigger,1,1
-  74               		.comm app_timer0_callback,2,1
-  75               		.comm app_timer0_prescale,1,1
-  76               		.comm _nrk_cpu_state,1,1
-  77               		.comm next_next_wakeup,2,1
- 102               	.Letext0:
+  67               		.comm systemCeiling,4,1
+  68               		.comm _nrk_signal_list,4,1
+  69               		.comm nrk_idle_task_stk,128,1
+  70               		.comm nrk_kernel_stk_ptr,2,1
+  71               		.comm error_task,1,1
+  72               		.comm error_num,1,1
+  73               		.comm _nrk_prev_timer_val,1,1
+  74               		.comm _nrk_time_trigger,1,1
+  75               		.comm app_timer0_callback,2,1
+  76               		.comm app_timer0_prescale,1,1
+  77               		.comm _nrk_cpu_state,1,1
+  78               		.comm next_next_wakeup,2,1
+ 103               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 nrk_idle_task.c
-C:\cygwin\tmp/cccv6obm.s:2      *ABS*:0000003f __SREG__
-C:\cygwin\tmp/cccv6obm.s:3      *ABS*:0000003e __SP_H__
-C:\cygwin\tmp/cccv6obm.s:4      *ABS*:0000003d __SP_L__
-C:\cygwin\tmp/cccv6obm.s:5      *ABS*:00000034 __CCP__
-C:\cygwin\tmp/cccv6obm.s:6      *ABS*:00000000 __tmp_reg__
-C:\cygwin\tmp/cccv6obm.s:7      *ABS*:00000001 __zero_reg__
-C:\cygwin\tmp/cccv6obm.s:18     .text:00000000 nrk_idle_task
+C:\cygwin\tmp/ccng2HQ2.s:2      *ABS*:0000003f __SREG__
+C:\cygwin\tmp/ccng2HQ2.s:3      *ABS*:0000003e __SP_H__
+C:\cygwin\tmp/ccng2HQ2.s:4      *ABS*:0000003d __SP_L__
+C:\cygwin\tmp/ccng2HQ2.s:5      *ABS*:00000034 __CCP__
+C:\cygwin\tmp/ccng2HQ2.s:6      *ABS*:00000000 __tmp_reg__
+C:\cygwin\tmp/ccng2HQ2.s:7      *ABS*:00000001 __zero_reg__
+C:\cygwin\tmp/ccng2HQ2.s:18     .text:00000000 nrk_idle_task
                             *COM*:00000001 _nrk_cpu_state
                             *COM*:00000080 nrk_idle_task_stk
+                            *COM*:00000004 systemCeiling
                             *COM*:00000004 _nrk_signal_list
                             *COM*:00000002 nrk_kernel_stk_ptr
                             *COM*:00000001 error_task

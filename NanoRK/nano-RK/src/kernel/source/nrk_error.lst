@@ -401,8 +401,8 @@
  423 01fe 01F4      		brne .+2
  424 0200 00C0      		rjmp .L48
  425               	.LM71:
- 426 0202 80E0      		ldi r24,lo8(__c.2110)
- 427 0204 90E0      		ldi r25,hi8(__c.2110)
+ 426 0202 80E0      		ldi r24,lo8(__c.2114)
+ 427 0204 90E0      		ldi r25,hi8(__c.2114)
  428 0206 0E94 0000 		call nrk_kprintf
  429               	.LM72:
  430 020a 00D0      		rcall .
@@ -427,8 +427,8 @@
  449 0232 0F90      		pop __tmp_reg__
  450 0234 0F90      		pop __tmp_reg__
  451 0236 0F90      		pop __tmp_reg__
- 452 0238 80E0      		ldi r24,lo8(__c.2112)
- 453 023a 90E0      		ldi r25,hi8(__c.2112)
+ 452 0238 80E0      		ldi r24,lo8(__c.2116)
+ 453 023a 90E0      		ldi r25,hi8(__c.2116)
  454 023c 0E94 0000 		call nrk_kprintf
  455               	.LM74:
  456 0240 8091 0000 		lds r24,error_num
@@ -486,118 +486,118 @@
  508               		.text
  509               	.L72:
  510               	.LM77:
- 511 026e 80E0      		ldi r24,lo8(__c.2115)
- 512 0270 90E0      		ldi r25,hi8(__c.2115)
+ 511 026e 80E0      		ldi r24,lo8(__c.2119)
+ 512 0270 90E0      		ldi r25,hi8(__c.2119)
  513 0272 00C0      		rjmp .L78
  514               	.L67:
  515               	.LM78:
- 516 0274 80E0      		ldi r24,lo8(__c.2119)
- 517 0276 90E0      		ldi r25,hi8(__c.2119)
+ 516 0274 80E0      		ldi r24,lo8(__c.2123)
+ 517 0276 90E0      		ldi r25,hi8(__c.2123)
  518 0278 00C0      		rjmp .L78
  519               	.L51:
  520               	.LM79:
- 521 027a 80E0      		ldi r24,lo8(__c.2122)
- 522 027c 90E0      		ldi r25,hi8(__c.2122)
+ 521 027a 80E0      		ldi r24,lo8(__c.2126)
+ 522 027c 90E0      		ldi r25,hi8(__c.2126)
  523 027e 00C0      		rjmp .L78
  524               	.L68:
  525               	.LM80:
- 526 0280 80E0      		ldi r24,lo8(__c.2125)
- 527 0282 90E0      		ldi r25,hi8(__c.2125)
+ 526 0280 80E0      		ldi r24,lo8(__c.2129)
+ 527 0282 90E0      		ldi r25,hi8(__c.2129)
  528 0284 00C0      		rjmp .L78
  529               	.L52:
  530               	.LM81:
- 531 0286 80E0      		ldi r24,lo8(__c.2128)
- 532 0288 90E0      		ldi r25,hi8(__c.2128)
+ 531 0286 80E0      		ldi r24,lo8(__c.2132)
+ 532 0288 90E0      		ldi r25,hi8(__c.2132)
  533 028a 00C0      		rjmp .L78
  534               	.L53:
  535               	.LM82:
- 536 028c 80E0      		ldi r24,lo8(__c.2131)
- 537 028e 90E0      		ldi r25,hi8(__c.2131)
+ 536 028c 80E0      		ldi r24,lo8(__c.2135)
+ 537 028e 90E0      		ldi r25,hi8(__c.2135)
  538 0290 00C0      		rjmp .L78
  539               	.L54:
  540               	.LM83:
- 541 0292 80E0      		ldi r24,lo8(__c.2134)
- 542 0294 90E0      		ldi r25,hi8(__c.2134)
+ 541 0292 80E0      		ldi r24,lo8(__c.2138)
+ 542 0294 90E0      		ldi r25,hi8(__c.2138)
  543 0296 00C0      		rjmp .L78
  544               	.L55:
  545               	.LM84:
- 546 0298 80E0      		ldi r24,lo8(__c.2137)
- 547 029a 90E0      		ldi r25,hi8(__c.2137)
+ 546 0298 80E0      		ldi r24,lo8(__c.2141)
+ 547 029a 90E0      		ldi r25,hi8(__c.2141)
  548 029c 00C0      		rjmp .L78
  549               	.L56:
  550               	.LM85:
- 551 029e 80E0      		ldi r24,lo8(__c.2140)
- 552 02a0 90E0      		ldi r25,hi8(__c.2140)
+ 551 029e 80E0      		ldi r24,lo8(__c.2144)
+ 552 02a0 90E0      		ldi r25,hi8(__c.2144)
  553 02a2 00C0      		rjmp .L78
  554               	.L58:
  555               	.LM86:
- 556 02a4 80E0      		ldi r24,lo8(__c.2143)
- 557 02a6 90E0      		ldi r25,hi8(__c.2143)
+ 556 02a4 80E0      		ldi r24,lo8(__c.2147)
+ 557 02a6 90E0      		ldi r25,hi8(__c.2147)
  558 02a8 00C0      		rjmp .L78
  559               	.L57:
  560               	.LM87:
- 561 02aa 80E0      		ldi r24,lo8(__c.2146)
- 562 02ac 90E0      		ldi r25,hi8(__c.2146)
+ 561 02aa 80E0      		ldi r24,lo8(__c.2150)
+ 562 02ac 90E0      		ldi r25,hi8(__c.2150)
  563 02ae 00C0      		rjmp .L78
  564               	.L59:
  565               	.LM88:
- 566 02b0 80E0      		ldi r24,lo8(__c.2149)
- 567 02b2 90E0      		ldi r25,hi8(__c.2149)
+ 566 02b0 80E0      		ldi r24,lo8(__c.2153)
+ 567 02b2 90E0      		ldi r25,hi8(__c.2153)
  568 02b4 00C0      		rjmp .L78
  569               	.L60:
  570               	.LM89:
- 571 02b6 80E0      		ldi r24,lo8(__c.2152)
- 572 02b8 90E0      		ldi r25,hi8(__c.2152)
+ 571 02b6 80E0      		ldi r24,lo8(__c.2156)
+ 572 02b8 90E0      		ldi r25,hi8(__c.2156)
  573 02ba 00C0      		rjmp .L78
  574               	.L61:
  575               	.LM90:
- 576 02bc 80E0      		ldi r24,lo8(__c.2155)
- 577 02be 90E0      		ldi r25,hi8(__c.2155)
+ 576 02bc 80E0      		ldi r24,lo8(__c.2159)
+ 577 02be 90E0      		ldi r25,hi8(__c.2159)
  578 02c0 00C0      		rjmp .L78
  579               	.L71:
  580               	.LM91:
- 581 02c2 80E0      		ldi r24,lo8(__c.2158)
- 582 02c4 90E0      		ldi r25,hi8(__c.2158)
+ 581 02c2 80E0      		ldi r24,lo8(__c.2162)
+ 582 02c4 90E0      		ldi r25,hi8(__c.2162)
  583 02c6 00C0      		rjmp .L78
  584               	.L66:
  585               	.LM92:
- 586 02c8 80E0      		ldi r24,lo8(__c.2161)
- 587 02ca 90E0      		ldi r25,hi8(__c.2161)
+ 586 02c8 80E0      		ldi r24,lo8(__c.2165)
+ 587 02ca 90E0      		ldi r25,hi8(__c.2165)
  588 02cc 00C0      		rjmp .L78
  589               	.L62:
  590               	.LM93:
- 591 02ce 80E0      		ldi r24,lo8(__c.2164)
- 592 02d0 90E0      		ldi r25,hi8(__c.2164)
+ 591 02ce 80E0      		ldi r24,lo8(__c.2168)
+ 592 02d0 90E0      		ldi r25,hi8(__c.2168)
  593 02d2 00C0      		rjmp .L78
  594               	.L63:
  595               	.LM94:
- 596 02d4 80E0      		ldi r24,lo8(__c.2167)
- 597 02d6 90E0      		ldi r25,hi8(__c.2167)
+ 596 02d4 80E0      		ldi r24,lo8(__c.2171)
+ 597 02d6 90E0      		ldi r25,hi8(__c.2171)
  598 02d8 00C0      		rjmp .L78
  599               	.L64:
  600               	.LM95:
- 601 02da 80E0      		ldi r24,lo8(__c.2170)
- 602 02dc 90E0      		ldi r25,hi8(__c.2170)
+ 601 02da 80E0      		ldi r24,lo8(__c.2174)
+ 602 02dc 90E0      		ldi r25,hi8(__c.2174)
  603 02de 00C0      		rjmp .L78
  604               	.L65:
  605               	.LM96:
- 606 02e0 80E0      		ldi r24,lo8(__c.2173)
- 607 02e2 90E0      		ldi r25,hi8(__c.2173)
+ 606 02e0 80E0      		ldi r24,lo8(__c.2177)
+ 607 02e2 90E0      		ldi r25,hi8(__c.2177)
  608 02e4 00C0      		rjmp .L78
  609               	.L69:
  610               	.LM97:
- 611 02e6 80E0      		ldi r24,lo8(__c.2176)
- 612 02e8 90E0      		ldi r25,hi8(__c.2176)
+ 611 02e6 80E0      		ldi r24,lo8(__c.2180)
+ 612 02e8 90E0      		ldi r25,hi8(__c.2180)
  613 02ea 00C0      		rjmp .L78
  614               	.L70:
  615               	.LM98:
- 616 02ec 80E0      		ldi r24,lo8(__c.2179)
- 617 02ee 90E0      		ldi r25,hi8(__c.2179)
+ 616 02ec 80E0      		ldi r24,lo8(__c.2183)
+ 617 02ee 90E0      		ldi r25,hi8(__c.2183)
  618 02f0 00C0      		rjmp .L78
  619               	.L50:
  620               	.LM99:
- 621 02f2 80E0      		ldi r24,lo8(__c.2182)
- 622 02f4 90E0      		ldi r25,hi8(__c.2182)
+ 621 02f2 80E0      		ldi r24,lo8(__c.2186)
+ 622 02f4 90E0      		ldi r25,hi8(__c.2186)
  623               	.L78:
  624 02f6 0E94 0000 		call nrk_kprintf
  625               	.LM100:
@@ -818,201 +818,203 @@
  846 0480 0895      		ret
  847               	.LFE6:
  849               		.section	.progmem.data,"a",@progbits
- 852               	__c.2182:
+ 852               	__c.2186:
  853 0000 554E 4B4F 		.string	"UNKOWN"
  853      574E 00
- 856               	__c.2179:
+ 856               	__c.2183:
  857 0007 4578 7465 		.string	"External Reset"
  857      726E 616C 
  857      2052 6573 
  857      6574 00
- 860               	__c.2176:
+ 860               	__c.2180:
  861 0016 4272 6F77 		.string	"Brown Out Detect"
  861      6E20 4F75 
  861      7420 4465 
  861      7465 6374 
  861      00
- 864               	__c.2173:
+ 864               	__c.2177:
  865 0027 4661 696C 		.string	"Failed to create Semaphore"
  865      6564 2074 
  865      6F20 6372 
  865      6561 7465 
  865      2053 656D 
- 868               	__c.2170:
+ 868               	__c.2174:
  869 0042 4661 696C 		.string	"Failed to create Signal"
  869      6564 2074 
  869      6F20 6372 
  869      6561 7465 
  869      2053 6967 
- 872               	__c.2167:
+ 872               	__c.2171:
  873 005a 4B65 726E 		.string	"Kernel function not implemented"
  873      656C 2066 
  873      756E 6374 
  873      696F 6E20 
  873      6E6F 7420 
- 876               	__c.2164:
+ 876               	__c.2168:
  877 007a 4465 7669 		.string	"Device Driver Error"
  877      6365 2044 
  877      7269 7665 
  877      7220 4572 
  877      726F 7200 
- 880               	__c.2161:
+ 880               	__c.2165:
  881 008e 5761 7463 		.string	"Watchdog Restart"
  881      6864 6F67 
  881      2052 6573 
  881      7461 7274 
  881      00
- 884               	__c.2158:
+ 884               	__c.2162:
  885 009f 5357 2057 		.string	"SW Watchdog Restart"
  885      6174 6368 
  885      646F 6720 
  885      5265 7374 
  885      6172 7400 
- 888               	__c.2155:
+ 888               	__c.2159:
  889 00b3 5469 6D65 		.string	"Timer Overflow"
  889      7220 4F76 
  889      6572 666C 
  889      6F77 00
- 892               	__c.2152:
+ 892               	__c.2156:
  893 00c2 556E 6861 		.string	"Unhandled Interrupt Vector"
  893      6E64 6C65 
  893      6420 496E 
  893      7465 7272 
  893      7570 7420 
- 896               	__c.2149:
+ 896               	__c.2153:
  897 00dd 4C6F 7720 		.string	"Low Voltage"
  897      566F 6C74 
  897      6167 6500 
- 900               	__c.2146:
+ 900               	__c.2150:
  901 00e9 4578 7472 		.string	"Extra Task started, is nrk_cfg.h ok?"
  901      6120 5461 
  901      736B 2073 
  901      7461 7274 
  901      6564 2C20 
- 904               	__c.2143:
+ 904               	__c.2147:
  905 010e 4964 6C65 		.string	"Idle or Kernel Stack Overflow"
  905      206F 7220 
  905      4B65 726E 
  905      656C 2053 
  905      7461 636B 
- 908               	__c.2140:
+ 908               	__c.2144:
  909 012c 556E 6578 		.string	"Unexpected Restart"
  909      7065 6374 
  909      6564 2052 
  909      6573 7461 
  909      7274 00
- 912               	__c.2137:
+ 912               	__c.2141:
  913 013f 4475 706C 		.string	"Duplicated Task ID"
  913      6963 6174 
  913      6564 2054 
  913      6173 6B20 
  913      4944 00
- 916               	__c.2134:
+ 916               	__c.2138:
  917 0152 5363 6865 		.string	"Scheduler Missed Wakeup"
  917      6475 6C65 
  917      7220 4D69 
  917      7373 6564 
  917      2057 616B 
- 920               	__c.2131:
+ 920               	__c.2135:
  921 016a 5461 736B 		.string	"Task Reserve Violated"
  921      2052 6573 
  921      6572 7665 
  921      2056 696F 
  921      6C61 7465 
- 924               	__c.2128:
+ 924               	__c.2132:
  925 0180 5265 7365 		.string	"Reserve Error in Scheduler"
  925      7276 6520 
  925      4572 726F 
  925      7220 696E 
  925      2053 6368 
- 928               	__c.2125:
+ 928               	__c.2129:
  929 019b 496E 7661 		.string	"Invalid Stack Pointer"
  929      6C69 6420 
  929      5374 6163 
  929      6B20 506F 
  929      696E 7465 
- 932               	__c.2122:
+ 932               	__c.2126:
  933 01b1 5461 736B 		.string	"Task Stack Overflow"
  933      2053 7461 
  933      636B 204F 
  933      7665 7266 
  933      6C6F 7700 
- 936               	__c.2119:
+ 936               	__c.2123:
  937 01c5 5374 6163 		.string	"Stack was not defined as large enough!"
  937      6B20 7761 
  937      7320 6E6F 
  937      7420 6465 
  937      6669 6E65 
- 940               	__c.2115:
+ 940               	__c.2119:
  941 01ec 5461 736B 		.string	"Task period too large. Period must be less than 61 seconds."
  941      2070 6572 
  941      696F 6420 
  941      746F 6F20 
  941      6C61 7267 
- 944               	__c.2112:
+ 944               	__c.2116:
  945 0228 293A 2000 		.string	"): "
- 948               	__c.2110:
+ 948               	__c.2114:
  949 022c 2A4E 524B 		.string	"*NRK ERROR("
  949      2045 5252 
  949      4F52 2800 
  950               		.lcomm error_cnt,1
- 951               		.comm _nrk_signal_list,4,1
- 952               		.comm error_task,1,1
- 953               		.comm error_num,1,1
- 954               		.comm nrk_idle_task_stk,128,1
- 955               		.comm nrk_kernel_stk_ptr,2,1
- 956               		.comm _nrk_prev_timer_val,1,1
- 957               		.comm _nrk_time_trigger,1,1
- 958               		.comm app_timer0_callback,2,1
- 959               		.comm app_timer0_prescale,1,1
- 1064               	.Letext0:
+ 951               		.comm systemCeiling,4,1
+ 952               		.comm _nrk_signal_list,4,1
+ 953               		.comm error_task,1,1
+ 954               		.comm error_num,1,1
+ 955               		.comm nrk_idle_task_stk,128,1
+ 956               		.comm nrk_kernel_stk_ptr,2,1
+ 957               		.comm _nrk_prev_timer_val,1,1
+ 958               		.comm _nrk_time_trigger,1,1
+ 959               		.comm app_timer0_callback,2,1
+ 960               		.comm app_timer0_prescale,1,1
+ 1065               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 nrk_error.c
-C:\cygwin\tmp/cc4jFwLH.s:2      *ABS*:0000003f __SREG__
-C:\cygwin\tmp/cc4jFwLH.s:3      *ABS*:0000003e __SP_H__
-C:\cygwin\tmp/cc4jFwLH.s:4      *ABS*:0000003d __SP_L__
-C:\cygwin\tmp/cc4jFwLH.s:5      *ABS*:00000034 __CCP__
-C:\cygwin\tmp/cc4jFwLH.s:6      *ABS*:00000000 __tmp_reg__
-C:\cygwin\tmp/cc4jFwLH.s:7      *ABS*:00000001 __zero_reg__
-C:\cygwin\tmp/cc4jFwLH.s:18     .text:00000000 _nrk_errno_set
-C:\cygwin\tmp/cc4jFwLH.s:35     .text:0000000c nrk_errno_get
-C:\cygwin\tmp/cc4jFwLH.s:51     .text:00000018 nrk_error_get
+C:\cygwin\tmp/ccFW1s4f.s:2      *ABS*:0000003f __SREG__
+C:\cygwin\tmp/ccFW1s4f.s:3      *ABS*:0000003e __SP_H__
+C:\cygwin\tmp/ccFW1s4f.s:4      *ABS*:0000003d __SP_L__
+C:\cygwin\tmp/ccFW1s4f.s:5      *ABS*:00000034 __CCP__
+C:\cygwin\tmp/ccFW1s4f.s:6      *ABS*:00000000 __tmp_reg__
+C:\cygwin\tmp/ccFW1s4f.s:7      *ABS*:00000001 __zero_reg__
+C:\cygwin\tmp/ccFW1s4f.s:18     .text:00000000 _nrk_errno_set
+C:\cygwin\tmp/ccFW1s4f.s:35     .text:0000000c nrk_errno_get
+C:\cygwin\tmp/ccFW1s4f.s:51     .text:00000018 nrk_error_get
                             *COM*:00000001 error_num
                             *COM*:00000001 error_task
-C:\cygwin\tmp/cc4jFwLH.s:78     .text:00000030 pause
-C:\cygwin\tmp/cc4jFwLH.s:116    .text:0000005a blink_dot
-C:\cygwin\tmp/cc4jFwLH.s:140    .text:00000074 blink_dash
-C:\cygwin\tmp/cc4jFwLH.s:172    .text:00000096 blink_morse_code_error
-C:\cygwin\tmp/cc4jFwLH.s:415    .text:000001f8 nrk_error_print
-C:\cygwin\tmp/cc4jFwLH.s:948    .progmem.data:0000022c __c.2110
-C:\cygwin\tmp/cc4jFwLH.s:944    .progmem.data:00000228 __c.2112
-C:\cygwin\tmp/cc4jFwLH.s:940    .progmem.data:000001ec __c.2115
-C:\cygwin\tmp/cc4jFwLH.s:936    .progmem.data:000001c5 __c.2119
-C:\cygwin\tmp/cc4jFwLH.s:932    .progmem.data:000001b1 __c.2122
-C:\cygwin\tmp/cc4jFwLH.s:928    .progmem.data:0000019b __c.2125
-C:\cygwin\tmp/cc4jFwLH.s:924    .progmem.data:00000180 __c.2128
-C:\cygwin\tmp/cc4jFwLH.s:920    .progmem.data:0000016a __c.2131
-C:\cygwin\tmp/cc4jFwLH.s:916    .progmem.data:00000152 __c.2134
-C:\cygwin\tmp/cc4jFwLH.s:912    .progmem.data:0000013f __c.2137
-C:\cygwin\tmp/cc4jFwLH.s:908    .progmem.data:0000012c __c.2140
-C:\cygwin\tmp/cc4jFwLH.s:904    .progmem.data:0000010e __c.2143
-C:\cygwin\tmp/cc4jFwLH.s:900    .progmem.data:000000e9 __c.2146
-C:\cygwin\tmp/cc4jFwLH.s:896    .progmem.data:000000dd __c.2149
-C:\cygwin\tmp/cc4jFwLH.s:892    .progmem.data:000000c2 __c.2152
-C:\cygwin\tmp/cc4jFwLH.s:888    .progmem.data:000000b3 __c.2155
-C:\cygwin\tmp/cc4jFwLH.s:884    .progmem.data:0000009f __c.2158
-C:\cygwin\tmp/cc4jFwLH.s:880    .progmem.data:0000008e __c.2161
-C:\cygwin\tmp/cc4jFwLH.s:876    .progmem.data:0000007a __c.2164
-C:\cygwin\tmp/cc4jFwLH.s:872    .progmem.data:0000005a __c.2167
-C:\cygwin\tmp/cc4jFwLH.s:868    .progmem.data:00000042 __c.2170
-C:\cygwin\tmp/cc4jFwLH.s:864    .progmem.data:00000027 __c.2173
-C:\cygwin\tmp/cc4jFwLH.s:860    .progmem.data:00000016 __c.2176
-C:\cygwin\tmp/cc4jFwLH.s:856    .progmem.data:00000007 __c.2179
-C:\cygwin\tmp/cc4jFwLH.s:852    .progmem.data:00000000 __c.2182
-C:\cygwin\tmp/cc4jFwLH.s:663    .text:0000033c _nrk_log_error
+C:\cygwin\tmp/ccFW1s4f.s:78     .text:00000030 pause
+C:\cygwin\tmp/ccFW1s4f.s:116    .text:0000005a blink_dot
+C:\cygwin\tmp/ccFW1s4f.s:140    .text:00000074 blink_dash
+C:\cygwin\tmp/ccFW1s4f.s:172    .text:00000096 blink_morse_code_error
+C:\cygwin\tmp/ccFW1s4f.s:415    .text:000001f8 nrk_error_print
+C:\cygwin\tmp/ccFW1s4f.s:948    .progmem.data:0000022c __c.2114
+C:\cygwin\tmp/ccFW1s4f.s:944    .progmem.data:00000228 __c.2116
+C:\cygwin\tmp/ccFW1s4f.s:940    .progmem.data:000001ec __c.2119
+C:\cygwin\tmp/ccFW1s4f.s:936    .progmem.data:000001c5 __c.2123
+C:\cygwin\tmp/ccFW1s4f.s:932    .progmem.data:000001b1 __c.2126
+C:\cygwin\tmp/ccFW1s4f.s:928    .progmem.data:0000019b __c.2129
+C:\cygwin\tmp/ccFW1s4f.s:924    .progmem.data:00000180 __c.2132
+C:\cygwin\tmp/ccFW1s4f.s:920    .progmem.data:0000016a __c.2135
+C:\cygwin\tmp/ccFW1s4f.s:916    .progmem.data:00000152 __c.2138
+C:\cygwin\tmp/ccFW1s4f.s:912    .progmem.data:0000013f __c.2141
+C:\cygwin\tmp/ccFW1s4f.s:908    .progmem.data:0000012c __c.2144
+C:\cygwin\tmp/ccFW1s4f.s:904    .progmem.data:0000010e __c.2147
+C:\cygwin\tmp/ccFW1s4f.s:900    .progmem.data:000000e9 __c.2150
+C:\cygwin\tmp/ccFW1s4f.s:896    .progmem.data:000000dd __c.2153
+C:\cygwin\tmp/ccFW1s4f.s:892    .progmem.data:000000c2 __c.2156
+C:\cygwin\tmp/ccFW1s4f.s:888    .progmem.data:000000b3 __c.2159
+C:\cygwin\tmp/ccFW1s4f.s:884    .progmem.data:0000009f __c.2162
+C:\cygwin\tmp/ccFW1s4f.s:880    .progmem.data:0000008e __c.2165
+C:\cygwin\tmp/ccFW1s4f.s:876    .progmem.data:0000007a __c.2168
+C:\cygwin\tmp/ccFW1s4f.s:872    .progmem.data:0000005a __c.2171
+C:\cygwin\tmp/ccFW1s4f.s:868    .progmem.data:00000042 __c.2174
+C:\cygwin\tmp/ccFW1s4f.s:864    .progmem.data:00000027 __c.2177
+C:\cygwin\tmp/ccFW1s4f.s:860    .progmem.data:00000016 __c.2180
+C:\cygwin\tmp/ccFW1s4f.s:856    .progmem.data:00000007 __c.2183
+C:\cygwin\tmp/ccFW1s4f.s:852    .progmem.data:00000000 __c.2186
+C:\cygwin\tmp/ccFW1s4f.s:663    .text:0000033c _nrk_log_error
                              .bss:00000000 error_cnt
-C:\cygwin\tmp/cc4jFwLH.s:786    .text:00000438 nrk_kernel_error_add
-C:\cygwin\tmp/cc4jFwLH.s:826    .text:00000466 nrk_error_add
+C:\cygwin\tmp/ccFW1s4f.s:786    .text:00000438 nrk_kernel_error_add
+C:\cygwin\tmp/ccFW1s4f.s:826    .text:00000466 nrk_error_add
+                            *COM*:00000004 systemCeiling
                             *COM*:00000004 _nrk_signal_list
                             *COM*:00000080 nrk_idle_task_stk
                             *COM*:00000002 nrk_kernel_stk_ptr

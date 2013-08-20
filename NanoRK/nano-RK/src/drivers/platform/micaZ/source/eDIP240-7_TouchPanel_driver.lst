@@ -1460,30 +1460,32 @@
  1490               	.LM133:
  1491 0826 0895      		ret
  1492               	.LFE13:
- 1494               		.comm _nrk_signal_list,4,1
- 1495               		.comm nrk_idle_task_stk,128,1
- 1496               		.comm nrk_kernel_stk_ptr,2,1
- 1609               	.Letext0:
+ 1494               		.comm systemCeiling,4,1
+ 1495               		.comm _nrk_signal_list,4,1
+ 1496               		.comm nrk_idle_task_stk,128,1
+ 1497               		.comm nrk_kernel_stk_ptr,2,1
+ 1610               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 eDIP240-7_TouchPanel_driver.c
-C:\cygwin\tmp/ccJ5zNSJ.s:2      *ABS*:0000003f __SREG__
-C:\cygwin\tmp/ccJ5zNSJ.s:3      *ABS*:0000003e __SP_H__
-C:\cygwin\tmp/ccJ5zNSJ.s:4      *ABS*:0000003d __SP_L__
-C:\cygwin\tmp/ccJ5zNSJ.s:5      *ABS*:00000034 __CCP__
-C:\cygwin\tmp/ccJ5zNSJ.s:6      *ABS*:00000000 __tmp_reg__
-C:\cygwin\tmp/ccJ5zNSJ.s:7      *ABS*:00000001 __zero_reg__
-C:\cygwin\tmp/ccJ5zNSJ.s:18     .text:00000000 USART0_getchar
-C:\cygwin\tmp/ccJ5zNSJ.s:47     .text:00000024 USART0_putchar
-C:\cygwin\tmp/ccJ5zNSJ.s:66     .text:00000034 eDIP240_7_Display_deselect
-C:\cygwin\tmp/ccJ5zNSJ.s:196    .text:000000fc eDIP240_7_Display_select
-C:\cygwin\tmp/ccJ5zNSJ.s:326    .text:000001c4 eDIP240_7_Display_repeat_last_packet
-C:\cygwin\tmp/ccJ5zNSJ.s:508    .text:000002c4 eDIP240_7_Display_get_protocoll_info
-C:\cygwin\tmp/ccJ5zNSJ.s:729    .text:00000400 eDIP240_7_Display_set_protocol
-C:\cygwin\tmp/ccJ5zNSJ.s:865    .text:000004d0 eDIP240_7_Display_request_buffer_info
-C:\cygwin\tmp/ccJ5zNSJ.s:1076   .text:000005fc eDIP240_7_Display_get_buffer
-C:\cygwin\tmp/ccJ5zNSJ.s:1295   .text:00000724 eDIP240_7_Display_send_packet
-C:\cygwin\tmp/ccJ5zNSJ.s:1450   .text:00000800 eDIP240_7_Display_send_string_with_NULL
-C:\cygwin\tmp/ccJ5zNSJ.s:1472   .text:00000812 eDIP240_7_Display_send_string
+C:\cygwin\tmp/ccCv4nnf.s:2      *ABS*:0000003f __SREG__
+C:\cygwin\tmp/ccCv4nnf.s:3      *ABS*:0000003e __SP_H__
+C:\cygwin\tmp/ccCv4nnf.s:4      *ABS*:0000003d __SP_L__
+C:\cygwin\tmp/ccCv4nnf.s:5      *ABS*:00000034 __CCP__
+C:\cygwin\tmp/ccCv4nnf.s:6      *ABS*:00000000 __tmp_reg__
+C:\cygwin\tmp/ccCv4nnf.s:7      *ABS*:00000001 __zero_reg__
+C:\cygwin\tmp/ccCv4nnf.s:18     .text:00000000 USART0_getchar
+C:\cygwin\tmp/ccCv4nnf.s:47     .text:00000024 USART0_putchar
+C:\cygwin\tmp/ccCv4nnf.s:66     .text:00000034 eDIP240_7_Display_deselect
+C:\cygwin\tmp/ccCv4nnf.s:196    .text:000000fc eDIP240_7_Display_select
+C:\cygwin\tmp/ccCv4nnf.s:326    .text:000001c4 eDIP240_7_Display_repeat_last_packet
+C:\cygwin\tmp/ccCv4nnf.s:508    .text:000002c4 eDIP240_7_Display_get_protocoll_info
+C:\cygwin\tmp/ccCv4nnf.s:729    .text:00000400 eDIP240_7_Display_set_protocol
+C:\cygwin\tmp/ccCv4nnf.s:865    .text:000004d0 eDIP240_7_Display_request_buffer_info
+C:\cygwin\tmp/ccCv4nnf.s:1076   .text:000005fc eDIP240_7_Display_get_buffer
+C:\cygwin\tmp/ccCv4nnf.s:1295   .text:00000724 eDIP240_7_Display_send_packet
+C:\cygwin\tmp/ccCv4nnf.s:1450   .text:00000800 eDIP240_7_Display_send_string_with_NULL
+C:\cygwin\tmp/ccCv4nnf.s:1472   .text:00000812 eDIP240_7_Display_send_string
+                            *COM*:00000004 systemCeiling
                             *COM*:00000004 _nrk_signal_list
                             *COM*:00000080 nrk_idle_task_stk
                             *COM*:00000002 nrk_kernel_stk_ptr

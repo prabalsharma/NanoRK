@@ -67,17 +67,19 @@
   75               	/* #NOAPP */
   76 0032 0895      		ret
   77               	.LFE3:
-  79               		.comm _nrk_signal_list,4,1
- 104               	.Letext0:
+  79               		.comm systemCeiling,4,1
+  80               		.comm _nrk_signal_list,4,1
+ 105               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 hal_rf_set_channel.c
-C:\cygwin\tmp/ccqTGTt3.s:2      *ABS*:0000003f __SREG__
-C:\cygwin\tmp/ccqTGTt3.s:3      *ABS*:0000003e __SP_H__
-C:\cygwin\tmp/ccqTGTt3.s:4      *ABS*:0000003d __SP_L__
-C:\cygwin\tmp/ccqTGTt3.s:5      *ABS*:00000034 __CCP__
-C:\cygwin\tmp/ccqTGTt3.s:6      *ABS*:00000000 __tmp_reg__
-C:\cygwin\tmp/ccqTGTt3.s:7      *ABS*:00000001 __zero_reg__
-C:\cygwin\tmp/ccqTGTt3.s:18     .text:00000000 halRfSetChannel
+C:\cygwin\tmp/ccJoTb7e.s:2      *ABS*:0000003f __SREG__
+C:\cygwin\tmp/ccJoTb7e.s:3      *ABS*:0000003e __SP_H__
+C:\cygwin\tmp/ccJoTb7e.s:4      *ABS*:0000003d __SP_L__
+C:\cygwin\tmp/ccJoTb7e.s:5      *ABS*:00000034 __CCP__
+C:\cygwin\tmp/ccJoTb7e.s:6      *ABS*:00000000 __tmp_reg__
+C:\cygwin\tmp/ccJoTb7e.s:7      *ABS*:00000001 __zero_reg__
+C:\cygwin\tmp/ccJoTb7e.s:18     .text:00000000 halRfSetChannel
+                            *COM*:00000004 systemCeiling
                             *COM*:00000004 _nrk_signal_list
 
 UNDEFINED SYMBOLS

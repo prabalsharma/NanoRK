@@ -531,26 +531,28 @@
  553               	.LVL34:
  554 01bc 0895      		ret
  555               	.LFE14:
- 557               		.comm _nrk_signal_list,4,1
- 558               		.comm nrk_idle_task_stk,128,1
- 559               		.comm nrk_kernel_stk_ptr,2,1
- 640               	.Letext0:
+ 557               		.comm systemCeiling,4,1
+ 558               		.comm _nrk_signal_list,4,1
+ 559               		.comm nrk_idle_task_stk,128,1
+ 560               		.comm nrk_kernel_stk_ptr,2,1
+ 641               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 DS2401.c
-C:\cygwin\tmp/ccaK9rYX.s:2      *ABS*:0000003f __SREG__
-C:\cygwin\tmp/ccaK9rYX.s:3      *ABS*:0000003e __SP_H__
-C:\cygwin\tmp/ccaK9rYX.s:4      *ABS*:0000003d __SP_L__
-C:\cygwin\tmp/ccaK9rYX.s:5      *ABS*:00000034 __CCP__
-C:\cygwin\tmp/ccaK9rYX.s:6      *ABS*:00000000 __tmp_reg__
-C:\cygwin\tmp/ccaK9rYX.s:7      *ABS*:00000001 __zero_reg__
-C:\cygwin\tmp/ccaK9rYX.s:18     .text:00000000 Maxim_1Wire_ResetPulse
-C:\cygwin\tmp/ccaK9rYX.s:142    .text:00000040 Maxim_1Wire_WriteBit
-C:\cygwin\tmp/ccaK9rYX.s:235    .text:0000006c Maxim_1Wire_ReadBit
-C:\cygwin\tmp/ccaK9rYX.s:316    .text:0000009a Maxim_1Wire_WriteByte
-C:\cygwin\tmp/ccaK9rYX.s:363    .text:000000d6 Maxim_1Wire_ReadByte
-C:\cygwin\tmp/ccaK9rYX.s:404    .text:00000108 Maxim_1Wire_CommandReadRom
-C:\cygwin\tmp/ccaK9rYX.s:419    .text:00000110 DS2401_init
-C:\cygwin\tmp/ccaK9rYX.s:455    .text:00000122 DS2401_getSerialNumber
+C:\cygwin\tmp/cc5Ygviu.s:2      *ABS*:0000003f __SREG__
+C:\cygwin\tmp/cc5Ygviu.s:3      *ABS*:0000003e __SP_H__
+C:\cygwin\tmp/cc5Ygviu.s:4      *ABS*:0000003d __SP_L__
+C:\cygwin\tmp/cc5Ygviu.s:5      *ABS*:00000034 __CCP__
+C:\cygwin\tmp/cc5Ygviu.s:6      *ABS*:00000000 __tmp_reg__
+C:\cygwin\tmp/cc5Ygviu.s:7      *ABS*:00000001 __zero_reg__
+C:\cygwin\tmp/cc5Ygviu.s:18     .text:00000000 Maxim_1Wire_ResetPulse
+C:\cygwin\tmp/cc5Ygviu.s:142    .text:00000040 Maxim_1Wire_WriteBit
+C:\cygwin\tmp/cc5Ygviu.s:235    .text:0000006c Maxim_1Wire_ReadBit
+C:\cygwin\tmp/cc5Ygviu.s:316    .text:0000009a Maxim_1Wire_WriteByte
+C:\cygwin\tmp/cc5Ygviu.s:363    .text:000000d6 Maxim_1Wire_ReadByte
+C:\cygwin\tmp/cc5Ygviu.s:404    .text:00000108 Maxim_1Wire_CommandReadRom
+C:\cygwin\tmp/cc5Ygviu.s:419    .text:00000110 DS2401_init
+C:\cygwin\tmp/cc5Ygviu.s:455    .text:00000122 DS2401_getSerialNumber
+                            *COM*:00000004 systemCeiling
                             *COM*:00000004 _nrk_signal_list
                             *COM*:00000080 nrk_idle_task_stk
                             *COM*:00000002 nrk_kernel_stk_ptr

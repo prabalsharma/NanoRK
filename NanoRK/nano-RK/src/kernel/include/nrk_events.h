@@ -42,7 +42,7 @@ int8_t resource_ceiling;
 int8_t value;
 } nrk_sem_t;
 
-
+uint32_t systemCeiling;
 uint32_t _nrk_signal_list;
 
 uint32_t nrk_signal_get_registered_mask();
@@ -61,6 +61,6 @@ int8_t nrk_get_resource_index(nrk_sem_t *resrc);
 int8_t nrk_sem_post(nrk_sem_t *rsrc);
 int8_t nrk_sem_pend(nrk_sem_t *rsrc );
 int8_t nrk_sem_query(nrk_sem_t *rsrc );
-
+void system_ceiling();
 
 #endif

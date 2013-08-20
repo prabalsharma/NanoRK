@@ -1043,8 +1043,8 @@
  1058               	/* frame size = 16 */
  1059 06f0 D82E      		mov r13,r24
  1060               	.LM56:
- 1061 06f2 80E0      		ldi r24,lo8(__c.2091)
- 1062 06f4 90E0      		ldi r25,hi8(__c.2091)
+ 1061 06f2 80E0      		ldi r24,lo8(__c.2095)
+ 1062 06f4 90E0      		ldi r25,hi8(__c.2095)
  1063               	.LVL28:
  1064 06f6 0E94 0000 		call nrk_kprintf
  1065               	.LM57:
@@ -1073,8 +1073,8 @@
  1088 0726 01F0      		breq .+2
  1089 0728 00C0      		rjmp .L26
  1090               	.LM59:
- 1091 072a 80E0      		ldi r24,lo8(__c.2093)
- 1092 072c 90E0      		ldi r25,hi8(__c.2093)
+ 1091 072a 80E0      		ldi r24,lo8(__c.2097)
+ 1092 072c 90E0      		ldi r25,hi8(__c.2097)
  1093 072e 0E94 0000 		call nrk_kprintf
  1094               	.LM60:
  1095 0732 CE01      		movw r24,r28
@@ -1134,8 +1134,8 @@
  1149 07a0 FEBF      		out __SP_H__,r31
  1150 07a2 0FBE      		out __SREG__,__tmp_reg__
  1151 07a4 EDBF      		out __SP_L__,r30
- 1152 07a6 80E0      		ldi r24,lo8(__c.2095)
- 1153 07a8 90E0      		ldi r25,hi8(__c.2095)
+ 1152 07a6 80E0      		ldi r24,lo8(__c.2099)
+ 1153 07a8 90E0      		ldi r25,hi8(__c.2099)
  1154 07aa 0E94 0000 		call nrk_kprintf
  1155               	.LM63:
  1156 07ae 8DB7      		in r24,__SP_L__
@@ -1192,8 +1192,8 @@
  1207 0828 EDBF      		out __SP_L__,r30
  1208               	.L26:
  1209               	.LM64:
- 1210 082a 80E0      		ldi r24,lo8(__c.2097)
- 1211 082c 90E0      		ldi r25,hi8(__c.2097)
+ 1210 082a 80E0      		ldi r24,lo8(__c.2101)
+ 1211 082c 90E0      		ldi r25,hi8(__c.2101)
  1212 082e 0E94 0000 		call nrk_kprintf
  1213               	.LM65:
  1214 0832 8D2D      		mov r24,r13
@@ -1289,8 +1289,8 @@
  1304 08e6 FEBF      		out __SP_H__,r31
  1305 08e8 0FBE      		out __SREG__,__tmp_reg__
  1306 08ea EDBF      		out __SP_L__,r30
- 1307 08ec 80E0      		ldi r24,lo8(__c.2099)
- 1308 08ee 90E0      		ldi r25,hi8(__c.2099)
+ 1307 08ec 80E0      		ldi r24,lo8(__c.2103)
+ 1308 08ee 90E0      		ldi r25,hi8(__c.2103)
  1309 08f0 0E94 0000 		call nrk_kprintf
  1310               	.LM68:
  1311 08f4 8D2D      		mov r24,r13
@@ -1572,8 +1572,8 @@
  1587 0b1c FEBF      		out __SP_H__,r31
  1588 0b1e 0FBE      		out __SREG__,__tmp_reg__
  1589 0b20 EDBF      		out __SP_L__,r30
- 1590 0b22 80E0      		ldi r24,lo8(__c.2101)
- 1591 0b24 90E0      		ldi r25,hi8(__c.2101)
+ 1590 0b22 80E0      		ldi r24,lo8(__c.2105)
+ 1591 0b24 90E0      		ldi r25,hi8(__c.2105)
  1592 0b26 0E94 0000 		call nrk_kprintf
  1593               	.LM75:
  1594 0b2a 00D0      		rcall .
@@ -1621,8 +1621,8 @@
  1636 0b7e 9EBF      		out __SP_H__,r25
  1637 0b80 0FBE      		out __SREG__,__tmp_reg__
  1638 0b82 8DBF      		out __SP_L__,r24
- 1639 0b84 80E0      		ldi r24,lo8(__c.2103)
- 1640 0b86 90E0      		ldi r25,hi8(__c.2103)
+ 1639 0b84 80E0      		ldi r24,lo8(__c.2107)
+ 1640 0b86 90E0      		ldi r25,hi8(__c.2107)
  1641 0b88 0E94 0000 		call nrk_kprintf
  1642               	.LM77:
  1643 0b8c 00D0      		rcall .
@@ -1668,8 +1668,8 @@
  1683 0bdc 9EBF      		out __SP_H__,r25
  1684 0bde 0FBE      		out __SREG__,__tmp_reg__
  1685 0be0 8DBF      		out __SP_L__,r24
- 1686 0be2 80E0      		ldi r24,lo8(__c.2105)
- 1687 0be4 90E0      		ldi r25,hi8(__c.2105)
+ 1686 0be2 80E0      		ldi r24,lo8(__c.2109)
+ 1687 0be4 90E0      		ldi r25,hi8(__c.2109)
  1688 0be6 0E94 0000 		call nrk_kprintf
  1689               	.LM79:
  1690 0bea 00D0      		rcall .
@@ -1709,8 +1709,8 @@
  1724 0c2e 0F90      		pop __tmp_reg__
  1725 0c30 0F90      		pop __tmp_reg__
  1726 0c32 0F90      		pop __tmp_reg__
- 1727 0c34 80E0      		ldi r24,lo8(__c.2107)
- 1728 0c36 90E0      		ldi r25,hi8(__c.2107)
+ 1727 0c34 80E0      		ldi r24,lo8(__c.2111)
+ 1728 0c36 90E0      		ldi r25,hi8(__c.2111)
  1729 0c38 0E94 0000 		call nrk_kprintf
  1730               	.LM81:
  1731 0c3c 00D0      		rcall .
@@ -1748,8 +1748,8 @@
  1763 0c7c 0F90      		pop __tmp_reg__
  1764 0c7e 0F90      		pop __tmp_reg__
  1765 0c80 0F90      		pop __tmp_reg__
- 1766 0c82 80E0      		ldi r24,lo8(__c.2109)
- 1767 0c84 90E0      		ldi r25,hi8(__c.2109)
+ 1766 0c82 80E0      		ldi r24,lo8(__c.2113)
+ 1767 0c84 90E0      		ldi r25,hi8(__c.2113)
  1768 0c86 0E94 0000 		call nrk_kprintf
  1769               	/* epilogue start */
  1770               	.LM83:
@@ -1777,8 +1777,8 @@
  1794               	/* prologue: function */
  1795               	/* frame size = 0 */
  1796               	.LM85:
- 1797 0ca8 80E0      		ldi r24,lo8(__c.2131)
- 1798 0caa 90E0      		ldi r25,hi8(__c.2131)
+ 1797 0ca8 80E0      		ldi r24,lo8(__c.2135)
+ 1798 0caa 90E0      		ldi r25,hi8(__c.2135)
  1799 0cac 0E94 0000 		call nrk_kprintf
  1800 0cb0 10E0      		ldi r17,lo8(0)
  1801               	.LVL30:
@@ -1840,120 +1840,122 @@
  1859 0d08 0895      		ret
  1860               	.LFE4:
  1862               		.section	.progmem.data,"a",@progbits
- 1865               	__c.2131:
+ 1865               	__c.2135:
  1866 0000 0D0A 4E61 		.string	"\r\nNano-RK Task Statistics:\r\n"
  1866      6E6F 2D52 
  1866      4B20 5461 
  1866      736B 2053 
  1866      7461 7469 
- 1869               	__c.2109:
+ 1869               	__c.2113:
  1870 001d 0D0A 00   		.string	"\r\n"
- 1873               	__c.2107:
+ 1873               	__c.2111:
  1874 0020 0D0A 2020 		.string	"\r\n   Overflow Error Status: "
  1874      204F 7665 
  1874      7266 6C6F 
  1874      7720 4572 
  1874      726F 7220 
- 1877               	__c.2105:
+ 1877               	__c.2109:
  1878 003d 0D0A 2020 		.string	"\r\n   Kernel Violations: "
  1878      204B 6572 
  1878      6E65 6C20 
  1878      5669 6F6C 
  1878      6174 696F 
- 1881               	__c.2103:
+ 1881               	__c.2107:
  1882 0056 0D0A 2020 		.string	"\r\n   Preemptions: "
  1882      2050 7265 
  1882      656D 7074 
  1882      696F 6E73 
  1882      3A20 00
- 1885               	__c.2101:
+ 1885               	__c.2105:
  1886 0069 0D0A 2020 		.string	"\r\n   Swap-ins: "
  1886      2053 7761 
  1886      702D 696E 
  1886      733A 2000 
- 1889               	__c.2099:
+ 1889               	__c.2103:
  1890 0079 0D0A 2020 		.string	"\r\n   Time [Min,Last,Max]: "
  1890      2054 696D 
  1890      6520 5B4D 
  1890      696E 2C4C 
  1890      6173 742C 
- 1893               	__c.2097:
+ 1893               	__c.2101:
  1894 0094 0D0A 2020 		.string	"\r\n   Total CPU: "
  1894      2054 6F74 
  1894      616C 2043 
  1894      5055 3A20 
  1894      00
- 1897               	__c.2095:
+ 1897               	__c.2099:
  1898 00a5 0D0A 2020 		.string	"\r\n   Idle Task Deep Sleep Time: "
  1898      2049 646C 
  1898      6520 5461 
  1898      736B 2044 
  1898      6565 7020 
- 1901               	__c.2093:
+ 1901               	__c.2097:
  1902 00c6 0D0A 2020 		.string	"\r\n   Total System Uptime: "
  1902      2054 6F74 
  1902      616C 2053 
  1902      7973 7465 
  1902      6D20 5570 
- 1905               	__c.2091:
+ 1905               	__c.2095:
  1906 00e1 2054 6173 		.string	" Task ID: "
  1906      6B20 4944 
  1906      3A20 00
- 1907               		.comm _nrk_signal_list,4,1
- 1908               		.comm nrk_idle_task_stk,128,1
- 1909               		.comm nrk_kernel_stk_ptr,2,1
- 1910               		.comm nrk_task_TCB,165,1
- 1911               		.comm nrk_wakeup_signal,1,1
- 1912               		.comm _nrk_readyQ,30,1
- 1913               		.comm _free_node,2,1
- 1914               		.comm _head_node,2,1
- 1915               		.comm nrk_cur_task_prio,1,1
- 1916               		.comm nrk_cur_task_TCB,2,1
- 1917               		.comm nrk_high_ready_prio,1,1
- 1918               		.comm nrk_high_ready_TCB,2,1
- 1919               		.comm _nrk_resource_cnt,1,1
- 1920               		.comm nrk_system_time,8,1
- 1921               		.comm cur_task_stats,150,1
- 1922               		.comm _nrk_stats_sleep_time,8,1
- 1923               		.comm nrk_sem_list,3,1
- 1924               		.comm error_task,1,1
- 1925               		.comm error_num,1,1
- 2022               	.Letext0:
+ 1907               		.comm systemCeiling,4,1
+ 1908               		.comm _nrk_signal_list,4,1
+ 1909               		.comm nrk_idle_task_stk,128,1
+ 1910               		.comm nrk_kernel_stk_ptr,2,1
+ 1911               		.comm nrk_task_TCB,170,1
+ 1912               		.comm nrk_wakeup_signal,1,1
+ 1913               		.comm _nrk_readyQ,30,1
+ 1914               		.comm _free_node,2,1
+ 1915               		.comm _head_node,2,1
+ 1916               		.comm nrk_cur_task_prio,1,1
+ 1917               		.comm nrk_cur_task_TCB,2,1
+ 1918               		.comm nrk_high_ready_prio,1,1
+ 1919               		.comm nrk_high_ready_TCB,2,1
+ 1920               		.comm _nrk_resource_cnt,1,1
+ 1921               		.comm nrk_system_time,8,1
+ 1922               		.comm cur_task_stats,150,1
+ 1923               		.comm _nrk_stats_sleep_time,8,1
+ 1924               		.comm nrk_sem_list,3,1
+ 1925               		.comm error_task,1,1
+ 1926               		.comm error_num,1,1
+ 2023               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 nrk_stats.c
-C:\cygwin\tmp/ccevOymg.s:2      *ABS*:0000003f __SREG__
-C:\cygwin\tmp/ccevOymg.s:3      *ABS*:0000003e __SP_H__
-C:\cygwin\tmp/ccevOymg.s:4      *ABS*:0000003d __SP_L__
-C:\cygwin\tmp/ccevOymg.s:5      *ABS*:00000034 __CCP__
-C:\cygwin\tmp/ccevOymg.s:6      *ABS*:00000000 __tmp_reg__
-C:\cygwin\tmp/ccevOymg.s:7      *ABS*:00000001 __zero_reg__
-C:\cygwin\tmp/ccevOymg.s:18     .text:00000000 nrk_stats_reset
+C:\cygwin\tmp/ccFATivG.s:2      *ABS*:0000003f __SREG__
+C:\cygwin\tmp/ccFATivG.s:3      *ABS*:0000003e __SP_H__
+C:\cygwin\tmp/ccFATivG.s:4      *ABS*:0000003d __SP_L__
+C:\cygwin\tmp/ccFATivG.s:5      *ABS*:00000034 __CCP__
+C:\cygwin\tmp/ccFATivG.s:6      *ABS*:00000000 __tmp_reg__
+C:\cygwin\tmp/ccFATivG.s:7      *ABS*:00000001 __zero_reg__
+C:\cygwin\tmp/ccFATivG.s:18     .text:00000000 nrk_stats_reset
                             *COM*:00000008 _nrk_stats_sleep_time
                             *COM*:00000096 cur_task_stats
-C:\cygwin\tmp/ccevOymg.s:83     .text:00000064 nrk_stats_get_deep_sleep
-C:\cygwin\tmp/ccevOymg.s:116    .text:00000098 _nrk_stats_add_violation
-C:\cygwin\tmp/ccevOymg.s:200    .text:0000011e _nrk_stats_task_start
-C:\cygwin\tmp/ccevOymg.s:314    .text:000001e2 _nrk_stats_task_preempted
-C:\cygwin\tmp/ccevOymg.s:522    .text:00000356 _nrk_stats_task_suspend
-C:\cygwin\tmp/ccevOymg.s:798    .text:00000548 nrk_stats_get
-C:\cygwin\tmp/ccevOymg.s:1038   .text:000006d2 nrk_stats_display_pid
-C:\cygwin\tmp/ccevOymg.s:1905   .progmem.data:000000e1 __c.2091
-C:\cygwin\tmp/ccevOymg.s:1901   .progmem.data:000000c6 __c.2093
-C:\cygwin\tmp/ccevOymg.s:1897   .progmem.data:000000a5 __c.2095
-C:\cygwin\tmp/ccevOymg.s:1893   .progmem.data:00000094 __c.2097
-C:\cygwin\tmp/ccevOymg.s:1889   .progmem.data:00000079 __c.2099
-C:\cygwin\tmp/ccevOymg.s:1885   .progmem.data:00000069 __c.2101
-C:\cygwin\tmp/ccevOymg.s:1881   .progmem.data:00000056 __c.2103
-C:\cygwin\tmp/ccevOymg.s:1877   .progmem.data:0000003d __c.2105
-C:\cygwin\tmp/ccevOymg.s:1873   .progmem.data:00000020 __c.2107
-C:\cygwin\tmp/ccevOymg.s:1869   .progmem.data:0000001d __c.2109
-C:\cygwin\tmp/ccevOymg.s:1790   .text:00000ca6 nrk_stats_display_all
-C:\cygwin\tmp/ccevOymg.s:1865   .progmem.data:00000000 __c.2131
-C:\cygwin\tmp/ccevOymg.s:1819   .text:00000cc2 _nrk_stats_sleep
+C:\cygwin\tmp/ccFATivG.s:83     .text:00000064 nrk_stats_get_deep_sleep
+C:\cygwin\tmp/ccFATivG.s:116    .text:00000098 _nrk_stats_add_violation
+C:\cygwin\tmp/ccFATivG.s:200    .text:0000011e _nrk_stats_task_start
+C:\cygwin\tmp/ccFATivG.s:314    .text:000001e2 _nrk_stats_task_preempted
+C:\cygwin\tmp/ccFATivG.s:522    .text:00000356 _nrk_stats_task_suspend
+C:\cygwin\tmp/ccFATivG.s:798    .text:00000548 nrk_stats_get
+C:\cygwin\tmp/ccFATivG.s:1038   .text:000006d2 nrk_stats_display_pid
+C:\cygwin\tmp/ccFATivG.s:1905   .progmem.data:000000e1 __c.2095
+C:\cygwin\tmp/ccFATivG.s:1901   .progmem.data:000000c6 __c.2097
+C:\cygwin\tmp/ccFATivG.s:1897   .progmem.data:000000a5 __c.2099
+C:\cygwin\tmp/ccFATivG.s:1893   .progmem.data:00000094 __c.2101
+C:\cygwin\tmp/ccFATivG.s:1889   .progmem.data:00000079 __c.2103
+C:\cygwin\tmp/ccFATivG.s:1885   .progmem.data:00000069 __c.2105
+C:\cygwin\tmp/ccFATivG.s:1881   .progmem.data:00000056 __c.2107
+C:\cygwin\tmp/ccFATivG.s:1877   .progmem.data:0000003d __c.2109
+C:\cygwin\tmp/ccFATivG.s:1873   .progmem.data:00000020 __c.2111
+C:\cygwin\tmp/ccFATivG.s:1869   .progmem.data:0000001d __c.2113
+C:\cygwin\tmp/ccFATivG.s:1790   .text:00000ca6 nrk_stats_display_all
+C:\cygwin\tmp/ccFATivG.s:1865   .progmem.data:00000000 __c.2135
+C:\cygwin\tmp/ccFATivG.s:1819   .text:00000cc2 _nrk_stats_sleep
+                            *COM*:00000004 systemCeiling
                             *COM*:00000004 _nrk_signal_list
                             *COM*:00000080 nrk_idle_task_stk
                             *COM*:00000002 nrk_kernel_stk_ptr
-                            *COM*:000000a5 nrk_task_TCB
+                            *COM*:000000aa nrk_task_TCB
                             *COM*:00000001 nrk_wakeup_signal
                             *COM*:0000001e _nrk_readyQ
                             *COM*:00000002 _free_node

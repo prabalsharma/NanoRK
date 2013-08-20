@@ -234,7 +234,7 @@ int8_t nrk_sem_pend(nrk_sem_t *rsrc )
 	nrk_cur_task_TCB->task_prio_ceil=nrk_sem_list[id].resource_ceiling;
 	nrk_cur_task_TCB->elevated_prio_flag=1;
 	nrk_int_enable();
-
+	system_ceiling();
 	return NRK_OK;
 }
 
@@ -266,9 +266,10 @@ int8_t nrk_sem_post(nrk_sem_t *rsrc)
 				}   
 
 		}
+		system_ceiling();
 		nrk_int_enable();
 	}
-		
+
 return NRK_OK;
 }
 
@@ -312,6 +313,26 @@ int8_t nrk_get_resource_index(nrk_sem_t *resrc)
 	return NRK_ERROR;
 }
 
+void system_ceiling()
+{
+	uint32_t sysCeiling = 0;
+	for(int index = 0; index < NRK_MAX_RESOURCE_CNT; index++)
+	{
+		nrk_sem_t* semaphoreAddr = &nrk_sem_list[index];
+		if(semaphoreAddr != NULL )
+		{
+			uint8_t temp = nrk_sem_list[index].value;
+			if( temp == 0 )
+			{
+				uint32_t resourceCeiling = nrk_sem_list[index].resource_ceiling;
+				if( resourceCeiling > sysCeiling )
+				{
+				sysCeiling = resourceCeiling;
+				}
+			}
+		}
+	}
 
-
+	systemCeiling = sysCeiling;
+}
 

@@ -96,26 +96,28 @@
  110 005c 1F90      		pop __zero_reg__
  111 005e 1895      		reti
  112               	.LFE6:
- 114               		.comm _nrk_signal_list,4,1
- 115               		.comm ext_int0_callback,2,1
- 116               		.comm ext_int1_callback,2,1
- 117               		.comm ext_int2_callback,2,1
- 118               		.comm pc_int0_callback,2,1
- 119               		.comm error_task,1,1
- 120               		.comm error_num,1,1
- 169               	.Letext0:
+ 114               		.comm systemCeiling,4,1
+ 115               		.comm _nrk_signal_list,4,1
+ 116               		.comm ext_int0_callback,2,1
+ 117               		.comm ext_int1_callback,2,1
+ 118               		.comm ext_int2_callback,2,1
+ 119               		.comm pc_int0_callback,2,1
+ 120               		.comm error_task,1,1
+ 121               		.comm error_num,1,1
+ 170               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 nrk_ext_int.c
-C:\cygwin\tmp/ccqXrpME.s:2      *ABS*:0000003f __SREG__
-C:\cygwin\tmp/ccqXrpME.s:3      *ABS*:0000003e __SP_H__
-C:\cygwin\tmp/ccqXrpME.s:4      *ABS*:0000003d __SP_L__
-C:\cygwin\tmp/ccqXrpME.s:5      *ABS*:00000034 __CCP__
-C:\cygwin\tmp/ccqXrpME.s:6      *ABS*:00000000 __tmp_reg__
-C:\cygwin\tmp/ccqXrpME.s:7      *ABS*:00000001 __zero_reg__
-C:\cygwin\tmp/ccqXrpME.s:18     .text:00000000 nrk_ext_int_enable
-C:\cygwin\tmp/ccqXrpME.s:33     .text:00000004 nrk_ext_int_disable
-C:\cygwin\tmp/ccqXrpME.s:48     .text:00000008 nrk_ext_int_configure
-C:\cygwin\tmp/ccqXrpME.s:63     .text:0000000c __vector_1
+C:\cygwin\tmp/cczHoRsF.s:2      *ABS*:0000003f __SREG__
+C:\cygwin\tmp/cczHoRsF.s:3      *ABS*:0000003e __SP_H__
+C:\cygwin\tmp/cczHoRsF.s:4      *ABS*:0000003d __SP_L__
+C:\cygwin\tmp/cczHoRsF.s:5      *ABS*:00000034 __CCP__
+C:\cygwin\tmp/cczHoRsF.s:6      *ABS*:00000000 __tmp_reg__
+C:\cygwin\tmp/cczHoRsF.s:7      *ABS*:00000001 __zero_reg__
+C:\cygwin\tmp/cczHoRsF.s:18     .text:00000000 nrk_ext_int_enable
+C:\cygwin\tmp/cczHoRsF.s:33     .text:00000004 nrk_ext_int_disable
+C:\cygwin\tmp/cczHoRsF.s:48     .text:00000008 nrk_ext_int_configure
+C:\cygwin\tmp/cczHoRsF.s:63     .text:0000000c __vector_1
+                            *COM*:00000004 systemCeiling
                             *COM*:00000004 _nrk_signal_list
                             *COM*:00000002 ext_int0_callback
                             *COM*:00000002 ext_int1_callback
